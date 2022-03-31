@@ -25,26 +25,17 @@ const Layout = ({ children }) => {
             <header>
                 <nav>
                     <div>
-                        <Link to="/"> Melton Prior Institute</Link>
+                        <Link to="/"> offshoot*berlin</Link>
 
                     </div>
                     <ul>
-                        <li><Link to="/meta/about">About</Link></li>
-                        <li><Link to="/meta/contact">Contact</Link></li>
-                        <div>
-                            <button>DE</button>
-                            <button>EN</button>
-                        </div>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/imprint">Imprint</Link></li>
+                        <li><Link to="/agb">AGB</Link></li>
                     </ul>
                     <ul>
-                        <li><Link to="/content/features">Features</Link></li>
-                        <li><Link to="/content/pictorials">Pictorials</Link></li>
-                        <li><Link to="/content/collections">Collections</Link></li>
-                        <div>
-                            search [
-                        <input type="text" />
-                            ]
-                        </div>
+                        <li><Link to="/work">Work</Link></li>
                     </ul>
                 </nav>
             </header>
@@ -54,10 +45,7 @@ const Layout = ({ children }) => {
             </main>
 
             <footer>
-                <ul>
-                    <li><Link to="/meta/imprint">Imprint</Link></li>
-                    <li><Link to="/meta/agb">AGB</Link></li>
-                </ul>
+
             </footer>
         </div>
     )
