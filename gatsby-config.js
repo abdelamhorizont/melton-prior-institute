@@ -7,17 +7,24 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     siteUrl: "https://gatsbywordpresshomepage.gatsbyjs.io/",
-    title: "offshoot-berlin",
-    author: `Abdel am Meer`,
-    description: "offshoot-berlin Homepage",
+    title: "Gatsby WordPress Homepage Starter",
+    author: `Gatsby`,
+    description: "A Gatsby Starter for building homepages with WordPress",
   },
   plugins: [
-    // {
-    //   resolve: "gatsby-source-wordpress",
-    //   options: {
-    //     url: "https://offshoot-berlin.com/graphql",
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        url: "http://wordpress.meltonpriorinstitut.org/graphql",
+        type: {
+          MediaItem: {
+            localFile: {
+              requestConcurrency: 10
+            }
+          }
+        }
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",

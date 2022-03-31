@@ -1,12 +1,12 @@
 import * as React from "react"
-import Layout from '../components/layout/layout'
+import Layout from '../../components/layout/layout'
 
-export default function Imprint () {
+export default function Contact () {
 
     return (
         <Layout>
           <h1>
-            Imprint
+            Contact
           </h1>
         </Layout>
       )

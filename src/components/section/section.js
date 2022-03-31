@@ -7,7 +7,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 // } from './vorlage.module.scss'
 
 
-const Vorlage = ({ children }) => {
+const Section = ({ children, title }) => {
     // const data = useStaticQuery(graphql`
     // query {
     //     site {
@@ -20,9 +20,10 @@ const Vorlage = ({ children }) => {
 
     return (
         <div>
+            <h1>{title} ]</h1>
             {children}
         </div>
     )
 }
 
-export default Vorlage
+export default Section
