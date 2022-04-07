@@ -26,7 +26,6 @@ const Layout = ({ children }) => {
                 <nav>
                     <div>
                         <Link to="/"> Melton Prior Institute</Link>
-
                     </div>
                     <ul>
                         <li><Link to="/meta/about">About</Link></li>

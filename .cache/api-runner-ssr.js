@@ -1,18 +1,14 @@
 var plugins = [{
       name: 'gatsby-plugin-image',
-      plugin: require('/Users/abdelammeer/Creative Cloud Files/offshoot-berlin/offshoot-berlin/node_modules/gatsby-plugin-image/gatsby-ssr.js'),
+      plugin: require('/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/node_modules/gatsby-plugin-image/gatsby-ssr.js'),
       options: {"plugins":[]},
     },{
       name: 'gatsby-plugin-react-helmet',
-      plugin: require('/Users/abdelammeer/Creative Cloud Files/offshoot-berlin/offshoot-berlin/node_modules/gatsby-plugin-react-helmet/gatsby-ssr.js'),
+      plugin: require('/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/node_modules/gatsby-plugin-react-helmet/gatsby-ssr.js'),
       options: {"plugins":[]},
     },{
       name: 'gatsby-plugin-manifest',
-<<<<<<< HEAD
       plugin: require('/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/node_modules/gatsby-plugin-manifest/gatsby-ssr.js'),
-=======
-      plugin: require('/Users/abdelammeer/Creative Cloud Files/offshoot-berlin/offshoot-berlin/node_modules/gatsby-plugin-manifest/gatsby-ssr.js'),
->>>>>>> 8d09c3eaab0f42a3cbcccc92a6a9d4f7ee4d571c
       options: {"plugins":[],"name":"Gatsby Starter WordPress Homepage","short_name":"Gatsby","start_url":"/","background_color":"#ffffff","theme_color":"#004ca3","icon":"src/favicon.png","legacy":true,"theme_color_in_head":true,"cache_busting_mode":"query","crossOrigin":"anonymous","include_favicon":true,"cacheDigest":"771b82de136455ab301bf3c22527a196"},
     }]
 /* global plugins */

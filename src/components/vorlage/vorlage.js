@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
-// import {
-//     container,
-//     div,
-// } from './vorlage.module.scss'
+import {
+    container,
+    div,
+} from './vorlage.module.scss'
 
 
 const Vorlage = ({ children }) => {

@@ -2729,15 +2729,15 @@ function parsePath(path) {
   var hashIndex = pathname.indexOf("#");
 
   if (hashIndex !== -1) {
-    hash = pathname.substr(hashIndex);
-    pathname = pathname.substr(0, hashIndex);
+    hash = pathname.slice(hashIndex);
+    pathname = pathname.slice(0, hashIndex);
   }
 
   var searchIndex = pathname.indexOf("?");
 
   if (searchIndex !== -1) {
-    search = pathname.substr(searchIndex);
-    pathname = pathname.substr(0, searchIndex);
+    search = pathname.slice(searchIndex);
+    pathname = pathname.slice(0, searchIndex);
   }
 
   return {
@@ -3175,13 +3175,15 @@ module.exports = Object.assign;
 exports.components = {
   "component---cache-dev-404-page-js": () => __webpack_require__.e(/*! import() | component---cache-dev-404-page-js */ "component---cache-dev-404-page-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../dev-404-page.js */ "./.cache/dev-404-page.js")),
   "component---src-pages-404-js": () => __webpack_require__.e(/*! import() | component---src-pages-404-js */ "component---src-pages-404-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/404.js */ "./src/pages/404.js")),
-  "component---src-pages-about-js": () => __webpack_require__.e(/*! import() | component---src-pages-about-js */ "component---src-pages-about-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/about.js */ "./src/pages/about.js")),
-  "component---src-pages-agb-js": () => __webpack_require__.e(/*! import() | component---src-pages-agb-js */ "component---src-pages-agb-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/agb.js */ "./src/pages/agb.js")),
-  "component---src-pages-contact-js": () => __webpack_require__.e(/*! import() | component---src-pages-contact-js */ "component---src-pages-contact-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/contact.js */ "./src/pages/contact.js")),
-  "component---src-pages-imprint-js": () => __webpack_require__.e(/*! import() | component---src-pages-imprint-js */ "component---src-pages-imprint-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/imprint.js */ "./src/pages/imprint.js")),
+  "component---src-pages-content-collections-js": () => __webpack_require__.e(/*! import() | component---src-pages-content-collections-js */ "component---src-pages-content-collections-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/content/collections.js */ "./src/pages/content/collections.js")),
+  "component---src-pages-content-features-js": () => __webpack_require__.e(/*! import() | component---src-pages-content-features-js */ "component---src-pages-content-features-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/content/features.js */ "./src/pages/content/features.js")),
+  "component---src-pages-content-pictorials-js": () => __webpack_require__.e(/*! import() | component---src-pages-content-pictorials-js */ "component---src-pages-content-pictorials-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/content/pictorials.js */ "./src/pages/content/pictorials.js")),
+  "component---src-pages-content-wp-post-uri-js": () => __webpack_require__.e(/*! import() | component---src-pages-content-wp-post-uri-js */ "component---src-pages-content-wp-post-uri-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/content/{wpPost.uri}.js */ "./src/pages/content/{wpPost.uri}.js")),
   "component---src-pages-index-js": () => __webpack_require__.e(/*! import() | component---src-pages-index-js */ "component---src-pages-index-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/index.js */ "./src/pages/index.js")),
-  "component---src-pages-work-js": () => __webpack_require__.e(/*! import() | component---src-pages-work-js */ "component---src-pages-work-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/work.js */ "./src/pages/work.js")),
-  "component---src-pages-wp-posturi-js": () => __webpack_require__.e(/*! import() | component---src-pages-wp-posturi-js */ "component---src-pages-wp-posturi-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/wpPosturi.js */ "./src/pages/wpPosturi.js"))
+  "component---src-pages-meta-about-js": () => __webpack_require__.e(/*! import() | component---src-pages-meta-about-js */ "component---src-pages-meta-about-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/meta/about.js */ "./src/pages/meta/about.js")),
+  "component---src-pages-meta-agb-js": () => __webpack_require__.e(/*! import() | component---src-pages-meta-agb-js */ "component---src-pages-meta-agb-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/meta/agb.js */ "./src/pages/meta/agb.js")),
+  "component---src-pages-meta-contact-js": () => __webpack_require__.e(/*! import() | component---src-pages-meta-contact-js */ "component---src-pages-meta-contact-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/meta/contact.js */ "./src/pages/meta/contact.js")),
+  "component---src-pages-meta-imprint-js": () => __webpack_require__.e(/*! import() | component---src-pages-meta-imprint-js */ "component---src-pages-meta-imprint-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/meta/imprint.js */ "./src/pages/meta/imprint.js"))
 };
 
 /***/ }),
@@ -11631,24 +11633,24 @@ module.exports = withSideEffect;
 /***/ }),
 
 /***/ "react-dom/server":
-/*!***************************************************************************************************************************!*\
-  !*** external "/Users/abdelammeer/Creative Cloud Files/offshoot-berlin/offshoot-berlin/node_modules/react-dom/server.js" ***!
-  \***************************************************************************************************************************/
+/*!*******************************************************************************************************************************!*\
+  !*** external "/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/node_modules/react-dom/server.js" ***!
+  \*******************************************************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("/Users/abdelammeer/Creative Cloud Files/offshoot-berlin/offshoot-berlin/node_modules/react-dom/server.js");
+module.exports = require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/node_modules/react-dom/server.js");
 
 /***/ }),
 
 /***/ "react":
-/*!**********************************************************************************************************************!*\
-  !*** external "/Users/abdelammeer/Creative Cloud Files/offshoot-berlin/offshoot-berlin/node_modules/react/index.js" ***!
-  \**********************************************************************************************************************/
+/*!**************************************************************************************************************************!*\
+  !*** external "/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/node_modules/react/index.js" ***!
+  \**************************************************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("/Users/abdelammeer/Creative Cloud Files/offshoot-berlin/offshoot-berlin/node_modules/react/index.js");
+module.exports = require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/node_modules/react/index.js");
 
 /***/ }),
 
