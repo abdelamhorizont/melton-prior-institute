@@ -1,12 +1,9 @@
 import * as React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
-// import {
-//     container,
-//     navLinks,
-//     navLinkItem,
-//     navLinkText,
-// } from './layout.module.scss'
+import {
+    layout
+} from './layout.module.scss'
 
 
 const Layout = ({ children }) => {
@@ -21,7 +18,7 @@ const Layout = ({ children }) => {
     // `)
 
     return (
-        <div>
+        <div className={layout}>
             <header>
                 <nav>
                     <div>

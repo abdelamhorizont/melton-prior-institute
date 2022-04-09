@@ -6,6 +6,8 @@ import Section from '../components/section/section'
 import ArticleTitle from '../components/articleTitle/articleTitle'
 import ArticleBody from '../components/articleBody/articleBody'
 
+// import './index.module.scss'
+
 const Homepage = () => {
   const data = useStaticQuery(graphql`
     query {

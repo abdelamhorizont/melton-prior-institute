@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
-// import {
-//     container,
-//     div,
-// } from './vorlage.module.scss'
+import {
+    section
+} from './section.module.scss'
 
 
 const Section = ({ children, title }) => {
@@ -19,7 +18,7 @@ const Section = ({ children, title }) => {
     // `)
 
     return (
-        <div>
+        <div className={section}>
             <h1>{title} ]</h1>
             {children}
         </div>

@@ -3,10 +3,10 @@ exports.id = "component---src-pages-index-js";
 exports.ids = ["component---src-pages-index-js"];
 exports.modules = {
 
-/***/ "./src/components/articleTitle/articleTitle.module.css":
-/*!*************************************************************!*\
-  !*** ./src/components/articleTitle/articleTitle.module.css ***!
-  \*************************************************************/
+/***/ "./src/components/articleTitle/articleTitle.module.scss":
+/*!**************************************************************!*\
+  !*** ./src/components/articleTitle/articleTitle.module.scss ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "container": () => (/* binding */ container)
 /* harmony export */ });
 // Exports
-var container = "articleTitle-module--container--8ldUX";
+var container = "articleTitle-module--container--BtCNL";
 
 
 /***/ }),
@@ -59,7 +59,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
-/* harmony import */ var _articleTitle_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./articleTitle.module.css */ "./src/components/articleTitle/articleTitle.module.css");
+/* harmony import */ var _articleTitle_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./articleTitle.module.scss */ "./src/components/articleTitle/articleTitle.module.scss");
 
 
 
@@ -67,7 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 const ArticleTitle = props => {
   if (props.path) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: _articleTitle_module_css__WEBPACK_IMPORTED_MODULE_2__.container
+      className: _articleTitle_module_scss__WEBPACK_IMPORTED_MODULE_2__.container
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.path.categories.nodes[0].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.path.author.node.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.path.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, props.path.title));
   } else {
     return null;
