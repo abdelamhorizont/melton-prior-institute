@@ -11,10 +11,7 @@ import ArticleBody from '../components/articleBody/articleBody'
 const Homepage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost(
-        filter: {categories: {nodes: {elemMatch: {name: {eq: "features"}}}}}
-        limit: 3
-      ) {        
+      allWpPost{        
         edges {
           node {
             id
@@ -55,19 +52,41 @@ const Homepage = () => {
       </Section>
 
       <Section title="features">
-      <ul>
-        {
-          data.allWpPost.edges.map(edge => (
+        <ul>
+          {
+            data.allWpPost.edges.filter(edge => (
+              edge.node.categories.nodes[0] &&
+              edge.node.categories.nodes[0].name === "features"
+            )).slice(0, 3).map(edge => (
 
-            <Link to={`/content${edge.node.uri}`}>
-              <li >                
-                <ArticleTitle path={edge.node} />
-              </li>
-            </Link>
+              <Link to={`/content${edge.node.uri}`}>
+                <li >
+                  <ArticleTitle path={edge.node} />
+                </li>
+              </Link>
 
-          ))
-        }
-      </ul>
+            ))
+          }
+        </ul>
+      </Section>
+
+      <Section title="Pictorials">
+        <ul>
+          {
+            data.allWpPost.edges.filter(edge => (
+              edge.node.categories.nodes[0] &&
+              edge.node.categories.nodes[0].name === "pictorials"
+            )).slice(0, 3).map(edge => (
+
+              <Link to={`/content${edge.node.uri}`}>
+                <li >
+                  <ArticleTitle path={edge.node} />
+                </li>
+              </Link>
+
+            ))
+          }
+        </ul>
       </Section>
 
     </Layout>

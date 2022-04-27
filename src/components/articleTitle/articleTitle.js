@@ -11,7 +11,10 @@ const ArticleTitle = (props) => {
     if (props.path) {
         return (
             <div className={articleTitle}>
+             {
+                props.path.categories.nodes[0] && 
                 <p>{props.path.categories.nodes[0].name}</p>
+             }   
                 <p>{props.path.author.node.name}</p>
                 <p>{props.path.date}</p>
                 <h1>{props.path.title}</h1>
