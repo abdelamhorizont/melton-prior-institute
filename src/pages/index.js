@@ -6,7 +6,11 @@ import Section from '../components/section/section'
 import ArticleTitle from '../components/articleTitle/articleTitle'
 import ArticleBody from '../components/articleBody/articleBody'
 
-// import './index.module.scss'
+import "../styles/reset.scss";
+import "../styles/global.scss";
+import {
+  categories_lists
+} from './index.module.scss'
 
 const Homepage = () => {
   const data = useStaticQuery(graphql`
@@ -40,20 +44,21 @@ const Homepage = () => {
   return (
     <Layout>
 
-      <Section title="About">
+      {/* <Section title="About">
         <ArticleBody />
       </Section>
 
       <Section title="News">
         <ArticleTitle />
         <ArticleBody />
-      </Section>
+      </Section> */}
 
       <Section title="Showcase">
         <ArticleTitle />
         <ArticleBody />
       </Section>
 
+      <div className={categories_lists}>
       <Section title="features">
       <ul>
         {
@@ -69,6 +74,37 @@ const Homepage = () => {
         }
       </ul>
       </Section>
+      <Section title="pictorials">
+      <ul>
+        {
+          data.allWpPost.edges.map(edge => (
+
+            <Link to={`/content${edge.node.uri}`}>
+              <li >                
+                <ArticleTitle path={edge.node} />
+              </li>
+            </Link>
+
+          ))
+        }
+      </ul>
+      </Section>
+      <Section title="collections">
+      <ul>
+        {
+          data.allWpPost.edges.map(edge => (
+
+            <Link to={`/content${edge.node.uri}`}>
+              <li >                
+                <ArticleTitle path={edge.node} />
+              </li>
+            </Link>
+
+          ))
+        }
+      </ul>
+      </Section>
+      </div>
 
     </Layout>
   )
