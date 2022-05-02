@@ -10,6 +10,11 @@ import Article from '../../components/article/article'
 export default function Pictorials() {
   const data = useStaticQuery(graphql`
     query {
+      allWpTag {
+        nodes {
+          name
+        }
+      }
       allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "pictorials"}}}}}) {
         edges {
           node {
