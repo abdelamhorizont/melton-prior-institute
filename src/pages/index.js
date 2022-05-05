@@ -15,10 +15,7 @@ import {
 const Homepage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost(
-        filter: {categories: {nodes: {elemMatch: {name: {eq: "features"}}}}}
-        limit: 3
-      ) {        
+      allWpPost{        
         edges {
           node {
             id
@@ -44,15 +41,6 @@ const Homepage = () => {
   return (
     <Layout>
 
-      {/* <Section title="About">
-        <ArticleBody />
-      </Section>
-
-      <Section title="News">
-        <ArticleTitle />
-        <ArticleBody />
-      </Section> */}
-
       <Section title="Showcase">
         <ArticleTitle />
         <ArticleBody />
@@ -60,35 +48,43 @@ const Homepage = () => {
 
       <div className={categories_lists}>
       <Section title="features">
-      <ul>
-        {
-          data.allWpPost.edges.map(edge => (
+        <ul>
+          {
+            data.allWpPost.edges.filter(edge => (
+              edge.node.categories.nodes[0] &&
+              edge.node.categories.nodes[0].name === "features"
+            )).slice(0, 3).map(edge => (
 
-            <Link to={`/content${edge.node.uri}`}>
-              <li >                
-                <ArticleTitle path={edge.node} />
-              </li>
-            </Link>
+              <Link to={`/content${edge.node.uri}`}>
+                <li >
+                  <ArticleTitle path={edge.node} />
+                </li>
+              </Link>
 
-          ))
-        }
-      </ul>
+            ))
+          }
+        </ul>
       </Section>
-      <Section title="pictorials">
-      <ul>
-        {
-          data.allWpPost.edges.map(edge => (
 
-            <Link to={`/content${edge.node.uri}`}>
-              <li >                
-                <ArticleTitle path={edge.node} />
-              </li>
-            </Link>
+      <Section title="Pictorials">
+        <ul>
+          {
+            data.allWpPost.edges.filter(edge => (
+              edge.node.categories.nodes[0] &&
+              edge.node.categories.nodes[0].name === "pictorials"
+            )).slice(0, 3).map(edge => (
 
-          ))
-        }
-      </ul>
+              <Link to={`/content${edge.node.uri}`}>
+                <li >
+                  <ArticleTitle path={edge.node} />
+                </li>
+              </Link>
+
+            ))
+          }
+        </ul>
       </Section>
+
       <Section title="collections">
       <ul>
         {

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import {
     articleTitle,
@@ -13,9 +12,12 @@ const ArticleTitle = (props) => {
             <div className={articleTitle}>
                 <div></div>
                 <div>
-                    {/* <p>{props.path.categories.nodes[0].name}</p> */}
-                    <p>{props.path.author.node.name} ]</p>
-                    <p>[ {props.path.date}</p>
+                    {
+                        props.path.categories.nodes[0] &&
+                        <p>{props.path.categories.nodes[0].name}</p>
+                    }
+                    <p>{props.path.author.node.name}</p>
+                    <p>{props.path.date}</p>
                     <h1>{props.path.title}</h1>
                 </div>
             </div>

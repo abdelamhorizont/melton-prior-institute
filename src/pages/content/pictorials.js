@@ -5,10 +5,16 @@ import Layout from '../../components/layout/layout'
 import Section from '../../components/section/section'
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 import ArticleBody from '../../components/articleBody/articleBody'
+import Article from '../../components/article/article'
 
 export default function Pictorials() {
   const data = useStaticQuery(graphql`
     query {
+      allWpTag {
+        nodes {
+          name
+        }
+      }
       allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "pictorials"}}}}}) {
         edges {
           node {
@@ -33,19 +39,17 @@ export default function Pictorials() {
     }
     `)
 
+    const pictorials = data.allWpPost.edges
+
   return (
     <Layout>
-      <ul>
+        <ul>
         {
-          data.allWpPost.edges.map(edge => (
+          pictorials.map(edge => (
 
             <Link to={`/content${edge.node.uri}`}>
               <li key={edge.node.id}>
-                <p>{edge.node.author.node.name}</p>
-                <p>{edge.node.date}</p>
-                <p>{edge.node.categories.nodes[0].name}</p>
-                <h1>{edge.node.title}</h1>
-                <p dangerouslySetInnerHTML={{ __html: edge.node.excerpt }} />
+                <Article path={edge.node} />
               </li>
             </Link>
 

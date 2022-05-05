@@ -9,6 +9,7 @@ exports.components = {
   "component---src-pages-content-collections-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/content/collections.js")),
   "component---src-pages-content-features-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/content/features.js")),
   "component---src-pages-content-pictorials-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/content/pictorials.js")),
+  "component---src-pages-content-search-results-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/content/searchResults.js")),
   "component---src-pages-content-wp-post-uri-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/content/{wpPost.uri}.js")),
   "component---src-pages-index-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/index.js")),
   "component---src-pages-meta-about-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/about.js")),
