@@ -6,7 +6,8 @@ import Search from '../search/search'
 import Article from '../article/article'
 
 import {
-    layout
+    layout,
+    categories
 } from './layout.module.scss'
 
 
@@ -63,6 +64,9 @@ const Layout = ({ children }) => {
                     <div>
                         <Link to="/"> Melton Prior Institute</Link>
                     </div>
+                    <div>
+
+                    </div>
                     <ul>
                         <li><Link to="/meta/about">About</Link></li>
                         <li><Link to="/meta/contact">Contact</Link></li>
@@ -71,7 +75,9 @@ const Layout = ({ children }) => {
                             <button>EN</button>
                         </div>
                     </ul>
-                    <ul>
+                    <div>
+                    </div>
+                    <ul className={categories}>
                         <li><Link to="/content/features">Features</Link></li>
                         <li><Link to="/content/pictorials">Pictorials</Link></li>
                         <li><Link to="/content/collections">Collections</Link></li>
@@ -104,10 +110,10 @@ const Layout = ({ children }) => {
             </main>
 
             <footer>
-                <ul>
-                    <li><Link to="/meta/imprint">Imprint</Link></li>
-                    <li><Link to="/meta/agb">AGB</Link></li>
-                </ul>
+                    <ul>
+                        <li><Link to="/meta/imprint">Imprint</Link></li>
+                        <li><Link to="/meta/agb">AGB</Link></li>
+                    </ul>
             </footer>
         </div>
     )

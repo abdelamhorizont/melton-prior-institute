@@ -19,7 +19,9 @@ const Section = ({ children, title }) => {
 
     return (
         <div className={section}>
-            <h1>{title} ]</h1>
+            <div>
+                <h1>{title}</h1><span>]</span>
+            </div>
             {children}
         </div>
     )

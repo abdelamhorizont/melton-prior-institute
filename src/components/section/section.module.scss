@@ -1,3 +1,18 @@
 .section{
-
+    width: 33.33%;
+    div{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    h1 {
+        width: 25%;
+        justify-self: flex-start;
+        text-align: right;
+    }
+    span{
+        width: 75%;
+        align-self: flex-end;
+    }
 }
+

@@ -5,12 +5,26 @@ $fontSize: 1rem;
 $fontSizeM: 1.5rem;
 $fontSizeL: 2.5rem;
 
-@mixin absatzformat {
-    font-family: "Arial";
-    font-size: $fontSize;
+$lineHeight: 1rem;
 
-    padding: 0.5*$fontSize 0.7*$fontSize;
-    background-color: $myColor1;
+// $fontFamily: "K-E-FSL-Light";
+
+
+// @font-face {
+//   font-family: "Kleukens Egyptienne Light";
+//   src:  src("../fonts/Kleukens-EgyptienneFSL-Light.woff");
+//         // local("../fonts/Kleukens-EgyptienneFSL-Light.woff2"),
+//         // local("../fonts/Kleukens-EgyptienneFSL-Light.eot");
+//   // font-weight: 400;
+//   // font-style: normal;
+// }
+
+
+@mixin absatzformat {
+    font-family: 'Kleukens Egyptienne Light', 'Times New Roman', Times, serif;
+    font-size: $fontSize;
+    // padding: 0.5*$fontSize 0.7*$fontSize;
+    // background-color: $myColor1;
 }
 
 
@@ -25,3 +39,4 @@ $fontSizeL: 2.5rem;
 @media screen and (min-width: 2000px) {
   $fontSize: 1.5rem;
 }
+
