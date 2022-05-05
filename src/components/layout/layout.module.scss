@@ -1,3 +1,90 @@
+@import "../../styles/typo.module.scss";
+
+
 .layout{
 
+}
+
+
+header{
+    width:100%;
+    margin-bottom: 2*$lineHeight !important;
+
+
+    nav{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 0 1*$lineHeight;
+        box-sizing: border-box;
+ 
+    div, ul{
+        height: 1*$lineHeight;
+        padding-top: 2*$lineHeight;
+        justify-content: flex-end;
+        width: 33.33%;
+        display: flex;
+        
+        li, div{
+            width: calc(100% / 4);
+            
+        }
+        a{
+            width: 25%;
+            text-align: left;
+        }
+        span{
+            width: calc(100% /2);
+            display: flex;
+            input{
+                flex-grow:1;
+            }
+            &::before{
+                content: "[";
+            }
+            &::after{
+                content: "]";
+            }
+        }
+
+    }
+    div:first-of-type{
+        justify-content: flex-start;
+
+    }
+    ul.categories{
+        li:not(:first-of-type){
+            text-align:center;
+        }
+        li:last-of-type{
+            text-align:right;
+        }   
+        }
+
+    ul:last-of-type{
+        justify-content: space-between;
+    }
+    }
+    
+
+}
+
+
+footer{
+    margin-top: 2*$lineHeight !important;
+
+    ul{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        height: fit-content;
+
+        li{
+            width: calc(100% / 12);
+            height: 3*$lineHeight;
+        }
+    }
 }

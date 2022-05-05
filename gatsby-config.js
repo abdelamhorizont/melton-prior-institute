@@ -18,8 +18,10 @@ module.exports = {
         url: "http://wordpress.meltonpriorinstitut.org/graphql",
         type: {
           MediaItem: {
+            // exclude: true,
             localFile: {
-              requestConcurrency: 10
+              // requestConcurrency: 10
+              maxFileSizeBytes: 1
             }
           }
         }
