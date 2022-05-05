@@ -10,7 +10,7 @@ const ArticleBody = () => {
 
     return (
         <div className={articleBody}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis necessitatibus, hic molestias cum quasi eum sit obcaecati fuga accusantium quos magni, tempora voluptatem tempore! Laboriosam quas debitis nemo nulla iure!</p>
+            <p>Lorem ipsum</p>
         </div>
     )
 }

@@ -13,8 +13,14 @@ exports.components = {
   "component---src-pages-content-wp-post-uri-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/content/{wpPost.uri}.js")),
   "component---src-pages-index-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/index.js")),
   "component---src-pages-meta-about-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/about.js")),
-  "component---src-pages-meta-agb-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/agb.js")),
   "component---src-pages-meta-contact-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/contact.js")),
+<<<<<<< HEAD
   "component---src-pages-meta-imprint-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/imprint.js"))
+=======
+  "component---src-pages-meta-dsvgo-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/dsvgo.js")),
+  "component---src-pages-meta-imprint-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/imprint.js")),
+  "component---src-pages-meta-links-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/links.js")),
+  "component---src-pages-meta-projects-js": preferDefault(require("/Users/abdelammeer/Creative Cloud Files/Melton Prior/melton-prior-institute/src/pages/meta/projects.js"))
+>>>>>>> a97a6d4e7b39ddbefa6a7251ac8999f097a1f674
 }
 

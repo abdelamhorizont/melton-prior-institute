@@ -5,6 +5,7 @@ import Layout from '../components/layout/layout'
 import Section from '../components/section/section'
 import ArticleTitle from '../components/articleTitle/articleTitle'
 import ArticleBody from '../components/articleBody/articleBody'
+import Article from '../components/article/article'
 
 import "../styles/reset.scss";
 import "../styles/global.scss";
@@ -41,7 +42,7 @@ const Homepage = () => {
   return (
     <Layout>
 
-      <Section title="Showcase">
+      <Section title="Recommended">
         <ArticleTitle />
         <ArticleBody />
       </Section>
@@ -88,7 +89,7 @@ const Homepage = () => {
       <Section title="collections">
       <ul>
         {
-          data.allWpPost.edges.map(edge => (
+          data.allWpPost.edges.slice(0, 3).map(edge => (
 
             <Link to={`/content${edge.node.uri}`}>
               <li >                
