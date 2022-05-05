@@ -8,14 +8,14 @@ import ArticleTitle from '../../components/articleTitle/articleTitle'
 import ArticleBody from '../../components/articleBody/articleBody'
 
 import {
-   container,
+   article,
 } from './article.module.scss'
 
 
 const Article = (props) => {
 
    return (
-      <div>
+      <div className={article}>
          {
             props.path.featuredImage && props.path.featuredImage.node.localFile.childImageSharp &&
             <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt="test" />
