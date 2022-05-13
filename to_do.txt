@@ -1,0 +1,10 @@
+- Zweisprachigkeit
+- projects, links etc
+- Recommended Swiper einbauen 
+- Posts Lightbox
+- features etc link and more button
+
+- Search auch für Inhalte
+- back-button ?
+- backend Collections
+- tag Set

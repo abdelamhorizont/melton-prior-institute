@@ -32,6 +32,11 @@ const Layout = ({ children }) => {
                 name 
               }
             }
+            tags {
+              nodes {
+                name
+              }
+            }
             title
             date(formatString: "MMMM D, YYYY")
             author {
@@ -69,8 +74,8 @@ const Layout = ({ children }) => {
           </div>
           <ul>
             <li><Link to="/meta/about">About</Link></li>
-            <li><Link to="/meta/about">Projects</Link></li>
-            <li><Link to="/meta/about">Links</Link></li>
+            <li><Link to="/meta/projects">Projects</Link></li>
+            <li><Link to="/meta/links">Links</Link></li>
           </ul>
           <div>
           </div>
@@ -97,7 +102,7 @@ const Layout = ({ children }) => {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} />
+                      <Article path={edge.node} excerpt={true} />
                     </li>
                   </Link>
 
@@ -114,7 +119,7 @@ const Layout = ({ children }) => {
         <ul>
           <li><Link to="/meta/contact">Contact</Link></li>
           <li><Link to="/meta/imprint">Imprint</Link></li>
-          <li><Link to="/meta/dsvgo">DSVGO</Link></li>
+          <li><Link to="/meta/privacypolicy">Privacy Policy</Link></li>
         </ul>
       </footer>
     </div>
