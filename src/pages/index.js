@@ -64,7 +64,7 @@ const Homepage = () => {
           // }
         >
           {
-            data.allWpPost.edges.slice(0, 4).map(edge => (
+            data.allWpPost.edges.slice(0, 14).map(edge => (
               <SwiperSlide>
                 <Link to={`/content${edge.node.uri}`}>
                   <Article path={edge.node} excerpt={true} />
