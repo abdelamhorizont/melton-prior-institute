@@ -1,9 +1,50 @@
 import * as React from "react"
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
+
+import SimpleReactLightbox from 'simple-react-lightbox'
+import { SRLWrapper } from "simple-react-lightbox";
 
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import Section from '../../components/section/section'
+
+const lightboxOptions = {
+  settings: {
+    overlayColor: "rgb(0, 0, 0, 0.2)",
+    autoplaySpeed: 1500,
+    transitionSpeed: 900,
+    disableWheelControls: true,
+    lightboxTransitionTimingFunction: "backInOut",	
+    disablePanzoom: true,
+  },
+  buttons: {
+    backgroundColor: "rgba(126, 172, 139, 0)",
+    iconColor: "rgb(0,0,0)",
+    showAutoplayButton: false,
+    showCloseButton: true,
+    showDownloadButton: false,
+    showFullscreenButton: true,
+    showThumbnailsButton: false,
+  },
+  caption: {
+    captionColor: "#a6cfa5",
+    captionFontFamily: "Raleway, sans-serif",
+    captionFontWeight: "300",
+    captionTextTransform: "uppercase",
+  },
+  thumbnails: {
+    showThumbnails: true,
+    thumbnailsAlignment: 'center',
+    thumbnailsContainerBackgroundColor: 'transparent',
+    thumbnailsContainerPadding: '10px',
+    thumbnailsGap: '0 10px',
+    thumbnailsIconColor: '#ffffff',
+    thumbnailsOpacity: 1,
+    thumbnailsPosition: 'bottom',
+    thumbnailsSize: ['100px', '80px']
+  }
+
+};
 
 export default function Post({ data }) {
   //make array of tags from tags object
@@ -14,13 +55,19 @@ export default function Post({ data }) {
 
   return (
     <Layout>
+
       {tags &&
         tags.map(node => (
           <h4>[{node}]</h4>
         ))
       }
-      <Article path={data.wpPost} />
-      <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
+
+      <SimpleReactLightbox>
+        <SRLWrapper options={lightboxOptions}>>
+          <Article path={data.wpPost} />
+          <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
+        </SRLWrapper>
+      </SimpleReactLightbox>
 
       <Section title="related Posts">
         <ul>
@@ -103,6 +150,9 @@ query ($id: String) {
         }
         excerpt
         uri
+        translations {
+          uri
+        }
       }
     }
   }

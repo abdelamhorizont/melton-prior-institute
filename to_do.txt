@@ -1,8 +1,8 @@
 - Zweisprachigkeit
-- Recommended Swiper einbauen 
-- Posts Lightbox
-- features etc link and more button
+- Recommended Swiper 
+- autor tag 
 
+- Lightbox bildgröße
 - Search auch für Inhalte
 - backend Collections Lösung
 

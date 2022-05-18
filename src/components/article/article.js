@@ -23,13 +23,28 @@ const Article = (props) => {
          {props.excerpt &&
             <>
                <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
-               { props.path.tags &&
+               {props.path.tags &&
                   props.path.tags.nodes.map(node => (
                      <h4>[{node.name}]</h4>
                   ))
-               }  
+               }
             </>
-      }
+         }
+
+         {props.path.language &&
+            <Link to={`/content${props.path.uri}`}>
+               <button>{props.path.language.code}</button>
+            </Link>
+         }
+         {props.path.translations &&
+            props.path.translations.map(node =>
+               node.language &&
+               <Link to={`/content${node.uri}`}>
+                  <button>{node.language.code}</button>
+               </Link>
+            )
+         }
+         
       </div>
    )
 }

@@ -44,6 +44,18 @@ export default function Features() {
                 name
               }
             }
+            autor {
+              autor
+            }
+            language {
+              code
+            }
+            translations {
+              uri
+              language {
+                code
+              }
+            }
             excerpt
             uri
           }
@@ -52,7 +64,9 @@ export default function Features() {
     }
     `)
 
-  const features = data.allWpPost.edges
+  const features = data.allWpPost.edges.filter( edge =>
+    edge.node.language.code == "EN"
+  )
   const [selectedTags, setSelectedTags] = useState([])
 
   const handleTags = (selectedTag) => {

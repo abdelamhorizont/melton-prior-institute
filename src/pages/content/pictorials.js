@@ -21,6 +21,9 @@ export default function Pictorials() {
                 name
               }
             }
+            autor {
+              autor
+            }
             featuredImage {
               node {
                 localFile {
@@ -43,6 +46,9 @@ export default function Pictorials() {
               nodes {
                 name
               }
+            }
+            language {
+              code
             }
             excerpt
             uri

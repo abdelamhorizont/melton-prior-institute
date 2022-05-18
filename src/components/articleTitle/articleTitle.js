@@ -16,7 +16,10 @@ const ArticleTitle = (props) => {
                         props.path.categories.nodes[0] &&
                         <p>{props.path.categories.nodes[0].name}</p>
                     } */}
-                    <p>{props.path.author.node.name}]</p>
+                    {props.path.autor && props.path.autor.autor != null ?
+                        <p>{props.path.autor.autor}]</p> :
+                        <p>{props.path.author.node.name}]</p>
+                    }
                     <p>[{props.path.date}</p>
                     <h1>{props.path.title}</h1>
                 </div>

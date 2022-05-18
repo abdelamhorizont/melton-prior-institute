@@ -1,7 +1,11 @@
 import * as React from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Keyboard } from 'swiper';
+
+import Flickity from 'react-flickity-component'
+// import fade from 'flickity-fade'
 
 import Layout from '../components/layout/layout'
 import Section from '../components/section/section'
@@ -17,6 +21,21 @@ import '../styles/swiper.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/bundle';
+import 'swiper/css/scrollbar';
+
+const flickityOptions = {
+  fade: true,
+  initialIndex: 2,
+  wrapAround: true,
+  draggable: false,
+  pageDots: false,
+  adaptiveHeight: true,
+  accessibility: true,
+  setGallerySize: true
+
+}
+
 const Homepage = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -36,6 +55,12 @@ const Homepage = () => {
                 name
               }
             }
+            autor {
+              autor
+            }
+            language {
+              code
+            }
             uri
           }
         }
@@ -47,21 +72,22 @@ const Homepage = () => {
     <Layout>
 
       <Section title="Recommended">
-        <Swiper className="my-swiper"
-          modules={[Navigation, A11y, Keyboard]}
-          // spaceBetween={50}
+        {/* <Swiper className="my-swiper"
+          modules={[Navigation, A11y, Keyboard, Pagination]}
+          spaceBetween={50}
           slidesPerView={1}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
-          // loop={true}
-          // navigation={
-          //   { nextEl: ".swiper-button-next" },
-          //   { prevEl: ".swiper-button-prev" }
-          // }
-          // keyboard={
-          //   { enabled: true },
-          //   { onlyInViewport: true }
-          // }
+          navigation
+          loop={true}
+          navigation={
+            { nextEl: ".swiper-button-next" },
+            { prevEl: ".swiper-button-prev" }
+          }
+          keyboard={
+            { enabled: true },
+            { onlyInViewport: true }
+          }
         >
           {
             data.allWpPost.edges.slice(0, 4).map(edge => (
@@ -72,65 +98,93 @@ const Homepage = () => {
               </SwiperSlide>
             ))
           }
+
+          <SwiperSlide><h1>hallo</h1></SwiperSlide>
+          <SwiperSlide><h1>wie gehts</h1></SwiperSlide>
+          <SwiperSlide><h1>tschüss</h1></SwiperSlide>
+
           <div className="swiper-button-next"></div>
           <div className="swiper-button-prev"></div>
-        </Swiper>
+        </Swiper> */}
+
+        <Flickity options={flickityOptions}>
+          {
+            data.allWpPost.edges.slice(0, 4).map(edge => (
+              <div className="carousel-cell">
+                <Link to={`/content${edge.node.uri}`}>
+                  <Article path={edge.node} excerpt={true} />
+                </Link>
+              </div>
+            ))
+          }
+        </Flickity>
+
+
       </Section>
 
       <div className={categories_lists}>
-        <Section title="features">
-          <ul>
-            {
-              data.allWpPost.edges.filter(edge => (
-                edge.node.categories.nodes[0] &&
-                edge.node.categories.nodes[0].name === "features"
-              )).slice(0, 3).map(edge => (
+        <Link to={`/content/features`}>
+          <Section title="Features">
+            <ul>
+              {
+                data.allWpPost.edges.filter(edge => (
+                  edge.node.categories.nodes[0] &&
+                  edge.node.categories.nodes[0].name === "features"
+                )).slice(0, 3).map(edge => (
 
-                <Link to={`/content${edge.node.uri}`}>
-                  <li >
-                    <Article path={edge.node} />
-                  </li>
-                </Link>
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li >
+                      <Article path={edge.node} />
+                    </li>
+                  </Link>
 
-              ))
-            }
-          </ul>
-        </Section>
+                ))
+              }
+            </ul>
+            <p>[ ...more</p>
+          </Section>
+        </Link>
 
-        <Section title="Pictorials">
-          <ul>
-            {
-              data.allWpPost.edges.filter(edge => (
-                edge.node.categories.nodes[0] &&
-                edge.node.categories.nodes[0].name === "pictorials"
-              )).slice(0, 3).map(edge => (
+        <Link to={`/content/pictorials`}>
+          <Section title="Pictorials">
+            <ul>
+              {
+                data.allWpPost.edges.filter(edge => (
+                  edge.node.categories.nodes[0] &&
+                  edge.node.categories.nodes[0].name === "pictorials"
+                )).slice(0, 3).map(edge => (
 
-                <Link to={`/content${edge.node.uri}`}>
-                  <li >
-                    <Article path={edge.node} />
-                  </li>
-                </Link>
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li >
+                      <Article path={edge.node} />
+                    </li>
+                  </Link>
 
-              ))
-            }
-          </ul>
-        </Section>
+                ))
+              }
+            </ul>
+            <p>[ ...more</p>
+          </Section>
+        </Link>
 
-        <Section title="collections">
-          <ul>
-            {
-              data.allWpPost.edges.slice(0, 3).map(edge => (
+        <Link to={`/content/collections`}>
+          <Section title="Collections">
+            <ul>
+              {
+                data.allWpPost.edges.slice(0, 3).map(edge => (
 
-                <Link to={`/content${edge.node.uri}`}>
-                  <li >
-                    <Article path={edge.node} />
-                  </li>
-                </Link>
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li >
+                      <Article path={edge.node} />
+                    </li>
+                  </Link>
 
-              ))
-            }
-          </ul>
-        </Section>
+                ))
+              }
+            </ul>
+            <p>[ ...more</p>
+          </Section>
+        </Link>
       </div>
 
     </Layout>
