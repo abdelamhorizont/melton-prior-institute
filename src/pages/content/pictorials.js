@@ -50,6 +50,12 @@ export default function Pictorials() {
             language {
               code
             }
+            translations {
+              uri
+              language {
+                code
+              }
+            }
             excerpt
             uri
           }
@@ -58,7 +64,9 @@ export default function Pictorials() {
     }
     `)
 
-  const pictorials = data.allWpPost.edges
+  const pictorials = data.allWpPost.edges.filter( edge =>
+    edge.node.language.code == "EN"
+  )
   const [selectedTags, setSelectedTags] = useState([])
 
   const handleTags = (selectedTag) => {

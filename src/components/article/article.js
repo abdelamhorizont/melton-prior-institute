@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import ArticleTitle from '../../components/articleTitle/articleTitle'
@@ -13,18 +13,25 @@ const Article = (props) => {
 
    return (
       <div className={article}>
+         {/* hier sind die feature images */}
          {
             props.path.featuredImage && props.path.featuredImage.node.localFile && props.path.featuredImage.node.localFile.childImageSharp ?
                <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt="test" /> :
                props.path.featuredImage && props.path.featuredImage.node.image &&
                <img src={props.path.featuredImage.node.image.url} alt="test" />
          }
+         {/* bis hier */}
          <ArticleTitle path={props.path} />
          {props.excerpt &&
             <>
                <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
-               {props.path.tags &&
+               {props.path.tags && props.path.tags.length > 0 ?
                   props.path.tags.nodes.map(node => (
+                     <h4>[{node.name}]</h4>
+                  ))
+               :
+               props.path.translations && props.path.translations[0].tags &&
+                  props.path.translations[0].tags.nodes.map(node => (
                      <h4>[{node.name}]</h4>
                   ))
                }
@@ -44,7 +51,7 @@ const Article = (props) => {
                </Link>
             )
          }
-         
+
       </div>
    )
 }

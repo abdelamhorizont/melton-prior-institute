@@ -42,6 +42,19 @@ const Homepage = () => {
       allWpPost{        
         edges {
           node {
+            featuredImage {
+              node {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                title
+                image {
+                  url
+                }
+              }
+            }
             id
             categories {
               nodes {
@@ -60,6 +73,12 @@ const Homepage = () => {
             }
             language {
               code
+            }
+            translations {
+              uri
+              language {
+                code
+              }
             }
             uri
           }
@@ -118,7 +137,6 @@ const Homepage = () => {
             ))
           }
         </Flickity>
-
 
       </Section>
 

@@ -8,12 +8,20 @@ export default function Tags(props) {
      allWpTag {
        nodes {
          name
+         language {
+            code
+          }
+          translations {
+            name
+          }
        }
      }
    }  
    `)
 
-   const tags = data.allWpTag.nodes
+   const tags = data.allWpTag.nodes.filter( node =>
+      node.language.code == "EN"
+    )
    const [selectedTags, setSelectedTags] = useState([])
 
    const handleTag = (e) => {
