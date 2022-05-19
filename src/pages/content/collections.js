@@ -10,68 +10,84 @@ import Tags from '../../components/tags/tags'
 export default function Collections() {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "collections"}}}}}) {
-        edges {
-          node {
-            featuredImage {
-              node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-                title
-                image {
-                  url
-                }
-              }
-            }
-            id
-            categories {
-              nodes {
-                name 
-              }
-            }
-            tags {
-              nodes {
-                name
-              }
-            }
-            title
-            date(formatString: "MMMM D, YYYY")
-            author {
-              node {
-                name
-              }
-            }
-            autor {
-              autor
-            }
-            language {
-              code
-            }
-            translations {
-              uri
+      allWpCategory(filter: {name: {eq: "collections"}}) {
+        nodes {
+          name
+          wpChildren {
+            nodes {
+              name
               language {
                 code
               }
-              tags {
+              posts {
                 nodes {
-                  name
+                  featuredImage {
+                    node {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                      title
+                      image {
+                        url
+                      }
+                    }
+                  }
+                  id
+                  categories {
+                    nodes {
+                      name 
+                    }
+                  }
+                  tags {
+                    nodes {
+                      name
+                    }
+                  }
+                  title
+                  date(formatString: "MMMM D, YYYY")
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                  autor {
+                    autor
+                  }
+                  language {
+                    code
+                  }
+                  translations {
+                    uri
+                    language {
+                      code
+                    }
+                    tags {
+                      nodes {
+                        name
+                      }
+                    }
+                  }
+                  excerpt
+                  uri
+                }
                 }
               }
             }
-            excerpt
-            uri
           }
         }
       }
-    }
     `)
 
-  const features = data.allWpPost.edges.filter( edge =>
-    edge.node.language.code == "EN"
-  )
+  const collections = data.allWpCategory.nodes[0].wpChildren.nodes
+
+  // const collections = data.allWpPost.edges.filter(edge =>
+  //   edge.node.language.code == "EN"
+  // )
+
+  const collectionTitles = data.allWpCategory.nodes
+
   const [selectedTags, setSelectedTags] = useState([])
 
   const handleTags = (selectedTag) => {
@@ -82,61 +98,60 @@ export default function Collections() {
     setSelectedTags(() => selectedTags.filter(tag => tag !== selectedTag))
   }
 
-  const selectedFeatures = features.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
-    edge.node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase())))
+  // const selectedCollections = collections.filter(node => node.posts.nodes.tags.nodes[0]).filter(node =>
+  //   node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase())))
+
+  // const selectedCollections = collections.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
+  //   edge.node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase())))
 
   return (
     <Layout >
       <Tags handleTags={handleTags} deleteTags={deleteTags} />
 
       <div>
-        {selectedTags.length !== 0 ?
-          <ul>
-            {
-              selectedFeatures.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
-          :
-          <ul>
-            {
-              features.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
+        {collectionTitles.map(node =>
+          node.wpChildren.nodes.filter(node =>
+            node.language.code == "EN"
+          ).map(node =>
+            <>
+              <h1>{node.name}</h1>
+
+              <div>
+                {selectedTags.length !== 0 ?
+                  <ul>
+                    {
+                      node.posts.nodes.filter(node => node.tags.nodes[0]).filter(node =>
+                        node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase()))).map(edge => (
+                          <Link to={`/content${edge.node.uri}`}>
+                            <li key={edge.node.id}>
+                              <Article path={edge.node} excerpt={true} />
+                            </li>
+                          </Link>
+                        ))
+                    }
+                  </ul>
+                  :
+                  <ul>
+                    {
+                      node.posts.nodes.map(node => (
+                        <Link to={`/content${node.uri}`}>
+                          <li key={node.id}>
+                            <Article path={node} excerpt={true} />
+                          </li>
+                        </Link>
+                      ))
+                    }
+                  </ul>
+                }
+              </div>
+            </>
+
+          )
+        )
         }
+
       </div>
 
     </Layout>
   )
 }
-
-
-
-//eleganter wäre wenn nur aus eine, State der Features gefiltert würde
-
-  // const [selectedFeatures, setSelectedFeatures] = useState(features)
-
-  // useEffect(()=>{
-    // setSelectedFeatures(
-    //   features.filter(edge => edge.node.tags.nodes[0]).filter((edge, index) =>
-    //     edge.node.tags.nodes.map(node => selectedTags.includes(node.name))[index]
-    //   )
-    // )
-  // })
-
-  // welche tag Überschneidungen es gibt
-
-  // let intersection = tags.filter(tag =>
-  //   selectedTags.includes(tag)
-  //   )

@@ -24,6 +24,10 @@ const Layout = ({ children }) => {
                     gatsbyImageData
                   }
                 }
+                title
+                image {
+                  url
+                }
               }
             }
             id
@@ -69,7 +73,7 @@ const Layout = ({ children }) => {
 
   const articles = query.allWpPost.edges.filter(edge =>
     edge.node.title.toLowerCase().includes(searchData.toLowerCase())
-  ).filter( edge => edge.node.language.code == "EN")
+  ).filter( edge => edge.node.language.code == "EN" )
 
   return (
     <div className={layout}>

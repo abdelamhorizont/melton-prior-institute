@@ -1,6 +1,6 @@
-- backend Collections Lösung
 - language button Übersichtsseiten (tags übersetzungen)
 
+- backend Collections Lösung
 - Recommended Swiper  
 - Lightbox bildgröße
 - Search auch für Inhalte

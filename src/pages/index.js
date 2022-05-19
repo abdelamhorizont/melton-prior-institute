@@ -87,6 +87,10 @@ const Homepage = () => {
     }
     `)
 
+  const articles = data.allWpPost.edges.filter(edge =>
+    edge.node.language.code == "EN"
+  )
+
   return (
     <Layout>
 
@@ -128,7 +132,10 @@ const Homepage = () => {
 
         <Flickity options={flickityOptions}>
           {
-            data.allWpPost.edges.slice(0, 4).map(edge => (
+            articles.filter(edge => (
+              edge.node.categories.nodes[0] &&
+              edge.node.categories.nodes[0].name === "recommended"
+            )).slice(0, 4).map(edge => (
               <div className="carousel-cell">
                 <Link to={`/content${edge.node.uri}`}>
                   <Article path={edge.node} excerpt={true} />
@@ -145,7 +152,7 @@ const Homepage = () => {
           <Section title="Features">
             <ul>
               {
-                data.allWpPost.edges.filter(edge => (
+               articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
                   edge.node.categories.nodes[0].name === "features"
                 )).slice(0, 3).map(edge => (
@@ -167,7 +174,7 @@ const Homepage = () => {
           <Section title="Pictorials">
             <ul>
               {
-                data.allWpPost.edges.filter(edge => (
+                articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
                   edge.node.categories.nodes[0].name === "pictorials"
                 )).slice(0, 3).map(edge => (
@@ -189,7 +196,10 @@ const Homepage = () => {
           <Section title="Collections">
             <ul>
               {
-                data.allWpPost.edges.slice(0, 3).map(edge => (
+                articles.filter(edge => (
+                  edge.node.categories.nodes[0] &&
+                  edge.node.categories.nodes[0].name === "collections"
+                )).slice(0, 3).map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li >
