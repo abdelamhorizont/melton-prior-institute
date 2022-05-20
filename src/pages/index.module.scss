@@ -30,11 +30,12 @@ main{
 .recommended{
     display: flex;
     flex-direction: column;
-    .section_title{
-        div{
+    *{
             h1{
-                width: 12.5%;
+                width: 8.33%
             }
-        }
+            span{
+                width: 8.33%;
+            }
     }
 }
