@@ -8,11 +8,10 @@ import {
    article
 } from './article.module.scss'
 
-
 const Article = (props) => {
 
    return (
-      <div className={article}>
+      <div className={props.className? props.className : {article}}>
          {
             props.path.featuredImage && props.path.featuredImage.node.localFile && props.path.featuredImage.node.localFile.childImageSharp ?
                <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt="test" /> :

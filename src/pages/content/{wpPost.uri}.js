@@ -9,6 +9,7 @@ import { useReactToPrint } from 'react-to-print';
 
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
+import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
 
 const lightboxOptions = {
@@ -80,7 +81,7 @@ export default function Post({ data }) {
 
         <SimpleReactLightbox>
           <SRLWrapper options={lightboxOptions}>
-            <Article path={data.wpPost} />
+            <ArticleTitle path={data.wpPost} />
             <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
           </SRLWrapper>
         </SimpleReactLightbox>

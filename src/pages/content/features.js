@@ -7,6 +7,10 @@ import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import Tags from '../../components/tags/tags'
 
+import {
+  articleFeature
+} from '../../components/article/article.module.scss'
+
 export default function Features() {
   const data = useStaticQuery(graphql`
     query {
@@ -96,7 +100,7 @@ export default function Features() {
               selectedFeatures.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
+                    <Article path={edge.node} excerpt={true} className={articleFeature} />
                   </li>
                 </Link>
               ))
@@ -108,7 +112,7 @@ export default function Features() {
               features.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
+                    <Article path={edge.node} excerpt={true} className={articleFeature}/>
                   </li>
                 </Link>
               ))
