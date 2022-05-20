@@ -1,7 +1,42 @@
+@import "../../styles/typo.module.scss";
+
+
+.thumbnail{
+        flex: 1;
+        background-color: #000;
+        min-height: 200px;
+}
+
 .article{
-   
+
+
+    margin: $lineHeight 0;
+    display: flex;
+
+
+
+    a{
+        &:hover {
+            .languages_wrapper{
+                display: flex !important;
+                position: absolute;
+                flex-direction: column-reverse;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.languages_wrapper{
+    display: none !important;
+    
+    a{
+    width: 25%;
+    padding-left: calc(25% + 1rem);
+    }
+    
 }
 
 .articleFeature{
-   // background-color: blueviolet;
-}
+    // background-color: blueviolet;
+ }

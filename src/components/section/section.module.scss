@@ -1,18 +1,26 @@
+@import "../../styles/typo.module.scss";
+
+
 .section{
     // width: 100%;
-    div{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
+
+}
+
+
+.section_title{
+    display: flex;
+    flex-direction: column;
+    // width: 100%;
+    position: relative;
+
     h1 {
         width: 25%;
         justify-self: flex-start;
         text-align: right;
     }
     span{
-        width: 75%;
+        box-sizing:content-box;
+        width: calc(75% - 1*$lineHeight);
         align-self: flex-end;
     }
 }
-

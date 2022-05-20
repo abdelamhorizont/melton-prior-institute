@@ -11,6 +11,14 @@ import {
   articleFeature
 } from '../../components/article/article.module.scss'
 
+import {
+  category_overview,
+  tags_sidebar,
+  results,
+  bracket
+} from '../../styles/content.module.scss'
+
+
 export default function Features() {
   const data = useStaticQuery(graphql`
     query {
@@ -91,56 +99,39 @@ export default function Features() {
 
   return (
     <Layout >
-      <Tags handleTags={handleTags} deleteTags={deleteTags} />
+      <div className={category_overview}>
+        <div className={tags_sidebar}>
+        <Tags handleTags={handleTags} deleteTags={deleteTags} />
+        </div>
 
-      <div>
-        {selectedTags.length > 0 ?
-          <ul>
-            {
-              selectedFeatures.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
+        <div className={results}>
+          {selectedTags.length > 0 ?
+            <ul>
+              {
+                selectedFeatures.map(edge => (
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
                     <Article path={edge.node} excerpt={true} className={articleFeature} />
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
-          :
-          <ul>
-            {
-              features.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} className={articleFeature}/>
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
-        }
+                    </li>
+                  </Link>
+                ))
+              }
+            </ul>
+            :
+            <ul>
+              {
+                features.map(edge => (
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                    <Article path={edge.node} excerpt={true} className={articleFeature} />
+                    </li>
+                  </Link>
+                ))
+              }
+            </ul>
+          }
+        </div>
       </div>
-
     </Layout>
   )
 }
-
-
-
-//eleganter wäre wenn nur aus eine, State der Features gefiltert würde
-
-  // const [selectedFeatures, setSelectedFeatures] = useState(features)
-
-  // useEffect(()=>{
-    // setSelectedFeatures(
-    //   features.filter(edge => edge.node.tags.nodes[0]).filter((edge, index) =>
-    //     edge.node.tags.nodes.map(node => selectedTags.includes(node.name))[index]
-    //   )
-    // )
-  // })
-
-  // welche tag Überschneidungen es gibt
-
-  // let intersection = tags.filter(tag =>
-  //   selectedTags.includes(tag)
-  //   )

@@ -7,3 +7,24 @@
   // font-weight: 400;
   // font-style: normal;
 }
+@font-face {
+  font-family: "Kleukens Egyptienne Bold";
+  src:  url('../fonts/Kleukens-EgyptienneFSL-Bold.woff'),
+        url("../fonts/Kleukens-EgyptienneFSL-Bold.woff2"),
+        url("../fonts/Kleukens-EgyptienneFSL-Bold.eot");
+  // font-weight: 400;
+  // font-style: normal;
+}
+
+@font-face {
+  font-family: "Neue Montreal Book";
+  src:  url('../fonts/PPNeueMontreal-Book.woff'),
+        url("../fonts/PPNeueMontreal-Book.woff2"),
+        url("../fonts/PPNeueMontreal-Book.eot");
+  // font-weight: 400;
+  // font-style: normal;
+}
+
+img{
+  max-width: 100%;
+}

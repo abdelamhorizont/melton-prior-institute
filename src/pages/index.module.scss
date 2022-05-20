@@ -1,8 +1,9 @@
 @import "../styles/typo.module.scss";
+@import "../components/section/section.module.scss";
 
 
 body{
-    @include absatzformat;
+    @include ke-light;
  
 }
 
@@ -19,5 +20,22 @@ main{
     display:flex;
     flex-direction: row;
 
+    a{
+        width: 33.33%;
 
+        
+    }
+}
+
+.recommended{
+    display: flex;
+    flex-direction: column;
+    *{
+            h1{
+                width: 8.33%
+            }
+            span{
+                width: 8.33%;
+            }
+    }
 }

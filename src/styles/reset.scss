@@ -18,6 +18,8 @@ time, mark, audio, video {
 	// font-family: 'Kleukens-Egyptinne Light';
 	vertical-align: baseline;
 	text-decoration: none;
+	color: #000;
+	// box-sizing: content-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -41,4 +43,12 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+input{
+	all: unset;
+}
+
+body{
+	width: 100%;
 }

@@ -7,7 +7,10 @@ import Article from '../article/article'
 
 import {
   layout,
-  categories
+  brand,
+  search_box,
+  categories,
+  home
 } from './layout.module.scss'
 
 
@@ -79,7 +82,7 @@ const Layout = ({ children }) => {
     <div className={layout}>
       <header>
         <nav>
-          <div>
+          <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
           <div>
@@ -105,7 +108,7 @@ const Layout = ({ children }) => {
         {searchData}
       </div>
       
-      <main>
+      <main className={home}>
         {searchData !== ""
           ?
           <div>
