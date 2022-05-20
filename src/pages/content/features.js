@@ -63,6 +63,11 @@ export default function Features() {
               language {
                 code
               }
+              tags {
+                nodes {
+                  name
+                }
+              }
             }
             excerpt
             uri

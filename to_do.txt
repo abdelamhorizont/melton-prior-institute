@@ -1,9 +1,8 @@
-- Zweisprachigkeit
-- Recommended Swiper 
-- autor tag 
+- language button Übersichtsseiten (tags übersetzungen)
 
+- backend Collections Lösung
+- Recommended Swiper  
 - Lightbox bildgröße
 - Search auch für Inhalte
-- backend Collections Lösung
 
 - tag Set

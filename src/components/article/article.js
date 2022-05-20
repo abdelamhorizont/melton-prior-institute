@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import ArticleTitle from '../../components/articleTitle/articleTitle'
@@ -30,14 +30,21 @@ const Article = (props) => {
          {props.excerpt &&
             <>
                <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
-               {props.path.tags &&
+               {props.path.tags && props.path.tags.nodes.length > 0 ?
                   props.path.tags.nodes.map(node => (
+                     <h4>[{node.name}]</h4>
+                  ))
+               :
+               props.path.translations && props.path.translations[0].tags &&
+                  props.path.translations[0].tags.nodes.map(node => (
                      <h4>[{node.name}]</h4>
                   ))
                }
             </>
          }
+
          </div>
+         
          <div className={languages_wrapper}>
             {props.path.language &&
                <Link to={`/content${props.path.uri}`}>

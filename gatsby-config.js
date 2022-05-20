@@ -27,7 +27,21 @@ module.exports = {
         }
       },
     },
-    "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        // Defaults used for gatsbyImageData and StaticImage
+        defaults: {
+          placeholder: `dominantColor`,
+        },
+        // Set to false to allow builds to continue on image errors
+        failOnError: false,
+        // deprecated options and their defaults:
+        base64Width: 20,
+        stripMetadata: true,
+        defaultQuality: 50,
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",

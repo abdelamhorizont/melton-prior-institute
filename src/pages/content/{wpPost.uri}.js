@@ -1,8 +1,11 @@
 import * as React from "react"
+import { useRef } from 'react';
+
 import { Link, graphql } from 'gatsby'
 
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { SRLWrapper } from "simple-react-lightbox";
+import { useReactToPrint } from 'react-to-print';
 
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
@@ -14,7 +17,7 @@ const lightboxOptions = {
     autoplaySpeed: 1500,
     transitionSpeed: 900,
     disableWheelControls: true,
-    lightboxTransitionTimingFunction: "backInOut",	
+    lightboxTransitionTimingFunction: "backInOut",
     disablePanzoom: true,
   },
   buttons: {
@@ -47,27 +50,41 @@ const lightboxOptions = {
 };
 
 export default function Post({ data }) {
-  //make array of tags from tags object
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   const tags = data.wpPost.tags.nodes.map(node => node.name)
+  const translatedTags = data.wpPost.translations[0].tags.nodes.map(node => node.name)
+  console.log(tags)
+  console.log(translatedTags)
 
   const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
-    edge.node.tags.nodes.some(node => tags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
+    edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
   return (
     <Layout>
+      <button onClick={handlePrint}>Print</button>
 
-      {tags &&
-        tags.map(node => (
-          <h4>[{node}]</h4>
-        ))
-      }
+      <div ref={componentRef}>
+        {tags.length > 0 ?
+          tags.map(node => (
+            <h4>[{node}]</h4>
+          ))
+          :
+          translatedTags.map(node => (
+            <h4>[{node}]</h4>
+          ))
+        }
 
-      <SimpleReactLightbox>
-        <SRLWrapper options={lightboxOptions}>>
-          <Article path={data.wpPost} />
-          <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
-        </SRLWrapper>
-      </SimpleReactLightbox>
+        <SimpleReactLightbox>
+          <SRLWrapper options={lightboxOptions}>
+            <Article path={data.wpPost} />
+            <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
+          </SRLWrapper>
+        </SimpleReactLightbox>
+      </div>
 
       <Section title="related Posts">
         <ul>
@@ -75,7 +92,7 @@ export default function Post({ data }) {
             relatedPosts.slice(0, 3).map(edge => (
 
               <Link to={`/content${edge.node.uri}`}>
-                <li >
+                <li key={edge.node.id}>
                   <Article path={edge.node} excerpt={true} />
                 </li>
               </Link>
@@ -113,6 +130,13 @@ query ($id: String) {
     }
     excerpt
     slug
+    translations {
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
   }
   allWpPost{        
     edges {

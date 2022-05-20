@@ -44,6 +44,19 @@ const Homepage = () => {
       allWpPost{        
         edges {
           node {
+            featuredImage {
+              node {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                title
+                image {
+                  url
+                }
+              }
+            }
             id
             categories {
               nodes {
@@ -63,12 +76,22 @@ const Homepage = () => {
             language {
               code
             }
+            translations {
+              uri
+              language {
+                code
+              }
+            }
             uri
           }
         }
       }
     }
     `)
+
+  const articles = data.allWpPost.edges.filter(edge =>
+    edge.node.language.code == "EN"
+  )
 
   return (
     <Layout>
@@ -107,34 +130,41 @@ const Homepage = () => {
 
             <div className="swiper-button-next"></div>
             <div className="swiper-button-prev"></div>
-          </Swiper> */}
+          </Swiper>
 
-          <Flickity options={flickityOptions}>
-            {
-              data.allWpPost.edges.slice(0, 4).map(edge => (
-                <div className="carousel-cell">
-                  <Link to={`/content${edge.node.uri}`}>
-                    <Article path={edge.node} excerpt={true} />
-                  </Link>
-                </div>
-              ))
-            }
-          </Flickity>
-       </Section>
-       </div>
+          <div className="swiper-button-next"></div>
+          <div className="swiper-button-prev"></div>
+        </Swiper>  */}
 
+        <Flickity options={flickityOptions}>
+          {
+            articles.filter(edge => (
+              edge.node.categories.nodes[0] &&
+              edge.node.categories.nodes[0].name === "recommended"
+            )).map(edge => (
+              <div className="carousel-cell">
+                <Link to={`/content${edge.node.uri}`}>
+                  <Article path={edge.node} excerpt={true} />
+                </Link>
+              </div>
+            ))
+          }
+        </Flickity>
+
+      </Section>
+</div>
       <div className={categories_lists}>
         <Link to={`/content/features`}>
           <Section title="Features">
             <ul>
               {
-                data.allWpPost.edges.filter(edge => (
+               articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
                   edge.node.categories.nodes[0].name === "features"
                 )).slice(0, 3).map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
-                    <li >
+                    <li key={edge.node.id}>
                       <Article path={edge.node} />
                     </li>
                   </Link>
@@ -150,13 +180,13 @@ const Homepage = () => {
           <Section title="Pictorials">
             <ul>
               {
-                data.allWpPost.edges.filter(edge => (
+                articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
                   edge.node.categories.nodes[0].name === "pictorials"
                 )).slice(0, 3).map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
-                    <li >
+                    <li key={edge.node.id}>
                       <Article path={edge.node} />
                     </li>
                   </Link>
@@ -172,10 +202,13 @@ const Homepage = () => {
           <Section title="Collections">
             <ul>
               {
-                data.allWpPost.edges.slice(0, 3).map(edge => (
+                articles.filter(edge => (
+                  edge.node.categories.nodes[0] &&
+                  edge.node.categories.nodes[0].name === "collections"
+                )).slice(0, 3).map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
-                    <li >
+                    <li key={edge.node.id}>
                       <Article path={edge.node} />
                     </li>
                   </Link>
