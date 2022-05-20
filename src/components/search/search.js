@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import {
    search_box
- } from '../Layout/layout.module.scss'
+ } from '../layout/layout.module.scss'
 
 export default function Search(props) {
 
