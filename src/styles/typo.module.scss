@@ -20,11 +20,25 @@ $lineHeight: 1rem;
 // }
 
 
-@mixin absatzformat {
+@mixin ke-light {
     font-family: 'Kleukens Egyptienne Light', 'Times New Roman', Times, serif;
     font-size: $fontSize;
     // padding: 0.5*$fontSize 0.7*$fontSize;
     // background-color: $myColor1;
+}
+
+@mixin ke-bold {
+  font-family: 'Kleukens Egyptienne Bold', 'Times New Roman', Times, serif;
+  font-size: $fontSize;
+  // padding: 0.5*$fontSize 0.7*$fontSize;
+  // background-color: $myColor1;
+}
+
+@mixin nm-book {
+  font-family: 'Neue Montreal Book', 'Times New Roman', Times, serif;
+  font-size: $fontSize;
+  // padding: 0.5*$fontSize 0.7*$fontSize;
+  // background-color: $myColor1;
 }
 
 

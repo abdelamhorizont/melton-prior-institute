@@ -7,6 +7,14 @@ import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import Tags from '../../components/tags/tags'
 
+import {
+  category_overview,
+  tags_sidebar,
+  results,
+  bracket
+} from '../../styles/content.module.scss'
+
+
 export default function Features() {
   const data = useStaticQuery(graphql`
     query {
@@ -82,36 +90,39 @@ export default function Features() {
 
   return (
     <Layout >
-      <Tags handleTags={handleTags} deleteTags={deleteTags} />
+      <div className={category_overview}>
+        <div className={tags_sidebar}>
+        <Tags handleTags={handleTags} deleteTags={deleteTags} />
+        </div>
 
-      <div>
-        {selectedTags.length !== 0 ?
-          <ul>
-            {
-              selectedFeatures.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
-          :
-          <ul>
-            {
-              features.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
-        }
+        <div className={results}>
+          {selectedTags.length !== 0 ?
+            <ul>
+              {
+                selectedFeatures.map(edge => (
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                      <Article path={edge.node} excerpt={true} />
+                    </li>
+                  </Link>
+                ))
+              }
+            </ul>
+            :
+            <ul>
+              {
+                features.map(edge => (
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                      <Article path={edge.node} excerpt={true} />
+                    </li>
+                  </Link>
+                ))
+              }
+            </ul>
+          }
+        </div>
       </div>
-
     </Layout>
   )
 }
