@@ -86,7 +86,7 @@ export default function Pictorials() {
       <Tags handleTags={handleTags} deleteTags={deleteTags} />
 
       <div>
-        {selectedTags.length !== 0 ?
+        {selectedTags.length > 0 ?
           <ul>
             {
               selectedPictorials.map(edge => (

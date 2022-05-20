@@ -86,16 +86,16 @@ const Layout = ({ children }) => {
 
           </div>
           <ul>
-            <li><Link to="/meta/about">About</Link></li>
-            <li><Link to="/meta/projects">Projects</Link></li>
-            <li><Link to="/meta/links">Links</Link></li>
+            <li key="about"><Link to="/meta/about">About</Link></li>
+            <li key="projects"><Link to="/meta/projects">Projects</Link></li>
+            <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
           <div>
           </div>
           <ul className={categories}>
-            <li><Link to="/content/features">Features</Link></li>
-            <li><Link to="/content/pictorials">Pictorials</Link></li>
-            <li><Link to="/content/collections">Collections</Link></li>
+            <li key="features"><Link to="/content/features">Features</Link></li>
+            <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
+            <li key="collections"><Link to="/content/collections">Collections</Link></li>
           </ul>
           <Search handleSearchData={handleSearchData} />
         </nav>
@@ -130,9 +130,9 @@ const Layout = ({ children }) => {
 
       <footer>
         <ul>
-          <li><Link to="/meta/contact">Contact</Link></li>
-          <li><Link to="/meta/imprint">Imprint</Link></li>
-          <li><Link to="/meta/privacypolicy">Privacy Policy</Link></li>
+          <li key="contact"><Link to="/meta/contact">Contact</Link></li>
+          <li key="imprint"><Link to="/meta/imprint">Imprint</Link></li>
+          <li key="privacypolicy"><Link to="/meta/privacypolicy">Privacy Policy</Link></li>
         </ul>
       </footer>
     </div>

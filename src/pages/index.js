@@ -135,7 +135,7 @@ const Homepage = () => {
             articles.filter(edge => (
               edge.node.categories.nodes[0] &&
               edge.node.categories.nodes[0].name === "recommended"
-            )).slice(0, 4).map(edge => (
+            )).map(edge => (
               <div className="carousel-cell">
                 <Link to={`/content${edge.node.uri}`}>
                   <Article path={edge.node} excerpt={true} />
@@ -158,7 +158,7 @@ const Homepage = () => {
                 )).slice(0, 3).map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
-                    <li >
+                    <li key={edge.node.id}>
                       <Article path={edge.node} />
                     </li>
                   </Link>
@@ -180,7 +180,7 @@ const Homepage = () => {
                 )).slice(0, 3).map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
-                    <li >
+                    <li key={edge.node.id}>
                       <Article path={edge.node} />
                     </li>
                   </Link>
@@ -202,7 +202,7 @@ const Homepage = () => {
                 )).slice(0, 3).map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
-                    <li >
+                    <li key={edge.node.id}>
                       <Article path={edge.node} />
                     </li>
                   </Link>

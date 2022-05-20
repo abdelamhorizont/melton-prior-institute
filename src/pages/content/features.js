@@ -90,7 +90,7 @@ export default function Features() {
       <Tags handleTags={handleTags} deleteTags={deleteTags} />
 
       <div>
-        {selectedTags.length !== 0 ?
+        {selectedTags.length > 0 ?
           <ul>
             {
               selectedFeatures.map(edge => (

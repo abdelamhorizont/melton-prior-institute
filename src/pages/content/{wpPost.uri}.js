@@ -92,7 +92,7 @@ export default function Post({ data }) {
             relatedPosts.slice(0, 3).map(edge => (
 
               <Link to={`/content${edge.node.uri}`}>
-                <li >
+                <li key={edge.node.id}>
                   <Article path={edge.node} excerpt={true} />
                 </li>
               </Link>

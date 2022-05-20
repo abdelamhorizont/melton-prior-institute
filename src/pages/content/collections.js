@@ -106,7 +106,7 @@ export default function Collections() {
 
   return (
     <Layout >
-      <Tags handleTags={handleTags} deleteTags={deleteTags} />
+      {/* <Tags handleTags={handleTags} deleteTags={deleteTags} /> */}
 
       <div>
         {collectionTitles.map(node =>
@@ -117,14 +117,14 @@ export default function Collections() {
               <h1>{node.name}</h1>
 
               <div>
-                {selectedTags.length !== 0 ?
+                {selectedTags.length > 0 ?
                   <ul>
                     {
                       node.posts.nodes.filter(node => node.tags.nodes[0]).filter(node =>
-                        node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase()))).map(edge => (
-                          <Link to={`/content${edge.node.uri}`}>
-                            <li key={edge.node.id}>
-                              <Article path={edge.node} excerpt={true} />
+                        node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase()))).map(node => (
+                          <Link to={`/content${node.uri}`}>
+                            <li key={node.id}>
+                              <Article path={node} excerpt={true} />
                             </li>
                           </Link>
                         ))
