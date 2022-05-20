@@ -21,7 +21,7 @@ module.exports = {
             // exclude: true,
             localFile: {
               // requestConcurrency: 10
-              maxFileSizeBytes: 1
+              // maxFileSizeBytes: 1
             }
           }
         }
