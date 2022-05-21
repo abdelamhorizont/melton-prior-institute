@@ -20,10 +20,15 @@ module.exports = {
           MediaItem: {
             // exclude: true,
             localFile: {
-              // requestConcurrency: 10
+              requestConcurrency: 5
               // maxFileSizeBytes: 1
             }
           }
+        },
+        schema: {
+          perPage: 20, // currently set to 100
+          requestConcurrency: 5, // currently set to 15
+          previewRequestConcurrency: 2, // currently set to 5
         }
       },
     },
