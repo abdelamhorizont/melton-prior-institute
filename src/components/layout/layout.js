@@ -14,6 +14,7 @@ import {
 } from './layout.module.scss'
 
 
+
 const Layout = ({ children }) => {
   const query = useStaticQuery(graphql`
     query {
