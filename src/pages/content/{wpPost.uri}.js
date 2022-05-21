@@ -9,6 +9,7 @@ import { useReactToPrint } from 'react-to-print';
 
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
+import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
 
 const lightboxOptions = {
@@ -57,8 +58,6 @@ export default function Post({ data }) {
 
   const tags = data.wpPost.tags.nodes.map(node => node.name)
   const translatedTags = data.wpPost.translations[0].tags.nodes.map(node => node.name)
-  console.log(tags)
-  console.log(translatedTags)
 
   const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
     edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
@@ -80,7 +79,7 @@ export default function Post({ data }) {
 
         <SimpleReactLightbox>
           <SRLWrapper options={lightboxOptions}>
-            <Article path={data.wpPost} />
+            <ArticleTitle path={data.wpPost} />
             <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
           </SRLWrapper>
         </SimpleReactLightbox>

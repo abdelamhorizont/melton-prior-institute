@@ -8,6 +8,10 @@ import Article from '../../components/article/article'
 import Tags from '../../components/tags/tags'
 
 import {
+  articleFeature
+} from '../../components/article/article.module.scss'
+
+import {
   category_overview,
   tags_sidebar,
   results,
@@ -101,13 +105,13 @@ export default function Features() {
         </div>
 
         <div className={results}>
-          {selectedTags.length !== 0 ?
+          {selectedTags.length > 0 ?
             <ul>
               {
                 selectedFeatures.map(edge => (
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} excerpt={true} />
+                    <Article path={edge.node} excerpt={true} className={articleFeature} />
                     </li>
                   </Link>
                 ))
@@ -119,7 +123,7 @@ export default function Features() {
                 features.map(edge => (
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} excerpt={true} />
+                    <Article path={edge.node} excerpt={true} className={articleFeature} />
                     </li>
                   </Link>
                 ))
@@ -131,23 +135,3 @@ export default function Features() {
     </Layout>
   )
 }
-
-
-
-//eleganter wäre wenn nur aus eine, State der Features gefiltert würde
-
-  // const [selectedFeatures, setSelectedFeatures] = useState(features)
-
-  // useEffect(()=>{
-    // setSelectedFeatures(
-    //   features.filter(edge => edge.node.tags.nodes[0]).filter((edge, index) =>
-    //     edge.node.tags.nodes.map(node => selectedTags.includes(node.name))[index]
-    //   )
-    // )
-  // })
-
-  // welche tag Überschneidungen es gibt
-
-  // let intersection = tags.filter(tag =>
-  //   selectedTags.includes(tag)
-  //   )

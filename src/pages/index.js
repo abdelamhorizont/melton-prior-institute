@@ -140,8 +140,9 @@ const Homepage = () => {
           {
             articles.filter(edge => (
               edge.node.categories.nodes[0] &&
-              edge.node.categories.nodes[0].name === "recommended"
-            )).map(edge => (
+              edge.node.categories.nodes.some( node =>
+                node.name === "recommended"
+              ))).map(edge => (
               <div className="carousel-cell">
                 <Link to={`/content${edge.node.uri}`}>
                   <Article path={edge.node} excerpt={true} />
