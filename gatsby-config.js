@@ -19,13 +19,15 @@ module.exports = {
         type: {
           MediaItem: {
             // exclude: true,
+            // limit: 100,
             localFile: {
               requestConcurrency: 5
               // maxFileSizeBytes: 1
             }
           },
-          // Post: {
-          //   limit:
+          Post: {
+            limit: 100
+          }
           //     process.env.NODE_ENV === `development`
           //       ? // Lets just pull fewer posts in development to make it easy on ourselves.
           //         24
@@ -47,11 +49,11 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         // Defaults used for gatsbyImageData and StaticImage
+        // Set to false to allow builds to continue on image errors
+        failOnError: false,
         defaults: {
           placeholder: `dominantColor`,
         },
-        // Set to false to allow builds to continue on image errors
-        failOnError: false,
         // deprecated options and their defaults:
         base64Width: 20,
         stripMetadata: true,
