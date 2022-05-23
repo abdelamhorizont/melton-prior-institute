@@ -44,7 +44,7 @@ module.exports = {
         // deprecated options and their defaults:
         base64Width: 20,
         stripMetadata: true,
-        defaultQuality: 50,
+        defaultQuality: 100,
       },
     },
     "gatsby-plugin-image",
