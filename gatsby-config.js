@@ -26,7 +26,7 @@ module.exports = {
             }
           },
           Post: {
-            limit: 100
+            limit: 200
           }
           //     process.env.NODE_ENV === `development`
           //       ? // Lets just pull fewer posts in development to make it easy on ourselves.
@@ -55,9 +55,9 @@ module.exports = {
           placeholder: `dominantColor`,
         },
         // deprecated options and their defaults:
-        base64Width: 20,
+        base64Width: 42,
         stripMetadata: true,
-        defaultQuality: 50,
+        defaultQuality: 100,
       },
     },
     "gatsby-plugin-image",

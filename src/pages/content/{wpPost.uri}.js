@@ -141,6 +141,9 @@ query ($id: String) {
       }
     }
   }
+  imageSharp {
+    gatsbyImageData(layout: FULL_WIDTH)
+  }
   allWpPost{        
     edges {
       node {
