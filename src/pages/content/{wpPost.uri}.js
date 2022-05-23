@@ -12,6 +12,8 @@ import Article from '../../components/article/article'
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
 
+import "../../styles/simpleReactLightbox.scss";
+
 const lightboxOptions = {
   settings: {
     overlayColor: "rgb(0, 0, 0, 0.2)",
@@ -37,7 +39,7 @@ const lightboxOptions = {
     captionTextTransform: "uppercase",
   },
   thumbnails: {
-    showThumbnails: true,
+    showThumbnails: false,
     thumbnailsAlignment: 'center',
     thumbnailsContainerBackgroundColor: 'transparent',
     thumbnailsContainerPadding: '10px',
@@ -77,12 +79,14 @@ export default function Post({ data }) {
           ))
         }
 
-        <SimpleReactLightbox>
-          <SRLWrapper options={lightboxOptions}>
-            <ArticleTitle path={data.wpPost} />
-            <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
-          </SRLWrapper>
-        </SimpleReactLightbox>
+        <div className="simpleReactLightbox">
+          <SimpleReactLightbox>
+            <SRLWrapper options={lightboxOptions}>
+              <ArticleTitle path={data.wpPost} />
+              <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
+            </SRLWrapper>
+          </SimpleReactLightbox>
+        </div>
       </div>
 
       <Section title="related Posts">
@@ -137,6 +141,9 @@ query ($id: String) {
       }
     }
   }
+  imageSharp {
+    gatsbyImageData(layout: FULL_WIDTH)
+  }
   allWpPost{        
     edges {
       node {
@@ -176,6 +183,13 @@ query ($id: String) {
         translations {
           uri
         }
+      }
+    }
+  }
+  allImageSharp {
+    edges {
+      node {
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }
