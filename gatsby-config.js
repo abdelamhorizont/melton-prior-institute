@@ -23,12 +23,23 @@ module.exports = {
               requestConcurrency: 5
               // maxFileSizeBytes: 1
             }
-          }
+          },
+          // Post: {
+          //   limit:
+          //     process.env.NODE_ENV === `development`
+          //       ? // Lets just pull fewer posts in development to make it easy on ourselves.
+          //         24
+          //       : // and we don't actually need more than 100 in production for this particular site
+          //         100
+          // }
         },
         schema: {
           perPage: 20, // currently set to 100
           requestConcurrency: 5, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
+        },
+        production: {
+          allow404Images: true
         }
       },
     },
@@ -44,25 +55,32 @@ module.exports = {
         // deprecated options and their defaults:
         base64Width: 20,
         stripMetadata: true,
-        defaultQuality: 100,
+        defaultQuality: 50,
       },
     },
     "gatsby-plugin-image",
-    "gatsby-transformer-sharp",
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        // The option defaults to true
+        checkSupportedExtensions: false,
+      },
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-vanilla-extract",
     `gatsby-plugin-sass`,
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        name: "Gatsby Starter WordPress Homepage",
-        short_name: "Gatsby",
-        start_url: "/",
-        // These can be imported once ESM support lands
-        background_color: "#ffffff",
-        theme_color: "#004ca3",
-        icon: "src/favicon.png",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-manifest",
+    //   options: {
+    //     name: "Gatsby Starter WordPress Homepage",
+    //     short_name: "Gatsby",
+    //     start_url: "/",
+    //     // These can be imported once ESM support lands
+    //     background_color: "#ffffff",
+    //     theme_color: "#004ca3",
+    //     icon: "src/favicon.png",
+    //   },
+    // },
   ],
 }
