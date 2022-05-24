@@ -6,7 +6,9 @@
 // }
 
 .brand{
-    @include ke-bold;
+    a{
+        @include ke-bold;
+    }
 }
 
 .search_box{

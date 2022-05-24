@@ -1,11 +1,15 @@
+
+
 $myColor1: whitesmoke;
 $myColor2: rgb(162, 162, 162);
 
-$fontSize: 1rem;
-$fontSizeM: 1.5rem;
-$fontSizeL: 2.5rem;
+$fontSize: 1.125rem; /*18px*/
+$fontSizeM: 1.75rem; /*28px*/
+$fontSizeL: 2.625rem; /*42px*/
 
-$lineHeight: 1rem;
+$lineHeight: 1.4*$fontSize;
+$lineHeightM: 1.25*$fontSizeM;
+$lineHeightL: 1.05*$fontSizeL;
 
 // $fontFamily: "K-E-FSL-Light";
 
@@ -23,6 +27,13 @@ $lineHeight: 1rem;
 @mixin ke-light {
     font-family: 'Kleukens Egyptienne Light', 'Times New Roman', Times, serif;
     font-size: $fontSize;
+    // padding: 0.5*$fontSize 0.7*$fontSize;
+    // background-color: $myColor1;
+}
+
+@mixin ke-book-italic {
+    font-family: 'Kleukens Egyptienne Book Italic', 'Times New Roman', Times, serif;
+    font-size: inherit;
     // padding: 0.5*$fontSize 0.7*$fontSize;
     // background-color: $myColor1;
 }

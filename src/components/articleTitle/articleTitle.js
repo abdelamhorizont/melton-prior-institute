@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import {
     articleTitle,
+    articleMeta
 } from './articleTitle.module.scss'
 
 
@@ -9,18 +10,18 @@ const ArticleTitle = (props) => {
 
     if (props.path) {
         return (
-                <>
+                <div className={articleMeta}>
 
                     {props.path.autor && props.path.autor.autor != null ?
-                        <p>{props.path.autor.autor}]</p> :
-                        <p>{props.path.author.node.name}]</p>
+                        <h4>{props.path.autor.autor}]</h4> :
+                        <h4>{props.path.author.node.name}]</h4>
                     }
-                    <p>[{props.path.date}</p>
+                    <h4>[{props.path.date}</h4>
                     <h1>{props.path.title}</h1>
 
                     
                     
-                </>
+                </div>
         )
     } else {
         return (

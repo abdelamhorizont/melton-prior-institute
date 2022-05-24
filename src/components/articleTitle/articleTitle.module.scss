@@ -42,3 +42,16 @@ div .article-title{
 }
 
 
+
+.articleMeta{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    h4{
+    
+    }
+    h1{
+        width:100%;
+    }
+}

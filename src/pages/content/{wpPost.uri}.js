@@ -14,6 +14,15 @@ import Section from '../../components/section/section'
 
 import "../../styles/simpleReactLightbox.scss";
 
+import {
+  articleWrapper,
+  articleTagWrapper,
+  topBrackets,
+  articleContent,
+  relatedPostsWrapper
+
+} from '../../styles/content.module.scss'
+
 const lightboxOptions = {
   settings: {
     overlayColor: "rgb(0, 0, 0, 0.2)",
@@ -65,21 +74,24 @@ export default function Post({ data }) {
     edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
   return (
-    <Layout>
-      <button onClick={handlePrint}>Print</button>
+    <Layout >
+      
+      <div ref={componentRef} className={articleWrapper}>
+        <button onClick={handlePrint}>Print</button>
+          <div className={topBrackets}><span>]</span><span>[</span></div>
+        <div className={articleTagWrapper} >
+          {tags.length > 0 ?
+            tags.map(node => (
+              <h4>[{node}]</h4>
+            ))
+            :
+            translatedTags.map(node => (
+              <h4>[{node}]</h4>
+            ))
+          }
+          </div>
 
-      <div ref={componentRef}>
-        {tags.length > 0 ?
-          tags.map(node => (
-            <h4>[{node}]</h4>
-          ))
-          :
-          translatedTags.map(node => (
-            <h4>[{node}]</h4>
-          ))
-        }
-
-        <div className="simpleReactLightbox">
+        <div className="simpleReactLightbox" className={articleContent}>
           <SimpleReactLightbox>
             <SRLWrapper options={lightboxOptions}>
               <ArticleTitle path={data.wpPost} />
@@ -87,23 +99,26 @@ export default function Post({ data }) {
             </SRLWrapper>
           </SimpleReactLightbox>
         </div>
+      
+        <div className={relatedPostsWrapper}>
+          <Section title="related Posts">
+            <ul>
+              {
+                relatedPosts.slice(0, 3).map(edge => (
+
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                      <Article path={edge.node} excerpt={true} />
+                    </li>
+                  </Link>
+
+                ))
+              }
+            </ul>
+          </Section>
+        </div>
       </div>
 
-      <Section title="related Posts">
-        <ul>
-          {
-            relatedPosts.slice(0, 3).map(edge => (
-
-              <Link to={`/content${edge.node.uri}`}>
-                <li key={edge.node.id}>
-                  <Article path={edge.node} excerpt={true} />
-                </li>
-              </Link>
-
-            ))
-          }
-        </ul>
-      </Section>
 
     </Layout>
   )
