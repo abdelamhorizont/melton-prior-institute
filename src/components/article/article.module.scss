@@ -2,41 +2,83 @@
 
 
 .thumbnail{
-        flex: 1;
-        background-color: #000;
+        min-width: 25%;
+        // flex: 1;
+        // background-color: #000;
         min-height: 200px;
+        max-width: 25%;
 }
 
 .article{
-
-
     margin: $lineHeight 0;
     display: flex;
-
-
-
-    a{
-        &:hover {
-            .languages_wrapper{
-                display: flex !important;
-                position: absolute;
-                flex-direction: column-reverse;
-                height: 100%;
-            }
-        }
-    }
+    
 }
 
 .languages_wrapper{
     display: none !important;
-    
+    position: absolute;
+    flex-direction: row;
+    align-self: flex-end;
     a{
-    width: 25%;
-    padding-left: calc(25% + 1rem);
+        width: fit-content;
+        button{
+            all: unset;
+        }
     }
+
     
 }
 
 .articleFeature{
-    // background-color: blueviolet;
+    background-color: blueviolet;
  }
+
+
+.articleBody{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 1*$lineHeight;
+    flex: 1;
+    p{
+        display: inline-flex;
+    }
+    h1{
+        width: 100%;
+        text-align: center;
+        line-height: 1.38*$lineHeight;
+    }
+}
+
+ .categoriesArticle{
+    display: flex;
+    flex-direction: row;
+    margin: $lineHeight 0;
+ }
+
+ .recommendedArticle{
+     width: 100%;
+     display:flex;
+     flex-direction: row;
+     box-sizing: border-box;
+     .thumbnail{
+         background-color: aqua;
+         min-width: calc(3/10 * 100% - 2*$lineHeight);
+         margin-left: 1*$lineHeight;
+     }
+     .articleBody{
+         h1{
+             width: 100%;
+             font-size: $fontSizeM;
+             line-height: 1;
+         }
+     }
+ }
+
+ a:hover {
+    .languages_wrapper{
+        display: flex !important;
+    }
+}

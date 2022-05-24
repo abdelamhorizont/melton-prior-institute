@@ -7,7 +7,11 @@ import ArticleTitle from '../../components/articleTitle/articleTitle'
 import {
    article,
    thumbnail,
-   languages_wrapper
+   languages_wrapper,
+   features,
+   pictorials,
+   recommended,
+   articleBody
 } from './article.module.scss'
 
 const Article = (props) => {
@@ -23,7 +27,7 @@ const Article = (props) => {
             }
          </div>
 
-         <div>
+         <div className={articleBody}>
             <ArticleTitle path={props.path} />
 
             {props.excerpt &&
@@ -41,24 +45,24 @@ const Article = (props) => {
                   }
                </>
             }
-
-         </div>
-
-         <div className={languages_wrapper}>
-            {props.path.language &&
-               <Link to={`/content${props.path.uri}`}>
-                  <button>{props.path.language.code}</button>
-               </Link>
-            }
-            {props.path.translations &&
-               props.path.translations.map(node =>
-                  node.language &&
-                  <Link to={`/content${node.uri}`}>
-                     <button>{node.language.code}</button>
+            <div className={languages_wrapper}>
+               {props.path.language &&
+                  <Link to={`/content${props.path.uri}`}>
+                     <button>{props.path.language.code}</button>
                   </Link>
-               )
-            }
+               }
+               {props.path.translations &&
+                  props.path.translations.map(node =>
+                     node.language &&
+                     <Link to={`/content${node.uri}`}>
+                        <button>{node.language.code}</button>
+                     </Link>
+                  )
+               }
+            </div>
          </div>
+
+         
 
       </div>
    )

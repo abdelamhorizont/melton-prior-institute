@@ -31,11 +31,25 @@ main{
     display: flex;
     flex-direction: column;
     *{
-            h1{
+            h2{
                 width: 8.33%
             }
             span{
                 width: 8.33%;
+                align-self: flex-start;
+                padding-left: calc(8.33% + 1*$lineHeight);
             }
     }
 }
+
+.features{
+    width: 100%;
+}
+
+.carousel-cell{
+
+    a{
+        width: calc(10/12*100%);
+    }
+}
+

@@ -16,8 +16,16 @@ import "../styles/global.scss";
 import {
   categories_lists,
   recommended,
+  features,
+  pictorials,
+  collections,
   section
 } from './index.module.scss'
+
+import {
+  categoriesArticle,
+  recommendedArticle
+} from '../components/article/article.module.scss'
 
 import '../styles/swiper.scss';
 import 'swiper/css';
@@ -145,7 +153,7 @@ const Homepage = () => {
               ))).map(edge => (
               <div className="carousel-cell">
                 <Link to={`/content${edge.node.uri}`}>
-                  <Article path={edge.node} excerpt={true} />
+                  <Article path={edge.node} excerpt={true} className={recommendedArticle} />
                 </Link>
               </div>
             ))
@@ -166,7 +174,7 @@ const Homepage = () => {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} />
+                      <Article path={edge.node} className={categoriesArticle} />
                     </li>
                   </Link>
 
@@ -188,7 +196,7 @@ const Homepage = () => {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} />
+                      <Article path={edge.node} className={categoriesArticle} />
                     </li>
                   </Link>
 
@@ -210,7 +218,7 @@ const Homepage = () => {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} />
+                      <Article path={edge.node} className={categoriesArticle}/>
                     </li>
                   </Link>
 

@@ -45,10 +45,17 @@ https://flickity.metafizzy.co
 
 .carousel-cell {
   // padding: 3vw;
+  width: 100%;
+  display: flex;
+    justify-content: center;
+  a{
+    width: calc(10 / 12 * 100%);
+  }
 }
 
 .flickity-enabled {
   position: relative;
+  margin: 1*$lineHeight 0;
 
 }
 
@@ -65,7 +72,9 @@ https://flickity.metafizzy.co
 .flickity-slider {
   position: absolute;
   width: 100%;
-  height: 30vh;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
 /* draggable */
