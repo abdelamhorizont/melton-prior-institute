@@ -81,6 +81,12 @@ const Homepage = () => {
             autor {
               autor
             }
+            excerpt
+            tags {
+              nodes {
+                name
+              }
+            }
             language {
               code
             }
@@ -98,7 +104,7 @@ const Homepage = () => {
     `)
 
   const articles = data.allWpPost.edges.filter(edge =>
-    edge.node.language.code == "EN"
+    edge.node.language.code === "EN"
   )
 
   return (

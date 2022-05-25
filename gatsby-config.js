@@ -25,9 +25,9 @@ module.exports = {
               // maxFileSizeBytes: 1
             }
           },
-          Post: {
-            limit: 600
-          }
+          // Post: {
+          //   limit: 200
+          // }
           //     process.env.NODE_ENV === `development`
           //       ? // Lets just pull fewer posts in development to make it easy on ourselves.
           //         24
@@ -37,8 +37,9 @@ module.exports = {
         },
         schema: {
           perPage: 20, // currently set to 100
-          requestConcurrency: 5, // currently set to 15
+          requestConcurrency: 15, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
+          timeout: 50000
         },
         production: {
           allow404Images: true
@@ -61,7 +62,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-image",
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-sharp`,
       options: {

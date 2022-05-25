@@ -2,9 +2,11 @@ import * as React from "react"
 import { useRef } from 'react';
 
 import { Link, graphql } from 'gatsby'
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { SRLWrapper } from "simple-react-lightbox";
+
 import { useReactToPrint } from 'react-to-print';
 
 import Layout from '../../components/layout/layout'
@@ -39,7 +41,7 @@ const lightboxOptions = {
     captionTextTransform: "uppercase",
   },
   thumbnails: {
-    showThumbnails: false,
+    showThumbnails: true,
     thumbnailsAlignment: 'center',
     thumbnailsContainerBackgroundColor: 'transparent',
     thumbnailsContainerPadding: '10px',
@@ -47,7 +49,7 @@ const lightboxOptions = {
     thumbnailsIconColor: '#ffffff',
     thumbnailsOpacity: 1,
     thumbnailsPosition: 'bottom',
-    thumbnailsSize: ['100px', '80px']
+    thumbnailsSize: ['400px', 'auto']
   }
 
 };
@@ -66,45 +68,51 @@ export default function Post({ data }) {
 
   return (
     <Layout>
-      <button onClick={handlePrint}>Print</button>
+      <SimpleReactLightbox>
 
-      <div ref={componentRef}>
-        {tags.length > 0 ?
-          tags.map(node => (
-            <h4>[{node}]</h4>
-          ))
-          :
-          translatedTags.map(node => (
-            <h4>[{node}]</h4>
-          ))
-        }
+        <button onClick={handlePrint}>Print</button>
 
-        <div className="simpleReactLightbox">
-          <SimpleReactLightbox>
-            <SRLWrapper options={lightboxOptions}>
-              <ArticleTitle path={data.wpPost} />
-              <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
-            </SRLWrapper>
-          </SimpleReactLightbox>
-        </div>
-      </div>
-
-      <Section title="related Posts">
-        <ul>
-          {
-            relatedPosts.slice(0, 3).map(edge => (
-
-              <Link to={`/content${edge.node.uri}`}>
-                <li key={edge.node.id}>
-                  <Article path={edge.node} excerpt={true} />
-                </li>
-              </Link>
-
+        <div ref={componentRef}>
+          {tags.length > 0 ?
+            tags.map(node => (
+              <h4>[{node}]</h4>
+            ))
+            :
+            translatedTags.map(node => (
+              <h4>[{node}]</h4>
             ))
           }
-        </ul>
-      </Section>
 
+          <div className="simpleReactLightbox">
+            <ArticleTitle path={data.wpPost} />
+            <SRLWrapper options={lightboxOptions}>
+              {/* {
+                data.allImageSharp.nodes.map(node =>
+                  <GatsbyImage image={node.gatsbyImageData} alt="test" />
+                  // <img src={node.gatsbyImageData} alt="test" />
+                )
+              } */}
+              <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
+            </SRLWrapper>
+          </div>
+        </div>
+
+        <Section title="related Posts">
+          <ul>
+            {
+              relatedPosts.slice(0, 3).map(edge => (
+
+                <Link to={`/content${edge.node.uri}`}>
+                  <li key={edge.node.id}>
+                    <Article path={edge.node} excerpt={true} />
+                  </li>
+                </Link>
+
+              ))
+            }
+          </ul>
+        </Section>
+      </SimpleReactLightbox>
     </Layout>
   )
 }
@@ -141,8 +149,10 @@ query ($id: String) {
       }
     }
   }
-  imageSharp {
-    gatsbyImageData(layout: FULL_WIDTH)
+  allImageSharp(limit: 10) {
+    nodes {
+      gatsbyImageData(layout: FIXED)
+    }
   }
   allWpPost{        
     edges {
@@ -183,13 +193,6 @@ query ($id: String) {
         translations {
           uri
         }
-      }
-    }
-  }
-  allImageSharp {
-    edges {
-      node {
-        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }

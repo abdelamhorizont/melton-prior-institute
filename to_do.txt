@@ -1,8 +1,8 @@
-- language button Übersichtsseiten (tags übersetzungen)
-
-- backend Collections Lösung
-- Recommended Swiper  
 - Lightbox bildgröße
+
+- Collections landing page titles
+- other posts if no related posts
+- Recommended Swiper  
 - Search auch für Inhalte
 
 - tag Set
