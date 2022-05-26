@@ -1,5 +1,4 @@
 - Lightbox bildgröße
 
-- Recommended Swiper  
 - Search auch für Inhalte
 
