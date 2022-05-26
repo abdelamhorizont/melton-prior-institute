@@ -1,5 +1,5 @@
 import * as React from "react"
-
+import { Link, graphql } from 'gatsby'
 
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
@@ -7,24 +7,32 @@ import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
 
 export default function Collection({ data }) {
+  const collectionTitle = data.wpCategory
+
   return (
     <Layout>
+      <div>
+        <h1>{collectionTitle.name}</h1>
 
+        {
+          collectionTitle.posts.nodes.map(node => (
+            <Link to={`/content${node.uri}`}>
+              <li key={node.id}>
+                <Article path={node} excerpt={true} />
+              </li>
+            </Link>
+          ))
+        }
+      </div>
     </Layout>
   )
 }
 
-export const query = graphql`
+export const data = graphql`
 query ($id: String) {
    wpCategory(id: {eq: $id}) {
        name
-       wpChildren {
-         nodes {
-           name
-           language {
-             code
-           }
-           posts {
+       posts {
              nodes {
                featuredImage {
                  node {
@@ -78,8 +86,7 @@ query ($id: String) {
                uri
              }
              }
-           }
-         }
+
      }
    }
  `

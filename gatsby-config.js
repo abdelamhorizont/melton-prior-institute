@@ -19,7 +19,7 @@ module.exports = {
         type: {
           MediaItem: {
             // exclude: true,
-            // limit: 100,
+            limit: 200,
             localFile: {
               requestConcurrency: 5
               // maxFileSizeBytes: 1

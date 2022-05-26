@@ -7,11 +7,13 @@ import ArticleTitle from '../../components/articleTitle/articleTitle'
 import {
    article,
    thumbnail,
-   languages_wrapper,
+   languagesWrapper,
    features,
    pictorials,
    recommended,
-   articleBody
+   articleBody,
+   articleExcerpt,
+   articleTagWrapper
 } from './article.module.scss'
 
 const Article = (props) => {
@@ -31,21 +33,21 @@ const Article = (props) => {
             <ArticleTitle path={props.path} />
 
             {props.excerpt &&
-               <>
+               <><div className={articleExcerpt}>
                   <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
-                  {props.path.tags && props.path.tags.nodes.length > 0 ?
-                     props.path.tags.nodes.map(node => (
-                        <h4>[{node.name}]</h4>
-                     ))
-                     :
-                     props.path.translations && props.path.translations[0].tags &&
-                     props.path.translations[0].tags.nodes.map(node => (
-                        <h4>[{node.name}]</h4>
-                     ))
-                  }
-               </>
+               </div><div className={articleTagWrapper}>
+                     {props.path.tags && props.path.tags.nodes.length > 0 ?
+                        props.path.tags.nodes.map(node => (
+                           <h4>[{node.name}]</h4>
+                        ))
+                        :
+                        props.path.translations && props.path.translations[0].tags &&
+                        props.path.translations[0].tags.nodes.map(node => (
+                           <h4>[{node.name}]</h4>
+                        ))}
+                  </div></>
             }
-            <div className={languages_wrapper}>
+            <div className={languagesWrapper}>
                {props.path.language &&
                   <Link to={`/content${props.path.uri}`}>
                      <button>{props.path.language.code}</button>

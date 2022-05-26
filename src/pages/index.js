@@ -49,6 +49,16 @@ const flickityOptions = {
 const Homepage = () => {
   const data = useStaticQuery(graphql`
     query {
+      allWpCategory(filter: {name: {eq: "collections"}, language: {code: {eq: EN}}}) {
+        nodes {
+          wpChildren {
+            nodes {
+              name
+              uri
+            }
+          }
+        }
+      }
       allWpPost{        
         edges {
           node {
@@ -107,6 +117,8 @@ const Homepage = () => {
     edge.node.language.code === "EN"
   )
 
+  const collectionTitles = data.allWpCategory.nodes[0].wpChildren.nodes
+
   return (
     <Layout>
       <div className={recommended}>
@@ -150,30 +162,30 @@ const Homepage = () => {
           <div className="swiper-button-prev"></div>
         </Swiper>  */}
 
-        <Flickity options={flickityOptions}>
-          {
-            articles.filter(edge => (
-              edge.node.categories.nodes[0] &&
-              edge.node.categories.nodes.some( node =>
-                node.name === "recommended"
-              ))).map(edge => (
-              <div className="carousel-cell">
-                <Link to={`/content${edge.node.uri}`}>
-                  <Article path={edge.node} excerpt={true} className={recommendedArticle} />
-                </Link>
-              </div>
-            ))
-          }
-        </Flickity>
+          <Flickity options={flickityOptions}>
+            {
+              articles.filter(edge => (
+                edge.node.categories.nodes[0] &&
+                edge.node.categories.nodes.some(node =>
+                  node.name === "recommended"
+                ))).map(edge => (
+                  <div className="carousel-cell">
+                    <Link to={`/content${edge.node.uri}`}>
+                      <Article path={edge.node} excerpt={true} className={recommendedArticle} />
+                    </Link>
+                  </div>
+                ))
+            }
+          </Flickity>
 
-      </Section>
-</div>
+        </Section>
+      </div>
       <div className={categories_lists}>
         <Link to={`/content/features`}>
           <Section title="Features">
             <ul>
               {
-               articles.filter(edge => (
+                articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
                   edge.node.categories.nodes[0].name === "features"
                 )).slice(0, 3).map(edge => (
@@ -216,7 +228,7 @@ const Homepage = () => {
         <Link to={`/content/collections`}>
           <Section title="Collections">
             <ul>
-              {
+              {/* {
                 articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
                   edge.node.categories.nodes[0].name === "collections"
@@ -229,6 +241,15 @@ const Homepage = () => {
                   </Link>
 
                 ))
+              } */}
+              {
+                collectionTitles.map(node =>
+                  <li key={node.name}>
+                    <Link to={`/content${node.uri}`}>
+                      <h1>{node.name}</h1>
+                    </Link>
+                  </li>
+                )
               }
             </ul>
             <p>[ ...more</p>

@@ -1,3 +1,4 @@
+@import "../styles/typo.module.scss";
 
 @font-face {
   font-family: "Kleukens Egyptienne Light";
@@ -7,6 +8,16 @@
   // font-weight: 400;
   // font-style: normal;
 }
+
+@font-face {
+  font-family: "Kleukens Egyptienne Book Italic";
+  src:  url('../fonts/Kleukens-EgyptienneFSL-BookItalic.woff'),
+        url("../fonts/Kleukens-EgyptienneFSL-BookItalic.woff2"),
+        url("../fonts/Kleukens-EgyptienneFSL-BookItalic.eot");
+  // font-weight: 400;
+  // font-style: normal;
+}
+
 @font-face {
   font-family: "Kleukens Egyptienne Bold";
   src:  url('../fonts/Kleukens-EgyptienneFSL-Bold.woff'),
@@ -31,4 +42,35 @@ img{
 
 h1{
   text-transform: uppercase;
+}
+
+
+
+h4, a, button, label p{
+  @include ke-light;
+}
+
+p{
+  @include nm-book;
+}
+
+i{
+  @include ke-book-italic;
+}
+
+.MsoFootnoteReference{
+  font-size: 0.8*$fontSize;
+  vertical-align:top;
+}
+
+.MsoFootnoteText{
+  @include ke-light;
+  font-size: $fontSize !important;
+}
+
+.gatsby-image-wrapper{
+  margin: 1*$lineHeight 0;
+  width: 100%;
+  display: flex; 
+  justify-content: center;
 }

@@ -16,6 +16,15 @@ import Section from '../../components/section/section'
 
 import "../../styles/simpleReactLightbox.scss";
 
+import {
+  articleWrapper,
+  articleTagWrapper,
+  topBrackets,
+  articleContent,
+  relatedPostsWrapper
+
+} from '../../styles/content.module.scss'
+
 const lightboxOptions = {
   settings: {
     overlayColor: "rgb(0, 0, 0, 0.2)",
@@ -67,12 +76,12 @@ export default function Post({ data }) {
     edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
   return (
-    <Layout>
-      <SimpleReactLightbox>
+    <Layout >
 
+      <div ref={componentRef} className={articleWrapper}>
         <button onClick={handlePrint}>Print</button>
-
-        <div ref={componentRef}>
+        <div className={topBrackets}><span>]</span><span>[</span></div>
+        <div className={articleTagWrapper} >
           {tags.length > 0 ?
             tags.map(node => (
               <h4>[{node}]</h4>
@@ -82,9 +91,10 @@ export default function Post({ data }) {
               <h4>[{node}]</h4>
             ))
           }
+        </div>
 
-          <div className="simpleReactLightbox">
-            <ArticleTitle path={data.wpPost} />
+        <div className="simpleReactLightbox" className={articleContent}>
+          <SimpleReactLightbox>
             <SRLWrapper options={lightboxOptions}>
               {/* {
                 data.allImageSharp.nodes.map(node =>
@@ -94,9 +104,11 @@ export default function Post({ data }) {
               } */}
               <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
             </SRLWrapper>
-          </div>
+          </SimpleReactLightbox>
         </div>
+      </div>
 
+      <div className={relatedPostsWrapper}>
         <Section title="related Posts">
           <ul>
             {
@@ -112,7 +124,14 @@ export default function Post({ data }) {
             }
           </ul>
         </Section>
-      </SimpleReactLightbox>
+      </div>
+      {/* </div>
+
+
+              ))
+            }
+          </ul>
+        </Section> */}
     </Layout>
   )
 }

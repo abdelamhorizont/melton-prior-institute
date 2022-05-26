@@ -1,8 +1,5 @@
 - Lightbox bildgröße
 
-- Collections landing page titles
-- other posts if no related posts
 - Recommended Swiper  
 - Search auch für Inhalte
 
-- tag Set

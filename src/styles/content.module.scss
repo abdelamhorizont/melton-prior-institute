@@ -1,5 +1,7 @@
 @import "../styles/typo.module.scss";
 
+
+
 .category_overview{
     display: flex;
     flex-direction: row;
@@ -25,8 +27,13 @@
             padding-left: 25%;
 
             li{
+                padding: 0.25*$lineHeight 0 ;
                 width: 75%;
                 padding-left: 25%;
+                button:last-child{
+                    padding: 0  0.5*$lineHeight;
+
+                }
             }
             &:before{
                 content:']';
@@ -56,5 +63,87 @@
 
 .tags_sidebar, .results{
     display: flex;
+
+}
+
+.articleWrapper{
+    grid-template-columns: repeat(12, 8.3333333333% [col]) !important;
+    display: grid !important;
+
+    button{
+        display:block;
+        text-align: right;
+        height: fit-content;
+        padding: 0 1*$lineHeight;
+    }
+
+    .topBrackets, .articleTagWrapper, .articleContent  {
+        padding: 0 1*$lineHeight;
+    }   
+
+    .topBrackets, .articleTagWrapper {
+        margin-top: 1*$lineHeight;
+        padding: 0 1*$lineHeight;
+    }
+
+    .topBrackets{
+        grid-column-start: col 1;
+        grid-column-end: col 11;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .articleTagWrapper{
+        grid-column-start: col 2;
+        grid-column-end: col 10;
+        width: 100%;
+         display: flex;
+    }
+
+    .articleContent{
+        margin-top: 2*$lineHeight;
+        grid-column-start: col 2;
+        grid-column-end: col 10;
+        display:block;
+        height:fit-content;
+        a{
+            font-size: inherit;
+        }
+        h1{
+            font-size: $fontSizeL;
+            text-align: center;
+            margin: 3*$lineHeight 0;
+        }
+        h4{
+            font-size: $fontSize;
+            width: fit-content;
+    
+        }
+    
+        p{
+            font-size: $fontSizeM;
+            line-height: $lineHeightL;
+        }
+        picture {
+            width: 100%;
+            height: fit-content;
+            img{
+                // width: 100%;
+                height: fit-content;
+                
+            }
+        }
+
+    }
+    .relatedPostsWrapper{
+        grid-column-start: col 1;
+        grid-column-end: col 11;
+        // grid-row-start: auto;
+        align-self: end;
+    
+    }
+
+
 
 }
