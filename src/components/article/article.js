@@ -33,9 +33,12 @@ const Article = (props) => {
             <ArticleTitle path={props.path} />
 
             {props.excerpt &&
-               <><div className={articleExcerpt}>
-                  <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
-               </div><div className={articleTagWrapper}>
+               <>
+                  <div className={articleExcerpt}>
+                     <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
+                     <p> lorm ipsum</p>
+                  </div>
+                  <div className={articleTagWrapper}>
                      {props.path.tags && props.path.tags.nodes.length > 0 ?
                         props.path.tags.nodes.map(node => (
                            <h4>[{node.name}]</h4>

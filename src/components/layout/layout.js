@@ -10,6 +10,7 @@ import {
   brand,
   search_box,
   categories,
+  secondaryNav,
   home
 } from './layout.module.scss'
 
@@ -89,7 +90,7 @@ const Layout = ({ children }) => {
           <div>
 
           </div>
-          <ul>
+          <ul className={secondaryNav}>
             <li key="about"><Link to="/meta/about">About</Link></li>
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
             <li key="links"><Link to="/meta/links">Links</Link></li>

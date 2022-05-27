@@ -16,6 +16,10 @@ main{
     box-sizing:border-box;
 }
 
+.recommended, .categories_lists{ 
+    animation: 2s appearO;
+}
+
 .categories_lists{
     display:flex;
     flex-direction: row;

@@ -11,6 +11,21 @@ $lineHeight: 1.4*$fontSize;
 $lineHeightM: 1.25*$fontSizeM;
 $lineHeightL: 1.05*$fontSizeL;
 
+@keyframes appearO{
+  0% {
+      opacity: 0;
+      transform:translateX(-20vh);
+  } 
+  75% {
+      opacity: 0;
+      transform:translateX(-20vh);
+  }
+  100% {
+      opacity: 1;
+      transform:translateX(0);
+  }
+}
+
 // $fontFamily: "K-E-FSL-Light";
 
 
