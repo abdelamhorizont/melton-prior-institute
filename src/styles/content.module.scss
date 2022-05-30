@@ -5,14 +5,33 @@
 .category_overview{
     display: flex;
     flex-direction: row;
+}
 
+.pswp__content{
+    display: flex;
+    justify-content: center;
+}
 
+.lightboxImageWrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        max-height:50vw !important;
+        justify-content: center;
+        align-self: center;
+    }
 }
 
 .lightbox-image{
-    max-width:800px !important;
-    width:800px !important;
-    height: auto;
+    // max-width:50vw !important;
+    max-height:50vw !important;
+    justify-content: center;
+    align-self: center;
+    // left: 200px;
 }
 
 .tags_sidebar, .results { 

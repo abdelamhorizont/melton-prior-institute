@@ -26,6 +26,7 @@ import {
   topBrackets,
   articleContent,
   relatedPostsWrapper,
+  lightboxImageWrapper,
   lightboxImage
 } from '../../styles/content.module.scss'
 
@@ -138,7 +139,9 @@ export default function Post({ data }) {
                     return (
                       <Item
                         content={
-                          <img className={lightboxImage} src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
+                          <div className={lightboxImageWrapper}>
+                            <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
+                          </div>
                         }>
                         {({ ref, open }) => (
                           <a
