@@ -99,16 +99,16 @@ li, li a{
     transition: all 0.5s;
 }
 
-ul, .carousel-cell{
+ul{
     a{
         &:hover {
-            li, .recommendedArticle{
+            li{
             filter: invert(1);
             background-color: wheat;
-            border-radius: 5%;
+            // border-radius: 5%;
             .categoriesArticle {
                 .articleBody{
-                    .languages_wrapper{
+                    .languagesWrapper{
                         display: flex !important;
                         } 
                     }

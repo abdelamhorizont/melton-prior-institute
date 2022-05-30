@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Search from '../search/search'
 import Article from '../article/article'
@@ -10,10 +10,9 @@ import {
   brand,
   search_box,
   categories,
+  secondaryNav,
   home
 } from './layout.module.scss'
-
-
 
 const Layout = ({ children }) => {
   const query = useStaticQuery(graphql`
@@ -77,12 +76,34 @@ const Layout = ({ children }) => {
   }
 
   const articles = query.allWpPost.edges.filter(edge =>
-    edge.node.title.toLowerCase().includes(searchData.toLowerCase()) || 
-    edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) || 
+    edge.node.title.toLowerCase().includes(searchData.toLowerCase()) ||
+    edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) ||
     edge.node.tags.nodes.some(node => node.name.includes(searchData.toLowerCase())) ||
     // __html: edge.node.content.toLowerCase().includes(searchData.toLowerCase()) || 
     edge.node.author.node.name.toLowerCase().includes(searchData.toLowerCase())
-  ).filter( edge => edge.node.language.code == "EN" )
+  ).filter(edge => edge.node.language.code == "EN")
+
+  const [scrollPos, setScrollPos] = useState(0)
+  const [show, setShow] = useState(true)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", handleScroll);
+
+      // return () => {
+      //   window.removeEventListener('scroll', handleScroll);
+      // };
+    }
+  }, [scrollPos])
+
+  const handleScroll = () => {
+    if (typeof window !== 'undefined') {
+
+      setScrollPos(window.scrollY)
+      setShow(window.scrollY < scrollPos)
+
+    }
+  }
 
   return (
     <div className={layout}>
@@ -94,26 +115,28 @@ const Layout = ({ children }) => {
           <div>
 
           </div>
-          <ul>
+          <ul className={secondaryNav}>
             <li key="about"><Link to="/meta/about">About</Link></li>
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
           <div>
           </div>
+          {/* <div style={show ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
             <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
             <li key="collections"><Link to="/content/collections">Collections</Link></li>
           </ul>
           <Search handleSearchData={handleSearchData} />
+          {/* </div> */}
         </nav>
       </header>
 
       <div>
         {searchData}
       </div>
-      
+
       <main className={home}>
         {searchData !== ""
           ?

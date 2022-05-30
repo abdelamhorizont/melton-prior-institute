@@ -102,6 +102,8 @@ header{
 
 
 footer{
+    position: relative;
+    bottom: 0;
     margin-top: 2*$lineHeight !important;
 
     ul{
@@ -134,3 +136,18 @@ main{
 //     }
 
 // }
+a{
+    transition: all 0.5s;
+}
+
+
+ul.secondaryNav{
+    li{
+        a{
+            color: rgba(0,0,0,.4);
+            &:hover{
+                color: rgba(0,0,0,1);
+            }
+        }
+    }
+}

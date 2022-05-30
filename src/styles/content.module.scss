@@ -8,6 +8,17 @@
 
 
 }
+
+.lightbox-image{
+    max-width:800px !important;
+    width:800px !important;
+    height: auto;
+}
+
+.tags_sidebar, .results { 
+    animation: 2s appearO;
+}
+
 .tags_sidebar{
     width: 33.33%;
     position: fixed;

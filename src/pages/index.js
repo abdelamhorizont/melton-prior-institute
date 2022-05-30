@@ -39,7 +39,7 @@ const flickityOptions = {
   initialIndex: 2,
   wrapAround: true,
   draggable: false,
-  pageDots: false,
+  pageDots: true,
   adaptiveHeight: true,
   accessibility: true,
   setGallerySize: true

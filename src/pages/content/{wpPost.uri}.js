@@ -1,6 +1,5 @@
 import * as React from "react"
-import { useRef } from 'react';
-
+import { useState, useEffect, useRef } from 'react';
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -9,20 +8,25 @@ import { SRLWrapper } from "simple-react-lightbox";
 
 import { useReactToPrint } from 'react-to-print';
 
+import parse, { domToReact, attributesToProps } from 'html-react-parser';
+
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
 
 import "../../styles/simpleReactLightbox.scss";
+import "photoswipe/dist/photoswipe.css";
+// import "photoswipe/dist/default-skin/default-skin.css";
+import { Gallery, Item } from 'react-photoswipe-gallery'
 
 import {
   articleWrapper,
   articleTagWrapper,
   topBrackets,
   articleContent,
-  relatedPostsWrapper
-
+  relatedPostsWrapper,
+  lightboxImage
 } from '../../styles/content.module.scss'
 
 const lightboxOptions = {
@@ -60,10 +64,33 @@ const lightboxOptions = {
     thumbnailsPosition: 'bottom',
     thumbnailsSize: ['400px', 'auto']
   }
-
 };
 
+
 export default function Post({ data }) {
+  // const [img, setImg] = useState(document.getElementsByClassName("SRLImage"));
+
+  // useEffect(() => {
+  //   //  setImg(document.getElementsByClassName("SRLImage"))
+  //   // const imgWrapper = document.getElementsByClassName("SRLElementWrapper")
+  //   setImg(document.getElementsByClassName("SRLImage"))
+  //   console.log(img)      
+
+  // },[]);
+
+
+  const callbacks = {
+    onLightboxOpened: object => {
+
+      // object.currentSlide.source = object.currentSlide.source.replace('http://localhost:8000', '') + " 485w"
+      // object.currentSlide.thumbnail = object.currentSlide.source.replace('http://localhost:8000', '') + " 485w"
+      // object.currentSlide.srl_gallery_image="true"
+      // object.currentSlide.srcset = object.currentSlide.source.replace('http://localhost:8000', '')
+      // console.log(object.currentSlide)   
+      // setImg(document.getElementsByClassName("SRLElementWrapper"))
+    }
+  }
+
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -93,18 +120,62 @@ export default function Post({ data }) {
           }
         </div>
 
-        <div className="simpleReactLightbox" className={articleContent}>
-          <SimpleReactLightbox>
-            <SRLWrapper options={lightboxOptions}>
-              {/* {
-                data.allImageSharp.nodes.map(node =>
-                  <GatsbyImage image={node.gatsbyImageData} alt="test" />
-                  // <img src={node.gatsbyImageData} alt="test" />
-                )
-              } */}
-              <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} />
-            </SRLWrapper>
-          </SimpleReactLightbox>
+        <div className={articleContent}>
+          {/* <SimpleReactLightbox>
+            <SRLWrapper options={lightboxOptions} callbacks={callbacks}>
+       */}
+          <ArticleTitle path={data.wpPost} />
+
+          <Gallery>
+            {
+              parse(data.wpPost.content, {
+                replace: domNode => {
+                  // if (domNode.attribs && domNode.attribs.class && domNode.attribs.class.includes("gatsby-image-wrapper")) {
+                  if (domNode.name && domNode.name.includes("picture")) {
+                    const props = attributesToProps(domNode.attribs);
+                    console.log(domNode.children[2])
+                    // console.log(Object.values(domNode.attribs))
+                    return (
+                      <Item
+                        content={
+                          <img className={lightboxImage} src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
+                        }>
+                        {({ ref, open }) => (
+                          <a
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              open(e)
+                            }}
+                            ref={ref}
+                          >
+                            <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />                          </a>
+                        )}
+                      </Item>
+
+                      // <Item
+                      //   original={domNode.children[2].attribs["data-src"]}
+                      //   thumbnail={domNode.children[2].attribs["data-src"]}
+                      //   originalSrcset={domNode.children[2].attribs["data-srcset"]}
+                      //   // width="500"
+                      //   // height="500"
+                      // >
+                      //   {({ ref, open }) => (
+                      //       <img ref={ref} onClick={open} src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
+                      //   )}
+                      // </Item>
+
+                    )
+                  }
+                }
+              })
+            }
+
+          </Gallery>
+
+          {/* <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} srl_gallery_image="true" /> */}
+          {/* </SRLWrapper>
+          </SimpleReactLightbox> */}
         </div>
       </div>
 
@@ -125,13 +196,7 @@ export default function Post({ data }) {
           </ul>
         </Section>
       </div>
-      {/* </div>
 
-
-              ))
-            }
-          </ul>
-        </Section> */}
     </Layout>
   )
 }
