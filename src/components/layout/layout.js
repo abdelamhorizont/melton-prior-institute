@@ -54,6 +54,7 @@ const Layout = ({ children }) => {
               }
             }
             excerpt
+            content
             uri
             language {
               code
@@ -77,7 +78,11 @@ const Layout = ({ children }) => {
   }
 
   const articles = query.allWpPost.edges.filter(edge =>
-    edge.node.title.toLowerCase().includes(searchData.toLowerCase())
+    edge.node.title.toLowerCase().includes(searchData.toLowerCase()) || 
+    edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) || 
+    edge.node.tags.nodes.some(node => node.name.includes(searchData.toLowerCase())) ||
+    // __html: edge.node.content.toLowerCase().includes(searchData.toLowerCase()) || 
+    edge.node.author.node.name.toLowerCase().includes(searchData.toLowerCase())
   ).filter( edge => edge.node.language.code == "EN" )
 
   return (
@@ -121,6 +126,7 @@ const Layout = ({ children }) => {
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
                       <Article path={edge.node} excerpt={true} />
+                      {/* <div dangerouslySetInnerHTML={{ __html: edge.node.content }} /> */}
                     </li>
                   </Link>
 
