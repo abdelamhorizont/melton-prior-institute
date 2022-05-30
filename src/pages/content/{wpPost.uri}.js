@@ -155,19 +155,6 @@ export default function Post({ data }) {
                             <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />                          </a>
                         )}
                       </Item>
-
-                      // <Item
-                      //   original={domNode.children[2].attribs["data-src"]}
-                      //   thumbnail={domNode.children[2].attribs["data-src"]}
-                      //   originalSrcset={domNode.children[2].attribs["data-srcset"]}
-                      //   // width="500"
-                      //   // height="500"
-                      // >
-                      //   {({ ref, open }) => (
-                      //       <img ref={ref} onClick={open} src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
-                      //   )}
-                      // </Item>
-
                     )
                   }
                 }
