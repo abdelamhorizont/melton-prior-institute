@@ -19,7 +19,10 @@ import {
   features,
   pictorials,
   collections,
-  section
+  collectionsArticle,
+  collectionsColumn,
+  section,
+  moreButton
 } from './index.module.scss'
 
 import {
@@ -190,7 +193,7 @@ const Homepage = () => {
                 ))
               }
             </ul>
-            <p>[ ...more</p>
+            <p className={moreButton}>[ ...more</p>
           </Section>
         </Link>
 
@@ -212,13 +215,13 @@ const Homepage = () => {
                 ))
               }
             </ul>
-            <p>[ ...more</p>
+            <p className={moreButton}>[ ...more</p>
           </Section>
         </Link>
 
         <Link to={`/content/collections`}>
           <Section title="Collections">
-            <ul>
+            <ul className={collectionsColumn}>
               {/* {
                 articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
@@ -235,15 +238,15 @@ const Homepage = () => {
               } */}
               {
                 collectionTitles.map(node =>
-                  <li key={node.name}>
-                    <Link to={`/content${node.uri}`}>
+                  <Link to={`/content${node.uri}`}>
+                    <li key={node.name} className={collectionsArticle}>
                       <h1>{node.name}</h1>
-                    </Link>
-                  </li>
+                    </li>
+                  </Link>
                 )
               }
             </ul>
-            <p>[ ...more</p>
+            <p className={moreButton}>[ ...more</p>
           </Section>
         </Link>
       </div>

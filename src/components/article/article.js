@@ -36,7 +36,6 @@ const Article = (props) => {
                <>
                   <div className={articleExcerpt}>
                      <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
-                     <p> lorm ipsum</p>
                   </div>
                   <div className={articleTagWrapper}>
                      {props.path.tags && props.path.tags.nodes.length > 0 ?

@@ -8,6 +8,14 @@
   // font-weight: 400;
   // font-style: normal;
 }
+@font-face {
+  font-family: "Kleukens Egyptienne Medium";
+  src:  url('../fonts/Kleukens-EgyptienneFSL-Medium.woff'),
+        url("../fonts/Kleukens-EgyptienneFSL-Medium.woff2"),
+        url("../fonts/Kleukens-EgyptienneFSL-Medium.eot");
+  // font-weight: 400;
+  // font-style: normal;
+}
 
 @font-face {
   font-family: "Kleukens Egyptienne Book Italic";
@@ -69,8 +77,16 @@ i{
 }
 
 .gatsby-image-wrapper{
-  margin: 1*$lineHeight 0;
+  // margin: 1*$lineHeight 0;
   width: 100%;
   display: flex; 
+  justify-content: center;
+  img{
+    width: unset;
+  }
+}
+
+.inline-gatsby-image-wrapper{
+  display:flex;
   justify-content: center;
 }

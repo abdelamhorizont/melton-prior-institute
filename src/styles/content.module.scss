@@ -1,5 +1,5 @@
 @import "../styles/typo.module.scss";
-
+@import "../components/article/article.module.scss";
 
 
 .category_overview{
@@ -34,13 +34,19 @@
             padding-left: 25%;
 
             li{
+                display: flex;
+                flex-direction: row-reverse;
                 padding: 0.25*$lineHeight 0 ;
                 width: 75%;
                 padding-left: 25%;
-                button:last-child{
-                    padding: 0  0.5*$lineHeight;
-
+                justify-content: flex-end;
+                button{
+                    width: fit-content;
+                        
                 }
+                // button:first-of-type, button:not(button:last-of-type){
+                //     background-color: aqua;
+                // }
             }
             &:before{
                 content:']';
@@ -153,4 +159,36 @@
 
 
 
+}
+
+
+.collections{
+    display: flex;
+    flex-direction: column;
+}
+
+.collectionWrapper{
+    display: flex;
+    flex-direction: column;
+    h1{
+        width: 100%;
+        height: fit-content;
+        margin-top: $lineHeight;
+        margin-bottom: 2*$lineHeight;
+    }
+    div{
+        ul{
+        display: flex;
+        flex-direction: row;
+        
+        a{
+            width:25vw;
+           li{
+                .thumbnail{
+                    width: 100%;
+                }
+            }   
+         }
+        }
+    }
 }
