@@ -143,6 +143,7 @@ export default function Post({ data }) {
                             <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
                           </div>
                         }>
+                          
                         {({ ref, open }) => (
                           <a
                             href="#"
