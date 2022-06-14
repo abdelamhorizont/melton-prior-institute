@@ -10,6 +10,17 @@ import ArticleTitle from '../../components/articleTitle/articleTitle'
 import ArticleBody from '../../components/articleBody/articleBody'
 import Article from '../../components/article/article'
 
+import {
+  articleFeature
+} from '../../components/article/article.module.scss'
+
+import {
+  category_overview,
+  tags_sidebar,
+  results,
+  bracket
+} from '../../styles/content.module.scss'
+
 export default function SearchResults() {
   const data = useStaticQuery(graphql`
     query {
@@ -59,21 +70,22 @@ export default function SearchResults() {
   return (
     <Layout childToParent={childToParent} >
     {searchData}
-
+    <div className={results}>
       <ul>
+
         {
           articles.map(edge => (
 
             <Link to={`/content${edge.node.uri}`}>
               <li key={edge.node.id}>
-                <Article path={edge.node} />
+                <Article path={edge.node} className={articleFeature} />
               </li>
             </Link>
 
           ))
         }
       </ul>
-
+    </div>
     </Layout>
   )
 }

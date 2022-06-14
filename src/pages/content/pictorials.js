@@ -7,6 +7,17 @@ import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import Tags from '../../components/tags/tags'
 
+import {
+  articleFeature
+} from '../../components/article/article.module.scss'
+
+import {
+  category_overview,
+  tags_sidebar,
+  results,
+  bracket
+} from '../../styles/content.module.scss'
+
 export default function Pictorials() {
   const data = useStaticQuery(graphql`
     query {
@@ -83,16 +94,19 @@ export default function Pictorials() {
 
   return (
     <Layout>
-      <Tags handleTags={handleTags} deleteTags={deleteTags} />
+       <div className={category_overview}>
+        <div className={tags_sidebar}>
+          <Tags handleTags={handleTags} deleteTags={deleteTags} />
+        </div>
 
-      <div>
+      <div className={results}>
         {selectedTags.length > 0 ?
           <ul>
             {
               selectedPictorials.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} />
+                    <Article path={edge.node} excerpt={true} className={articleFeature}/>
                   </li>
                 </Link>
               ))
@@ -104,7 +118,7 @@ export default function Pictorials() {
               pictorials.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
+                    <Article path={edge.node} excerpt={true} excerpt={true} className={articleFeature}/>
                   </li>
                 </Link>
               ))
@@ -112,7 +126,7 @@ export default function Pictorials() {
           </ul>
         }
       </div>
-
+    </div>
     </Layout>
   )
 }

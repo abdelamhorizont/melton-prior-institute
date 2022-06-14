@@ -5,6 +5,17 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 
+import {
+  collections,
+  collectionWrapper
+} from '../../styles/content.module.scss'
+
+import {
+  articleFeature,
+  articleCollection,
+  thumbnail
+} from '../../components/article/article.module.scss'
+
 export default function Collections() {
   const data = useStaticQuery(graphql`
     query {
@@ -83,26 +94,28 @@ export default function Collections() {
   return (
     <Layout >
 
-      <div>
+      <div className={collections}>
         {collectionTitles.map(node =>
           node.wpChildren.nodes.filter(node =>
             node.language.code == "EN"
           ).map(node =>
             <>
+            <div className={collectionWrapper}>
               <h1>{node.name}</h1>
 
-              <div>
-                <ul>
-                  {
-                    node.posts.nodes.map(node => (
-                      <Link to={`/content${node.uri}`}>
-                        <li key={node.id}>
-                          <Article path={node} excerpt={true} />
-                        </li>
-                      </Link>
-                    ))
-                  }
-                </ul>
+                <div>
+                  <ul>
+                    {
+                      node.posts.nodes.map(node => (
+                        <Link to={`/content${node.uri}`}>
+                          <li key={node.id}>
+                            <Article path={node} excerpt={true} className={articleCollection} />
+                          </li>
+                        </Link>
+                      ))
+                    }
+                  </ul>
+                </div>
               </div>
             </>
           )

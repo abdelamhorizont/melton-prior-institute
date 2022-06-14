@@ -46,6 +46,13 @@ $lineHeightL: 1.05*$fontSizeL;
     // background-color: $myColor1;
 }
 
+@mixin ke-medium {
+  font-family: 'Kleukens Egyptienne Medium', 'Times New Roman', Times, serif;
+  font-size: $fontSize;
+  // padding: 0.5*$fontSize 0.7*$fontSize;
+  // background-color: $myColor1;
+}
+
 @mixin ke-book-italic {
     font-family: 'Kleukens Egyptienne Book Italic', 'Times New Roman', Times, serif;
     font-size: inherit;
