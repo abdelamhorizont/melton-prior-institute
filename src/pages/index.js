@@ -14,7 +14,7 @@ import Article from '../components/article/article'
 import "../styles/reset.scss";
 import "../styles/global.scss";
 import {
-  categories_lists,
+  categoriesLists,
   recommended,
   features,
   pictorials,
@@ -22,20 +22,28 @@ import {
   collectionsArticle,
   collectionsColumn,
   section,
+  // featureSection,
   moreButton
 } from './index.module.scss'
+
+import {
+  categoriesSection,
+  recommendedSection
+} from '../components/section/section.module.scss'
 
 import {
   categoriesArticle,
   recommendedArticle
 } from '../components/article/article.module.scss'
 
-import '../styles/swiper.scss';
+
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import 'swiper/css/scrollbar';
+import '../styles/swiper.scss';
 
 const flickityOptions = {
   fade: true,
@@ -125,8 +133,9 @@ const Homepage = () => {
   return (
     <Layout>
       <div className={recommended}>
-        <Section title="Recommended">
-
+        <Section title="Recommended" className={recommendedSection}>
+        <div className="swiper-button-prev">&lt;</div>
+        <div className="swiper-button-next">&gt;</div>
           <Swiper className="my-swiper"
             modules={[Navigation, A11y, Keyboard, Pagination, EffectFade]}
             // effect={"fade"}
@@ -168,15 +177,14 @@ const Homepage = () => {
                 ))
             }
 
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
-            <div className="swiper-pagination"></div>
+
           </Swiper>
+          <div className="swiper-pagination"></div>
         </Section >
       </div >
-      <div className={categories_lists}>
+      <div className={categoriesLists}>
         <Link to={`/content/features`}>
-          <Section title="Features">
+          <Section className={categoriesSection} title="Features">
             <ul>
               {
                 articles.filter(edge => (
@@ -193,12 +201,12 @@ const Homepage = () => {
                 ))
               }
             </ul>
-            <p className={moreButton}>[ ...more</p>
+            <p className={moreButton}>...more</p>
           </Section>
         </Link>
 
         <Link to={`/content/pictorials`}>
-          <Section title="Pictorials">
+          <Section title="Pictorials" className={categoriesSection}>
             <ul>
               {
                 articles.filter(edge => (
@@ -215,12 +223,12 @@ const Homepage = () => {
                 ))
               }
             </ul>
-            <p className={moreButton}>[ ...more</p>
+            <p className={moreButton}>...more</p>
           </Section>
         </Link>
 
         <Link to={`/content/collections`}>
-          <Section title="Collections">
+          <Section title="Collections" className={categoriesSection}>
             <ul className={collectionsColumn}>
               {/* {
                 articles.filter(edge => (
@@ -246,7 +254,7 @@ const Homepage = () => {
                 )
               }
             </ul>
-            <p className={moreButton}>[ ...more</p>
+            <p className={moreButton}>...more</p>
           </Section>
         </Link>
       </div>

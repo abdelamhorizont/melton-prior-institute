@@ -54,7 +54,7 @@ h1{
 
 
 
-h4, a, button, label p{
+h1, h4, a, button, label p{
   @include ke-light;
 }
 
@@ -78,15 +78,35 @@ i{
 
 .gatsby-image-wrapper{
   // margin: 1*$lineHeight 0;
-  width: 100%;
+  // width: 100%;
   display: flex; 
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+
   img{
+    max-width: 100%;
+    height: auto;
     width: unset;
+    // position: unset;
+    // left: unset;
+    // right: unset;
+    // top: unset;
   }
 }
 
 .inline-gatsby-image-wrapper{
-  display:flex;
+  // display:flex !important;
   justify-content: center;
+  a{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.wp-caption{
+  // width: 100% !important;
 }

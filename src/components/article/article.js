@@ -23,8 +23,9 @@ const Article = (props) => {
          <div className={thumbnail}>
             {
                props.path.featuredImage && props.path.featuredImage.node.localFile && props.path.featuredImage.node.localFile.childImageSharp ?
-                  <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"test"} /> :
-                  props.path.featuredImage && props.path.featuredImage.node.image &&
+                  <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"test"} />
+                  :
+               props.path.featuredImage && props.path.featuredImage.node.image &&
                   <img src={props.path.featuredImage.node.image.url} alt="test" />
             }
          </div>
@@ -66,7 +67,7 @@ const Article = (props) => {
             </div>
          </div>
 
-         
+
 
       </div>
    )

@@ -12,8 +12,8 @@ import {
 } from '../../components/article/article.module.scss'
 
 import {
-  category_overview,
-  tags_sidebar,
+  categoryOverview,
+  tagsSidebar,
   results,
   bracket
 } from '../../styles/content.module.scss'
@@ -94,8 +94,8 @@ export default function Pictorials() {
 
   return (
     <Layout>
-       <div className={category_overview}>
-        <div className={tags_sidebar}>
+       <div className={categoryOverview}>
+        <div className={tagsSidebar}>
           <Tags handleTags={handleTags} deleteTags={deleteTags} />
         </div>
 

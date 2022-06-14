@@ -18,6 +18,7 @@ exports.components = {
   "component---src-pages-meta-imprint-js": preferDefault(require("/Users/fxxx0cream/Pictures/03_commercial/37_Melton_Prior_Institute/03_implementation/coding_rep/melton-prior-institute-2/melton-prior-institute/src/pages/meta/imprint.js")),
   "component---src-pages-meta-links-js": preferDefault(require("/Users/fxxx0cream/Pictures/03_commercial/37_Melton_Prior_Institute/03_implementation/coding_rep/melton-prior-institute-2/melton-prior-institute/src/pages/meta/links.js")),
   "component---src-pages-meta-privacypolicy-js": preferDefault(require("/Users/fxxx0cream/Pictures/03_commercial/37_Melton_Prior_Institute/03_implementation/coding_rep/melton-prior-institute-2/melton-prior-institute/src/pages/meta/privacypolicy.js")),
-  "component---src-pages-meta-projects-js": preferDefault(require("/Users/fxxx0cream/Pictures/03_commercial/37_Melton_Prior_Institute/03_implementation/coding_rep/melton-prior-institute-2/melton-prior-institute/src/pages/meta/projects.js"))
+  "component---src-pages-meta-projects-js": preferDefault(require("/Users/fxxx0cream/Pictures/03_commercial/37_Melton_Prior_Institute/03_implementation/coding_rep/melton-prior-institute-2/melton-prior-institute/src/pages/meta/projects.js")),
+  "component---src-pages-meta-trying-js": preferDefault(require("/Users/fxxx0cream/Pictures/03_commercial/37_Melton_Prior_Institute/03_implementation/coding_rep/melton-prior-institute-2/melton-prior-institute/src/pages/meta/trying.js"))
 }
 

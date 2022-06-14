@@ -5,7 +5,7 @@
         min-width: 25%;
         // flex: 1;
         // background-color: #000;
-        min-height: 200px;
+        // min-height: 200px;
         max-width: 25%;
 }
 
@@ -16,13 +16,13 @@
 }
 
 .languagesWrapper{
-    display: none !important;
-    position: absolute;
+    display: flex !important;
+    opacity: 0;
     flex-direction: row;
-    align-self: flex-end;
     a{
         width: fit-content! important;
         margin-right: 0.5*$lineHeight;
+        color: #fff;
         &:before{
             content:'[';
         }
@@ -32,53 +32,148 @@
         button{
             all: unset;
         }
+        &:last-of-type{
+            margin-right: 0;
+        }
     }
 
     
 }
 
+
 .articleExcerpt{
     width: 100%;
+    height: fit-content;
 }
 .articleTagWrapper{
     width: 100%;
     display: flex;
     justify-content: center;
     align-self: flex-end;
-    margin-bottom: 2*$lineHeight;
+    // margin-bottom: 2*$lineHeight;
+    h4{
+        margin: 0 0.1*$lineHeight;
+        opacity: 0.4;
+    }
 }
 
 .articleFeature{
-    display: flex;
+    width: 100%;
+    display:flex;
     flex-direction: row;
-    margin-bottom: 2*$lineHeight;
+    box-sizing: border-box;
+    padding: $lineHeight;
+    
+    .articleBody{
+        flex-direction: row;
+        padding-left: $lineHeight;
+        h1{
+            width: 100%;
+            font-size: $fontSizeL;
+            line-height: $lineHeightL;
+        }
+    }
+    .articleExcerpt {
+        p{
+         font-size: $fontSize;
+        line-height: $lineHeight;
+        @include nm-book;
+        }
+    }
+    .articleTagWrapper{
+        order:99;
+    }
+    .languagesWrapper{
+        a{
+            opacity: 0;
+        }
+    }
+    &:hover{
+        .languagesWrapper{
+            a{
+                opacity: 1;
+            }
+        }
+    }
+    .articleTagWrapper, .languagesWrapper{
+        width:fit-content;
+        height: fit-content;
+        margin-bottom: unset;
+        align-self: flex-end;
+        h4{
+        height: fit-content;
+        }
+    
+    }
+
  }
 
 .articleCollection{
     display: flex;
     flex-direction: column;
+    .thumbnail{
+        width: calc(100% - 2*$lineHeight);
+        margin-top: $lineHeight;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+    .articleBody{
+        flex-direction: row;
+        padding: $lineHeight 1*$lineHeight;
+    p, h1, div{
+        margin: 0.5*$lineHeight 0;
+        line-height: $lineHeight;
+    }
+    .articleTagWrapper{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .languagesWrapper{
+        width: 100%;
+        justify-content: center;
+    }
+    }
+
  }
  
 .articleBody{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between !important;
-    padding: 0 1*$lineHeight;
+    padding-left: 0.5*$lineHeight;
     flex: 1;
+    height: auto;
+
+
+    p, h1, div{
+        margin: 0.5*$lineHeight 0;
+        line-height: $lineHeight;
+
+        &:first-child{
+            margin-top: unset !important;
+        }        
+        &:last-child{
+            margin-bottom: unset !important;
+        }
+    }
     p{
         display: inline-flex;
+        height: fit-content;
     }
     h1{
         width: 100%;
         text-align: center;
+        height: fit-content;
+
     }
 }
 
  .categoriesArticle{
     display: flex;
     flex-direction: row;
-    margin: $lineHeight 0;
+    height: fit-content;
  }
 
  .recommendedArticle{
@@ -86,19 +181,47 @@
      display:flex;
      flex-direction: row;
      box-sizing: border-box;
+     padding: $lineHeight;
      .thumbnail{
-         background-color: aqua;
          min-width: calc(3/10 * 100% - 2*$lineHeight);
-         margin-left: 1*$lineHeight;
      }
      .articleBody{
+         flex-direction: row;
+         padding-left: $lineHeight;
          h1{
              width: 100%;
-             font-size: $fontSizeM;
-             line-height: 1;
+             font-size: $fontSizeL;
+             line-height: $lineHeightL;
          }
+
+
+         }
+         .articleExcerpt {
+            p{
+             font-size: $fontSizeM;
+            line-height: $lineHeightM;
+            @include nm-book;
+            }
+        }
+        .articleTagWrapper{
+            order:99;
+        }
+        .languagesWrapper{
+            a{
+                opacity: 0;
+            }
+        }
+        .articleTagWrapper, .languagesWrapper{
+            width:fit-content;
+            height: fit-content;
+            margin-bottom: unset;
+            align-self: flex-end;
+            h4{
+            height: fit-content;
+            }
+        
+        }
      }
- }
 
 
 
@@ -111,6 +234,7 @@ ul, .swiper-slide-active, .swiper-slide{
         &:hover {
             li, .collectionsArticle, .recommendedArticle{
                 background-color: #000;
+                border-radius: 12px ;
                 // filter: invert(1);
                 h1, h4, span, button, a:before, a:after,p{
                     color: #fff;
@@ -119,7 +243,7 @@ ul, .swiper-slide-active, .swiper-slide{
                 .categoriesArticle, .articleFeature{
                     .articleBody{
                       .languagesWrapper{
-                         display: flex !important;
+                         opacity: 1;
                          color: #fff;
                         }
                     }
@@ -129,4 +253,32 @@ ul, .swiper-slide-active, .swiper-slide{
     }
 }
 }
+
+// .swiper-slide-active{
+    // div{
+        a:hover{
+                 .recommendedArticle {
+                     .articleBody {
+                         
+                        .languagesWrapper{
+                            a{
+                                opacity: 1;
+                            }}
+                     }
+                }
+            }  
+        a:hover{
+            li{
+                 .articleCollection {
+                     .articleBody {
+                         
+                        .languagesWrapper{
+                                opacity: 1 !important;
+                        }
+                     }
+                }
+            }
+        }
+    // }
+// }
 

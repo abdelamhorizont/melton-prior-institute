@@ -3,11 +3,15 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import {
     section,
-    section_title
+    sectionTitle,
+    recommendedSection,
+    categoriesSection
 } from './section.module.scss'
 
 
-const Section = ({ children, title }) => {
+import '../../styles/swiper.scss';
+
+const Section = ({ children, title, className }) => {
     // const data = useStaticQuery(graphql`
     // query {
     //     site {
@@ -19,10 +23,10 @@ const Section = ({ children, title }) => {
     // `)
 
     return (
-        <div className={section}>
-            <div className={section_title}>
-                <h2>{title}</h2><span>]</span>
-            </div>
+        <div className={className}>
+                <h2>{title}</h2>
+               <span>]</span>
+                <span>[</span>
             {children}
         </div>
     )

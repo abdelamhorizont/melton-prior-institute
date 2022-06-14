@@ -7,7 +7,8 @@ import Article from '../../components/article/article'
 
 import {
   collections,
-  collectionWrapper
+  collectionWrapper,
+  collectionTitle
 } from '../../styles/content.module.scss'
 
 import {
@@ -101,7 +102,7 @@ export default function Collections() {
           ).map(node =>
             <>
             <div className={collectionWrapper}>
-              <h1>{node.name}</h1>
+              <h1 className={collectionTitle}>{node.name}</h1>
 
                 <div>
                   <ul>

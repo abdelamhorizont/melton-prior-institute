@@ -14,18 +14,21 @@ main{
     flex-direction: column;
     padding: 0 1*$lineHeight;
     box-sizing:border-box;
+    margin-top: 5*$lineHeight;
 }
 
-.recommended, .categories_lists{ 
+.recommended, .categoriesLists{ 
     animation: 2s appearO;
 }
 
-.categories_lists{
-    display:flex;
-    flex-direction: row;
+.categoriesLists{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr [col]);
+    column-gap: $lineHeight;
+    grid-auto-flow: column;
 
     a{
-        width: 33.33%;
+        
 
         
     }
@@ -36,14 +39,17 @@ main{
     flex-direction: column;
     a{
         width: 100%;
-        margin-top: 2*$lineHeight;
-        margin-bottom: $lineHeight;
+        // margin-top: 2*$lineHeight;
+        // margin-bottom: $lineHeight;
     }
 
 }
 .collectionsArticle{
         width: 100%;
         text-align: center;
+        h1{
+            line-height: $lineHeight;
+        }
 }
 
 .recommended{
@@ -59,9 +65,6 @@ main{
                 width: 8.33%
             }
             span{
-                width: 8.33%;
-                align-self: flex-start;
-                padding-left: calc(8.33% + 1*$lineHeight);
             }
     }
 }
@@ -82,13 +85,15 @@ width: 50%;
 }
 
 .moreButton{
+    grid-column-start: 4;
+    grid-row-start: 5;
     @include ke-light;
+    opacity: 0.4;
     text-align: right;
     transition: 0.5s all;
     &:hover{
-        @include ke-medium;
+        opacity: 1;
     }
 }
-
 
 
