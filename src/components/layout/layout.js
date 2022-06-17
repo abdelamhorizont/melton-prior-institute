@@ -8,9 +8,11 @@ import Article from '../article/article'
 import {
   layout,
   brand,
-  search_box,
+  searchBox,
   categories,
   secondaryNav,
+  primaryNav,
+  searchResultsWrapper,
   home
 } from './layout.module.scss'
 
@@ -112,16 +114,11 @@ const Layout = ({ children }) => {
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
-          <div>
-
-          </div>
           <ul className={secondaryNav}>
             <li key="about"><Link to="/meta/about">About</Link></li>
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
-          <div>
-          </div>
           {/* <div style={show ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
@@ -133,7 +130,7 @@ const Layout = ({ children }) => {
         </nav>
       </header>
 
-      <div>
+      <div className={searchResultsWrapper}>
         {searchData}
       </div>
 

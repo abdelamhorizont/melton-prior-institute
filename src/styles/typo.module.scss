@@ -5,11 +5,13 @@ $myColor2: rgb(162, 162, 162);
 
 $fontSize: 1.125rem; /*18px*/
 $fontSizeM: 1.75rem; /*28px*/
-$fontSizeL: 2.625rem; /*42px*/
+$fontSizeL: 2.125rem; /*34px*/
+$fontSizeXL: 2.625rem; /*42px*/
 
 $lineHeight: 1.4*$fontSize;
-$lineHeightM: 1.25*$fontSizeM;
-$lineHeightL: 1.05*$fontSizeL;
+$lineHeightM: 1.21*$fontSizeM;
+$lineHeightL: 1*$fontSizeL;
+$lineHeightXL: 1.05*$fontSizeXL;
 
 @keyframes appearO{
   0% {
@@ -24,6 +26,10 @@ $lineHeightL: 1.05*$fontSizeL;
       opacity: 1;
       transform:translateX(0);
   }
+}
+
+@keyframes appearOsmall{
+  from {opacity: 0;} to {opacity: 1;}
 }
 
 // $fontFamily: "K-E-FSL-Light";
@@ -42,6 +48,7 @@ $lineHeightL: 1.05*$fontSizeL;
 @mixin ke-light {
     font-family: 'Kleukens Egyptienne Light', 'Times New Roman', Times, serif;
     font-size: $fontSize;
+    font-weight: 100 !important;
     // padding: 0.5*$fontSize 0.7*$fontSize;
     // background-color: $myColor1;
 }
@@ -69,7 +76,7 @@ $lineHeightL: 1.05*$fontSizeL;
 
 @mixin nm-book {
   font-family: 'Neue Montreal Book', 'Times New Roman', Times, serif;
-  font-size: $fontSize;
+  // font-size: $fontSize;
   // padding: 0.5*$fontSize 0.7*$fontSize;
   // background-color: $myColor1;
 }

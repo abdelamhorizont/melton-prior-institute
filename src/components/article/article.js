@@ -44,7 +44,7 @@ const Article = (props) => {
                            <h4>[{node.name}]</h4>
                         ))
                         :
-                        props.path.translations && props.path.translations[0].tags &&
+                        props.path.translations && props.path.translations[0] && props.path.translations[0].tags &&
                         props.path.translations[0].tags.nodes.map(node => (
                            <h4>[{node.name}]</h4>
                         ))}

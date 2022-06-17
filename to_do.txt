@@ -1,3 +1,5 @@
 - Lightbox bildgröße
 - Search auch für Inhalte
 
+Extras:
+- Fußnoten als Tooltips 

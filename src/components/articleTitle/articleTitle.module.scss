@@ -48,8 +48,10 @@ div .article-title{
     display: flex;
     justify-content: space-between !important;
     flex-wrap: wrap;
+    height: fit-content;
     h4{
-    
+        opacity: 0.4;
+        height: fit-content;
     }
     h1{
         width:100%;

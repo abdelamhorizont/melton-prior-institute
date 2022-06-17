@@ -1,73 +1,87 @@
 @import "../styles/typo.module.scss";
 @import "../components/article/article.module.scss";
 
-
-.category_overview{
-    display: flex;
-    flex-direction: row;
+html {
+    scroll-behavior: smooth;
+  }
+  
+.categoryOverview{
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr) [col]);
+    column-gap: $lineHeight;
 }
 
-.pswp__content{
-    display: flex;
-    justify-content: center;
-}
-
-.lightboxImageWrapper{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img{
-        max-width:50vw !important;
-        max-height:50vw !important;
-        justify-content: center;
-        align-self: center;
-    }
-}
-
-.lightbox-image{
-    // max-width:50vw !important;
-    max-height:50vw !important;
-    justify-content: center;
-    align-self: center;
-    // left: 200px;
-}
-
-.tags_sidebar, .results { 
+.tagsSidebar, .results { 
     animation: 2s appearO;
 }
 
-.tags_sidebar{
-    width: 33.33%;
+
+.tagsSidebar{
+    width: 31.6%;
     position: fixed;
+    display: block;
+
     div{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
+        display:grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: [row] $lineHeight [row] auto;
+        column-gap: $lineHeight;
+
         h2{
-            width: 25%;
             text-align: right;
+            grid-column-start: 1;
 
         }
         ul{
-              display: flex;
-            flex-wrap: wrap;
-            width: 75%;
-            padding-left: 25%;
+            grid-row-start: 2;
+            grid-column-start: 2;
+            grid-column-end: 5;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            column-gap:inherit;
+            grid-auto-flow: row;
 
             li{
-                display: flex;
-                flex-direction: row-reverse;
+                grid-column: 1/4;
+                display: grid;
+                grid-auto-flow: column;
+                grid-template-columns: inherit;
+                column-gap: inherit;
                 padding: 0.25*$lineHeight 0 ;
-                width: 75%;
-                padding-left: 25%;
-                justify-content: flex-end;
                 button{
-                    width: fit-content;
-                        
+                    animation: 0.5s appearOsmall;
+                    transition: all 0.5s;
+                   opacity: 0.4; 
+                   &:hover{
+                    cursor: pointer;
+                       opacity: 1;
+                   }
                 }
+
+
+                button:last-of-type{
+                    margin-top: -4px;
+                    grid-column: 1/2;
+                    text-align: right;
+                    &:before{
+                        content:'[';
+                    }
+                    &:after{
+                        content:']';
+                    }
+                }
+                button:first-of-type{
+                    margin-top: unset;
+                    grid-column: 2/4;
+                    text-align: left;
+                    &:before{
+                        content:'';
+                    }
+                    &:after{
+                        content:'';
+                    }
+                }
+
                 // button:first-of-type, button:not(button:last-of-type){
                 //     background-color: aqua;
                 // }
@@ -83,8 +97,8 @@
 }
 
 .results{
-    width: 55.55%;
-    margin-left: 33.33%;
+    grid-column-start: 5;
+    grid-column-end: 12;
 
     .article{
         background-color: #000;
@@ -98,13 +112,10 @@
     }
 }
 
-.tags_sidebar, .results{
-    display: flex;
-
-}
 
 .articleWrapper{
-    grid-template-columns: repeat(12, 8.3333333333% [col]) !important;
+    grid-template-columns: repeat(12, 1fr [col]) !important;
+    column-gap: $lineHeight;
     display: grid !important;
 
     button{
@@ -114,14 +125,7 @@
         padding: 0 1*$lineHeight;
     }
 
-    .topBrackets, .articleTagWrapper, .articleContent  {
-        padding: 0 1*$lineHeight;
-    }   
 
-    .topBrackets, .articleTagWrapper {
-        margin-top: 1*$lineHeight;
-        padding: 0 1*$lineHeight;
-    }
 
     .topBrackets{
         grid-column-start: col 1;
@@ -194,25 +198,106 @@
 .collectionWrapper{
     display: flex;
     flex-direction: column;
+    .collectionTitle{
+        position:sticky;
+        top: 5*$lineHeight;
+        z-index: 100;
+        background-color: blanchedalmond;
+    }
     h1{
         width: 100%;
         height: fit-content;
         margin-top: $lineHeight;
-        margin-bottom: 2*$lineHeight;
+        margin-bottom: 1*$lineHeight;
+        text-align: center;
+        font-size: $fontSizeL;
+   
     }
     div{
         ul{
         display: flex;
         flex-direction: row;
+        // overflow-x: scroll;
         
         a{
             width:25vw;
+            // padding: 0 0.25*$lineHeight;
+            &:first-of-type{
+                padding-left: unset;
+            }
+            &:last-of-type{
+                padding-right: unset;
+            }
            li{
-                .thumbnail{
+                .articleCollection{
+                    .thumbnail{
                     width: 100%;
+                    }
                 }
+                h1{
+                    font-size: $fontSize;
+                }
+     
+
             }   
          }
         }
+    }
+}
+
+
+.pswp__content{
+    display: flex;
+    justify-content: center;
+}
+
+.lightboxImageWrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        max-width:50vw !important;
+        max-height:50vw !important;
+        justify-content: center;
+        align-self: center;
+    }
+}
+
+.lightbox-image{
+    // max-width:50vw !important;
+    max-height:50vw !important;
+    justify-content: center;
+    align-self: center;
+    // left: 200px;
+}
+
+
+.contentPage{
+    display: grid;
+    column-gap: $lineHeight;
+
+    .articleWrapper{
+        grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
+    }
+    .sectionTitle{
+        h4{
+            text-align: right;
+        }
+    }
+    .topBrackets{
+        grid-row-start: 2;
+    }
+}
+
+.pageContent{
+    grid-column-start: 3;
+    grid-column-end: 11;
+    grid-row-start: 3;
+    p{
+        font-size: $fontSizeM;
+        line-height: $lineHeightM;
     }
 }
