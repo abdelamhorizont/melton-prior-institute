@@ -103,6 +103,9 @@ export default function Post({ data }) {
   const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
     edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
+  // let [counter, setCounter] = useState([])
+  let counter = []
+
   return (
     <Layout >
 
@@ -122,20 +125,15 @@ export default function Post({ data }) {
         </div>
 
         <div className={articleContent}>
-          {/* <SimpleReactLightbox>
-            <SRLWrapper options={lightboxOptions} callbacks={callbacks}>
-       */}
           <ArticleTitle path={data.wpPost} />
-
           <Gallery>
             {
               parse(data.wpPost.content, {
                 replace: domNode => {
-                  // if (domNode.attribs && domNode.attribs.class && domNode.attribs.class.includes("gatsby-image-wrapper")) {
+                  let reg = /(\[\d+\])/g
                   if (domNode.name && domNode.name.includes("picture")) {
                     const props = attributesToProps(domNode.attribs);
-                    console.log(domNode.children[2])
-                    // console.log(Object.values(domNode.attribs))
+                    // console.log(domNode.children[2])
                     return (
                       <Item
                         content={
@@ -143,6 +141,7 @@ export default function Post({ data }) {
                             <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
                           </div>
                         }>
+
                         {({ ref, open }) => (
                           <a
                             href="#"
@@ -156,16 +155,44 @@ export default function Post({ data }) {
                         )}
                       </Item>
                     )
+                  } else if (domNode.data && domNode.data.match(reg)) {
+                    const text = domNode.data.split(reg)
+                    // setCounter([text.filter(text => text.match(reg))])
+                    const footNote = text.filter(text => text.match(reg))
+                    console.log(counter)
+                    if(!counter.includes(footNote[0])){
+                      counter.push(footNote[0])
+                      return (
+                        <>
+                          {
+                            text.map(text => text.match(reg) ?
+                            <a href={"#" + text}> <span id={"ref" +text} className="MsoFootnoteReference">{text}</span> </a>
+                            :
+                            text
+                            )
+                          }
+                        </>
+                      )
+                    } else{
+                      return (
+                        <>
+                          {
+                            text.map(text => text.match(reg) ?
+                            <a href={"#ref" + text}> <span id={text} className="MsoFootnoteReference">{text}</span> </a>
+                            :
+                            text
+                            )
+                          }
+                        </>
+                      )
+                    }
                   }
                 }
               })
             }
-
           </Gallery>
 
           {/* <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} srl_gallery_image="true" /> */}
-          {/* </SRLWrapper>
-          </SimpleReactLightbox> */}
         </div>
       </div>
 

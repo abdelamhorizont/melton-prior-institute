@@ -1,7 +1,10 @@
 @import "../styles/typo.module.scss";
 @import "../components/article/article.module.scss";
 
-
+html {
+    scroll-behavior: smooth;
+  }
+  
 .categoryOverview{
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr) [col]);
