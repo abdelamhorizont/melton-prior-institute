@@ -127,7 +127,7 @@ export default function Post({ data }) {
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
           <Gallery>
-            {
+            {data.wpPost.content &&
               parse(data.wpPost.content, {
                 replace: domNode => {
                   let reg = /(\[\d+\])/g
