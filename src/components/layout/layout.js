@@ -130,14 +130,12 @@ const Layout = ({ children }) => {
         </nav>
       </header>
 
-      <div className={searchResultsWrapper}>
         {searchData}
-      </div>
 
-      <main className={home}>
+      <main>
         {searchData !== ""
           ?
-          <div>
+          <div className={searchResultsWrapper}>
             <ul>
               {
                 articles.map(edge => (

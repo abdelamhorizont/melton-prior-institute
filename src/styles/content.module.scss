@@ -146,7 +146,9 @@ html {
         margin-top: 2*$lineHeight;
         grid-column-start: col 2;
         grid-column-end: col 10;
-        display:block;
+        display:flex;
+        flex-direction: column;
+        
         height:fit-content;
         a{
             font-size: inherit;

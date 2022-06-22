@@ -77,23 +77,22 @@ i{
 }
 
 .gatsby-image-wrapper{
-  // margin: 1*$lineHeight 0;
+  margin: 1*$lineHeight auto;
   // width: 100%;
   display: flex; 
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
 
-  img{
-    max-width: 100%;
-    height: auto;
-    width: unset;
-    // position: unset;
-    // left: unset;
-    // right: unset;
-    // top: unset;
-  }
 }
+//   img{
+//     max-width: 100%;
+//     height: auto;
+//     width: unset;
+//     // position: unset;
+//     // left: unset;
+//     // right: unset;
+//     // top: unset;
+//   }
+// }
 
 .inline-gatsby-image-wrapper{
   // display:flex !important;

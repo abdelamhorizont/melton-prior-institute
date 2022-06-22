@@ -102,7 +102,16 @@ ul.categories{
     }
 }
 .searchResultsWrapper{
-    display: grid;
+    // display: grid;
+        ul{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr [col]);
+            column-gap: 1*$lineHeight;
+            a{
+                grid-column-start: 3;
+                grid-column-end: 11;
+            }
+        }
 
 }
 

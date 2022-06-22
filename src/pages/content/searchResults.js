@@ -18,8 +18,12 @@ import {
   category_overview,
   tags_sidebar,
   results,
-  bracket
+  bracket,
 } from '../../styles/content.module.scss'
+
+import{
+  categoriesArticle
+} from '../../components/section/section.module.scss'
 
 export default function SearchResults() {
   const data = useStaticQuery(graphql`
@@ -70,7 +74,7 @@ export default function SearchResults() {
   return (
     <Layout childToParent={childToParent} >
     {searchData}
-    <div className={results}>
+    <div className="huso">
       <ul>
 
         {
@@ -78,7 +82,7 @@ export default function SearchResults() {
 
             <Link to={`/content${edge.node.uri}`}>
               <li key={edge.node.id}>
-                <Article path={edge.node} className={articleFeature} />
+                <Article path={edge.node} className={categoriesArticle} classname="huso" />
               </li>
             </Link>
 
