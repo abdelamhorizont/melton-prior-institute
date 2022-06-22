@@ -159,7 +159,6 @@ export default function Post({ data }) {
                     const text = domNode.data.split(reg)
                     // setCounter([text.filter(text => text.match(reg))])
                     const footNote = text.filter(text => text.match(reg))
-                    console.log(counter)
                     if(!counter.includes(footNote[0])){
                       counter.push(footNote[0])
                       return (

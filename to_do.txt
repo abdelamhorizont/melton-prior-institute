@@ -1,5 +1,4 @@
 - build
-- mikey error
 - scroll position
 - loghtbox bei img
 - Lightbox bildgröße
