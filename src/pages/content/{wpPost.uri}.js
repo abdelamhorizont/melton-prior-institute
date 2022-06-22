@@ -69,28 +69,6 @@ const lightboxOptions = {
 
 
 export default function Post({ data }) {
-  // const [img, setImg] = useState(document.getElementsByClassName("SRLImage"));
-
-  // useEffect(() => {
-  //   //  setImg(document.getElementsByClassName("SRLImage"))
-  //   // const imgWrapper = document.getElementsByClassName("SRLElementWrapper")
-  //   setImg(document.getElementsByClassName("SRLImage"))
-  //   console.log(img)      
-
-  // },[]);
-
-
-  const callbacks = {
-    onLightboxOpened: object => {
-
-      // object.currentSlide.source = object.currentSlide.source.replace('http://localhost:8000', '') + " 485w"
-      // object.currentSlide.thumbnail = object.currentSlide.source.replace('http://localhost:8000', '') + " 485w"
-      // object.currentSlide.srl_gallery_image="true"
-      // object.currentSlide.srcset = object.currentSlide.source.replace('http://localhost:8000', '')
-      // console.log(object.currentSlide)   
-      // setImg(document.getElementsByClassName("SRLElementWrapper"))
-    }
-  }
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -108,7 +86,6 @@ export default function Post({ data }) {
 
   return (
     <Layout >
-
       <div ref={componentRef} className={articleWrapper}>
         <button onClick={handlePrint}>Print</button>
         <div className={topBrackets}><span>]</span><span>[</span></div>
@@ -127,7 +104,7 @@ export default function Post({ data }) {
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
           <Gallery>
-            {data.wpPost.content &&
+            {data.wpPost && data.wpPost.content &&
               parse(data.wpPost.content, {
                 replace: domNode => {
                   let reg = /(\[\d+\])/g
@@ -165,7 +142,7 @@ export default function Post({ data }) {
                         <>
                           {
                             text.map(text => text.match(reg) ?
-                            <a href={"#" + text} onClick={window.scrollBy({ top: 300, left: 0, behavior: "smooth" })}>
+                            <a href={"#" + text}>
                                <span id={"ref" +text} className="MsoFootnoteReference">{text}</span> </a>
                             :
                             text
