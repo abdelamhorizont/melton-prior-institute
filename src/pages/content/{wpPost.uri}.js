@@ -97,8 +97,8 @@ export default function Post({ data }) {
     content: () => componentRef.current,
   });
 
-  const tags = data.wpPost.tags.nodes.map(node => node.name)
-  const translatedTags = data.wpPost.translations[0].tags.nodes.map(node => node.name)
+  const tags = data.wpPost.tags.nodes.map(node => node && node.name)
+  const translatedTags = data.wpPost.translations && data.wpPost.translations[0].tags.nodes.map(node => node && node.name)
 
   const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
     edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
@@ -165,7 +165,8 @@ export default function Post({ data }) {
                         <>
                           {
                             text.map(text => text.match(reg) ?
-                            <a href={"#" + text}> <span id={"ref" +text} className="MsoFootnoteReference">{text}</span> </a>
+                            <a href={"#" + text} onClick={window.scrollBy({ top: 300, left: 0, behavior: "smooth" })}>
+                               <span id={"ref" +text} className="MsoFootnoteReference">{text}</span> </a>
                             :
                             text
                             )
