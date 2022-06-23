@@ -2,6 +2,11 @@ import * as React from "react"
 import { useState } from "react"
 import { useStaticQuery, graphql } from 'gatsby'
 
+import {
+   activeTag,
+   inactiveTag
+} from './tags.module.scss'
+
 export default function Tags(props) {
    const data = useStaticQuery(graphql`
    query {
@@ -41,7 +46,7 @@ export default function Tags(props) {
             {
                tags.map(node => (
                   <li key={node.id}>
-                     <button value={node.name} onClick={e => handleTag(e)}>
+                     <button className={selectedTags.includes(node.name) ? activeTag : inactiveTag} value={node.name} onClick={e => handleTag(e)}>
                         {node.name}
                      </button>
                      {selectedTags.includes(node.name) &&

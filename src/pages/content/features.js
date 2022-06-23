@@ -8,7 +8,8 @@ import Article from '../../components/article/article'
 import Tags from '../../components/tags/tags'
 
 import {
-  articleFeature
+  articleFeature,
+  articlePictorial
 } from '../../components/article/article.module.scss'
 
 import {

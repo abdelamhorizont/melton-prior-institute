@@ -76,7 +76,7 @@ i{
   font-size: $fontSize !important;
 }
 
-.gatsby-image-wrapper{
+.inline-gatsby-image-wrapper{
   margin: 1*$lineHeight auto;
   // width: 100%;
   display: flex; 
@@ -108,4 +108,9 @@ i{
 
 .wp-caption{
   // width: 100% !important;
+}
+
+
+body{
+  overflow-y: scroll;
 }

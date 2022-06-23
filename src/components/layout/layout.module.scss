@@ -27,6 +27,13 @@ header{
         width: 100%;
         padding: 0 1*$lineHeight;
         box-sizing: border-box;
+        @media screen and (max-width: $small){
+            grid-template-columns: repeat(3, 1fr [col]);
+            grid-template-rows: repeat(3, $lineHeight [row]);
+            margin-top: $lineHeight;
+            row-gap: 1*$lineHeight;
+
+        }
  
     }
 
@@ -51,12 +58,29 @@ a{
     a{
         @include ke-bold;
     }
+
+    @media screen and (max-width: $small){
+        grid-row-start:2;
+        a{
+            font-size: $fontSizeM}
+    }
 }
 
 ul.secondaryNav{
     grid-column-start: 10; 
     grid-column-end: 13;
     grid-row-start: 2;
+
+ 
+
+    @media screen and (max-width: $small){
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        li{ display : flex;
+            a{align-self: flex-end}}
+        
+    }
 }
 ul.categories{
     grid-column-start: 5;
@@ -71,12 +95,24 @@ ul.categories{
     li:last-of-type{
         text-align: right;
     }
+    @media screen and (max-width: $small){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    }
+    
 }
 
 .searchBox{
     grid-column-start: 10;
     grid-column-end:13;
     grid-row-start: 4;
+    @media screen and (max-width: $small){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    }
+
     p{
         cursor:help;
 
@@ -101,7 +137,7 @@ ul.categories{
         }
     }
 }
-.searchResultsWrapper{
+.searchResultsWrapper, .relatedPostsWrapper{
     // display: grid;
         ul{
             display: grid;
@@ -111,8 +147,33 @@ ul.categories{
                 grid-column-start: 3;
                 grid-column-end: 11;
             }
-        }
 
+        }
+}
+
+.relatedPostsWrapper{
+    grid-template-columns: repeat(12, 1fr [col]);
+    grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
+    display: grid;
+    ul{
+    grid-column-start: 1;
+    grid-column-end: 13;
+    }
+    h2 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: row 1;
+    }
+    span{
+        grid-row-start: row 2;
+    }
+    span:first-of-type{
+            grid-column-start: 2;
+    }
+    span:last-of-type{
+            grid-column-start: 11;
+            text-align: right;
+      }
 }
 
 label:focus-within{

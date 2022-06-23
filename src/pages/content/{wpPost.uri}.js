@@ -25,10 +25,18 @@ import {
   articleTagWrapper,
   topBrackets,
   articleContent,
-  relatedPostsWrapper,
   lightboxImageWrapper,
   lightboxImage
 } from '../../styles/content.module.scss'
+
+import {
+  relatedPostsWrapper
+} from '../../components/layout/layout.module.scss'
+
+import {
+  articleFeature,
+  articlePictorial
+} from '../../components/article/article.module.scss'
 
 const lightboxOptions = {
   settings: {
@@ -69,46 +77,22 @@ const lightboxOptions = {
 
 
 export default function Post({ data }) {
-  // const [img, setImg] = useState(document.getElementsByClassName("SRLImage"));
-
-  // useEffect(() => {
-  //   //  setImg(document.getElementsByClassName("SRLImage"))
-  //   // const imgWrapper = document.getElementsByClassName("SRLElementWrapper")
-  //   setImg(document.getElementsByClassName("SRLImage"))
-  //   console.log(img)      
-
-  // },[]);
-
-
-  const callbacks = {
-    onLightboxOpened: object => {
-
-      // object.currentSlide.source = object.currentSlide.source.replace('http://localhost:8000', '') + " 485w"
-      // object.currentSlide.thumbnail = object.currentSlide.source.replace('http://localhost:8000', '') + " 485w"
-      // object.currentSlide.srl_gallery_image="true"
-      // object.currentSlide.srcset = object.currentSlide.source.replace('http://localhost:8000', '')
-      // console.log(object.currentSlide)   
-      // setImg(document.getElementsByClassName("SRLElementWrapper"))
-    }
-  }
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  const tags = data.wpPost.tags.nodes.map(node => node.name)
-  const translatedTags = data.wpPost.translations[0].tags.nodes.map(node => node.name)
+  const tags = data.wpPost.tags.nodes.map(node => node && node.name)
+  const translatedTags = data.wpPost.translations && data.wpPost.translations[0].tags.nodes.map(node => node && node.name)
 
-  const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
-    edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
+  const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
   // let [counter, setCounter] = useState([])
   let counter = []
 
   return (
     <Layout >
-
       <div ref={componentRef} className={articleWrapper}>
         <button onClick={handlePrint}>Print</button>
         <div className={topBrackets}><span>]</span><span>[</span></div>
@@ -127,7 +111,7 @@ export default function Post({ data }) {
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
           <Gallery>
-            {
+            {data.wpPost && data.wpPost.content &&
               parse(data.wpPost.content, {
                 replace: domNode => {
                   let reg = /(\[\d+\])/g
@@ -159,14 +143,14 @@ export default function Post({ data }) {
                     const text = domNode.data.split(reg)
                     // setCounter([text.filter(text => text.match(reg))])
                     const footNote = text.filter(text => text.match(reg))
-                    console.log(counter)
                     if(!counter.includes(footNote[0])){
                       counter.push(footNote[0])
                       return (
                         <>
                           {
                             text.map(text => text.match(reg) ?
-                            <a href={"#" + text}> <span id={"ref" +text} className="MsoFootnoteReference">{text}</span> </a>
+                            <a href={"#" + text}>
+                               <span id={"ref" +text} className="MsoFootnoteReference">{text}</span> </a>
                             :
                             text
                             )
@@ -196,15 +180,18 @@ export default function Post({ data }) {
         </div>
       </div>
 
-      <div className={relatedPostsWrapper}>
-        <Section title="related Posts">
+      <div>
+        <Section title="related Posts" className={relatedPostsWrapper}>
+          {/* wenn es keine related posts gibt, dieses div garnicht anzeigen, ansonsten steht am ende der seite "related Posts", aber es kommen keine Posts */}
           <ul>
             {
               relatedPosts.slice(0, 3).map(edge => (
 
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
+                    <Article path={edge.node} excerpt={true} className={articleFeature}/>
+                                    {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articlePictorial" einfügen?*/}
+
                   </li>
                 </Link>
 

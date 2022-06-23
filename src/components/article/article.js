@@ -16,10 +16,20 @@ import {
    articleTagWrapper
 } from './article.module.scss'
 
+import {
+   articleFeature,
+   articlePictorial
+ } from '../../components/article/article.module.scss'
+ 
+
 const Article = (props) => {
 
    return (
-      <div className={props.className ? props.className : { article }}>
+      <div 
+      className={props.className ? props.className : { article }} 
+   // Hier muss irgendwas geändert werden. In searchResults.js und {wp.Post.uri}.js wird ein ClassName vergeben, dieser kommt im HTML aber als "[object Object]" raus? 
+      // className={articleFeature} 
+      >
          <div className={thumbnail}>
             {
                props.path.featuredImage && props.path.featuredImage.node.localFile && props.path.featuredImage.node.localFile.childImageSharp ?

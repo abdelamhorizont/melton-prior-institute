@@ -11,7 +11,8 @@ import ArticleBody from '../../components/articleBody/articleBody'
 import Article from '../../components/article/article'
 
 import {
-  articleFeature
+  articleFeature,
+  articlePictorial
 } from '../../components/article/article.module.scss'
 
 import {
@@ -74,7 +75,7 @@ export default function SearchResults() {
   return (
     <Layout childToParent={childToParent} >
     {searchData}
-    <div className="huso">
+    <div>
       <ul>
 
         {
@@ -82,7 +83,8 @@ export default function SearchResults() {
 
             <Link to={`/content${edge.node.uri}`}>
               <li key={edge.node.id}>
-                <Article path={edge.node} className={categoriesArticle} classname="huso" />
+                <Article path={edge.node} className={articleFeature}/> 
+                {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articleSection" einfügen?*/}
               </li>
             </Link>
 

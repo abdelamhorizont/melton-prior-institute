@@ -86,7 +86,7 @@ const Layout = ({ children }) => {
   ).filter(edge => edge.node.language.code == "EN")
 
   const [scrollPos, setScrollPos] = useState(0)
-  const [show, setShow] = useState(true)
+  const [showNav, setShowNav] = useState(true)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -102,7 +102,7 @@ const Layout = ({ children }) => {
     if (typeof window !== 'undefined') {
 
       setScrollPos(window.scrollY)
-      setShow(window.scrollY < scrollPos)
+      setShowNav(window.scrollY < scrollPos)
 
     }
   }
@@ -110,7 +110,7 @@ const Layout = ({ children }) => {
   return (
     <div className={layout}>
       <header>
-        <nav>
+        <nav style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}>
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
@@ -119,7 +119,7 @@ const Layout = ({ children }) => {
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
-          {/* <div style={show ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
+          {/* <div style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
             <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>

@@ -12,12 +12,11 @@
 .article{
     margin: $lineHeight 0;
     display: flex;
-    
 }
 
 .languagesWrapper{
     display: flex !important;
-    opacity: 0;
+    opacity: 1;
     flex-direction: row;
     a{
         width: fit-content! important;
@@ -53,11 +52,11 @@
     // margin-bottom: 2*$lineHeight;
     h4{
         margin: 0 0.1*$lineHeight;
-        opacity: 0.4;
+        opacity: 1;
     }
 }
 
-.articleFeature{
+.articleFeature, .articlePictorial, .relatedArticle{
     width: 100%;
     display:flex;
     flex-direction: row;
@@ -81,17 +80,17 @@
         }
     }
     .articleTagWrapper{
-        order:99;
+        // order:99;
     }
     .languagesWrapper{
         a{
-            opacity: 0;
+            color: rgba(0,0,0,1);
         }
     }
     &:hover{
         .languagesWrapper{
             a{
-                opacity: 1;
+                color: rgba(0,0,0,1);
             }
         }
     }
@@ -204,11 +203,11 @@
             }
         }
         .articleTagWrapper{
-            order:99;
+            // order:99;
         }
         .languagesWrapper{
             a{
-                opacity: 0;
+                color: rgba(0,0,0,0.4);
             }
         }
         .articleTagWrapper, .languagesWrapper{
@@ -233,7 +232,7 @@ ul, .swiper-slide-active, .swiper-slide{
     a{
         &:hover {
             li, .collectionsArticle, .recommendedArticle{
-                background-color: #000;
+                background-color: $hoverbg-color1;
                 border-radius: 12px ;
                 // filter: invert(1);
                 h1, h4, span, button, a:before, a:after,p{

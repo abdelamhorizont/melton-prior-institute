@@ -1,5 +1,7 @@
+- build
+- loghtbox bei img
 - Lightbox bildgröße
-- Search auch für Inhalte
+- Search auch für Inhalte, bisher nur excerpt
 
 Extras:
 - Fußnoten als Tooltips 

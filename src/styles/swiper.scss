@@ -93,7 +93,7 @@ li, li a, .articleBody, .swiper-slide{
 .swiper-slide-active, .swiper-slide{
       a{
         &:hover {
-          background-color: #000;
+          background-color: $hoverbg-color1;
           border-radius: 20px;
             *{
                 h1, h4, span, p, button, a:before, a:after{
