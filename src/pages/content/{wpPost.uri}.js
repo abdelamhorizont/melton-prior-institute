@@ -95,7 +95,7 @@ export default function Post({ data }) {
               <h4>[{node}]</h4>
             ))
             :
-            translatedTags.map(node => (
+            translatedTags && translatedTags.map(node => (
               <h4>[{node}]</h4>
             ))
           }
