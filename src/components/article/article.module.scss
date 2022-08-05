@@ -17,11 +17,11 @@
 .languagesWrapper{
     display: flex !important;
     opacity: 1;
-    flex-direction: row;
+    flex-direction: row-reverse;
     a{
         width: fit-content! important;
         margin-right: 0.5*$lineHeight;
-        color: #fff;
+        color: rgba(0, 0, 0, 0.4);
         &:before{
             content:'[';
         }
@@ -82,18 +82,18 @@
     .articleTagWrapper{
         // order:99;
     }
-    .languagesWrapper{
-        a{
-            color: rgba(0,0,0,1);
-        }
-    }
-    &:hover{
-        .languagesWrapper{
-            a{
-                color: rgba(0,0,0,1);
-            }
-        }
-    }
+    // .languagesWrapper{
+    //     a{
+    //         color: rgba(0,0,0,1);
+    //     }
+    // }
+    // &:hover{
+    //     .languagesWrapper{
+    //         a{
+    //             color: rgba(0,0,0,1);
+    //         }
+    //     }
+    // }
     .articleTagWrapper, .languagesWrapper{
         width:fit-content;
         height: fit-content;
@@ -224,7 +224,7 @@
 
 
 
-li, li a, .articleBody{
+a, li, li a, .articleBody, a:before, a:after{
     transition: all 0.5s;
 }
 
@@ -235,49 +235,32 @@ ul, .swiper-slide-active, .swiper-slide{
                 background-color: $hoverbg-color1;
                 border-radius: 12px ;
                 // filter: invert(1);
-                h1, h4, span, button, a:before, a:after,p{
+                h1, h4, span, p{
                     color: #fff;
                     font-weight: 100;
                 }
-                .categoriesArticle, .articleFeature{
-                    .articleBody{
-                      .languagesWrapper{
-                         opacity: 1;
-                         color: #fff;
-                        }
-                    }
                 }
             }
         
     }
 }
+
+.languagesWrapper {
+    a, a:before, a:after{
+        color: rgba(0, 0, 0, 0.4); 
+
+    }
 }
 
-// .swiper-slide-active{
-    // div{
-        a:hover{
-                 .recommendedArticle {
-                     .articleBody {
-                         
-                        .languagesWrapper{
-                            a{
-                                opacity: 1;
-                            }}
-                     }
-                }
-            }  
-        a:hover{
-            li{
-                 .articleCollection {
-                     .articleBody {
-                         
-                        .languagesWrapper{
-                                opacity: 1 !important;
-                        }
-                     }
-                }
-            }
-        }
-    // }
-// }
 
+ul a:hover, a:hover{
+    .languagesWrapper {
+        a, a:after, a:before{ 
+            color: rgba(255, 255, 255, 0.4);
+            &:hover{
+                color: rgba(255, 255, 255, 1) !important;
+            }
+
+    }
+}
+}

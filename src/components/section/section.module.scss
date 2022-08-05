@@ -6,6 +6,12 @@
     grid-template-columns: repeat(12, minmax(0, 1fr) [col]);
     grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
     column-gap: $lineHeight;
+    @media screen and (max-width: $small){
+        grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+
+
+    }
+
 
     h2, .sectionTitle{
         grid-column-start: 1;
@@ -22,6 +28,10 @@
     span:last-of-type{
             grid-column-start: 11;
             text-align: right;
+            @media screen and (max-width: $small){
+                grid-column-start: 3;
+                  }
+              
       }
     }
 

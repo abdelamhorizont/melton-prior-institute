@@ -94,7 +94,7 @@ export default function Post({ data }) {
   return (
     <Layout >
       <div ref={componentRef} className={articleWrapper}>
-        <button onClick={handlePrint}>Print</button>
+        <button onClick={handlePrint}><a href="#">Print</a></button>
         <div className={topBrackets}><span>]</span><span>[</span></div>
         <div className={articleTagWrapper} >
           {tags.length > 0 ?

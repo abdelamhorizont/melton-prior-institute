@@ -143,8 +143,10 @@ const Homepage = () => {
             slidesPerView={1}
             loop={true}
             pagination={{
-              type: "fraction",
-              el: ".swiper-pagination"
+              type: "custom",
+              el: ".swiper-pagination",
+              renderCustom: function (swiper, current, total) { return current + '&frasl;' + total}
+
             }}
             navigation={{
               nextEl: ".swiper-button-next",

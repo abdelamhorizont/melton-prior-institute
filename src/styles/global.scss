@@ -2,35 +2,35 @@
 
 @font-face {
   font-family: "Kleukens Egyptienne Light";
-  src:  url('../fonts/Kleukens-EgyptienneFSL-Light.woff'),
-        url("../fonts/Kleukens-EgyptienneFSL-Light.woff2"),
-        url("../fonts/Kleukens-EgyptienneFSL-Light.eot");
+  src:  url('../fonts/Kleukens-EgyptienneFSLWeb-Light.woff'),
+        url("../fonts/Kleukens-EgyptienneFSLWeb-Light.woff2"),
+        // url("../fonts/Kleukens-EgyptienneFSLWeb-Light.eot");
   // font-weight: 400;
   // font-style: normal;
 }
 @font-face {
   font-family: "Kleukens Egyptienne Medium";
-  src:  url('../fonts/Kleukens-EgyptienneFSL-Medium.woff'),
-        url("../fonts/Kleukens-EgyptienneFSL-Medium.woff2"),
-        url("../fonts/Kleukens-EgyptienneFSL-Medium.eot");
+  src:  url('../fonts/Kleukens-EgyptienneFSLWeb-Medium.woff'),
+        url("../fonts/Kleukens-EgyptienneFSLWeb-Medium.woff2"),
+        // url("../fonts/Kleukens-EgyptienneFSLWeb-Medium.eot");
   // font-weight: 400;
   // font-style: normal;
 }
 
 @font-face {
   font-family: "Kleukens Egyptienne Book Italic";
-  src:  url('../fonts/Kleukens-EgyptienneFSL-BookItalic.woff'),
-        url("../fonts/Kleukens-EgyptienneFSL-BookItalic.woff2"),
-        url("../fonts/Kleukens-EgyptienneFSL-BookItalic.eot");
+  src:  url('../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.woff'),
+        url("../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.woff2"),
+        // url("../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.eot");
   // font-weight: 400;
   // font-style: normal;
 }
 
 @font-face {
   font-family: "Kleukens Egyptienne Bold";
-  src:  url('../fonts/Kleukens-EgyptienneFSL-Bold.woff'),
-        url("../fonts/Kleukens-EgyptienneFSL-Bold.woff2"),
-        url("../fonts/Kleukens-EgyptienneFSL-Bold.eot");
+  src:  url('../fonts/Kleukens-EgyptienneFSLWeb-Bold.woff'),
+        url("../fonts/Kleukens-EgyptienneFSLWeb-Bold.woff2"),
+        // url("../fonts/Kleukens-EgyptienneFSLWeb-Bold.eot");
   // font-weight: 400;
   // font-style: normal;
 }
@@ -56,6 +56,7 @@ h1{
 
 h1, h4, a, button, label p{
   @include ke-light;
+  font-feature-settings: "ss04";
 }
 
 p{
@@ -64,6 +65,7 @@ p{
 
 i{
   @include ke-book-italic;
+  font-feature-settings: "ss04";
 }
 
 .MsoFootnoteReference{
@@ -113,4 +115,15 @@ i{
 
 body{
   overflow-y: scroll;
+}
+
+
+button{
+  a{
+    color: rgba(0,0,0,.4);
+    
+    &:hover{
+        color: rgba(0,0,0,1);
+    }
+}
 }
