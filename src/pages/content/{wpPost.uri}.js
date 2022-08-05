@@ -84,8 +84,9 @@ export default function Post({ data }) {
   });
 
   const tags = data.wpPost.tags.nodes.map(node => node && node.name)
-  const translatedTags = data.wpPost.translations && data.wpPost.translations[0].tags.nodes.map(node => node && node.name)
+  const translatedTags = data.wpPost.translations && data.wpPost.translations[0] && data.wpPost.translations[0].tags.nodes.map(node => node && node.name)
 
+  // const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
   const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
   // let [counter, setCounter] = useState([])
@@ -102,7 +103,7 @@ export default function Post({ data }) {
               <h4>[{node}]</h4>
             ))
             :
-            translatedTags.map(node => (
+            translatedTags && translatedTags.map(node => (
               <h4>[{node}]</h4>
             ))
           }

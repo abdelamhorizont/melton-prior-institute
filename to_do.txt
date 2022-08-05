@@ -1,5 +1,5 @@
 - build
-- loghtbox bei img
+- gatsby img
 - Lightbox bildgröße
 - Search auch für Inhalte, bisher nur excerpt
 
