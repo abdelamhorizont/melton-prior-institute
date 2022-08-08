@@ -10,7 +10,7 @@ export default function Search(props) {
 
    return (
          <label className={searchBox}>
-            <p>Search</p> <div>[<input type="text" onChange={handleChange} placeholder="-O" />]</div>
+            <p>Search</p> <div>[<input type="text" onChange={handleChange} />]</div>
          </label>
          // {/* <input type="submit" value="Submit" /> */}
 

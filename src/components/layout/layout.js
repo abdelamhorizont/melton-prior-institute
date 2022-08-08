@@ -13,6 +13,8 @@ import {
   secondaryNav,
   primaryNav,
   searchResultsWrapper,
+  burgerButton,
+  menuTransition,
   home
 } from './layout.module.scss'
 
@@ -110,16 +112,19 @@ const Layout = ({ children }) => {
   return (
     <div className={layout}>
       <header>
-        <nav style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}>
+        <nav 
+        // className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}
+        >
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
+          <div className={burgerButton} id="burgerButton" onclick="document.getElementByID('burgerButton')[0].classList.toggle('active');"></div>
           <ul className={secondaryNav}>
             <li key="about"><Link to="/meta/about">About</Link></li>
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
-          {/* <div style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
+          {/* <div className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
             <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
@@ -130,14 +135,12 @@ const Layout = ({ children }) => {
         </nav>
       </header>
 
-      <div className={searchResultsWrapper}>
         {searchData}
-      </div>
 
-      <main className={home}>
+      <main>
         {searchData !== ""
           ?
-          <div>
+          <div className={searchResultsWrapper}>
             <ul>
               {
                 articles.map(edge => (
@@ -168,5 +171,9 @@ const Layout = ({ children }) => {
     </div>
   )
 }
+
+<script>
+$( "#burgerButton" ).toggleClass( "active" );
+</script>
 
 export default Layout

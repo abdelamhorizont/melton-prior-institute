@@ -25,10 +25,18 @@ import {
   articleTagWrapper,
   topBrackets,
   articleContent,
-  relatedPostsWrapper,
   lightboxImageWrapper,
   lightboxImage
 } from '../../styles/content.module.scss'
+
+import {
+  relatedPostsWrapper
+} from '../../components/layout/layout.module.scss'
+
+import {
+  articleFeature,
+  articlePictorial
+} from '../../components/article/article.module.scss'
 
 const lightboxOptions = {
   settings: {
@@ -86,7 +94,7 @@ export default function Post({ data }) {
   return (
     <Layout >
       <div ref={componentRef} className={articleWrapper}>
-        <button onClick={handlePrint}>Print</button>
+        <button onClick={handlePrint}><a href="#">Print</a></button>
         <div className={topBrackets}><span>]</span><span>[</span></div>
         <div className={articleTagWrapper} >
           {tags.length > 0 ?
@@ -172,15 +180,18 @@ export default function Post({ data }) {
         </div>
       </div>
 
-      <div className={relatedPostsWrapper}>
-        <Section title="related Posts">
+      <div>
+        <Section title="related Posts" className={relatedPostsWrapper}>
+          {/* wenn es keine related posts gibt, dieses div garnicht anzeigen, ansonsten steht am ende der seite "related Posts", aber es kommen keine Posts */}
           <ul>
             {
               relatedPosts.slice(0, 3).map(edge => (
 
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
+                    <Article path={edge.node} excerpt={true} className={articleFeature}/>
+                                    {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articlePictorial" einfügen?*/}
+
                   </li>
                 </Link>
 

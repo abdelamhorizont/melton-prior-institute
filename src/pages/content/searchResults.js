@@ -11,15 +11,20 @@ import ArticleBody from '../../components/articleBody/articleBody'
 import Article from '../../components/article/article'
 
 import {
-  articleFeature
+  articleFeature,
+  articlePictorial
 } from '../../components/article/article.module.scss'
 
 import {
   category_overview,
   tags_sidebar,
   results,
-  bracket
+  bracket,
 } from '../../styles/content.module.scss'
+
+import{
+  categoriesArticle
+} from '../../components/section/section.module.scss'
 
 export default function SearchResults() {
   const data = useStaticQuery(graphql`
@@ -70,7 +75,7 @@ export default function SearchResults() {
   return (
     <Layout childToParent={childToParent} >
     {searchData}
-    <div className={results}>
+    <div>
       <ul>
 
         {
@@ -78,7 +83,8 @@ export default function SearchResults() {
 
             <Link to={`/content${edge.node.uri}`}>
               <li key={edge.node.id}>
-                <Article path={edge.node} className={articleFeature} />
+                <Article path={edge.node} className={articleFeature}/> 
+                {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articleSection" einfügen?*/}
               </li>
             </Link>
 

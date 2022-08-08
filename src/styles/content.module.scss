@@ -18,9 +18,11 @@ html {
 
 
 .tagsSidebar{
-    width: 31.6%;
-    position: fixed;
+    // width: 31.6%;
+    // position: fixed;
     display: block;
+    grid-column-start: 1;
+    grid-column-end: 4;
 
     div{
         display:grid;
@@ -147,7 +149,9 @@ html {
         margin-top: 2*$lineHeight;
         grid-column-start: col 2;
         grid-column-end: col 10;
-        display:block;
+        display:flex;
+        flex-direction: column;
+        
         height:fit-content;
         a{
             font-size: inherit;
@@ -300,5 +304,14 @@ html {
     p{
         font-size: $fontSizeM;
         line-height: $lineHeightM;
+    }
+}
+
+
+.gallery{
+    width: 100%;
+
+    .gallery-item{
+        margin-top: $lineHeight;
     }
 }

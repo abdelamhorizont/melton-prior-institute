@@ -1,5 +1,9 @@
+$small: 620px;
+$medium: 960px;
+$large: 1280px;
+$xlarge: 2000px;
 
-
+$hoverbg-color1: #4d4d4d;
 $myColor1: whitesmoke;
 $myColor2: rgb(162, 162, 162);
 
@@ -81,16 +85,29 @@ $lineHeightXL: 1.05*$fontSizeXL;
   // background-color: $myColor1;
 }
 
+@media screen and (max-width: $small) {
+  :root, *
+  {
+  $fontSize: 0.75rem; /*14px*/
+  $fontSizeM: 1.375rem; /*22px*/
+  $fontSizeL: 1.75rem; /*28px*/
+  $fontSizeXL: 2.125rem; /*34px*/
+  
+  $lineHeight: 1.8333*$fontSize;
+  $lineHeightM: 1.21*$fontSizeM;
+  $lineHeightL: 1*$fontSizeL;
+  $lineHeightXL: 1.05*$fontSizeXL;
+  }
+}
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: $small) {
 
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: $medium) {
 
 }
 
-@media screen and (min-width: 2000px) {
-  $fontSize: 1.5rem;
+@media screen and (min-width: $large) {
 }
 
