@@ -67,7 +67,6 @@ const lightboxOptions = {
   }
 };
 
-
 export default function Post({ data }) {
 
   const componentRef = useRef();
