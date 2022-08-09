@@ -29,8 +29,7 @@ import {
 
 import {
   categoriesSection,
-  recommendedSection,
-  categoryActive
+  recommendedSection
 } from '../components/section/section.module.scss'
 
 import {
@@ -59,9 +58,8 @@ const flickityOptions = {
 
 }
 
-// const isBrowser = () => typeof window !== "undefined"
-const mobile = false
-// const mobile = isBrowser() && window.screen.width < 620
+const isBrowser = () => typeof window !== "undefined"
+const mobile = isBrowser() && window.screen.width < 620
 
 const Homepage = () => {
   const data = useStaticQuery(graphql`
@@ -199,7 +197,7 @@ const Homepage = () => {
 
       <div className={categoriesLists} id="categories">
         <Link to={!mobile ? `/content/features` : `#categories`}>
-          <Section className={mobile && category.features? `${categoriesSection} ${categoryActive}` : categoriesSection} title="Features" onClick={() => {mobile &&
+          <Section className={categoriesSection} title="Features" onClick={() => {
             setCategory({
               features: true,
               pictorials: false,
@@ -227,7 +225,7 @@ const Homepage = () => {
         </Link>
 
         <Link to={!mobile ? `/content/pictorials` : `#categories`}>
-          <Section title="Pictorials" className={mobile && category.pictorials? `${categoriesSection} ${categoryActive}` : categoriesSection} onClick={() => {mobile &&
+          <Section title="Pictorials" className={categoriesSection} onClick={() => {
             setCategory({
               features: false,
               pictorials: true,
@@ -255,7 +253,7 @@ const Homepage = () => {
         </Link>
 
         <Link to={!mobile ? `/content/collections` : `#categories`}>
-          <Section title="Collections" className={mobile && category.features? `${categoriesSection} ${categoryActive}` : categoriesSection} onClick={() => {mobile &&
+          <Section title="Collections" className={categoriesSection} onClick={() => {
             setCategory({
               features: false,
               pictorials: false,
