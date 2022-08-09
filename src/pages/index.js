@@ -57,6 +57,8 @@ const flickityOptions = {
 
 }
 
+const isBrowser = () => typeof window !== "undefined"
+const mobile = isBrowser() && window.screen.width < 620 
 
 const Homepage = () => {
   const data = useStaticQuery(graphql`
