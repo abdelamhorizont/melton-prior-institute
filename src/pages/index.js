@@ -112,8 +112,8 @@ const Homepage = () => {
   const [mobile, setMobile] = useState(false)
 
   useEffect(() => {
-    const isBrowser = () => typeof window !== "undefined"
-    setMobile(isBrowser() && window.screen.width < 620)
+    // const isBrowser = () => typeof window !== "undefined"
+    // setMobile(isBrowser() && window.screen.width < 620)
   }, [])
   
 
