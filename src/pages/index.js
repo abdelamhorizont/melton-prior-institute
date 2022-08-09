@@ -5,9 +5,6 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Keyboard, EffectFade } from 'swiper';
 
-import Flickity from 'react-flickity-component'
-// import fade from 'flickity-fade'
-
 import Layout from '../components/layout/layout'
 import Section from '../components/section/section'
 import Article from '../components/article/article'
@@ -38,28 +35,12 @@ import {
   recommendedArticle
 } from '../components/article/article.module.scss'
 
-
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import 'swiper/css/scrollbar';
 import '../styles/swiper.scss';
-
-const flickityOptions = {
-  fade: true,
-  initialIndex: 2,
-  wrapAround: true,
-  draggable: false,
-  pageDots: true,
-  adaptiveHeight: true,
-  accessibility: true,
-  setGallerySize: true
-
-}
-
-// const mobile = isBrowser() && window.screen.width < 620
 
 const Homepage = () => {
   const data = useStaticQuery(graphql`
@@ -128,12 +109,13 @@ const Homepage = () => {
     }
     `)
 
+  const [mobile, setMobile] = useState(false)
+
   useEffect(() => {
+    const isBrowser = () => typeof window !== "undefined"
+    setMobile(isBrowser() && window.screen.width < 620)
   }, [])
   
-  const isBrowser = () => typeof window !== "undefined"
-  const mobile = isBrowser() && window.screen.width < 620
-
 
   const articles = data.allWpPost.edges.filter(edge =>
     edge.node.language.code === "EN"
