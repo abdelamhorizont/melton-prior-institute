@@ -11,7 +11,7 @@ import {
 
 import '../../styles/swiper.scss';
 
-const Section = ({ children, title, className }) => {
+const Section = ({ children, title, className, onClick }) => {
     // const data = useStaticQuery(graphql`
     // query {
     //     site {
@@ -23,7 +23,7 @@ const Section = ({ children, title, className }) => {
     // `)
 
     return (
-        <div className={className}>
+        <div className={className} onClick={onClick}>
                 <h2>{title}</h2>
                <span>]</span>
                 <span>[</span>

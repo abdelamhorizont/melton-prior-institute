@@ -1,45 +1,46 @@
 @import "../../styles/typo.module.scss";
 
 
-.layout{
-// display:grid;
-height: 100vh;
+.layout {
+    // display:grid;
+    height: 100vh;
 }
 
 
 
 
-header{
-    background-color:#fff;
-    z-index:10000;
-    width:100%;
+header {
+    background-color: #fff;
+    z-index         : 10000;
+    width           : 100%;
     // margin-bottom: 2*$lineHeight !important;
-    position:fixed;
-    top: 0;
+    position        : fixed;
+    top             : 0;
     // height: 8*$lineHeight;
 
 
-    nav{
-        display: grid;
+    nav {
+        display              : grid;
         grid-template-columns: repeat(12, 1fr [col]);
-        grid-template-rows: repeat(5, $lineHeight [row]);
-        column-gap: $lineHeight;
-        width: 100%;
-        padding: 0 1*$lineHeight;
-        box-sizing: border-box;
-        @media screen and (max-width: $small){
+        grid-template-rows   : repeat(5, $lineHeight [row]);
+        column-gap           : $lineHeight;
+        width                : 100%;
+        padding              : 0 1*$lineHeight;
+        box-sizing           : border-box;
+
+        @media screen and (max-width: $small) {
             grid-template-columns: repeat(3, 1fr [col]);
-            grid-template-rows: repeat(3, $lineHeight [row]);
-            margin-top: $lineHeight;
-            row-gap: 1*$lineHeight;
-            max-width: 100vw;
+            grid-template-rows   : repeat(3, $lineHeight [row]);
+            margin-top           : $lineHeight;
+            row-gap              : 1*$lineHeight;
+            max-width            : 100vw;
 
         }
- 
+
     }
 
 
-    
+
 
 }
 
@@ -47,193 +48,227 @@ header{
 
 
 
-a{
+a {
     transition: all 0.5s;
 }
 
 
-.brand{
-    white-space: nowrap;
-    grid-column-start: 1 ;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    a{
+.brand {
+    white-space      : nowrap;
+    grid-column-start: 1;
+    grid-column-end  : 3;
+    grid-row-start   : 2;
+
+    a {
         @include ke-bold;
         font-feature-settings: "ss04";
     }
 
-    @media screen and (max-width: $small){
-        grid-row-start:2;
-        a{
-            font-size: 1.5rem}
+    @media screen and (max-width: $small) {
+        grid-row-start: 2;
+
+        a {
+            font-size: 1.5rem
+        }
     }
 }
 
-ul.secondaryNav{
-    grid-column-start: 10; 
-    grid-column-end: 13;
-    grid-row-start: 2;
+ul.secondaryNav {
+    grid-column-start: 10;
+    grid-column-end  : 13;
+    grid-row-start   : 2;
 
- 
 
-    @media screen and (max-width: $small){
+
+    @media screen and (max-width: $small) {
         grid-column-start: 1;
-        grid-column-end: 4;
-        grid-row-start: 1;
-        li{ display : flex;
-            a{align-self: flex-end}}
-        
+        grid-column-end  : 4;
+        grid-row-start   : 1;
+
+        li {
+            display: flex;
+
+            a {
+                align-self: flex-end
+            }
+        }
+
     }
 }
 
-div.menuTransition{
-    grid-column-start: 1;
-    grid-column-end: 13;
-    grid-row-start: 4;
-    column-gap: $lineHeight;
-    display: grid;
+div.menuTransition {
+    grid-column-start    : 1;
+    grid-column-end      : 13;
+    grid-row-start       : 4;
+    column-gap           : $lineHeight;
+    display              : grid;
     grid-template-columns: repeat(12, 1fr [col]);
-    width: 100%;
+    width                : 100%;
 
 
 }
 
-ul.categories{
+ul.categories {
     grid-column-start: 5;
-    grid-column-end: 9;
-    grid-row-start: 4;
-    li{
+    grid-column-end  : 9;
+    grid-row-start   : 4;
+
+    li {
         text-align: center;
     }
-    li:first-of-type{
+
+    li:first-of-type {
         text-align: left;
     }
-    li:last-of-type{
+
+    li:last-of-type {
         text-align: right;
     }
-    @media screen and (max-width: $small){
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 3;
+
+    @media screen and (max-width: $small) {
+        grid-column-start: 1;
+        grid-column-end  : 4;
+        grid-row-start   : 3;
     }
-    
+
 }
 
-.searchBox{
+.searchBox {
     grid-column-start: 10;
-    grid-column-end:13;
-    grid-row-start: 4;
-    div{
-        background-image: url('../../graphics/search_icon_v001.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-x: 60%;
-        height: 0.8*$lineHeight;
-        transition: all 0.5s;
+    grid-column-end  : 13;
+    grid-row-start   : 4;
 
-        &:focus-within{
+    div {
+        background-image     : url('../../graphics/search_icon_v001.svg');
+        background-size      : contain;
+        background-repeat    : no-repeat;
+        background-position-x: 60%;
+        height               : 0.8*$lineHeight;
+        transition           : all 0.5s;
+
+        &:focus-within {
             background-position-x: 5%;
         }
     }
-    @media screen and (max-width: $small){
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 4;
+
+    @media screen and (max-width: $small) {
+        grid-column-start: 1;
+        grid-column-end  : 4;
+        grid-row-start   : 4;
     }
 
-    p{
-        cursor:help;
+    p {
+        cursor: help;
 
     }
-    div{
+
+    div {
         grid-column-start: 2;
-        grid-column-end: 4;
-        cursor:help;
-        opacity: 0.6;
-        &:hover{
+        grid-column-end  : 4;
+        cursor           : help;
+        opacity          : 0.6;
+
+        &:hover {
             opacity: 1;
         }
     }
 
-    div:last-of-type{
-        padding: 0 !important;
+    div:last-of-type {
+        padding  : 0 !important;
         flex-grow: 1;
-        display:flex;
-        input{
-            width: 100%;
+        display  : flex;
+
+        input {
+            width  : 100%;
             padding: 0 0.25*$lineHeight 0 1.3*$lineHeight;
         }
     }
 }
-.searchResultsWrapper, .relatedPostsWrapper{
-    // display: grid;
-        ul{
-            display: grid;
-            grid-template-columns: repeat(12, 1fr [col]);
-            column-gap: 1*$lineHeight;
-            a{
-                grid-column-start: 3;
-                grid-column-end: 11;
-            }
 
+.searchResultsWrapper,
+.relatedPostsWrapper {
+
+    // display: grid;
+    ul {
+        display              : grid;
+        grid-template-columns: repeat(12, 1fr [col]);
+        column-gap           : 1*$lineHeight;
+
+        a {
+            grid-column-start: 3;
+            grid-column-end  : 11;
         }
+
+    }
 }
 
-.relatedPostsWrapper{
+.relatedPostsWrapper {
     grid-template-columns: repeat(12, 1fr [col]);
-    grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
-    display: grid;
-    ul{
-    grid-column-start: 1;
-    grid-column-end: 13;
+    grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto;
+    display              : grid;
+
+    ul {
+        grid-column-start: 1;
+        grid-column-end  : 13;
     }
+
     h2 {
         grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: row 1;
+        grid-column-end  : 2;
+        grid-row-start   : row 1;
     }
-    span{
+
+    span {
         grid-row-start: row 2;
     }
-    span:first-of-type{
-            grid-column-start: 2;
+
+    span:first-of-type {
+        grid-column-start: 2;
     }
-    span:last-of-type{
-            grid-column-start: 11;
-            text-align: right;
-            @media screen and (max-width: $small){
-                grid-column-start: 3;
-                  }
-              
-      }
+
+    span:last-of-type {
+        grid-column-start: 11;
+        text-align       : right;
+
+        @media screen and (max-width: $small) {
+            grid-column-start: 3;
+        }
+
+    }
 }
 
-label:focus-within{
-    p, div {
+label:focus-within {
+
+    p,
+    div {
         @include ke-medium;
         opacity: 1;
     }
 }
-input[type=text]{
+
+input[type=text] {
     margin-top: -5px;
 }
 
-ul.secondaryNav, ul.categories, .searchBox{
-    display: grid;
+ul.secondaryNav,
+ul.categories,
+.searchBox {
+    display              : grid;
     grid-template-columns: repeat(3, 1fr [col]);
-    column-gap: inherit;
+    column-gap           : inherit;
 
 
-    li{
-        a[aria-current]{
+    li {
+        a[aria-current] {
             @include ke-medium;
-            color: rgba(0,0,0,1);
+            color: rgba(0, 0, 0, 1);
         }
-        a{
-            color: rgba(0,0,0,.4);
-            
-            &:hover{
-                color: rgba(0,0,0,1);
+
+        a {
+            color: rgba(0, 0, 0, .4);
+
+            &:hover {
+                color: rgba(0, 0, 0, 1);
             }
         }
     }
@@ -242,56 +277,62 @@ ul.secondaryNav, ul.categories, .searchBox{
 
 
 
-footer{
+footer {
     // position: relative;
     // bottom: 0;
-    padding: 0 $lineHeight !important;
-    box-sizing: border-box;
-    margin-top: 2*$lineHeight !important;
-    width: 100%;
-    display: grid !important;
+    padding              : 0 $lineHeight !important;
+    box-sizing           : border-box;
+    margin-top           : 2*$lineHeight !important;
+    width                : 100%;
+    display              : grid !important;
     grid-template-columns: repeat(12, 1fr);
-    column-gap: $lineHeight;
-    height: fit-content;
+    column-gap           : $lineHeight;
+    height               : fit-content;
 
-    ul{
-       grid-column-start: 10;
-       grid-column-end: 13;
-       display: grid;
-       grid-template-columns: repeat(3, 1fr);
-       column-gap: inherit;
-       grid-auto-flow: column;
-        li{
+    ul {
+        grid-column-start    : 10;
+        grid-column-end      : 13;
+        display              : grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap           : inherit;
+        grid-auto-flow       : column;
+
+        li {
             height: 3*$lineHeight;
-            a{
+
+            a {
                 opacity: 0.4;
-            &:hover{
-                opacity: 1;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
-            }
-            
+
         }
     }
 }
 
-.active{
+.active {
     grid-row-start: 2;
 }
-.burgerButton{
-    z-index: 50000;
-    transition: all 0.5s;
-    display: none;
-    grid-column-start: 3;
-    grid-row-start: 1;
-    grid-column-end: 3;
-    background-repeat: no-repeat;
+
+.burgerButton {
+    z-index              : 50000;
+    transition           : all 0.5s;
+    display              : none;
+    grid-column-start    : 3;
+    grid-row-start       : 1;
+    grid-column-end      : 3;
+    background-repeat    : no-repeat;
     background-position-x: right;
     background-position-y: center;
-    background-image: url("data:image/svg+xml,%3Csvg width='21' height='14' viewBox='0 0 21 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='21' y1='3.5' x2='-2.69982e-08' y2='3.5' stroke='black'/%3E%3Cpath d='M0.5 3.5V0.5M20.5 3.5V0.5' stroke='black'/%3E%3Cline x1='21' y1='8.5' x2='-2.69982e-08' y2='8.5' stroke='black'/%3E%3Cline x1='21' y1='13.5' x2='-2.69982e-08' y2='13.5' stroke='black'/%3E%3C/svg%3E%0A");
-    &:hover{
+    background-image     : url("data:image/svg+xml,%3Csvg width='21' height='14' viewBox='0 0 21 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='21' y1='3.5' x2='-2.69982e-08' y2='3.5' stroke='black'/%3E%3Cpath d='M0.5 3.5V0.5M20.5 3.5V0.5' stroke='black'/%3E%3Cline x1='21' y1='8.5' x2='-2.69982e-08' y2='8.5' stroke='black'/%3E%3Cline x1='21' y1='13.5' x2='-2.69982e-08' y2='13.5' stroke='black'/%3E%3C/svg%3E%0A");
+
+    &:hover {
         background-image: url("data:image/svg+xml,%3Csvg width='16' height='15' viewBox='0 0 16 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline y1='-0.625' x2='19.4883' y2='-0.625' transform='matrix(-0.718343 0.695689 -0.135526 -0.990774 14.9993 0)' stroke='black' stroke-width='1.25'/%3E%3Cline y1='-0.625' x2='19.4883' y2='-0.625' transform='matrix(-0.718343 -0.695689 0.135526 -0.990774 14.9993 13.5579)' stroke='black' stroke-width='1.25'/%3E%3C/svg%3E%0A");
     }
-    @media screen and (max-width: $small){
+
+    @media screen and (max-width: $small) {
         display: block;
-        }
+    }
 }

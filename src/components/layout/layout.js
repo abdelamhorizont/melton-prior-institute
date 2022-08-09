@@ -15,7 +15,8 @@ import {
   searchResultsWrapper,
   burgerButton,
   menuTransition,
-  home
+  home,
+  active
 } from './layout.module.scss'
 
 const Layout = ({ children }) => {
@@ -89,6 +90,7 @@ const Layout = ({ children }) => {
 
   const [scrollPos, setScrollPos] = useState(0)
   const [showNav, setShowNav] = useState(true)
+  const [burgerBottonActive, setBurgerBottonActive] = useState(false)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -118,7 +120,7 @@ const Layout = ({ children }) => {
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
-          <div className={burgerButton} id="burgerButton" onclick="document.getElementByID('burgerButton')[0].classList.toggle('active');"></div>
+          <div className={burgerBottonActive? `${burgerButton} ${active}` : burgerButton} id="burgerButton" onClick={() => setBurgerBottonActive(!burgerBottonActive)}></div>
           <ul className={secondaryNav}>
             <li key="about"><Link to="/meta/about">About</Link></li>
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>

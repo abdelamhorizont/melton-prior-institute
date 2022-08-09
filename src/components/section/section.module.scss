@@ -1,84 +1,90 @@
 @import "../../styles/typo.module.scss";
 
 
-.recommendedSection{
-    display: grid;
+.recommendedSection {
+    display              : grid;
     grid-template-columns: repeat(12, minmax(0, 1fr) [col]);
-    grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
-    column-gap: $lineHeight;
-    @media screen and (max-width: $small){
+    grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto;
+    column-gap           : $lineHeight;
+
+    @media screen and (max-width: $small) {
         grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
 
 
     }
 
 
-    h2, .sectionTitle{
+    h2,
+    .sectionTitle {
         grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: row 1;
-    
+        grid-column-end  : 2;
+        grid-row-start   : row 1;
+
     }
-    span{
+
+    span {
         grid-row-start: row 2;
     }
-    span:first-of-type{
-            grid-column-start: 2;
-    }
-    span:last-of-type{
-            grid-column-start: 11;
-            text-align: right;
-            @media screen and (max-width: $small){
-                grid-column-start: 3;
-                  }
-              
-      }
+
+    span:first-of-type {
+        grid-column-start: 2;
     }
 
+    span:last-of-type {
+        grid-column-start: 11;
+        text-align       : right;
 
-.categoriesSection:last-of-type{
+        @media screen and (max-width: $small) {
+            grid-column-start: 3;
+        }
+
+    }
+}
+
+
+.categoriesSection:last-of-type {
     margin-right: 0;
 }
-    .categoriesSection{
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr) [col]);
-        grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto [row] $lineHeight [row] $lineHeight;
-        column-gap: $lineHeight;
-        margin-right: $lineHeight;
-        
-        h2{
-            grid-column-start: 1;
-            grid-column-end: 2;
-            grid-row-start: row 1;
-        
-        }
-        span{
-            grid-row-start: row 2;
-        }
-        span:first-of-type{
-                grid-column-start: 2;
-        }
-        span:last-of-type{
-                grid-column-start: 4;
-                grid-row-start: 4;
-          }
 
-          ul{
-              grid-column-start: 1;
-              grid-column-end: 5;
-              grid-row-start: 3;
-              
-              li{
-                padding: 0.5*$lineHeight;
-                box-sizing: border-box;
-              }
-          }
+.categoriesSection {
+    display              : grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr) [col]);
+    grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto [row] $lineHeight [row] $lineHeight;
+    column-gap           : $lineHeight;
+    margin-right         : $lineHeight;
 
+    h2 {
+        grid-column-start: 1;
+        grid-column-end  : 2;
+        grid-row-start   : row 1;
 
-        
     }
 
-    
+    span {
+        grid-row-start: row 2;
+    }
 
+    span:first-of-type {
+        grid-column-start: 2;
+    }
 
+    span:last-of-type {
+        grid-column-start: 4;
+        grid-row-start   : 4;
+    }
+
+    ul {
+        grid-column-start: 1;
+        grid-column-end  : 5;
+        grid-row-start   : 3;
+
+        li {
+            padding   : 0.5*$lineHeight;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.categoryActive{
     
+}
