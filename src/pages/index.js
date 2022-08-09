@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useState } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -58,8 +57,6 @@ const flickityOptions = {
 
 }
 
-const isBrowser = () => typeof window !== "undefined"
-const mobile = isBrowser() && window.screen.width < 620
 
 const Homepage = () => {
   const data = useStaticQuery(graphql`
@@ -134,19 +131,12 @@ const Homepage = () => {
 
   const collectionTitles = data.allWpCategory.nodes[0].wpChildren.nodes
 
-
-  const [category, setCategory] = useState({
-    features: true,
-    pictorials: false,
-    collections: false
-  })
-
   return (
     <Layout>
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
-          <div className="swiper-button-prev">&lt;</div>
-          <div className="swiper-button-next">&gt;</div>
+        <div className="swiper-button-prev">&lt;</div>
+        <div className="swiper-button-next">&gt;</div>
           <Swiper className="my-swiper"
             modules={[Navigation, A11y, Keyboard, Pagination, EffectFade]}
             // effect={"fade"}
@@ -156,7 +146,7 @@ const Homepage = () => {
             pagination={{
               type: "custom",
               el: ".swiper-pagination",
-              renderCustom: function (swiper, current, total) { return current + '&frasl;' + total }
+              renderCustom: function (swiper, current, total) { return current + '&frasl;' + total}
 
             }}
             navigation={{
@@ -190,20 +180,14 @@ const Homepage = () => {
                 ))
             }
 
+
           </Swiper>
           <div className="swiper-pagination"></div>
         </Section >
       </div >
-
-      <div className={categoriesLists} id="categories">
-        <Link to={!mobile ? `/content/features` : `#categories`}>
-          <Section className={categoriesSection} title="Features" onClick={() => {
-            setCategory({
-              features: true,
-              pictorials: false,
-              collections: false
-            })
-          }}>
+      <div className={categoriesLists}>
+        <Link to={`/content/features`}>
+          <Section className={categoriesSection} title="Features">
             <ul>
               {
                 articles.filter(edge => (
@@ -224,14 +208,8 @@ const Homepage = () => {
           </Section>
         </Link>
 
-        <Link to={!mobile ? `/content/pictorials` : `#categories`}>
-          <Section title="Pictorials" className={categoriesSection} onClick={() => {
-            setCategory({
-              features: false,
-              pictorials: true,
-              collections: false
-            })
-          }}>
+        <Link to={`/content/pictorials`}>
+          <Section title="Pictorials" className={categoriesSection}>
             <ul>
               {
                 articles.filter(edge => (
@@ -252,14 +230,8 @@ const Homepage = () => {
           </Section>
         </Link>
 
-        <Link to={!mobile ? `/content/collections` : `#categories`}>
-          <Section title="Collections" className={categoriesSection} onClick={() => {
-            setCategory({
-              features: false,
-              pictorials: false,
-              collections: true
-            })
-          }}>
+        <Link to={`/content/collections`}>
+          <Section title="Collections" className={categoriesSection}>
             <ul className={collectionsColumn}>
               {/* {
                 articles.filter(edge => (
