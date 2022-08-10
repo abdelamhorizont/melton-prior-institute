@@ -111,10 +111,10 @@ const Homepage = () => {
 
   const [mobile, setMobile] = useState(false)
 
-  useEffect(() => {
-    // const isBrowser = () => typeof window !== "undefined"
-    // setMobile(typeof window !== "undefined" && window.screen.width < 620)
-  }, [])
+  // useEffect(() => {
+  //   const isBrowser = () => typeof window !== "undefined"
+  //   setMobile(isBrowser() && window.screen.width < 620)
+  // }, [])
   
 
   const articles = data.allWpPost.edges.filter(edge =>
