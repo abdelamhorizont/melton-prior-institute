@@ -113,7 +113,7 @@ const Homepage = () => {
 
   useEffect(() => {
     // const isBrowser = () => typeof window !== "undefined"
-    setMobile(typeof window !== "undefined" && window.screen.width < 620)
+    // setMobile(typeof window !== "undefined" && window.screen.width < 620)
   }, [])
   
 
