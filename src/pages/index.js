@@ -111,11 +111,11 @@ const Homepage = () => {
 
   const [mobile, setMobile] = useState(false)
 
-  useEffect(() => {
-    const isBrowser = () => typeof window !== "undefined"
-    setMobile(isBrowser() && window.screen.width < 620)
-  }, [])
-  
+  React.useEffect(() => {
+    const isBrowser = () => typeof window !== `undefined`
+    setMobile(isBrowser() && window.screen.width < 620 ? true : false)
+  }, []);
+
 
   const articles = data.allWpPost.edges.filter(edge =>
     edge.node.language.code === "EN"
@@ -187,11 +187,11 @@ const Homepage = () => {
         <Link to={!mobile ? `/content/features` : `#categories`}>
           <Section className={mobile && category.features ? `${categoriesSection} ${categoryActive}` : categoriesSection} title="Features" onClick={() => {
             mobile &&
-            setCategory({
-              features: true,
-              pictorials: false,
-              collections: false
-            })
+              setCategory({
+                features: true,
+                pictorials: false,
+                collections: false
+              })
           }}>
             <ul>
               {
@@ -216,11 +216,11 @@ const Homepage = () => {
         <Link to={!mobile ? `/content/pictorials` : `#categories`}>
           <Section title="Pictorials" className={mobile && category.pictorials ? `${categoriesSection} ${categoryActive}` : categoriesSection} onClick={() => {
             mobile &&
-            setCategory({
-              features: false,
-              pictorials: true,
-              collections: false
-            })
+              setCategory({
+                features: false,
+                pictorials: true,
+                collections: false
+              })
           }}>
             <ul>
               {
@@ -245,11 +245,11 @@ const Homepage = () => {
         <Link to={!mobile ? `/content/collections` : `#categories`}>
           <Section title="Collections" className={mobile && category.features ? `${categoriesSection} ${categoryActive}` : categoriesSection} onClick={() => {
             mobile &&
-            setCategory({
-              features: false,
-              pictorials: false,
-              collections: true
-            })
+              setCategory({
+                features: false,
+                pictorials: false,
+                collections: true
+              })
           }}>
             <ul className={collectionsColumn}>
               {/* {
