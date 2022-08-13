@@ -19,6 +19,12 @@ import {
   active
 } from './layout.module.scss'
 
+import {
+  articleFeature,
+  articlePictorial
+} from '../../components/article/article.module.scss'
+
+
 const Layout = ({ children }) => {
   const query = useStaticQuery(graphql`
     query {
@@ -149,8 +155,7 @@ const Layout = ({ children }) => {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} excerpt={true} />
-                      {/* <div dangerouslySetInnerHTML={{ __html: edge.node.content }} /> */}
+                      <Article path={edge.node} excerpt={true} className={articleFeature}/>
                     </li>
                   </Link>
 

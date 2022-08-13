@@ -115,7 +115,7 @@ export default function Post({ data }) {
               parse(data.wpPost.content, {
                 replace: domNode => {
                   let reg = /(\[\d+\])/g
-                  if (domNode.name && domNode.name.includes("picture")) {
+                  if (domNode.name && domNode.name.includes("picture") && domNode.name.includes("figure")) {
                     const props = attributesToProps(domNode.attribs);
                     // console.log(domNode.children[2])
                     return (
