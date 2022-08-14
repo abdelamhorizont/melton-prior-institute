@@ -38,42 +38,6 @@ import {
   articlePictorial
 } from '../../components/article/article.module.scss'
 
-const lightboxOptions = {
-  settings: {
-    overlayColor: "rgb(0, 0, 0, 0.2)",
-    autoplaySpeed: 1500,
-    transitionSpeed: 900,
-    disableWheelControls: true,
-    lightboxTransitionTimingFunction: "backInOut",
-    disablePanzoom: true,
-  },
-  buttons: {
-    backgroundColor: "rgba(126, 172, 139, 0)",
-    iconColor: "rgb(0,0,0)",
-    showAutoplayButton: false,
-    showCloseButton: true,
-    showDownloadButton: false,
-    showFullscreenButton: true,
-    showThumbnailsButton: false,
-  },
-  caption: {
-    captionColor: "#a6cfa5",
-    captionFontFamily: "Raleway, sans-serif",
-    captionFontWeight: "300",
-    captionTextTransform: "uppercase",
-  },
-  thumbnails: {
-    showThumbnails: true,
-    thumbnailsAlignment: 'center',
-    thumbnailsContainerBackgroundColor: 'transparent',
-    thumbnailsContainerPadding: '10px',
-    thumbnailsGap: '0 10px',
-    thumbnailsIconColor: '#ffffff',
-    thumbnailsOpacity: 1,
-    thumbnailsPosition: 'bottom',
-    thumbnailsSize: ['400px', 'auto']
-  }
-};
 
 export default function Post({ data }) {
 
@@ -85,10 +49,8 @@ export default function Post({ data }) {
   const tags = data.wpPost.tags.nodes.map(node => node && node.name)
   const translatedTags = data.wpPost.translations && data.wpPost.translations[0] && data.wpPost.translations[0].tags.nodes.map(node => node && node.name)
 
-  // const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name) || translatedTags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
   const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
-  // let [counter, setCounter] = useState([])
   let counter = []
 
   return (
@@ -115,7 +77,7 @@ export default function Post({ data }) {
               parse(data.wpPost.content, {
                 replace: domNode => {
                   let reg = /(\[\d+\])/g
-                  if (domNode.name && domNode.name.includes("picture") && domNode.name.includes("figure")) {
+                  if (domNode.name && domNode.name.includes("picture")) {
                     const props = attributesToProps(domNode.attribs);
                     // console.log(domNode.children[2])
                     return (
@@ -141,30 +103,30 @@ export default function Post({ data }) {
                     )
                   } else if (domNode.data && domNode.data.match(reg)) {
                     const text = domNode.data.split(reg)
-                    // setCounter([text.filter(text => text.match(reg))])
                     const footNote = text.filter(text => text.match(reg))
-                    if(!counter.includes(footNote[0])){
+                    if (!counter.includes(footNote[0])) {
                       counter.push(footNote[0])
                       return (
                         <>
                           {
                             text.map(text => text.match(reg) ?
-                            <a href={"#" + text}>
-                               <span id={"ref" +text} className="MsoFootnoteReference">{text}</span> </a>
-                            :
-                            text
+                              <a href={"#" + text}>
+                                <span id={"ref" + text} className="MsoFootnoteReference">{text}</span> 
+                              </a>
+                              :
+                              text
                             )
                           }
                         </>
                       )
-                    } else{
+                    } else {
                       return (
                         <>
                           {
                             text.map(text => text.match(reg) ?
-                            <a href={"#ref" + text}> <span id={text} className="MsoFootnoteReference">{text}</span> </a>
-                            :
-                            text
+                              <a href={"#ref" + text}> <span id={text} className="MsoFootnoteReference">{text}</span> </a>
+                              :
+                              text
                             )
                           }
                         </>
@@ -176,30 +138,32 @@ export default function Post({ data }) {
             }
           </Gallery>
 
-          {/* <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} srl_gallery_image="true" /> */}
+          <div>
+            {/* data.wpMediaItem */}
+          </div>
+
         </div>
       </div>
 
-      <div>
-        <Section title="related Posts" className={relatedPostsWrapper}>
-          {/* wenn es keine related posts gibt, dieses div garnicht anzeigen, ansonsten steht am ende der seite "related Posts", aber es kommen keine Posts */}
-          <ul>
-            {
-              relatedPosts.slice(0, 3).map(edge => (
+      {relatedPosts.length > 0 &&
+        <div>
+          <Section title="related Posts" className={relatedPostsWrapper}>
+            <ul>
+              {
+                relatedPosts.slice(0, 3).map(edge => (
 
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} className={articleFeature}/>
-                                    {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articlePictorial" einfügen?*/}
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                      <Article path={edge.node} excerpt={true} className={articleFeature} />
+                    </li>
+                  </Link>
 
-                  </li>
-                </Link>
-
-              ))
-            }
-          </ul>
-        </Section>
-      </div>
+                ))
+              }
+            </ul>
+          </Section>
+        </div>
+      }
 
     </Layout>
   )
@@ -234,6 +198,14 @@ query ($id: String) {
         nodes {
           name
         }
+      }
+    }
+  }
+  wpMediaItem (id: {eq: $id}) {
+    localFile {
+      name
+      childImageSharp {
+        gatsbyImageData
       }
     }
   }

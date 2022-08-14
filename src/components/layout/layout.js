@@ -98,7 +98,7 @@ const Layout = ({ children }) => {
   const [showNav, setShowNav] = useState(true)
   const [burgerBottonActive, setBurgerBottonActive] = useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener("scroll", handleScroll);
 
