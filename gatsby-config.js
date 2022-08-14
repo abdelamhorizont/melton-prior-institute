@@ -25,7 +25,7 @@ module.exports = {
             }
           },
           Post: {
-            limit: 400
+            limit: 600
           }
           //     process.env.NODE_ENV === `development`
           //       ? // Lets just pull fewer posts in development to make it easy on ourselves.
