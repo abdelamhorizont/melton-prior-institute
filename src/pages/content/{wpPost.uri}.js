@@ -201,14 +201,6 @@ query ($id: String) {
       }
     }
   }
-  wpMediaItem (id: {eq: $id}) {
-    localFile {
-      name
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
-  }
   allImageSharp(limit: 10) {
     nodes {
       gatsbyImageData(layout: FIXED)
