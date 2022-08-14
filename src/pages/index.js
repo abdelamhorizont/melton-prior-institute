@@ -51,6 +51,15 @@ const Homepage = () => {
             nodes {
               name
               uri
+              posts {
+                nodes {
+                  featuredImage {
+                    node {
+                      url
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -255,8 +264,7 @@ const Homepage = () => {
               {
                 collectionTitles.map(node =>
                   <Link to={`/content${node.uri}`}>
-                    <li key={node.name} className={collectionsArticle}>
-                    {/* <li key={node.name} className={collectionsArticle} style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}> */}
+                    <li key={node.name} className={collectionsArticle} style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}>
                       <h1>{node.name}</h1>
                     </li>
                   </Link>
