@@ -68,12 +68,12 @@ const Article = (props) => {
                   </div></>
             }
             <div className={languagesWrapper}>
-               {props.path.language && props.path.translations.length > 0 &&
+               {props.path.language && 
                   <Link to={`/content${props.path.uri}`}>
                      <button>{props.path.language.code}</button>
                   </Link>
                }
-               {props.path.translations && props.path.translations.length > 0 &&
+               {props.path.translations && 
                   props.path.translations.map(node =>
                      node.language &&
                      <Link to={`/content${node.uri}`}>
