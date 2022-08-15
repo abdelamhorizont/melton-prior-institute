@@ -22,7 +22,7 @@ import {
   bracket,
 } from '../../styles/content.module.scss'
 
-import{
+import {
   categoriesArticle
 } from '../../components/section/section.module.scss'
 
@@ -65,33 +65,34 @@ export default function SearchResults() {
   const [searchData, setSearchData] = useState('');
 
   const childToParent = (childdata) => {
-   setSearchData(childdata);
+    setSearchData(childdata);
   }
-  
+
   const articles = data.allWpPost.edges.filter(edge =>
     edge.node.title.toLowerCase().includes(searchData)
   )
 
   return (
-    <Layout childToParent={childToParent} >
-    {searchData}
-    <div>
-      <ul>
+    <Layout childToParent={childToParent}>
+      <div>
+        <div> Search results for {searchData}
+        </div>
+        <ul>
+          {
+            articles.map(edge => (
 
-        {
-          articles.map(edge => (
+              <Link to={`/content${edge.node.uri}`}>
+                <li key={edge.node.id}>
+                  <Article path={edge.node} className={articleFeature} />
+                  {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articleSection" einfügen?*/}
+                </li>
+              </Link>
 
-            <Link to={`/content${edge.node.uri}`}>
-              <li key={edge.node.id}>
-                <Article path={edge.node} className={articleFeature}/> 
-                {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articleSection" einfügen?*/}
-              </li>
-            </Link>
-
-          ))
-        }
-      </ul>
-    </div>
+            ))
+          }
+        </ul>
+      </div>
     </Layout>
   )
 }
+

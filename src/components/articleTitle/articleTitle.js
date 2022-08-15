@@ -12,20 +12,14 @@ const ArticleTitle = (props) => {
         return (
             <>
                 <div className={articleMeta}>
-
-                    {props.path.autor && props.path.autor.autor != null ?
-                        <h4>{props.path.autor.autor}]</h4> :
-                        <h4>{props.path.author.node.name}]</h4>
+                    {props.path.autor?.autor &&
+                        <h4>{props.path.autor.autor}]</h4>
                     }
                     <h4>[{props.path.date}</h4>
-                    
-
-                    
-                    
                 </div>
                 <h1>{props.path.title}</h1>
-                </>
-                )
+            </>
+        )
     } else {
         return (
             null

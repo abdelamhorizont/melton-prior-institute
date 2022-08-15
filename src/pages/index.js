@@ -51,6 +51,15 @@ const Homepage = () => {
             nodes {
               name
               uri
+              posts {
+                nodes {
+                  featuredImage {
+                    node {
+                      url
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -202,7 +211,7 @@ const Homepage = () => {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} className={categoriesArticle} />
+                      <Article excerpt={true}  path={edge.node} className={categoriesArticle} />
                     </li>
                   </Link>
 
@@ -231,7 +240,7 @@ const Homepage = () => {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} className={categoriesArticle} />
+                      <Article excerpt={true}  path={edge.node} className={categoriesArticle} />
                     </li>
                   </Link>
 
@@ -252,24 +261,10 @@ const Homepage = () => {
               })
           }}>
             <ul className={collectionsColumn}>
-              {/* {
-                articles.filter(edge => (
-                  edge.node.categories.nodes[0] &&
-                  edge.node.categories.nodes[0].name === "collections"
-                )).slice(0, 3).map(edge => (
-
-                  <Link to={`/content${edge.node.uri}`}>
-                    <li key={edge.node.id}>
-                      <Article path={edge.node} className={categoriesArticle}/>
-                    </li>
-                  </Link>
-
-                ))
-              } */}
               {
                 collectionTitles.map(node =>
                   <Link to={`/content${node.uri}`}>
-                    <li key={node.name} className={collectionsArticle}>
+                    <li key={node.name} className={collectionsArticle} style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}>
                       <h1>{node.name}</h1>
                     </li>
                   </Link>

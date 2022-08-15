@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -23,13 +24,19 @@ import {
  
 
 const Article = (props) => {
+   const [category, setCategory] = useState()
 
+   React.useEffect(() => {
+      setCategory(
+         props.path.categories.nodes.some(node => node.name.includes("features")) && articleFeature ||
+         props.path.categories.nodes.some(node => node.name.includes("pictorial")) && articlePictorial 
+      )
+   }, [])
+   
    return (
-      <div 
-      className={props.className ? props.className : { article }} 
-   // Hier muss irgendwas geändert werden. In searchResults.js und {wp.Post.uri}.js wird ein ClassName vergeben, dieser kommt im HTML aber als "[object Object]" raus? 
-      // className={articleFeature} 
-      >
+      // <div className={props.className ? props.className : article }> 
+      <div className={props.className ? `${props.className} ${category}` : article }> 
+
          <div className={thumbnail}>
             {
                props.path.featuredImage && props.path.featuredImage.node.localFile && props.path.featuredImage.node.localFile.childImageSharp ?
@@ -61,12 +68,12 @@ const Article = (props) => {
                   </div></>
             }
             <div className={languagesWrapper}>
-               {props.path.language &&
+               {props.path.language && props.path.translations.length > 0 &&
                   <Link to={`/content${props.path.uri}`}>
                      <button>{props.path.language.code}</button>
                   </Link>
                }
-               {props.path.translations &&
+               {props.path.translations && props.path.translations.length > 0 &&
                   props.path.translations.map(node =>
                      node.language &&
                      <Link to={`/content${node.uri}`}>
