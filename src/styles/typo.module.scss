@@ -3,9 +3,11 @@ $medium: 960px;
 $large: 1280px;
 $xlarge: 2000px;
 
-$hoverbg-color1: #4d4d4d;
+$hoverbg-color1: #ededea;
+$hoverfont-color1: #000;
 $myColor1: whitesmoke;
 $myColor2: rgb(162, 162, 162);
+
 
 $fontSize: 1.125rem; /*18px*/
 $fontSizeM: 1.75rem; /*28px*/
@@ -22,7 +24,7 @@ $lineHeightXL: 1.05*$fontSizeXL;
       opacity: 0;
       transform:translateX(-20vh);
   } 
-  75% {
+  50% {
       opacity: 0;
       transform:translateX(-20vh);
   }

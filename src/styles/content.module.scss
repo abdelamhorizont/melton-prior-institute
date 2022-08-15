@@ -13,7 +13,7 @@ html {
 }
 
 .tagsSidebar, .results { 
-    animation: 2s appearO;
+    // animation: 2s appearO;
 }
 
 
@@ -52,8 +52,8 @@ html {
                 column-gap: inherit;
                 padding: 0.25*$lineHeight 0 ;
                 button{
-                    animation: 0.5s appearOsmall;
-                    transition: all 0.5s;
+                    // animation: 0.5s appearOsmall;
+                    // transition: all 0.5s;
                    opacity: 0.4; 
                    &:hover{
                     cursor: pointer;

@@ -16,6 +16,7 @@ import {
   burgerButton,
   menuTransition,
   home,
+  menuTopRowBg,
   active
 } from './layout.module.scss'
 
@@ -115,7 +116,7 @@ const Layout = ({ children }) => {
     <div className={layout}>
       <header>
         <nav 
-        // className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}
+        // className={menuTransition} style={showNav ? { transform: translateY(0) } : { transform: translateY(-25rem) }}
         >
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
@@ -126,14 +127,15 @@ const Layout = ({ children }) => {
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
-          {/* <div className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
+          <div className={menuTopRowBg}></div>
+          <div className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-25rem" }}>
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
             <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
             <li key="collections"><Link to="/content/collections">Collections</Link></li>
           </ul>
           <Search handleSearchData={handleSearchData} />
-          {/* </div> */}
+          </div>
         </nav>
       </header>
 
@@ -173,9 +175,6 @@ const Layout = ({ children }) => {
     </div>
   )
 }
-
-<script>
-$( "#burgerButton" ).toggleClass( "active" );
-</script>
+  
 
 export default Layout

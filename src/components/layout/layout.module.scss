@@ -9,15 +9,13 @@
 
 
 
-header {
-    background-color: #fff;
+header {    
     z-index         : 10000;
     width           : 100%;
     // margin-bottom: 2*$lineHeight !important;
     position        : fixed;
     top             : 0;
     // height: 8*$lineHeight;
-
 
     nav {
         display              : grid;
@@ -27,16 +25,16 @@ header {
         width                : 100%;
         padding              : 0 1*$lineHeight;
         box-sizing           : border-box;
+        
 
-        @media screen and (max-width: $small) {
-            grid-template-columns: repeat(3, 1fr [col]);
-            grid-template-rows   : repeat(3, $lineHeight [row]);
-            margin-top           : $lineHeight;
-            row-gap              : 1*$lineHeight;
-            max-width            : 100vw;
 
-        }
-
+    }
+    .menuTopRowBg{
+        background-color: #fff;
+        grid-column: 1 / 13;
+        grid-row: 1 / 4;
+        margin-bottom: 1/3 * $lineHeight;
+        z-index: 4000;
     }
 
 
@@ -47,9 +45,9 @@ header {
 
 
 
-
-a {
-    transition: all 0.5s;
+a, label p:after, label p:before, .burgerButton {
+    // transition: all 0.25s;
+    
 }
 
 
@@ -58,25 +56,21 @@ a {
     grid-column-start: 1;
     grid-column-end  : 3;
     grid-row-start   : 2;
-
+    z-index: 5000;
     a {
         @include ke-bold;
         font-feature-settings: "ss04";
+        letter-spacing: 0.025em;
     }
 
-    @media screen and (max-width: $small) {
-        grid-row-start: 2;
 
-        a {
-            font-size: 1.5rem
-        }
-    }
 }
 
 ul.secondaryNav {
     grid-column-start: 10;
     grid-column-end  : 13;
     grid-row-start   : 2;
+    z-index: 5000;
 
 
 
@@ -104,7 +98,8 @@ div.menuTransition {
     display              : grid;
     grid-template-columns: repeat(12, 1fr [col]);
     width                : 100%;
-
+    // transition: all 0.5s ease-in-out;
+    z-index: 2500;
 
 }
 
@@ -115,6 +110,10 @@ ul.categories {
 
     li {
         text-align: center;
+        a{
+            color: rgba(0, 0, 0, 1);
+            
+        }
     }
 
     li:first-of-type {
@@ -125,11 +124,7 @@ ul.categories {
         text-align: right;
     }
 
-    @media screen and (max-width: $small) {
-        grid-column-start: 1;
-        grid-column-end  : 4;
-        grid-row-start   : 3;
-    }
+
 
 }
 
@@ -144,7 +139,7 @@ ul.categories {
         background-repeat    : no-repeat;
         background-position-x: 60%;
         height               : 0.8*$lineHeight;
-        transition           : all 0.5s;
+        // transition           : all 0.5s;
 
         &:focus-within {
             background-position-x: 5%;
@@ -230,16 +225,15 @@ ul.categories {
         grid-column-start: 11;
         text-align       : right;
 
-        @media screen and (max-width: $small) {
-            grid-column-start: 3;
-        }
 
     }
 }
 
 label:focus-within {
 
-    p,
+    p:before, p:after{
+        opacity: 1;
+    }
     div {
         @include ke-medium;
         opacity: 1;
@@ -256,19 +250,57 @@ ul.categories,
     display              : grid;
     grid-template-columns: repeat(3, 1fr [col]);
     column-gap           : inherit;
+    
+    p:before{
+        content: '[';
+        opacity: 0;
+    }
+    p:after{
+        content: ']';
+        opacity: 0;
+    }
 
+}
 
-    li {
-        a[aria-current] {
-            @include ke-medium;
-            color: rgba(0, 0, 0, 1);
+footer ul > li,
+ul.secondaryNav > li,
+ul.categories > li,
+.searchBox > li,
+label{
+    a[aria-current]:before, a[aria-current]:after{ 
+        opacity: 1;
+}
+        a:before, p:before{
+            content: '[';
+            opacity: 0;
+        }
+        a:after, p:after{
+            content: ']';
+            opacity: 0;
+        }
+        &:hover{
+            a:before, p:before{
+                opacity: 1;
+            }
+            a:after, p:after{
+                opacity: 1;
+            }
+        }
+    }
+
+footer ul,
+ul.secondaryNav,
+.searchBox {
+li {
+        a[aria-current]:before, a[aria-current]:after{ 
+                opacity: 1;
         }
 
         a {
             color: rgba(0, 0, 0, .4);
 
             &:hover {
-                color: rgba(0, 0, 0, 1);
+                color: rgba(0, 0, 0, 0.4);
             }
         }
     }
@@ -276,13 +308,14 @@ ul.categories,
 
 
 
-
 footer {
     // position: relative;
     // bottom: 0;
+    position: relative;
+    bottom: 0;
     padding              : 0 $lineHeight !important;
     box-sizing           : border-box;
-    margin-top           : 2*$lineHeight !important;
+    padding-top           : 2*$lineHeight !important;
     width                : 100%;
     display              : grid !important;
     grid-template-columns: repeat(12, 1fr);
@@ -300,17 +333,10 @@ footer {
         li {
             height: 3*$lineHeight;
 
-            a {
-                opacity: 0.4;
-
-                &:hover {
-                    opacity: 1;
-                }
-            }
-
         }
     }
 }
+
 
 .active {
     grid-row-start: 2;
@@ -318,11 +344,10 @@ footer {
 
 .burgerButton {
     z-index              : 50000;
-    transition           : all 0.5s;
+    width: 21px;
+    height: 16px;
+    align-self: center;
     display              : none;
-    grid-column-start    : 3;
-    grid-row-start       : 1;
-    grid-column-end      : 3;
     background-repeat    : no-repeat;
     background-position-x: right;
     background-position-y: center;
@@ -332,7 +357,73 @@ footer {
         background-image: url("data:image/svg+xml,%3Csvg width='16' height='15' viewBox='0 0 16 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline y1='-0.625' x2='19.4883' y2='-0.625' transform='matrix(-0.718343 0.695689 -0.135526 -0.990774 14.9993 0)' stroke='black' stroke-width='1.25'/%3E%3Cline y1='-0.625' x2='19.4883' y2='-0.625' transform='matrix(-0.718343 -0.695689 0.135526 -0.990774 14.9993 13.5579)' stroke='black' stroke-width='1.25'/%3E%3C/svg%3E%0A");
     }
 
-    @media screen and (max-width: $small) {
+}
+
+
+
+@media screen and (max-width: $small) {
+
+    header {
         display: block;
+        position: sticky;
+        top: 0px;
+
+        nav{
+            padding: 0 0.5*$lineHeight;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top           : 0.5*$lineHeight;
+            max-width            : 100vw;
+            column-gap: unset;
+            justify-content: space-between;
+
+        .brand {
+            width: fit-content;
+            a {
+                font-size: 1.5rem
+            }
+        }
+
+        .secondaryNav,.menuTransition {
+            display: flex;
+            width: 100%;
+            position: absolute;
+            justify-content: space-between;
+            z-index: 1000;
+        }
     }
 }
+
+
+    ul.categories {
+        grid-column-start: 1;
+        grid-column-end  : 4;
+        grid-row-start   : 3;
+    }
+
+
+    .burgerButton{
+        display: block;
+    }
+
+    footer{
+        display: block !important;
+        position: static;
+        bottom: 0;
+        ul{
+        grid-template-columns: repeat(3, 1fr);
+            li{
+
+            }
+        }        
+    }
+
+
+
+    span:last-of-type {
+            grid-column-start: 3;
+
+
+    }
+} 

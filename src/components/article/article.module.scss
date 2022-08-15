@@ -225,7 +225,7 @@
 
 
 a, li, li a, .articleBody, a:before, a:after{
-    transition: all 0.5s;
+    // transition: all 0.5s;
 }
 
 ul, .swiper-slide-active, .swiper-slide{
@@ -263,4 +263,24 @@ ul a:hover, a:hover{
 
     }
 }
+}
+
+
+
+@media screen and (max-width: $small) {
+    .recommendedArticle{
+    flex-direction: column;
+    padding: 0.5*$lineHeight;
+        .thumbnail{
+            max-width: 100%;
+            margin-bottom: 0.5*$lineHeight;
+        }
+        .articleBody{
+            padding: 0;
+        }
+        .articleTagWrapper, .languagesWrapper{
+            flex-direction: column;
+        }
+    }
+
 }
