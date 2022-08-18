@@ -45,25 +45,7 @@ import '../styles/swiper.scss';
 const Homepage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allWpCategory(filter: {name: {eq: "collections"}, language: {code: {eq: EN}}}) {
-        nodes {
-          wpChildren {
-            nodes {
-              name
-              uri
-              posts {
-                nodes {
-                  featuredImage {
-                    node {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+  
       allWpPost{        
         edges {
           node {
@@ -130,7 +112,7 @@ const Homepage = () => {
     edge.node.language.code === "EN"
   )
 
-  const collectionTitles = data.allWpCategory.nodes[0].wpChildren.nodes
+  // const collectionTitles = data?.allWpCategory.nodes[0].wpChildren.nodes
 
   const [category, setCategory] = useState({
     features: true,
@@ -251,7 +233,7 @@ const Homepage = () => {
           </Section>
         </Link>
 
-        <Link to={!mobile ? `/content/collections` : `#categories`}>
+        {/* <Link to={!mobile ? `/content/collections` : `#categories`}>
           <Section title="Collections" className={mobile && category.features ? `${categoriesSection} ${categoryActive}` : categoriesSection} onClick={() => {
             mobile &&
               setCategory({
@@ -273,7 +255,7 @@ const Homepage = () => {
             </ul>
             <p className={moreButton}>...more</p>
           </Section>
-        </Link>
+        </Link> */}
       </div>
 
     </Layout >
