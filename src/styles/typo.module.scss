@@ -8,6 +8,11 @@ $hoverfont-color1: #000;
 $myColor1: whitesmoke;
 $myColor2: rgb(162, 162, 162);
 
+$transitionFade: all 0.5s;
+$transitionMenuBar: all 0.5s ease-in-out;
+$transitionMenuBarDelay: 50ms;
+
+
 
 $fontSize: 1.125rem; /*18px*/
 $fontSizeM: 1.75rem; /*28px*/
@@ -16,7 +21,7 @@ $fontSizeXL: 2.625rem; /*42px*/
 
 $lineHeight: 1.4*$fontSize;
 $lineHeightM: 1.21*$fontSizeM;
-$lineHeightL: 1*$fontSizeL;
+$lineHeightL: 1.05*$fontSizeL;
 $lineHeightXL: 1.05*$fontSizeXL;
 
 @keyframes appearO{

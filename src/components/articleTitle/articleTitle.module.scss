@@ -56,4 +56,9 @@ div .article-title{
     h1{
         width:100%;
     }
+    .articleDate{
+        text-align: right;
+        justify-self: flex-end;
+        flex-grow: 1;
+    }
 }

@@ -1,7 +1,45 @@
-.activeTag{
-   opacity: 1 !important;
+@import "../../styles/typo.module.scss";
+
+.inactiveTag, .activeTag{
+   cursor: pointer;
+
+      // margin-top: -4px;
+      // grid-column: 1/2;
+      // text-align: right;
+      &:before{
+          content:'[';
+          opacity: 0;
+      }
+      &:after{
+          content:']';
+          opacity: 0;
+      }
 }
 
-.inactiveTag{
-   color: black;
+button.inactiveTag{
+   // animation: 0.5s appearOsmall;
+   transition: $transitionFade;
+  opacity: 0.4; 
+  &:hover{
+   cursor: pointer;
+      // opacity: 1;
+      &:first-child{
+           &:after, &:before{
+           opacity: 1;
+           }
+       }
+  }
 }
+
+button.activeTag{
+   &:first-child{
+       &:before, &:after{
+       opacity: 1 !important;
+        }
+       }
+   &:hover{
+      //  opacity: 0.4;
+   }
+}
+
+

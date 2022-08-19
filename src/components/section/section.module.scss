@@ -100,6 +100,9 @@
         li {
             padding   : 0.5*$lineHeight;
             box-sizing: border-box;
+            &:last-of-type{
+                margin-bottom: 0.2*$lineHeight;
+            }
         }
     }
 }

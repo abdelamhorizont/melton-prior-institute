@@ -91,6 +91,7 @@ ul.secondaryNav {
 }
 
 div.menuTransition {
+    background-color: #fff;
     grid-column-start    : 1;
     grid-column-end      : 13;
     grid-row-start       : 4;
@@ -98,10 +99,12 @@ div.menuTransition {
     display              : grid;
     grid-template-columns: repeat(12, 1fr [col]);
     width                : 100%;
-    // transition: all 0.5s ease-in-out;
+    transition: $transitionMenuBar;
+    transition-delay: $transitionMenuBarDelay;
     z-index: 2500;
 
 }
+
 
 ul.categories {
     grid-column-start: 5;
@@ -132,35 +135,31 @@ ul.categories {
     grid-column-start: 10;
     grid-column-end  : 13;
     grid-row-start   : 4;
-
+    p:before, p:after{
+        transition           : $transitionFade;
+    }
     div {
         background-image     : url('../../graphics/search_icon_v001.svg');
         background-size      : contain;
         background-repeat    : no-repeat;
-        background-position-x: 60%;
+        background-position-x: 5%;
         height               : 0.8*$lineHeight;
-        // transition           : all 0.5s;
+        transition           : $transitionFade;
 
-        &:focus-within {
-            background-position-x: 5%;
-        }
+        
+        
     }
 
-    @media screen and (max-width: $small) {
-        grid-column-start: 1;
-        grid-column-end  : 4;
-        grid-row-start   : 4;
-    }
 
     p {
-        cursor: help;
+        cursor: pointer;
 
     }
 
     div {
         grid-column-start: 2;
         grid-column-end  : 4;
-        cursor           : help;
+        cursor           : pointer;
         opacity          : 0.6;
 
         &:hover {
@@ -174,9 +173,16 @@ ul.categories {
         display  : flex;
 
         input {
-            width  : 100%;
+            box-sizing: border-box;
+            transition: $transitionFade;
+            width  : calc(50% - 1*$lineHeight);
             padding: 0 0.25*$lineHeight 0 1.3*$lineHeight;
         }
+        &:focus-within 
+            input{
+            width: 100%;
+            padding: 0 0.25*$lineHeight 0 1.3*$lineHeight;
+            }
     }
 }
 
@@ -194,6 +200,70 @@ ul.categories {
             grid-column-end  : 11;
         }
 
+    }
+    .articleFeature, .articlePictorial, .relatedArticle{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding: $lineHeight;
+    
+    .articleBody{
+        flex-direction: row;
+        padding-left: $lineHeight;
+        h1{
+            width: 100%;
+            font-size: $fontSizeL;
+            line-height: $lineHeightL;
+        }
+    }
+    .articleExcerpt {
+        p{
+         font-size: $fontSize;
+        line-height: $lineHeight;
+        @include nm-book;
+        }
+    }
+    .articleTagWrapper{
+        // order:99;
+    }
+    // .languagesWrapper{
+    //     a{
+    //         color: rgba(0,0,0,1);
+    //     }
+    // }
+    // &:hover{
+    //     .languagesWrapper{
+    //         a{
+    //             color: rgba(0,0,0,1);
+    //         }
+    //     }
+    // }
+    .articleTagWrapper, .languagesWrapper{
+        width:fit-content;
+        height: fit-content;
+        margin-bottom: unset;
+        align-self: flex-end;
+        h4{
+        height: fit-content;
+        }
+    
+    }
+
+ }
+}
+
+
+.searchWords{
+    grid-column-start: 3;
+    grid-column-end: 11;
+    margin-top: 1*$lineHeight;
+    margin-bottom: 2*$lineHeight;
+    background-color: #fff;
+    transition: $transitionFade;
+    h1{
+        font-size: $fontSizeXL;
+        text-transform: none;
     }
 }
 
@@ -235,7 +305,7 @@ label:focus-within {
         opacity: 1;
     }
     div {
-        @include ke-medium;
+        // @include ke-medium;
         opacity: 1;
     }
 }
@@ -338,10 +408,6 @@ footer {
 }
 
 
-.active {
-    grid-row-start: 2;
-}
-
 .burgerButton {
     z-index              : 50000;
     width: 21px;
@@ -361,50 +427,116 @@ footer {
 
 
 
+
+
 @media screen and (max-width: $small) {
 
     header {
+        *{transition: $transitionFade;}
         display: block;
-        position: sticky;
+        position: fixed;
         top: 0px;
 
         nav{
             padding: 0 0.5*$lineHeight;
+            position: relative;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            margin-top           : 0.5*$lineHeight;
-            max-width            : 100vw;
+            margin-top           : 1*$lineHeight;
+            max-width            : 100%;
             column-gap: unset;
             justify-content: space-between;
+            height: 2*$lineHeight;
+            background-color: #fff;
+            box-sizing: border-box;
+            >*{
+                column-gap: unset !important;
+            }
 
         .brand {
+            position: absolute;
+            top: 0;
             width: fit-content;
             a {
                 font-size: 1.5rem
             }
+            ul{
+                li{
+                    
+                }
+            }
         }
+        .burgerButton{
 
-        .secondaryNav,.menuTransition {
-            display: flex;
+        }
+            .menuTopRowBg{
             width: 100%;
+            height: 1*$lineHeight;
+            }
+        .brand, .menuTopRowBg, .secondaryNav, .menuTransition, .burgerButton{
             position: absolute;
-            justify-content: space-between;
+            top: 0;
+        }
+    
+        .secondaryNav,.menuTransition {
+            // display: none;
+            width: 100%;
+            // position: absolute;
+            // justify-content: space-between;
+            grid-template-columns: repeat(3, 1fr);
             z-index: 1000;
         }
     }
-}
+        .active .secondaryNav, .active .menuTransition{
+            // display: flex;
+    
+            transition-delay: 50ms;
 
+        }
+        .active .secondaryNav{
+            top: 0*$lineHeight;
+        }
+
+        .active .brand, .active.burgerButton, .active .menuTopRowBg{
+            top: 1.55*$lineHeight;
+        }
+        .active .menuTransition{
+            top: 3.5*$lineHeight;
+            flex-direction: column;
+        }
+
+        .searchBox{
+            margin-top: -0.5*$lineHeight;
+            grid-column-start: 1;
+            grid-column-end  : 4;
+            grid-row-start   : 4;
+        }
+        .active .searchBox{
+            margin-top: 1*$lineHeight;
+        }
+
+        nav.active{
+            height: 7*$lineHeight;
+        }
+    }
+
+    .active {
+    
+    }
 
     ul.categories {
         grid-column-start: 1;
         grid-column-end  : 4;
         grid-row-start   : 3;
+        li{
+            width:fit-content;
+        }
     }
 
-
     .burgerButton{
-        display: block;
+        display:block;
+        right: 0.5*$lineHeight;
     }
 
     footer{
@@ -427,3 +559,55 @@ footer {
 
     }
 } 
+
+
+
+
+.articlePictorial{
+    &:hover{
+        .thumbnail >div:before{
+            transform: translate(6px, 6px);
+        }
+        .thumbnail >div:after{
+            transform: translate(12px, 12px);
+        }
+    }
+    .thumbnail{
+        position: relative;
+            z-index: 100;
+            picture img{
+                z-index: 100;
+            }
+            >div:before, >div:after{
+                transition: $transitionFade;
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 50;
+                // content: '';
+                // width: 90%;
+                // height: 200px;
+                transform: translate(4px, 4px);
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+            div:after{
+                transform: translate(8px, 8px);
+            }
+    }
+    .thumbnail>div{
+        overflow: unset;
+        width: calc(100% - 12px); 
+    }
+
+}
+
+.thumbnail{
+    min-width: 25%;
+    // flex: 1;
+    // background-color: #000;
+    // min-height: 200px;
+    max-width: 25%;
+}

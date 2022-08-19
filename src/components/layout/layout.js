@@ -17,13 +17,16 @@ import {
   menuTransition,
   home,
   menuTopRowBg,
+  searchWords,
   active
 } from './layout.module.scss'
 
 import {
   articleFeature,
-  articlePictorial
+  articlePictorial,
+  thumbnail
 } from '../../components/article/article.module.scss'
+
 
 
 const Layout = ({ children }) => {
@@ -121,9 +124,7 @@ const Layout = ({ children }) => {
   return (
     <div className={layout}>
       <header>
-        <nav 
-        // className={menuTransition} style={showNav ? { transform: translateY(0) } : { transform: translateY(-25rem) }}
-        >
+        <nav className={burgerBottonActive? `${active}` : ''}>
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
@@ -134,7 +135,7 @@ const Layout = ({ children }) => {
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
           <div className={menuTopRowBg}></div>
-          <div className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-25rem" }}>
+          <div className={menuTransition} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}>
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
             <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
@@ -145,13 +146,13 @@ const Layout = ({ children }) => {
         </nav>
       </header>
 
-        {searchData}
 
       <main>
         {searchData !== ""
           ?
           <div className={searchResultsWrapper}>
             <ul>
+            <div className={searchWords}><h1>Search results for: {searchData}</h1></div>
               {
                 articles.map(edge => (
 

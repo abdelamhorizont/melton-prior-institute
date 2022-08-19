@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import {
     articleTitle,
+    articleDate,
     articleMeta
 } from './articleTitle.module.scss'
 
@@ -15,7 +16,7 @@ const ArticleTitle = (props) => {
                     {props.path.autor?.autor &&
                         <h4>{props.path.autor.autor}]</h4>
                     }
-                    <h4>[{props.path.date}</h4>
+                    <h4 className={articleDate}>[{props.path.date}</h4>
                 </div>
                 <h1>{props.path.title}</h1>
             </>

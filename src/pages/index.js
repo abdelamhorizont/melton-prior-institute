@@ -35,10 +35,10 @@ import {
   recommendedArticle
 } from '../components/article/article.module.scss'
 
-import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/css'; 
+// import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
-import 'swiper/css/bundle';
+// import 'swiper/css/bundle';
 import 'swiper/css/scrollbar';
 import '../styles/swiper.scss';
 
@@ -142,8 +142,8 @@ const Homepage = () => {
     <Layout>
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
-          <div className="swiper-button-prev">&lt;</div>
-          <div className="swiper-button-next">&gt;</div>
+          <div className="swiper-button-prev"><h1>&lt;</h1></div>
+          <div className="swiper-button-next"><h1>&gt;</h1></div>
           <Swiper className="my-swiper"
             modules={[Navigation, A11y, Keyboard, Pagination, EffectFade]}
             // effect={"fade"}
@@ -264,7 +264,9 @@ const Homepage = () => {
               {
                 collectionTitles.map(node =>
                   <Link to={`/content${node.uri}`}>
-                    <li key={node.name} className={collectionsArticle} style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}>
+                    <li key={node.name} className={collectionsArticle} >
+                    <div style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}></div>
+
                       <h1>{node.name}</h1>
                     </li>
                   </Link>

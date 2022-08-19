@@ -22,13 +22,25 @@ html {
     // position: fixed;
     display: block;
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 5;
+    // position: sticky;
+    // top: 2.5*$lineHeight;
 
     div{
         display:grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: [row] $lineHeight [row] auto;
+        grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
         column-gap: $lineHeight;
+        &:before{
+            content:']';
+            grid-row-start: 2;
+            grid-column-start: 2;
+        }
+        &:after{
+            content:'[';
+            grid-row-start: 4;
+            grid-column-start: 4;
+        }
 
         h2{
             text-align: right;
@@ -36,65 +48,58 @@ html {
 
         }
         ul{
-            grid-row-start: 2;
+            grid-row-start: 3;
             grid-column-start: 2;
             grid-column-end: 5;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            column-gap:inherit;
-            grid-auto-flow: row;
+            display: block;
+            // flex-wrap: wrap;
+            // flex-direction: column;
+            // max-height: 80vh;
+            column-count: 2;
 
-            li{
-                grid-column: 1/4;
-                display: grid;
-                grid-auto-flow: column;
-                grid-template-columns: inherit;
-                column-gap: inherit;
+            li{ 
+                display: flex;
+                // width: 50%;
+                // grid-auto-flow: column;
+                // column-gap: 1*$lineHeight;
+                justify-content: space-between;
                 padding: 0.25*$lineHeight 0 ;
+                white-space: nowrap;
                 button{
                     // animation: 0.5s appearOsmall;
-                    // transition: all 0.5s;
-                   opacity: 0.4; 
+                    transition: $transitionFade;
                    &:hover{
                     cursor: pointer;
-                       opacity: 1;
+
                    }
                 }
 
-
-                button:last-of-type{
-                    margin-top: -4px;
-                    grid-column: 1/2;
-                    text-align: right;
-                    &:before{
-                        content:'[';
-                    }
-                    &:after{
-                        content:']';
+                button:last-of-type:not(:first-of-type){
+                    &:hover{
+                        opacity: 0.4
                     }
                 }
-                button:first-of-type{
-                    margin-top: unset;
-                    grid-column: 2/4;
-                    text-align: left;
-                    &:before{
-                        content:'';
+                button:last-of-type{
+                    &:hover{
+                        
                     }
-                    &:after{
-                        content:'';
-                    }
+
+                    // margin-top: unset;
+                    // grid-column: 2/4;
+                    // // text-align: left;
+                    // &:before{
+                    //     content:'';
+                    // }
+                    // &:after{
+                    //     content:'';
+                    // }
                 }
 
                 // button:first-of-type, button:not(button:last-of-type){
                 //     background-color: aqua;
                 // }
             }
-            &:before{
-                content:']';
-            }
-            &:after{
-                content:'[';
-            }
+
         }
     }
 }
@@ -207,7 +212,7 @@ html {
         position:sticky;
         top: 5*$lineHeight;
         z-index: 100;
-        background-color: blanchedalmond;
+        background-color: $hoverbg-color1;
     }
     h1{
         width: 100%;
