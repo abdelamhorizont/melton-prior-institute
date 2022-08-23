@@ -51,19 +51,21 @@ html {
             grid-row-start: 3;
             grid-column-start: 2;
             grid-column-end: 5;
-            display: block;
-            // flex-wrap: wrap;
-            // flex-direction: column;
-            // max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            max-height: 80vh;
+            flex-wrap: wrap;
             column-count: 2;
+            column-gap: 1*$lineHeight;
 
             li{ 
                 display: flex;
-                // width: 50%;
+                position: relative;
+                width: calc(50% - 0.25*$lineHeight);
                 // grid-auto-flow: column;
                 // column-gap: 1*$lineHeight;
-                justify-content: space-between;
-                padding: 0.25*$lineHeight 0 ;
+                // justify-content: space-between;
+                padding: 0.20*$lineHeight 0 ;
                 white-space: nowrap;
                 button{
                     // animation: 0.5s appearOsmall;
@@ -125,6 +127,7 @@ html {
     grid-template-columns: repeat(12, 1fr [col]) !important;
     column-gap: $lineHeight;
     display: grid !important;
+    position: relative;
 
     button{
         display:block;
@@ -163,6 +166,7 @@ html {
         }
         h1{
             font-size: $fontSizeL;
+            line-height: $lineHeightXL;
             text-align: center;
             margin: 3*$lineHeight 0;
         }
@@ -318,5 +322,107 @@ html {
 
     .gallery-item{
         margin-top: $lineHeight;
+    }
+}
+
+@media screen and (max-width: $small) {
+
+.categoryOverview{
+    margin-top: 3*$lineHeight;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+    column-gap: 0.5*$lineHeight;
+    .tagsSidebar{
+        grid-column-start: 1;
+         grid-column-end: 4;
+         div{  
+            grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+            column-gap: 0.5*$lineHeight;
+            ul{
+                padding: 0 0.5*$lineHeight;
+                grid-column-start: 1;
+                grid-column-end: 4;
+                display: flex;
+                width: 100%;
+                height: 3*$lineHeight;
+                overflow-y: scroll;
+                flex-direction: row;
+                flex-wrap: wrap;
+                li{
+                    width: unset;
+                }
+            }
+        &::after{
+            grid-column-start: 3;
+            grid-column-end: 3;
+        }
+
+         }
+    }
+    .results{
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+}
+
+.articleWrapper{
+    grid-template-columns: repeat(3, 1fr [col]) !important;
+    column-gap: .5*$lineHeight;
+    .topBrackets{
+        grid-column-start: 1;
+        grid-column-end: 4;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .articleTagWrapper{
+        grid-column-start: 1;
+        grid-column-end:  4;
+        width: 100%;
+         display: flex;
+    }
+    
+    .articleContent{
+        padding: 0 0.5*$lineHeight;
+        margin-top: 2*$lineHeight;
+        grid-column-start:  1;
+        grid-column-end:  4;
+        display:flex;
+        flex-direction: column;
+        h1{
+            font-size: $sDfontSizeM;
+            line-height: $sDlineHeightM;
+        }
+        p{
+            font-size: $sDfontSize;
+            line-height: $sDlineHeight;
+        }
+    .relatedPostsWrapper{
+        grid-column-start:  1;
+        grid-column-end:  4;
+        // grid-row-start: auto;
+        align-self: end;
+    
+    }
+}
+
+
+}
+}
+
+
+@media print {
+    .articleContent{
+    grid-column-start: 2 !important;
+    grid-column-end: 12 !important;
+    margin-top: $lineHeight !important;
+    }
+    .articleWrapper{
+        button {
+            a {
+                display: none;
+            }
+        }
     }
 }

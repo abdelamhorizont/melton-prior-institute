@@ -17,6 +17,7 @@ import {
   menuTransition,
   home,
   menuTopRowBg,
+  menuBottomRowBg,
   searchWords,
   active
 } from './layout.module.scss'
@@ -143,6 +144,7 @@ const Layout = ({ children }) => {
           </ul>
           <Search handleSearchData={handleSearchData} />
           </div>
+          <div className={menuBottomRowBg} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}></div>
         </nav>
       </header>
 

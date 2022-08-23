@@ -62,3 +62,11 @@ div .article-title{
         flex-grow: 1;
     }
 }
+
+@media screen and (max-width: $small) {
+    .articleMeta{
+        h4{
+            font-size: $sDfontSize;
+        }
+    }
+}

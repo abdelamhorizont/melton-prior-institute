@@ -15,11 +15,14 @@
           opacity: 0;
       }
 }
-
+button.activeTag{
+   // margin-left: $lineHeight;
+}
 button.inactiveTag{
    // animation: 0.5s appearOsmall;
    transition: $transitionFade;
   opacity: 0.4; 
+//   margin-left: $lineHeight;
   &:hover{
    cursor: pointer;
       // opacity: 1;
@@ -38,8 +41,18 @@ button.activeTag{
         }
        }
    &:hover{
-      //  opacity: 0.4;
+       opacity: 0.4;
    }
 }
 
+.deleteButton{
+   // order: -1;
+   // width: $lineHeight;
+   display:none;
+}
 
+.deleteButton[value="Linton Archive"], .deleteButton[value="Linton Archiv"]{
+   margin-left: auto;
+   @include ke-light;
+   color: black;   
+}

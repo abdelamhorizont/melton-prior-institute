@@ -33,6 +33,7 @@
 
     @media screen and (max-width: $small) {
         grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+        column-gap: .5*$lineHeight;
         h2{
             grid-column-start: 0;
             grid-column-end: 4;

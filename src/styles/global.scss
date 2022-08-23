@@ -127,3 +127,117 @@ button{
     }
 }
 }
+
+.gallery{
+  margin: $lineHeight 0;
+  position: relative;
+  left: calc((100% / 12) * ( -12 / 8) - $lineHeight);
+  right: calc((100% / 12) * ( -12 / 8) - $lineHeight);
+  width: calc(100% + 2*((100% / 12) * ( 12 / 8)) + 2*$lineHeight);
+  grid-column-gap: $lineHeight;
+  display: grid;
+  grid-template-rows: masonry;
+  .gallery-item{
+    transition: $transitionFade;
+    &:hover{
+      background-color: $hoverbg-color1;
+      border-radius: 12px;
+    }
+  }
+  figcaption{
+    padding: 0 $lineHeight $lineHeight $lineHeight;
+    
+  }
+  .gatsby-image-wrapper{
+    display: flex !important;
+    margin: $lineHeight;
+    [role="presentation"]{
+      display: none !important;
+    }
+  }
+  .portrait .gatsby-image-wrapper img{
+    max-width: 100%;
+    max-height: 50vh;
+    height: auto;
+    width: 100%;
+    position: relative;
+  }
+}
+
+
+.gallery-columns-2{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-columns-3{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery-columns-4{
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-columns-5{
+  grid-template-columns: repeat(5, 1fr);
+}
+
+
+li[value="Linton Archive"], li[value="Linton Archiv"]{
+  order: -1;
+  color: rgb(175, 0, 0);
+  justify-content: unset !important;
+  &:after{
+    transition: $transitionFade;
+    content: "i";
+    border: solid 1px;
+    border-radius: 100%;
+    width: .75*$lineHeight;
+    text-align: center;
+    margin-left: 0.25*$lineHeight;
+    } 
+  &:hover:after{
+    background-color: rgb(175, 0, 0);
+    border-color: rgb(175, 0, 0);
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  button{
+    justify-self: flex-start;
+    // @include ke-bold;
+    color: rgb(175, 0, 0);
+    // opacity: 0.6 !important;
+  }
+  }
+
+@media print {
+
+  h1, h4, a, button, label p{
+    font-family: 'Times New Roman', Times, serif;
+    font-feature-settings: unset;
+    font-size: $fontSize !important;
+    line-height: $lineHeight !important;
+  }
+
+  h1{
+    margin: $lineHeight 0 !important;
+  }
+  
+  p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: $fontSize !important;
+    line-height: $lineHeight !important;
+  }
+  
+  i{
+    font-family: 'Times New Roman', Times, serif;
+    font-feature-settings: unset;
+    font-size: $fontSize !important;
+    line-height: $lineHeight !important;
+  }
+  .MsoFootnoteText{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: $fontSize !important;
+    line-height: $lineHeight !important;
+  }
+}
