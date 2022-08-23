@@ -16,13 +16,18 @@ import {
   burgerButton,
   menuTransition,
   home,
+  menuTopRowBg,
+  menuBottomRowBg,
+  searchWords,
   active
 } from './layout.module.scss'
 
 import {
   articleFeature,
-  articlePictorial
+  articlePictorial,
+  thumbnail
 } from '../../components/article/article.module.scss'
+
 
 
 const Layout = ({ children }) => {
@@ -120,9 +125,7 @@ const Layout = ({ children }) => {
   return (
     <div className={layout}>
       <header>
-        <nav 
-        // className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}
-        >
+        <nav className={burgerBottonActive? `${active}` : ''}>
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
@@ -132,24 +135,26 @@ const Layout = ({ children }) => {
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
-          {/* <div className={menuTransition} style={showNav ? { marginTop: "0rem" } : { marginTop: "-20rem" }}> */}
+          <div className={menuTopRowBg}></div>
+          <div className={menuTransition} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}>
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
             <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
             <li key="collections"><Link to="/content/collections">Collections</Link></li>
           </ul>
           <Search handleSearchData={handleSearchData} />
-          {/* </div> */}
+          </div>
+          <div className={menuBottomRowBg} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}></div>
         </nav>
       </header>
 
-        {searchData}
 
       <main>
         {searchData !== ""
           ?
           <div className={searchResultsWrapper}>
             <ul>
+            <div className={searchWords}><h1>Search results for: {searchData}</h1></div>
               {
                 articles.map(edge => (
 
@@ -178,9 +183,6 @@ const Layout = ({ children }) => {
     </div>
   )
 }
-
-<script>
-$( "#burgerButton" ).toggleClass( "active" );
-</script>
+  
 
 export default Layout

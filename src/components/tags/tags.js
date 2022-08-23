@@ -4,7 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import {
    activeTag,
-   inactiveTag
+   inactiveTag,
+   deleteButton
 } from './tags.module.scss'
 
 export default function Tags(props) {
@@ -45,12 +46,12 @@ export default function Tags(props) {
          <ul>
             {
                tags.map(node => (
-                  <li key={node.id}>
+                  <li key={node.id} value={node.name}>
                      <button className={selectedTags.includes(node.name) ? activeTag : inactiveTag} value={node.name} onClick={e => handleTag(e)}>
                         {node.name}
                      </button>
                      {selectedTags.includes(node.name) &&
-                        <button value={node.name} onClick={deleteTag}>x</button>
+                        <button className={deleteButton} value={node.name} onClick={deleteTag}>x</button>
                      }
                   </li>
                ))

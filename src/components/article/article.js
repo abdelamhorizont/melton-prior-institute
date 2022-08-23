@@ -7,7 +7,7 @@ import ArticleTitle from '../../components/articleTitle/articleTitle'
 
 import {
    article,
-   thumbnail,
+   // thumbnail,
    languagesWrapper,
    features,
    pictorials,
@@ -19,8 +19,9 @@ import {
 
 import {
    articleFeature,
-   articlePictorial
- } from '../../components/article/article.module.scss'
+   articlePictorial,
+   thumbnail
+ } from '../layout/layout.module.scss'
  
 
 const Article = (props) => {

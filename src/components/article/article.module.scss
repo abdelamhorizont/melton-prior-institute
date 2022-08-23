@@ -20,20 +20,23 @@
     flex-direction: row-reverse;
     a{
         width: fit-content! important;
-        margin-right: 0.5*$lineHeight;
+        margin-left: 0.25*$lineHeight;
         color: rgba(0, 0, 0, 0.4);
-        &:before{
+        button{
+            &:before{
             content:'[';
-        }
-        &:after{
-            content:']';
+            }
+            &:after{
+                content:']';
+            }
         }
         button{
-            all: unset;
+            // all: unset;
         }
-        &:last-of-type{
-            margin-right: 0;
-        }
+        // &:last-of-type{
+        //     margin-right: 0;
+        // }
+    
     }
 
     
@@ -52,16 +55,15 @@
     h4{
         margin: 0 0.1*$lineHeight;
         opacity: 1;
+        &:first-of-type{
+            margin: 0 0.1*$lineHeight 0 0;
+        }
     }
 }
 
-.articleFeature{
-}
 
-.articlePictorial{
-}
-
-.articleFeature, .articlePictorial, .relatedArticle{
+// .results { 
+    .articleFeature, .articlePictorial, .relatedArticle{
     width: 100%;
     display:flex;
     flex-direction: row;
@@ -91,14 +93,17 @@
     //     a{
     //         color: rgba(0,0,0,1);
     //     }
-    // }
-    // &:hover{
-    //     .languagesWrapper{
-    //         a{
-    //             color: rgba(0,0,0,1);
+    //     &:hover{
+    //         .languagesWrapper{
+    //             button:before{
+    //                 color: rgba(0,0,0,1);
+    //             }
     //         }
     //     }
-    // }
+// }
+    .languagesWrapper{
+        flex-grow: 1;
+    }
     .articleTagWrapper, .languagesWrapper{
         width:fit-content;
         height: fit-content;
@@ -111,10 +116,12 @@
     }
 
  }
+// }
 
 .articleCollection{
     display: flex;
     flex-direction: column;
+
     .thumbnail{
         width: calc(100% - 2*$lineHeight);
         margin-top: $lineHeight;
@@ -125,6 +132,7 @@
     .articleBody{
         flex-direction: row;
         padding: $lineHeight 1*$lineHeight;
+        flex-grow: 1 ;
     p, h1, div{
         margin: 0.5*$lineHeight 0;
         line-height: $lineHeight;
@@ -229,8 +237,8 @@
 
 
 
-a, li, li a, .articleBody, a:before, a:after{
-    transition: all 0.5s;
+a, li, li a, .articleBody, a:before, a:after, button:before, button:after{
+    transition: $transitionFade;
 }
 
 ul, .swiper-slide-active, .swiper-slide{
@@ -241,7 +249,7 @@ ul, .swiper-slide-active, .swiper-slide{
                 border-radius: 12px ;
                 // filter: invert(1);
                 h1, h4, span, p{
-                    color: #fff;
+                    // color: #fff;
                     font-weight: 100;
                 }
                 }
@@ -251,21 +259,65 @@ ul, .swiper-slide-active, .swiper-slide{
 }
 
 .languagesWrapper {
-    a, a:before, a:after{
-        color: rgba(0, 0, 0, 0.4); 
+     button:before, button:after{
+        color: rgba(0, 0, 0, 0); 
 
     }
 }
 
 
-ul a:hover, a:hover{
-    .languagesWrapper {
-        a, a:after, a:before{ 
-            color: rgba(255, 255, 255, 0.4);
-            &:hover{
-                color: rgba(255, 255, 255, 1) !important;
+
+    .languagesWrapper a:hover{
+        button:after, button:before{
+            color: rgba(0, 0, 0, 0.4) !important;
+        }
+}
+
+
+
+@media screen and (max-width: $small) {
+    .articleFeature, .articlePictorial{
+        flex-direction: row;
+    }
+    .recommendedArticle, .articleFeature, .articlePictorial{
+    flex-direction: column;
+    padding: 0.5*$lineHeight;
+
+        .thumbnail{
+            max-width: 100%;
+            margin-bottom: 0.5*$lineHeight;
+        }
+        .articleBody{
+            padding: 0 0 0.5*$lineHeight 0;
+            border-bottom: solid 1px black;
+            h1{
+            font-size: $sDfontSizeL;
+            line-height: $sDlineHeightL;
             }
-
+        }
+        .articleExcerpt{
+            p{
+            font-size: $sDfontSizeM;
+            line-height: $sDlineHeightM;
+            }
+        }
+        .articleTagWrapper, .languagesWrapper{
+            flex-direction: column;
+            flex-grow: unset;
+            h4{
+                font-size: $sDfontSize;
+            }
+            h4:first-of-type{
+                margin: 0 0.1*$lineHeight;
+            }
+        }
+        .languagesWrapper{
+            justify-self: flex-end;
+        }
     }
+ 
+
 }
-}
+
+
+
