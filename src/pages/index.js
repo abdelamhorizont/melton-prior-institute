@@ -35,10 +35,10 @@ import {
   recommendedArticle
 } from '../components/article/article.module.scss'
 
-import 'swiper/css'; 
-// import 'swiper/css/navigation';
+import 'swiper/css';
+import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
-// import 'swiper/css/bundle';
+import 'swiper/css/bundle';
 import 'swiper/css/scrollbar';
 import '../styles/swiper.scss';
 
@@ -142,8 +142,8 @@ const Homepage = () => {
     <Layout>
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
-          <div className="swiper-button-prev"><h1>&lt;</h1></div>
-          <div className="swiper-button-next"><h1>&gt;</h1></div>
+          <div className="swiper-button-prev">&lt;</div>
+          <div className="swiper-button-next">&gt;</div>
           <Swiper className="my-swiper"
             modules={[Navigation, A11y, Keyboard, Pagination, EffectFade]}
             // effect={"fade"}
@@ -194,7 +194,7 @@ const Homepage = () => {
 
       <div className={categoriesLists} id="categories">
         <Link to={!mobile ? `/content/features` : `#categories`}>
-          <Section className={mobile && category.features ? `${categoriesSection} ${categoryActive}` : categoriesSection} title="Features" onClick={() => {
+          <Section className={categoriesSection} title="Features" onClick={() => {
             mobile &&
               setCategory({
                 features: true,
@@ -202,7 +202,7 @@ const Homepage = () => {
                 collections: false
               })
           }}>
-            <ul>
+            <ul className={mobile && category.features && categoryActive}>
               {
                 articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
@@ -223,7 +223,7 @@ const Homepage = () => {
         </Link>
 
         <Link to={!mobile ? `/content/pictorials` : `#categories`}>
-          <Section title="Pictorials" className={mobile && category.pictorials ? `${categoriesSection} ${categoryActive}` : categoriesSection} onClick={() => {
+          <Section title="Pictorials" className={categoriesSection} onClick={() => {
             mobile &&
               setCategory({
                 features: false,
@@ -231,7 +231,7 @@ const Homepage = () => {
                 collections: false
               })
           }}>
-            <ul>
+            <ul className={mobile && category.pictorials && categoryActive}>
               {
                 articles.filter(edge => (
                   edge.node.categories.nodes[0] &&
@@ -252,7 +252,7 @@ const Homepage = () => {
         </Link>
 
         <Link to={!mobile ? `/content/collections` : `#categories`}>
-          <Section title="Collections" className={mobile && category.features ? `${categoriesSection} ${categoryActive}` : categoriesSection} onClick={() => {
+          <Section title="Collections" className={categoriesSection} onClick={() => {
             mobile &&
               setCategory({
                 features: false,
@@ -260,13 +260,11 @@ const Homepage = () => {
                 collections: true
               })
           }}>
-            <ul className={collectionsColumn}>
+            <ul className={mobile && category.features ? `${collectionsColumn} ${categoryActive}` : collectionsColumn}>
               {
                 collectionTitles.map(node =>
                   <Link to={`/content${node.uri}`}>
-                    <li key={node.name} className={collectionsArticle} >
-                    <div style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}></div>
-
+                    <li key={node.name} className={collectionsArticle} style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}>
                       <h1>{node.name}</h1>
                     </li>
                   </Link>
