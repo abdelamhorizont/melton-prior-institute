@@ -20,6 +20,7 @@ import {
 import {
    articleFeature,
    articlePictorial,
+   articleCollection,
    thumbnail
  } from '../layout/layout.module.scss'
  

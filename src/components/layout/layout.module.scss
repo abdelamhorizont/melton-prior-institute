@@ -435,10 +435,12 @@ footer {
 .articlePictorial{
     &:hover{
         .thumbnail >div:before{
-            transform: translate(6px, 6px);
+            // transform: translate(6px, 6px);
+            transform: translate(4px, 4px) rotateZ(3deg);
         }
         .thumbnail >div:after{
-            transform: translate(12px, 12px);
+            // transform: translate(12px, 12px);
+            transform: translate(8px, 8px) rotateZ(6deg);
         }
     }
     .thumbnail{
@@ -448,6 +450,7 @@ footer {
                 z-index: 100;
             }
             >div:before, >div:after{
+                transform-origin: left bottom;
                 transition: $transitionFade;
                 content: "";
                 position: absolute;
@@ -459,11 +462,13 @@ footer {
                 // content: '';
                 // width: 90%;
                 // height: 200px;
-                transform: translate(4px, 4px);
-                background-color: rgba(0, 0, 0, 0.2);
+                transform: translate(4px, 4px) rotateZ(0deg);
+                background-color: rgb(50, 50, 50);
             }
             div:after{
-                transform: translate(8px, 8px);
+                transform: translate(8px, 8px) rotateZ(0deg);
+                background-color: rgb(114, 114, 114);
+                z-index:45;
             }
     }
     .thumbnail>div{
@@ -481,6 +486,51 @@ footer {
     max-width: 25%;
 }
 
+
+.articleCollection{
+    display: flex;
+    flex-direction: column;
+    padding: $lineHeight;
+    
+    .articleBody{
+        flex-direction: row;
+        padding: unset !important;
+        flex-grow: 1 ;
+    p, h1, div{
+        margin: 0.5*$lineHeight 0;
+        line-height: $lineHeight;
+    }
+    .articleTagWrapper{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .languagesWrapper{
+        width: 100%;
+        justify-content: center;
+    }
+    }
+
+ }
+
+ .articleCollection.articlePictorial{
+    &:hover{
+        .thumbnail >div:before{
+            // transform: translate(6px, 6px);
+            transform: translate(4px, 4px) rotateZ(1.5deg);
+        }
+        .thumbnail >div:after{
+            // transform: translate(12px, 12px);
+            transform: translate(8px, 8px) rotateZ(3deg);
+        }
+    }
+    .thumbnail{
+        min-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5*$lineHeight;
+        max-width: calc(100% - .8*$lineHeight) !important;
+    }
+ }
 
 
 

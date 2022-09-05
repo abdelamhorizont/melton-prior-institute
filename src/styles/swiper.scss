@@ -20,12 +20,16 @@
       // transition: opacity 2s ease;
       display: flex;
       justify-content: center;
+      max-height: 50vh;
 
     a{
       width: 100%;
     display: flex;
     justify-content: center;
     transition: $transitionFade;
+    .gatsby-image-wrapper div{
+      max-height: 100%;
+    }
     }
     }
   } 
@@ -42,7 +46,7 @@
   grid-row-start: 3;
   height: fit-content;
     align-self: end;
-    font-size: $fontSizeL;
+    font-size: $fontSizeM;
 
 
 
@@ -124,6 +128,12 @@ li, li a, .articleBody, .swiper-slide{
     grid-column-start: 1;
     grid-column-end: 4;
     }
+    .swiper-slide{
+
+      div{
+        max-width: unset;
+      }
+    }
 
     .swiper-button-next, .swiper-button-prev{
       align-items: unset;
@@ -151,5 +161,19 @@ li, li a, .articleBody, .swiper-slide{
     align-self: unset;
     font-size: $fontSize;
 
+  }
+}
+
+
+
+@media screen and (max-width: $small) {
+  .my-swiper {
+
+    .swiper-slide {
+  
+      div{
+        max-height: unset;
+      }
+    }
   }
 }

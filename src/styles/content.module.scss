@@ -164,7 +164,7 @@ html {
         a{
             font-size: inherit;
         }
-        h1{
+        h1, h2, h3, b{
             font-size: $fontSizeL;
             line-height: $lineHeightXL;
             text-align: center;
@@ -173,12 +173,13 @@ html {
         h4{
             font-size: $fontSize;
             width: fit-content;
-    
         }
     
         p{
             font-size: $fontSizeM;
             line-height: $lineHeightL;
+            white-space: pre-wrap;
+            margin-top: $lineHeight;
         }
         picture {
             width: 100%;
@@ -397,6 +398,7 @@ html {
         p{
             font-size: $sDfontSize;
             line-height: $sDlineHeight;
+
         }
     .relatedPostsWrapper{
         grid-column-start:  1;

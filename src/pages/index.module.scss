@@ -19,7 +19,7 @@ main{
 
     @media screen and (max-width: 620px){
         padding: 0;
-        margin-top: 1*$lineHeight;
+        margin-top: 3*$lineHeight;
     }
 
 }
@@ -71,7 +71,7 @@ main{
             border-radius: 12px;
         }
         div{
-            opacity: 0.4;
+            opacity: 0.7;
             width: 100%;
             height: 100%;
             transition: $transitionFade;
@@ -79,11 +79,14 @@ main{
             background-position: center;
             position: relative;
             background-clip: border-box;
+            filter: blur(8px);
         }
         &:hover{
             div{
             opacity: 0.9;
+            filter: blur(2px);
             }
+
         }
         h1{
             position: absolute;

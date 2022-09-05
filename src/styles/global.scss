@@ -54,7 +54,7 @@ h1{
 
 
 
-h1, h4, a, button, label p{
+h1,h2, h3, h4, a, button, label p, b{
   @include ke-light;
   font-feature-settings: "ss04";
 }
@@ -68,14 +68,46 @@ i{
   font-feature-settings: "ss04";
 }
 
+a[href^="#[" ]{
+    position: relative;
+    &::after{
+      content:' ';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      height: 60%;
+      background-image: url("data:image/svg+xml,%3Csvg id='Ebene_1' data-name='Ebene 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12.87 17.58'%3E%3Ctitle%3Ekleukens_egyptienne_arrow_down%3C/title%3E%3Cpath d='M6.765,18.79h1.47a24.22,24.22,0,0,1,5.7-8.46l-.12-1.92a16.1123,16.1123,0,0,0-5.49,6.66c.12-1.47.15-3.3.15-5.76V1.21H6.525V9.311c0,2.52.03,4.38.15,5.85a15.7387,15.7387,0,0,0-5.52-6.75l-.09,1.92a24.62,24.62,0,0,1,5.7,8.459' transform='translate(-1.065 -1.21)'/%3E%3C/svg%3E");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
+      z-index: 5000;
+      opacity: 0;
+  }
+}
+
 .MsoFootnoteReference{
-  font-size: 0.8*$fontSize;
-  vertical-align:top;
+  font-size: $fontSize;
+  vertical-align: top;
+  line-height: normal;
+  color: rgba(0,0,0,.4);
+  transition: $transitionFade;
+
+  &:hover{
+    color: rgba(0,0,0,1);
+    *:after{
+      opacity: 1;
+    }
+  }
+
 }
 
 .MsoFootnoteText{
   @include ke-light;
   font-size: $fontSize !important;
+  .MsoFootnoteReference{
+    vertical-align: unset;
+  }
 }
 
 .inline-gatsby-image-wrapper{
@@ -146,6 +178,7 @@ button{
   }
   figcaption{
     padding: 0 $lineHeight $lineHeight $lineHeight;
+    text-align: center;
     
   }
   .gatsby-image-wrapper{

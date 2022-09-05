@@ -13,9 +13,14 @@ import {
 
 import {
   articleFeature,
+  articlePictorial,
   articleCollection,
   thumbnail
-} from '../../components/article/article.module.scss'
+}  from '../../components/layout/layout.module.scss'
+
+// import{
+
+// } from '../../components/article/article.module.scss'
 
 export default function Collections() {
   const data = useStaticQuery(graphql`
