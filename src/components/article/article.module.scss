@@ -118,13 +118,18 @@
  }
 // }
 
- 
+.categoriesArticle{
+    .articleBody{
+        padding-left: 0.5*$lineHeight;
+    }
+}
+
 .articleBody{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between !important;
-    padding-left: 0.5*$lineHeight;
+    // padding-left: 0.5*$lineHeight;
     flex: 1;
     height: auto;
 
@@ -151,6 +156,7 @@
 
     }
 }
+
 
  .categoriesArticle{
     display: flex;

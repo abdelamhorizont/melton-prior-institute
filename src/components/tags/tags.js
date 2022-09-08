@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import {
    activeTag,
    inactiveTag,
+   tagListWrapper,
    deleteButton
 } from './tags.module.scss'
 
@@ -43,20 +44,22 @@ export default function Tags(props) {
    return (
       <div>
          <h2>Tags</h2>
-         <ul>
-            {
-               tags.map(node => (
-                  <li key={node.id} value={node.name}>
-                     <button className={selectedTags.includes(node.name) ? activeTag : inactiveTag} value={node.name} onClick={e => handleTag(e)}>
-                        {node.name}
-                     </button>
-                     {selectedTags.includes(node.name) &&
-                        <button className={deleteButton} value={node.name} onClick={deleteTag}>x</button>
-                     }
-                  </li>
-               ))
-            }
-         </ul>
+         <div className={tagListWrapper}>
+            <ul>
+               {
+                  tags.map(node => (
+                     <li key={node.id} value={node.name}>
+                        <button className={selectedTags.includes(node.name) ? activeTag : inactiveTag} value={node.name} onClick={e => handleTag(e)}>
+                           {node.name}
+                        </button>
+                        {selectedTags.includes(node.name) &&
+                           <button className={deleteButton} value={node.name} onClick={deleteTag}>x</button>
+                        }
+                     </li>
+                  ))
+               }
+            </ul>
+            </div>
       </div>
    )
 }

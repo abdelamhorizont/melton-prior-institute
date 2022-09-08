@@ -523,15 +523,19 @@ footer {
             transform: translate(8px, 8px) rotateZ(3deg);
         }
     }
+
+ }
+
+ .articleCollection.articlePictorial,  .articleCollection.articleFeature{
     .thumbnail{
-        min-width: 100%;
+        min-width: auto;
+        // max-height: 50vh;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 1.5*$lineHeight;
         max-width: calc(100% - .8*$lineHeight) !important;
     }
- }
-
+}
 
 
 @media screen and (max-width: $small) {

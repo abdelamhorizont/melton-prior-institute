@@ -23,14 +23,19 @@ html {
     display: block;
     grid-column-start: 1;
     grid-column-end: 5;
+    
     // position: sticky;
     // top: 2.5*$lineHeight;
-
-    div{
+    // height: calc(100vh - 6*$lineHeight);
+    > div{
         display:grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
         column-gap: $lineHeight;
+        position: sticky;
+        top: 6*$lineHeight;
+        height: calc(100vh - 6*$lineHeight);
+
         &:before{
             content:']';
             grid-row-start: 2;
@@ -40,6 +45,7 @@ html {
             content:'[';
             grid-row-start: 4;
             grid-column-start: 4;
+            padding-bottom: $lineHeight;
         }
 
         h2{
@@ -47,18 +53,31 @@ html {
             grid-column-start: 1;
 
         }
-        ul{
+        div{
+            height: 100%;
             grid-row-start: 3;
             grid-column-start: 2;
             grid-column-end: 5;
-            display: flex;
-            flex-direction: column;
-            max-height: 80vh;
-            flex-wrap: wrap;
+            width: 100%;
+            overflow-y: auto;
+        ul{
+
+            display: block;
+            // flex-direction: column;
+            // max-height: 80vh;
+            // flex-wrap: wrap;
             column-count: 2;
             column-gap: 1*$lineHeight;
+            column-fill: auto;
+            height: fit-content;
+            // width: 100%;
 
             li{ 
+                &:last-of-type{
+                    button{
+                        padding-bottom: 1*$lineHeight;
+                    }
+                }
                 display: flex;
                 position: relative;
                 width: calc(50% - 0.25*$lineHeight);
@@ -103,6 +122,7 @@ html {
             }
 
         }
+    }
     }
 }
 
@@ -215,7 +235,7 @@ html {
     flex-direction: column;
     .collectionTitle{
         position:sticky;
-        top: 5*$lineHeight;
+        top: 3.5*$lineHeight;
         z-index: 100;
         background-color: $hoverbg-color1;
     }
@@ -229,10 +249,15 @@ html {
    
     }
     div{
+        overflow-x: auto;
+        *{
+            overflow:visible;
+        }
         ul{
         display: flex;
         flex-direction: row;
-        // overflow-x: scroll;
+        width: fit-content;
+        
         
         a{
             width:25vw;
@@ -329,7 +354,7 @@ html {
 @media screen and (max-width: $small) {
 
 .categoryOverview{
-    margin-top: 3*$lineHeight;
+    // margin-top: 3*$lineHeight;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
@@ -337,23 +362,41 @@ html {
     .tagsSidebar{
         grid-column-start: 1;
          grid-column-end: 4;
-         div{  
+         height: unset;
+        width: 100%;
+         > div{  
             grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+            grid-template-rows: repeat(4, $lineHeight [row]);
             column-gap: 0.5*$lineHeight;
+            height: unset;
+            overflow: unset;
+            
+            div{
+                grid-column: 1/4;
+                overflow: unset;
+                overflow-x: scroll;
+                // overflow-x: scroll;
+                // width: 100%;    
+            
             ul{
-                padding: 0 0.5*$lineHeight;
-                grid-column-start: 1;
-                grid-column-end: 4;
+                width: fit-content;
+                // padding: 0 0.5*$lineHeight;
+                // grid-column-start: 1;
+                // grid-column-end: 4;
                 display: flex;
-                width: 100%;
-                height: 3*$lineHeight;
-                overflow-y: scroll;
+                // width: 100%;
+                // height: 3*$lineHeight;
+                // overflow-x: scroll;
                 flex-direction: row;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 li{
-                    width: unset;
+                    padding: unset;
+                    width: fit-content;
+                    display: flex;
+                    height: fit-content;
                 }
             }
+        }
         &::after{
             grid-column-start: 3;
             grid-column-end: 3;
@@ -411,6 +454,7 @@ html {
 
 
 }
+
 }
 
 
