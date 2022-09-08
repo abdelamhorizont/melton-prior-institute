@@ -193,78 +193,88 @@ const Homepage = () => {
       </div >
 
       <div className={categoriesLists} id="categories">
-        <Link to={!mobile ? `/content/features` : `#categories`}>
-          <Section className={categoriesSection} title="Features" onClick={() => {
-            mobile &&
-              setCategory({
-                features: true,
-                pictorials: false,
-                collections: false
-              })
-          }}>
-            <ul className={mobile && category.features && categoryActive}>
-              {
-                articles.filter(edge => (
-                  edge.node.categories.nodes[0] &&
-                  edge.node.categories.nodes[0].name === "features"
-                )).slice(0, 3).map(edge => (
+        <Section className={categoriesSection}>
 
-                  <Link to={`/content${edge.node.uri}`}>
-                    <li key={edge.node.id}>
-                      <Article excerpt={true}  path={edge.node} className={categoriesArticle} />
-                    </li>
-                  </Link>
+          <Link to={!mobile ? `/content/features` : `#categories`}>
+            <h2 onClick={() => {
+              mobile &&
+                setCategory({
+                  features: true,
+                  pictorials: false,
+                  collections: false
+                })
+            }}>Features</h2><span>]</span><span>[</span>
+          </Link>
 
-                ))
-              }
-            </ul>
-            <p className={moreButton}>...more</p>
-          </Section>
-        </Link>
+          <ul className={mobile && category.features && categoryActive}>
+            {
+              articles.filter(edge => (
+                edge.node.categories.nodes[0] &&
+                edge.node.categories.nodes[0].name === "features"
+              )).slice(0, 3).map(edge => (
 
-        <Link to={!mobile ? `/content/pictorials` : `#categories`}>
-          <Section title="Pictorials" className={categoriesSection} onClick={() => {
-            mobile &&
-              setCategory({
-                features: false,
-                pictorials: true,
-                collections: false
-              })
-          }}>
-            <ul className={mobile && category.pictorials && categoryActive}>
-              {
-                articles.filter(edge => (
-                  edge.node.categories.nodes[0] &&
-                  edge.node.categories.nodes[0].name === "pictorials"
-                )).slice(0, 3).map(edge => (
+                <Link to={`/content${edge.node.uri}`}>
+                  <li key={edge.node.id}>
+                    <Article excerpt={true} path={edge.node} className={categoriesArticle} />
+                  </li>
+                </Link>
 
-                  <Link to={`/content${edge.node.uri}`}>
-                    <li key={edge.node.id}>
-                      <Article excerpt={true}  path={edge.node} className={categoriesArticle} />
-                    </li>
-                  </Link>
+              ))
+            }
+          </ul>
+          <p className={moreButton}>...more</p>
+        </Section>
 
-                ))
-              }
-            </ul>
-            <p className={moreButton}>...more</p>
-          </Section>
-        </Link>
+        <Section className={categoriesSection}>
 
-        <Link to={!mobile ? `/content/collections` : `#categories`}>
-          <Section title="Collections" className={categoriesSection} onClick={() => {
-            mobile &&
-              setCategory({
-                features: false,
-                pictorials: false,
-                collections: true
-              })
-          }}>
+          <Link to={!mobile ? `/content/pictorials` : `#categories`}>
+            <h2 onClick={() => {
+              mobile &&
+                setCategory({
+                  features: false,
+                  pictorials: true,
+                  collections: false
+                })
+            }}>Pictorials</h2><span>]</span><span>[</span>
+          </Link>
+
+          <ul className={mobile && category.pictorials && categoryActive}>
+            {
+              articles.filter(edge => (
+                edge.node.categories.nodes[0] &&
+                edge.node.categories.nodes[0].name === "pictorials"
+              )).slice(0, 3).map(edge => (
+
+                <Link to={`/content${edge.node.uri}`}>
+                  <li key={edge.node.id}>
+                    <Article excerpt={true} path={edge.node} className={categoriesArticle} />
+                  </li>
+                </Link>
+
+              ))
+            }
+          </ul>
+          <p className={moreButton}>...more</p>
+        </Section>
+
+          <Section className={categoriesSection}>
+
+            <Link to={!mobile ? `/content/collections` : `#categories`}>
+              <h2 onClick={() => {
+                mobile &&
+                  setCategory({
+                    features: false,
+                    pictorials: false,
+                    collections: true
+                  })
+              }}>Collections</h2><span>]</span><span>[</span>
+            </Link>
+
             <ul className={mobile && category.features ? `${collectionsColumn} ${categoryActive}` : collectionsColumn}>
               {
                 collectionTitles.map(node =>
                   <Link to={`/content${node.uri}`}>
-                    <li key={node.name} className={collectionsArticle} style={{backgroundImage:  'url(' + node.posts.nodes[0].featuredImage.node.url + ')'}}>
+                    <li key={node.name} className={collectionsArticle} style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
                       <h1>{node.name}</h1>
                     </li>
                   </Link>
@@ -273,7 +283,6 @@ const Homepage = () => {
             </ul>
             <p className={moreButton}>...more</p>
           </Section>
-        </Link>
       </div>
 
     </Layout >

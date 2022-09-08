@@ -24,9 +24,9 @@ const Section = ({ children, title, className, onClick }) => {
 
     return (
         <div className={className} onClick={onClick}>
-                <h2>{title}</h2>
+                {/* <h2>{title}</h2>
                <span>]</span>
-                <span>[</span>
+                <span>[</span> */}
             {children}
         </div>
     )
