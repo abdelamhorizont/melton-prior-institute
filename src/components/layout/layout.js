@@ -117,7 +117,8 @@ const Layout = ({ children }) => {
     if (typeof window !== 'undefined') {
 
       setScrollPos(window.scrollY)
-      setShowNav(window.scrollY < scrollPos)
+      setShowNav(true)
+      // setShowNav(window.scrollY < scrollPos)
 
     }
   }
