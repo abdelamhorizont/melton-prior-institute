@@ -14,8 +14,8 @@ main{
     flex-direction: column;
     padding: 0 1*$lineHeight;
     box-sizing:border-box;
-    padding-top: 5*$lineHeight;
-    min-height: calc(100% - 7.875rem);
+    padding-top: 3*$lineHeight;
+    min-height: calc(100% - 5*$lineHeight);
 
     @media screen and (max-width: 620px){
         padding: 0;
@@ -136,6 +136,7 @@ width: 50%;
     transition: $transitionFade;
     &:hover{
         opacity: 1;
+        cursor:pointer;
     }
 }
 
@@ -174,6 +175,8 @@ width: 50%;
                 text-align: center;
             }
         }
-        
+        .moreButton{
+            grid-column-start: 3;
+        }
     }
 }

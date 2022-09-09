@@ -19,7 +19,9 @@ import {
   menuTopRowBg,
   menuBottomRowBg,
   searchWords,
-  active
+  active,
+  firstNav,
+  secondNav
 } from './layout.module.scss'
 
 import {
@@ -117,16 +119,16 @@ const Layout = ({ children }) => {
     if (typeof window !== 'undefined') {
 
       setScrollPos(window.scrollY)
-      setShowNav(true)
-      // setShowNav(window.scrollY < scrollPos)
+      // setShowNav(true)
+      setShowNav(window.scrollY < scrollPos)
 
     }
   }
 
   return (
     <div className={layout}>
-      <header>
-        <nav className={burgerBottonActive? `${active}` : ''}>
+      <header className={ burgerBottonActive? `${active}` : ''}>
+        <nav className={ burgerBottonActive? `${firstNav} ${active}` : `${firstNav}`}>
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
@@ -137,15 +139,19 @@ const Layout = ({ children }) => {
             <li key="links"><Link to="/meta/links">Links</Link></li>
           </ul>
           <div className={menuTopRowBg}></div>
-          <div className={menuTransition} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}>
+        </nav>
+        <nav className={burgerBottonActive? `${secondNav} ${active}` : `${secondNav}`} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3.15rem)" }}>
+          <div className={menuTransition}>
           <ul className={categories}>
             <li key="features"><Link to="/content/features">Features</Link></li>
             <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
             <li key="collections"><Link to="/content/collections">Collections</Link></li>
           </ul>
           <Search handleSearchData={handleSearchData} />
-          </div>
           <div className={menuBottomRowBg} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}></div>
+
+          </div>
+
         </nav>
       </header>
 

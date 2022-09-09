@@ -39,7 +39,7 @@
   bottom: unset !important;
   left: unset !important;
   width: unset !important;
-  position: unset !important;
+  // position: unset !important;
   text-align: left !important;
   box-sizing: border-box;
   grid-column-start: 12;
@@ -137,6 +137,7 @@ li, li a, .articleBody, .swiper-slide{
 
     .swiper-button-next, .swiper-button-prev{
       align-items: unset;
+      z-index: 5000;
       h1{
         font-size: $fontSize;
       }
@@ -160,8 +161,14 @@ li, li a, .articleBody, .swiper-slide{
     text-align: center !important;
     align-self: unset;
     font-size: $fontSize;
-
+    z-index: 5000;
   }
+
+  .swiper-button-next, .swiper-button-prev, .swiper-pagination{
+    position: sticky;
+    top: 4*$lineHeight;
+  }
+
 }
 
 
