@@ -3,8 +3,8 @@
 - Lightbox bildgröße
 - Search auch für Inhalte, bisher nur excerpt
 
-- Linton Tag query, an den anfang des arrays setzen, i-button in die list-item, verlinkung zu about mit # id Linton
-- im backend linton archive seite erstellen, query in about danach setzen und einfügen
+x Linton Tag query, an den anfang des arrays setzen, i-button in die list-item, verlinkung zu about mit # id Linton
+x im backend linton archive seite erstellen, query in about danach setzen und einfügen
 x tagWrapper div nur bei tags?
 -onscroll mobile ausstellen
 

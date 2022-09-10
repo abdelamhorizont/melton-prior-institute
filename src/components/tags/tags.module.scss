@@ -1,6 +1,8 @@
 @import "../../styles/typo.module.scss";
 
 .inactiveTag, .activeTag{
+   position: relative;
+   left: 0.75*$lineHeight;
    cursor: pointer;
 
       // margin-top: -4px;
@@ -46,9 +48,11 @@ button.activeTag{
 }
 
 .deleteButton{
-   // order: -1;
-   // width: $lineHeight;
-   display:none;
+   order: -1;
+   width: $lineHeight;
+   position: absolute;
+
+   // display:none;
 }
 
 .deleteButton[value="Linton Archive"], .deleteButton[value="Linton Archiv"]{
@@ -59,4 +63,19 @@ button.activeTag{
 
 .lintonInfo{
    background-color: red;
+}
+
+.tagListWrapper{
+
+}
+
+
+
+@media screen and (max-width: $small) {
+   .inactiveTag, .activeTag{
+      height: $lineHeight;
+   }
+   .deleteButton{
+      height: 100%;
+   }
 }

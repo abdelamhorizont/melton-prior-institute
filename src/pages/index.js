@@ -26,7 +26,12 @@ import {
 
 import {
   categoriesSection,
+  categoriesSectionHeader,
   recommendedSection,
+  recommendedSectionHeader,
+  featuresCategory,
+  pictorialsCategory,
+  collectionsCategory,
   categoryActive
 } from '../components/section/section.module.scss'
 
@@ -142,7 +147,12 @@ const Homepage = () => {
     <Layout>
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
-          <h2>Recommended</h2><span>]</span><span>[</span>
+        <div className={recommendedSectionHeader}> 
+                          <h2>Recommended</h2>
+               <span>]</span>
+                <span>[</span>
+        </div>
+
           <div className="swiper-button-prev">&lt;</div>
           <div className="swiper-button-next">&gt;</div>
           <Swiper className="my-swiper"
@@ -194,7 +204,8 @@ const Homepage = () => {
       </div >
 
       <div className={categoriesLists} id="categories">
-        <Section className={categoriesSection}>
+        <Section className={categoriesSection} id={featuresCategory}>
+            <div className={categoriesSectionHeader}> 
 
           <Link to={!mobile ? `/content/features` : `#categories`}>
             <h2 onClick={() => {
@@ -204,8 +215,10 @@ const Homepage = () => {
                   pictorials: false,
                   collections: false
                 })
-            }}>Features</h2><span>]</span><span>[</span>
+            }}>Features</h2>
           </Link>
+          <span>]</span>
+            </div>
 
           <ul className={mobile && category.features && categoryActive}>
             {
@@ -223,10 +236,12 @@ const Homepage = () => {
               ))
             }
           </ul>
+          <span>[</span>
           <p className={moreButton}>...more</p>
         </Section>
 
-        <Section className={categoriesSection}>
+        <Section className={categoriesSection} id={pictorialsCategory}>
+            <div className={categoriesSectionHeader}> 
 
           <Link to={!mobile ? `/content/pictorials` : `#categories`}>
             <h2 onClick={() => {
@@ -236,8 +251,10 @@ const Homepage = () => {
                   pictorials: true,
                   collections: false
                 })
-            }}>Pictorials</h2><span>]</span><span>[</span>
+            }}>Pictorials</h2>
           </Link>
+          <span>]</span>
+            </div>
 
           <ul className={mobile && category.pictorials && categoryActive}>
             {
@@ -255,35 +272,40 @@ const Homepage = () => {
               ))
             }
           </ul>
+          <span>[</span>
           <p className={moreButton}>...more</p>
         </Section>
 
-        <Section className={categoriesSection}>
-
-          <Link to={!mobile ? `/content/collections` : `#categories`}>
-            <h2 onClick={() => {
-              mobile &&
-                setCategory({
-                  features: false,
-                  pictorials: false,
-                  collections: true
-                })
-            }}>Collections</h2><span>]</span><span>[</span>
-          </Link>
-
-          <ul className={mobile && category.collections ? `${collectionsColumn} ${categoryActive}` : collectionsColumn}>
-            {
-              collectionTitles.map(node =>
-                <Link to={`/content${node.uri}`}>
-                  <li key={node.name} className={collectionsArticle} style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
-                    <h1>{node.name}</h1>
-                  </li>
-                </Link>
-              )
-            }
-          </ul>
-          <p className={moreButton}>...more</p>
-        </Section>
+          <Section className={categoriesSection} id={collectionsCategory}>
+            <div className={categoriesSectionHeader}> 
+            <Link to={!mobile ? `/content/collections` : `#categories`}>
+              <h2 onClick={() => {
+                mobile &&
+                  setCategory({
+                    features: false,
+                    pictorials: false,
+                    collections: true
+                  })
+              }}>Collections</h2>
+            </Link>
+            <span>]</span>
+            </div>
+            <ul className={mobile && category.collections ? `${collectionsColumn} ${categoryActive}` : collectionsColumn }>
+              {
+                collectionTitles.map(node =>
+                  <Link to={`/content${node.uri}`}>
+                    <li key={node.name} className={collectionsArticle} >
+                      <div style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
+                      </div>
+                      <h1>{node.name}</h1>
+                    </li>
+                  </Link>
+                )
+              }
+            </ul>
+            <span>[</span>
+            <p className={moreButton}>...more</p>
+          </Section>
       </div>
 
     </Layout >

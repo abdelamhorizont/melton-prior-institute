@@ -17,6 +17,12 @@ export default function About() {
         wpPage(title: {eq: "About"}) {
             content
           }
+          allWpPage(filter: {title: {eq: "Linton Archive"}}) {
+            nodes {
+              title
+              content
+            }
+          }
         }   
     `)
 
@@ -31,13 +37,14 @@ export default function About() {
           </div>
           <div dangerouslySetInnerHTML={{ __html: data.wpPage.content }} className={pageContent} />
         </div>
-        <div class={articleWrapper}>
+
+        <div class={articleWrapper} id="linton">
           <div class={sectionTitle}><h4>Linton Archive</h4></div>
           <div className={topBrackets}>
             <span>]</span>
             <span>[</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: data.wpPage.content }} className={pageContent} />
+          <div dangerouslySetInnerHTML={{ __html: data.allWpPage.nodes[0].content }} className={pageContent} />
         </div>
       </div>
     </Layout>

@@ -6,7 +6,8 @@ import {
    activeTag,
    inactiveTag,
    deleteButton,
-   lintonInfo
+   lintonInfo,
+   tagListWrapper
 } from './tags.module.scss'
 
 export default function Tags(props) {
@@ -26,20 +27,17 @@ export default function Tags(props) {
    }  
    `)
 
+
    let tags = data.allWpTag.nodes.filter(node =>
       node.language.code == "EN"
    )
+
+   let linton = tags.filter(node => node.name == "Linton Archive")[0]
    
-   useEffect(() => {
-      tags = tags.filter(node => node.name !== "Linton Archive")
-      tags.unshift("Linton Archive")   
-   }, [])
+   tags = tags.filter(node => node.name !== "Linton Archive")
+   tags.unshift(linton)
 
    const [selectedTags, setSelectedTags] = useState([])
-
-   const [linton, setlinton] = useState(false)
-   // setlinton(tags.includes('linton'))
-   console.log(tags)
 
    const handleTag = (e) => {
       setSelectedTags([...selectedTags, e.target.value])
@@ -54,25 +52,28 @@ export default function Tags(props) {
    return (
       <div>
          <h2>Tags</h2>
-         <ul>
-            {
-               tags.map(node => (
-                  <li key={node.id} value={node.name}>
-                     <button className={selectedTags.includes(node.name) ? activeTag : inactiveTag} value={node.name} onClick={e => handleTag(e)}>
-                        {node.name}
-                     </button>
-                     {selectedTags.includes(node.name) &&
-                        <button className={deleteButton} value={node.name} onClick={deleteTag}>x</button>
-                     }
-                     {node.name.includes('Linton') &&
-                        <Link to="../../meta/about">
-                           <button className={lintonInfo} value="i">i</button>
-                        </Link>
-                     }
-                  </li>
-               ))
-            }
-         </ul>
+         <div className={tagListWrapper}>
+            <ul>
+               {
+                  tags.map(node => (
+                     <li key={node.id} value={node.name}>
+                        <button className={selectedTags.includes(node.name) ? activeTag : inactiveTag} value={node.name} onClick={e => handleTag(e)}>
+                           {node.name}
+                        </button>
+                        {selectedTags.includes(node.name) &&
+                           <button className={deleteButton} value={node.name} onClick={deleteTag}>x</button>
+                        }
+                        {node.name.includes('Linton') &&
+                           <Link to="../../meta/about#linton">
+                              <button className={lintonInfo} value="">i</button>
+                           </Link>
+                        }
+                     </li>
+                  ))
+               }
+            </ul>
+         </div>
+
       </div>
    )
 }

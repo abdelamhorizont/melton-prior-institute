@@ -61,6 +61,7 @@ h1,h2, h3, h4, a, button, label p, b{
 
 p{
   @include nm-book;
+  word-break: break-word;
 }
 
 i{
