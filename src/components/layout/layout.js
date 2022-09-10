@@ -104,14 +104,17 @@ const Layout = ({ children }) => {
   const [scrollPos, setScrollPos] = useState(0)
   const [showNav, setShowNav] = useState(true)
   const [burgerBottonActive, setBurgerBottonActive] = useState(false)
+  const [mobile, setMobile] = useState(false)
+
+  React.useEffect(() => {
+    const isBrowser = () => typeof window !== `undefined`
+    setMobile(isBrowser() && window.screen.width < 620 ? true : false)
+    mobile && setShowNav(false)
+  }, []);
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener("scroll", handleScroll);
-
-      // return () => {
-      //   window.removeEventListener('scroll', handleScroll);
-      // };
     }
   }, [scrollPos])
 
@@ -119,7 +122,7 @@ const Layout = ({ children }) => {
     if (typeof window !== 'undefined') {
 
       setScrollPos(window.scrollY)
-      setShowNav(window.scrollY < scrollPos)
+      !mobile && setShowNav(window.scrollY < scrollPos)
     }
   }
 
@@ -130,7 +133,11 @@ const Layout = ({ children }) => {
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
-          <div className={burgerBottonActive ? `${burgerButton} ${active}` : burgerButton} id="burgerButton" onClick={() => setBurgerBottonActive(!burgerBottonActive)}></div>
+          <div className={burgerBottonActive ? `${burgerButton} ${active}` : burgerButton} id="burgerButton" onClick={() => {
+            setBurgerBottonActive(!burgerBottonActive)
+            setShowNav(!showNav)
+          }
+            }></div>
           <ul className={secondaryNav}>
             <li key="about"><Link to="/meta/about">About</Link></li>
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
