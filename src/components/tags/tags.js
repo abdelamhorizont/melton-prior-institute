@@ -1,11 +1,12 @@
 import * as React from "react"
-import { useState } from "react"
-import { useStaticQuery, graphql } from 'gatsby'
+import { useState, useEffect } from "react"
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import {
    activeTag,
    inactiveTag,
-   deleteButton
+   deleteButton,
+   lintonInfo
 } from './tags.module.scss'
 
 export default function Tags(props) {
@@ -25,10 +26,20 @@ export default function Tags(props) {
    }  
    `)
 
-   const tags = data.allWpTag.nodes.filter( node =>
+   let tags = data.allWpTag.nodes.filter(node =>
       node.language.code == "EN"
-    )
+   )
+   
+   useEffect(() => {
+      tags = tags.filter(node => node.name !== "Linton Archive")
+      tags.unshift("Linton Archive")   
+   }, [])
+
    const [selectedTags, setSelectedTags] = useState([])
+
+   const [linton, setlinton] = useState(false)
+   // setlinton(tags.includes('linton'))
+   console.log(tags)
 
    const handleTag = (e) => {
       setSelectedTags([...selectedTags, e.target.value])
@@ -52,6 +63,11 @@ export default function Tags(props) {
                      </button>
                      {selectedTags.includes(node.name) &&
                         <button className={deleteButton} value={node.name} onClick={deleteTag}>x</button>
+                     }
+                     {node.name.includes('Linton') &&
+                        <Link to="../../meta/about">
+                           <button className={lintonInfo} value="i">i</button>
+                        </Link>
                      }
                   </li>
                ))

@@ -26,10 +26,7 @@
     span:last-of-type {
         grid-column-start: 11;
         text-align       : right;
-
-
     }
-
 
     @media screen and (max-width: $small) {
         grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
@@ -109,5 +106,5 @@
 }
 
 .categoryActive{
-    
+
 }

@@ -142,6 +142,7 @@ const Homepage = () => {
     <Layout>
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
+          <h2>Recommended</h2><span>]</span><span>[</span>
           <div className="swiper-button-prev">&lt;</div>
           <div className="swiper-button-next">&gt;</div>
           <Swiper className="my-swiper"
@@ -257,32 +258,32 @@ const Homepage = () => {
           <p className={moreButton}>...more</p>
         </Section>
 
-          <Section className={categoriesSection}>
+        <Section className={categoriesSection}>
 
-            <Link to={!mobile ? `/content/collections` : `#categories`}>
-              <h2 onClick={() => {
-                mobile &&
-                  setCategory({
-                    features: false,
-                    pictorials: false,
-                    collections: true
-                  })
-              }}>Collections</h2><span>]</span><span>[</span>
-            </Link>
+          <Link to={!mobile ? `/content/collections` : `#categories`}>
+            <h2 onClick={() => {
+              mobile &&
+                setCategory({
+                  features: false,
+                  pictorials: false,
+                  collections: true
+                })
+            }}>Collections</h2><span>]</span><span>[</span>
+          </Link>
 
-            <ul className={mobile && category.features ? `${collectionsColumn} ${categoryActive}` : collectionsColumn}>
-              {
-                collectionTitles.map(node =>
-                  <Link to={`/content${node.uri}`}>
-                    <li key={node.name} className={collectionsArticle} style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
-                      <h1>{node.name}</h1>
-                    </li>
-                  </Link>
-                )
-              }
-            </ul>
-            <p className={moreButton}>...more</p>
-          </Section>
+          <ul className={mobile && category.collections ? `${collectionsColumn} ${categoryActive}` : collectionsColumn}>
+            {
+              collectionTitles.map(node =>
+                <Link to={`/content${node.uri}`}>
+                  <li key={node.name} className={collectionsArticle} style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
+                    <h1>{node.name}</h1>
+                  </li>
+                </Link>
+              )
+            }
+          </ul>
+          <p className={moreButton}>...more</p>
+        </Section>
       </div>
 
     </Layout >
