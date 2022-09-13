@@ -255,6 +255,13 @@ ul, .swiper-slide-active, .swiper-slide{
     .articleFeature, .articlePictorial{
         flex-direction: row;
     }
+    .categoriesArticle{
+        .articleBody{
+            padding: 0 0 0.5*$lineHeight 0;
+            border-bottom: solid 1px black;
+        }
+    }
+
     .recommendedArticle, .articleFeature, .articlePictorial{
     flex-direction: column;
     padding: 0.5*$lineHeight;
@@ -266,6 +273,7 @@ ul, .swiper-slide-active, .swiper-slide{
         .articleBody{
             padding: 0 0 0.5*$lineHeight 0;
             border-bottom: solid 1px black;
+            
             h1{
             font-size: $sDfontSizeL;
             line-height: $sDlineHeightL;

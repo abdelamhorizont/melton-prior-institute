@@ -114,7 +114,7 @@
         grid-column-start: 1;
         grid-column-end  : 5;
         grid-row-start   : 3;
-
+        min-height: unset;
         li {
             padding   : 0.5*$lineHeight;
             box-sizing: border-box;
@@ -169,23 +169,22 @@
     }
 
     .categoriesSection {
-        position: absolute;
         display              : grid;
         grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
         grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto [row] $lineHeight [row] $lineHeight;
-        column-gap           : $lineHeight;
+        column-gap           : 0.5*$lineHeight;
+        grid-column: 1/4;
+        grid-row: 1;
         // margin-right         : $lineHeight;
         width: 100%;
     
         .categoriesSectionHeader{
             grid-column: 1/4;
             display              : inherit;
-            grid-template-columns: inherit;
-            grid-template-rows   : repeat(2, $lineHeight);
+            // grid-template-columns: inherit;
             column-gap           : inherit;
             position: sticky;
             top: 3*$lineHeight;
-            background-color: #fff;
             z-index: 2500;
             height: fit-content;
         > a{
@@ -231,6 +230,9 @@
     }
         > span:last-of-type {
             grid-column-start: 3;
+            width: 50%;
+            text-align: left;
+            justify-self: end;
             grid-row-start   : 4;
         }
     
@@ -266,30 +268,55 @@
 
     #featuresCategory{
         .categoriesSectionHeader{
-            // background-color: #fff;
+            background-color: #fff;
             z-index: 2500 ;
+            grid-template-rows   : repeat(2, $lineHeight);
+            span{
+                grid-column: 1;
+                width: 50%;
+                text-align: right;
+            }
+            h2{
+                margin-left: 0.5*$lineHeight;
+            }
         }
         }
 
     
     #pictorialsCategory{
         .categoriesSectionHeader{
-            grid-column: 2/3;
+            grid-template-columns: unset;
+            text-align: center;
+            grid-column: 2;
+            grid-template-rows: $lineHeight;
             h2{
                 z-index: 10000;
+            }
+            span{
+                display: none;
             }
     }
     }
     #collectionsCategory{
         .categoriesSectionHeader{
-            grid-column: 3/4;
+            grid-template-columns: unset;
+            text-align: right;
+            grid-column: 3;
             h2{
                 z-index: 10000;
+                margin-right: 0.5*$lineHeight;
+            }
+            span{
+                display: none;
             }
     }
+        > ul li{
+            margin:0.5*$lineHeight !important;
+            width: unset;
+        }
     }
     .categoriesSection > ul{
-        min-height: calc(100vh - 9*$lineHeight);
+        min-height: calc(100vh - 12*$lineHeight);
     }
     .categoriesSection > ul, .categoriesSection > ul.collectionsColumn, .categoriesSection ul ~ span, .categoriesSection ul ~ p , .categoriesSection ul.collectionsColumn ~ span, .categoriesSection ul.collectionsColumn ~ p {
         display: none;

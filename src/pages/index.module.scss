@@ -145,7 +145,7 @@ width: 50%;
 @media screen and (max-width: $small) {
     .categoriesLists{
         position: relative;
-        display: block;
+        display: grid;
         > a{
             position: absolute;
             top: 0;
@@ -177,6 +177,7 @@ width: 50%;
         }
         .moreButton{
             grid-column-start: 3;
+            margin-right: 0.5*$lineHeight;
         }
     }
 }
