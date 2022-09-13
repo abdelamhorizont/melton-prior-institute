@@ -45,7 +45,7 @@
     }
 }
 .categoriesSection {
-    position: absolute;
+    position: relative;
     display              : grid;
     grid-template-columns: repeat(4, minmax(0, 1fr) [col]);
     grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto [row] $lineHeight [row] $lineHeight;
@@ -254,9 +254,9 @@
     #pictorialsCategory,
     #collectionsCategory{
         .categoriesSectionHeader{
-        background-color: unset;
+            position: sticky;
         h2{
-            background-color: #fff;
+            
         }
         }
         .categoriesSection{
@@ -267,7 +267,7 @@
     #featuresCategory{
         .categoriesSectionHeader{
             // background-color: #fff;
-            z-index: 5000 ;
+            z-index: 2500 ;
         }
         }
 
