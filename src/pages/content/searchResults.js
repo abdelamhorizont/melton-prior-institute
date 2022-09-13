@@ -84,7 +84,6 @@ export default function SearchResults() {
               <Link to={`/content${edge.node.uri}`}>
                 <li key={edge.node.id}>
                   <Article path={edge.node} className={articleFeature} />
-                  {/* Kann man hier je nachdem, ob es ein Features oder Pictorials sind, die class "articleFeature" bzw "articleSection" einfügen?*/}
                 </li>
               </Link>
 

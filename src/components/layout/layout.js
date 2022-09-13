@@ -146,7 +146,7 @@ const Layout = ({ children }) => {
           <div className={menuTopRowBg}></div>
         </nav>
 
-        <nav className={burgerBottonActive ? `${secondNav} ${active}` : `${secondNav}`} style={showNav ? { transform: "translateY(0rem)" } : { transform: "translateY(-3.15rem)" }}>
+        <nav className={burgerBottonActive ? `${secondNav} ${active}` : `${secondNav}`} style={showNav ? { transform: "translateY(0rem)" } : { transform: "translateY(0)" }}>
           <div className={menuTransition}>
             <ul className={categories}>
               <li key="features"><Link to="/content/features">Features</Link></li>
@@ -155,7 +155,7 @@ const Layout = ({ children }) => {
             </ul>
             <Search handleSearchData={handleSearchData} />
 
-            <div className={menuBottomRowBg} style={!burgerBottonActive && showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}></div>
+            <div className={menuBottomRowBg} style={!burgerBottonActive && showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(0)" }}></div>
           </div>
 
         </nav>

@@ -20,6 +20,7 @@ main{
     @media screen and (max-width: 620px){
         padding: 0;
         margin-top: 3*$lineHeight;
+        min-height: calc(100% - 7*$lineHeight);
     }
 
 }
@@ -146,6 +147,8 @@ width: 50%;
     .categoriesLists{
         position: relative;
         display: grid;
+        column-gap: .5*$lineHeight;
+        // grid-template-rows: minmax(0, $lineHeight) minmax(0, $lineHeight) minmax(0, auto) minmax(0, $lineHeight) minmax(0, $lineHeight);
         > a{
             position: absolute;
             top: 0;

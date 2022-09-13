@@ -30,13 +30,15 @@ import {
 } from '../../styles/content.module.scss'
 
 import {
-  relatedPostsWrapper
+  relatedPostsWrapper,
+  categoriesSectionHeader
 } from '../../components/layout/layout.module.scss'
 
 import {
   articleFeature,
   articlePictorial
 } from '../../components/article/article.module.scss'
+
 
 
 export default function Post({ data }) {
@@ -148,6 +150,10 @@ export default function Post({ data }) {
       {relatedPosts.length > 0 &&
         <div>
           <Section title="related Posts" className={relatedPostsWrapper}>
+              <div className={categoriesSectionHeader}>
+              <h2>related Posts</h2>
+               <span>]</span>
+               </div>
             <ul>
               {
                 relatedPosts.slice(0, 3).map(edge => (
@@ -161,6 +167,7 @@ export default function Post({ data }) {
                 ))
               }
             </ul>
+            <span>[</span>
           </Section>
         </div>
       }

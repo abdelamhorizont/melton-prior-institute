@@ -4,6 +4,8 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
+import ArticleTitle from '../../components/articleTitle/articleTitle'
+import Section from '../../components/section/section'
 
 import {
   collections,

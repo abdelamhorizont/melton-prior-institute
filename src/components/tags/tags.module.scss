@@ -62,7 +62,7 @@ button.activeTag{
 }
 
 .lintonInfo{
-   background-color: red;
+   // background-color: red;
 }
 
 .tagListWrapper{
@@ -74,8 +74,12 @@ button.activeTag{
 @media screen and (max-width: $small) {
    .inactiveTag, .activeTag{
       height: $lineHeight;
+      left: unset;
+      padding-left: .75*$lineHeight;
+      margin-left: 0.25*$lineHeight;
    }
    .deleteButton{
       height: 100%;
+      padding-left: 0.33*$lineHeight;
    }
 }

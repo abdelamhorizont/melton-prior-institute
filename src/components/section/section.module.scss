@@ -126,6 +126,12 @@
     margin-right: 0;
 }
 
+.categoriesSection#collectionsCategory {
+    grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] minmax(0, 100%) [row] $lineHeight [row] $lineHeight;
+    ul{
+        height: fit-content;
+    }
+}
 
 @media screen and (max-width: $small) {
     .recommendedSection {
@@ -169,7 +175,9 @@
     .categoriesSection {
         display              : grid;
         grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
-        grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto [row] $lineHeight [row] $lineHeight;
+        // grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto [row] $lineHeight [row] $lineHeight;
+        grid-template-rows: minmax(0, $lineHeight) minmax(0, $lineHeight) minmax(0, auto) minmax(0, $lineHeight) minmax(0, $lineHeight);
+
         column-gap           : 0.5*$lineHeight;
         grid-column: 1/4;
         grid-row: 1;
@@ -308,7 +316,7 @@
                 display: none;
             }
     }
-        > ul li{
+         ul li{
             margin:0.5*$lineHeight !important;
             width: unset;
         }
@@ -320,13 +328,14 @@
         display: none;
         opacity: 0;
         transition-delay: 50ms;
-
+        z-index: 10;
     }
     .categoriesSection > ul.categoryActive, ul.categoryActive ~ span, ul.categoryActive ~ p{
     display: unset;
     opacity: 1;
     transition: $transitionFade;
     transition-delay: 500ms;
+    z-index: 20;
     }
 
 }

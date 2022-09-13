@@ -297,6 +297,11 @@ ul, .swiper-slide-active, .swiper-slide{
         }
         .languagesWrapper{
             justify-self: flex-end;
+            margin-left: auto;
+            a{
+                margin-left: unset;
+                padding: unset;
+            }
         }
     }
  

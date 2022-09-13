@@ -50,6 +50,7 @@ img{
 
 h1{
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 
@@ -57,16 +58,21 @@ h1{
 h1,h2, h3, h4, a, button, label p, b{
   @include ke-light;
   font-feature-settings: "ss04";
+
 }
 
 p{
   @include nm-book;
   word-break: break-word;
+  white-space: pre-line;
+  hyphens: auto;
 }
 
 i{
   @include ke-book-italic;
   font-feature-settings: "ss04";
+  font-size: 0.95*$fontSizeM;
+  letter-spacing: -0.05rem;
 }
 
 a[href^="#[" ]{
@@ -220,20 +226,20 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   order: -1;
   color: rgb(175, 0, 0);
   justify-content: unset !important;
-  &:after{
+  a{
     transition: $transitionFade;
-    content: "i";
     border: solid 1px;
     border-radius: 100%;
     width: .75*$lineHeight;
     text-align: center;
-    margin-left: 0.25*$lineHeight;
+    margin-left:1*$lineHeight;
+    border-color: rgb(175, 0, 0);
     } 
-  &:hover:after{
+  a:hover{
     background-color: rgb(175, 0, 0);
     border-color: rgb(175, 0, 0);
     cursor: pointer;
-    color: #fff;
+    button{color: #fff;}
   }
   
   button{
@@ -244,6 +250,55 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   }
   }
 
+
+@media screen and (max-width: $small){
+  li[value="Linton Archive"], li[value="Linton Archiv"]{
+
+    a{
+    margin-left:0.25*$lineHeight;
+    width: $lineHeight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+     }
+  figure{
+    width: unset !important;
+  }
+
+  .MsoFootnoteReference{
+    font-size: 0.6*$fontSize;
+    vertical-align:top;
+  }
+  .MsoFootnoteText, .MsoFootnoteText .MsoFootnoteReference{
+    font-size: 1*$sDfontSize !important;
+  }
+
+  .inline-gatsby-image-wrapper{
+    margin-top: 0.5*$lineHeight;
+    margin-bottom: 0;
+    // width: 100%;
+    display: flex; 
+    justify-content: center;
+  
+  }
+  figcaption{
+    margin-top: 0.25*$fontSize;
+    font-size: 0.8*$sDfontSize;
+    line-height: $sDfontSize;
+  }
+  p{
+    letter-spacing: 0.02rem;
+  }
+  .gallery{
+    width: 100%;
+    left: unset;
+    right: unset;
+  }
+  .gallery-columns-3, .gallery-columns-4, .gallery-columns-5{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media print {
 
   h1, h4, a, button, label p{
@@ -273,5 +328,17 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     font-family: 'Times New Roman', Times, serif;
     font-size: $fontSize !important;
     line-height: $lineHeight !important;
+  }
+}
+
+
+@media screen and (max-width: $small){
+  i{
+    font-feature-settings: "ss04";
+    font-size: 0.99*$sDfontSize;
+    letter-spacing: -0.05rem;
+  }
+  a{
+    font-size: inherit;
   }
 }
