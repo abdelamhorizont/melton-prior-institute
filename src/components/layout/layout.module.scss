@@ -43,7 +43,7 @@ header {
         top: 3*$lineHeight;
         z-index: 2500;
         transition: $transitionFade;
-        position: relative;
+        position: fixed;
     }
     .menuTopRowBg{
         background-color: #fff;
@@ -628,7 +628,7 @@ footer {
 
         nav.secondNav{
             position: absolute;
-            top: 0;
+            // top: 0;
             padding: 0 0.5*$lineHeight;
             transition-delay: 400ms;
             height: 3*$lineHeight;

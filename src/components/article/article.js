@@ -22,8 +22,8 @@ import {
    articlePictorial,
    articleCollection,
    thumbnail
- } from '../layout/layout.module.scss'
- 
+} from '../layout/layout.module.scss'
+
 
 const Article = (props) => {
    const [category, setCategory] = useState()
@@ -31,20 +31,20 @@ const Article = (props) => {
    React.useEffect(() => {
       setCategory(
          props.path.categories.nodes.some(node => node.name.includes("features")) && articleFeature ||
-         props.path.categories.nodes.some(node => node.name.includes("pictorial")) && articlePictorial 
+         props.path.categories.nodes.some(node => node.name.includes("pictorial")) && articlePictorial
       )
    }, [])
-   
+
    return (
       // <div className={props.className ? props.className : article }> 
-      <div className={props.className ? `${props.className} ${category}` : article }> 
+      <div className={props.className ? `${props.className} ${category}` : article}>
 
          <div className={thumbnail}>
             {
                props.path.featuredImage && props.path.featuredImage.node.localFile && props.path.featuredImage.node.localFile.childImageSharp ?
                   <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"test"} />
                   :
-               props.path.featuredImage && props.path.featuredImage.node.image &&
+                  props.path.featuredImage && props.path.featuredImage.node.image &&
                   <img src={props.path.featuredImage.node.image.url} alt="test" />
             }
          </div>
@@ -57,8 +57,9 @@ const Article = (props) => {
                   <div className={articleExcerpt}>
                      <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
                   </div>
+                  {props.path.tags?.nodes.length > 0 &&
                   <div className={articleTagWrapper}>
-                     {props.path.tags && props.path.tags.nodes.length > 0 ?
+                     {props.path.tags.nodes.length > 0 ?
                         props.path.tags.nodes.map(node => (
                            <h4>[{node.name}]</h4>
                         ))
@@ -66,16 +67,19 @@ const Article = (props) => {
                         props.path.translations && props.path.translations[0] && props.path.translations[0].tags &&
                         props.path.translations[0].tags.nodes.map(node => (
                            <h4>[{node.name}]</h4>
-                        ))}
-                  </div></>
+                        ))
+                     }
+                  </div>
+                  }
+               </>
             }
             <div className={languagesWrapper}>
-               {props.path.language && 
+               {props.path.language &&
                   <Link to={`/content${props.path.uri}`}>
                      <button>{props.path.language.code}</button>
                   </Link>
                }
-               {props.path.translations && 
+               {props.path.translations &&
                   props.path.translations.map(node =>
                      node.language &&
                      <Link to={`/content${node.uri}`}>

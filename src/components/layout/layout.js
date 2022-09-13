@@ -104,14 +104,17 @@ const Layout = ({ children }) => {
   const [scrollPos, setScrollPos] = useState(0)
   const [showNav, setShowNav] = useState(true)
   const [burgerBottonActive, setBurgerBottonActive] = useState(false)
+  const [mobile, setMobile] = useState(false)
+
+  React.useEffect(() => {
+    const isBrowser = () => typeof window !== `undefined`
+    setMobile(isBrowser() && window.screen.width < 620 ? true : false)
+    mobile && setShowNav(false)
+  }, []);
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener("scroll", handleScroll);
-
-      // return () => {
-      //   window.removeEventListener('scroll', handleScroll);
-      // };
     }
   }, [scrollPos])
 
@@ -119,20 +122,22 @@ const Layout = ({ children }) => {
     if (typeof window !== 'undefined') {
 
       setScrollPos(window.scrollY)
-      // setShowNav(true)
-      setShowNav(window.scrollY < scrollPos)
-
+      !mobile && setShowNav(window.scrollY < scrollPos)
     }
   }
 
   return (
     <div className={layout}>
-      <header className={ burgerBottonActive? `${active}` : ''}>
-        <nav className={ burgerBottonActive? `${firstNav} ${active}` : `${firstNav}`}>
+      <header className={burgerBottonActive ? `${active}` : ''}>
+        <nav className={burgerBottonActive ? `${firstNav} ${active}` : `${firstNav}`}>
           <div className={brand}>
             <Link to="/">Melton Prior Institute</Link>
           </div>
-          <div className={burgerBottonActive? `${burgerButton} ${active}` : burgerButton} id="burgerButton" onClick={() => setBurgerBottonActive(!burgerBottonActive)}></div>
+          <div className={burgerBottonActive ? `${burgerButton} ${active}` : burgerButton} id="burgerButton" onClick={() => {
+            setBurgerBottonActive(!burgerBottonActive)
+            setShowNav(!showNav)
+          }
+            }></div>
           <ul className={secondaryNav}>
             <li key="about"><Link to="/meta/about">About</Link></li>
             <li key="projects"><Link to="/meta/projects">Projects</Link></li>
@@ -140,16 +145,17 @@ const Layout = ({ children }) => {
           </ul>
           <div className={menuTopRowBg}></div>
         </nav>
-        <nav className={burgerBottonActive? `${secondNav} ${active}` : `${secondNav}`} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3.15rem)" }}>
-          <div className={menuTransition}>
-          <ul className={categories}>
-            <li key="features"><Link to="/content/features">Features</Link></li>
-            <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
-            <li key="collections"><Link to="/content/collections">Collections</Link></li>
-          </ul>
-          <Search handleSearchData={handleSearchData} />
-          <div className={menuBottomRowBg} style={showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}></div>
 
+        <nav className={burgerBottonActive ? `${secondNav} ${active}` : `${secondNav}`} style={showNav ? { transform: "translateY(0rem)" } : { transform: "translateY(-3.15rem)" }}>
+          <div className={menuTransition}>
+            <ul className={categories}>
+              <li key="features"><Link to="/content/features">Features</Link></li>
+              <li key="pictorials"><Link to="/content/pictorials">Pictorials</Link></li>
+              <li key="collections"><Link to="/content/collections">Collections</Link></li>
+            </ul>
+            <Search handleSearchData={handleSearchData} />
+
+            <div className={menuBottomRowBg} style={!burgerBottonActive && showNav ? { transform:  "translateY(0rem)" } : { transform: "translateY(-3rem)" }}></div>
           </div>
 
         </nav>
@@ -161,13 +167,13 @@ const Layout = ({ children }) => {
           ?
           <div className={searchResultsWrapper}>
             <ul>
-            <div className={searchWords}><h1>Search results for: {searchData}</h1></div>
+              <div className={searchWords}><h1>Search results for: {searchData}</h1></div>
               {
                 articles.map(edge => (
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} excerpt={true} className={articleFeature}/>
+                      <Article path={edge.node} excerpt={true} className={articleFeature} />
                     </li>
                   </Link>
 
@@ -190,6 +196,6 @@ const Layout = ({ children }) => {
     </div>
   )
 }
-  
+
 
 export default Layout
