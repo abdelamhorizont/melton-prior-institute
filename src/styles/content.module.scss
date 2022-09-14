@@ -184,11 +184,23 @@ html {
         a{
             font-size: inherit;
         }
-        h1, h2, h3, b{
+        h1{
             font-size: $fontSizeL;
             line-height: $lineHeightXL;
             text-align: center;
             margin: 3*$lineHeight 0;
+        }
+        h2{
+            font-size: $fontSizeM;
+            line-height: $lineHeightM;
+            text-align: left;
+            margin: 1*$lineHeight 0;
+        }
+        h3{
+            font-size: $fontSize;
+            line-height: $lineHeight;
+            text-align: left;
+            margin: 1*$lineHeight 0;
         }
         h4{
             font-size: $fontSize;

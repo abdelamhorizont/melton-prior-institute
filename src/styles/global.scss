@@ -68,7 +68,7 @@ p{
   hyphens: auto;
 }
 
-i{
+i, em{
   @include ke-book-italic;
   font-feature-settings: "ss04";
   font-size: 0.95*$fontSizeM;
@@ -92,7 +92,9 @@ a[href^="#[" ]{
       opacity: 0;
   }
 }
-
+hr{
+  border-bottom: 1px solid black;
+}
 .MsoFootnoteReference{
   font-size: $fontSize;
   vertical-align: top;
@@ -221,6 +223,25 @@ button{
   grid-template-columns: repeat(5, 1fr);
 }
 
+figure{
+  width: auto !important;
+  max-height: 50vh; 
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+div, .gatbsy-image-wrapper, .gatsby-image-wrapper img, img{
+  max-height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+figcaption{
+  padding: 0 $lineHeight $lineHeight $lineHeight;
+  text-align: center;
+  
+}
+}
+
 
 li[value="Linton Archive"], li[value="Linton Archiv"]{
   order: -1;
@@ -318,7 +339,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     line-height: $lineHeight !important;
   }
   
-  i{
+  i,em{
     font-family: 'Times New Roman', Times, serif;
     font-feature-settings: unset;
     font-size: $fontSize !important;
