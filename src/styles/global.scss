@@ -184,9 +184,14 @@ button{
       background-color: $hoverbg-color1;
       border-radius: 12px;
     }
+    a{
+      display:block;
+      width: auto !important;
+      height: 100%;
+    }
   }
   figcaption{
-    padding: 0 $lineHeight $lineHeight $lineHeight;
+    padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
     text-align: center;
     
   }
@@ -225,18 +230,22 @@ button{
 
 figure{
   width: auto !important;
-  max-height: 50vh; 
+  // max-height: 50vh; 
   display: flex;
   justify-content: center;
   flex-direction: column;
 div, .gatbsy-image-wrapper, .gatsby-image-wrapper img, img{
-  max-height: 50vh;
   margin-left: auto;
   margin-right: auto;
-  width: auto;
+  width: auto !important;
+}
+img{
+  margin-top: $lineHeight;
+  max-height: calc(50vh - 1*$lineHeight);
+  height:calc(50vh - 2*$lineHeight);
 }
 figcaption{
-  padding: 0 $lineHeight $lineHeight $lineHeight;
+  padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
   text-align: center;
   
 }
@@ -362,4 +371,22 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   a{
     font-size: inherit;
   }
+}
+
+
+
+@media screen and (min-width: $xlarge){
+h1{
+font-size: 1vw;
+line-height: 1.2vw !important;
+}
+h4{
+  font-size: 0.8vw;
+  line-height: 1vw;
+}
+p{
+  font-size: 0.8vw;
+  line-height: 1.2vw !important;
+}
+
 }

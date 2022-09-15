@@ -251,6 +251,65 @@ ul, .swiper-slide-active, .swiper-slide{
 
 
 
+@media screen and (min-width: $xlarge) {
+    .articleFeature, .articlePictorial{
+        // flex-direction: row;
+    }
+    .categoriesArticle{
+        .articleBody{
+            // padding: 0 0 0.5*$lineHeight 0;
+            // border-bottom: solid 1px black;
+        }
+    }
+
+    .recommendedArticle, .articleFeature, .articlePictorial{
+    // flex-direction: column;
+    // padding: 0.5*$lineHeight;
+
+        .thumbnail{
+            // max-width: 100%;
+            // margin-bottom: 0.5*$lineHeight;
+        }
+        .articleBody{
+            // padding: 0 0 0.5*$lineHeight 0;
+            // border-bottom: solid 1px black;
+            
+            h1{
+            font-size: 2vw;
+            line-height: $sDlineHeightL;
+            }
+        }
+        .articleExcerpt{
+            p{
+            font-size: 1.4vw;
+            line-height: 1.8vw !important;
+            }
+        }
+        .articleTagWrapper, .languagesWrapper{
+            // flex-direction: column;
+            // flex-grow: unset;
+            h4{
+                font-size: $sDfontSize;
+            }
+            h4:first-of-type{
+                // margin: 0 0.1*$lineHeight;
+            }
+        }
+        .languagesWrapper{
+            // justify-self: flex-end;
+            // margin-left: auto;
+            a{
+                // margin-left: unset;
+                // padding: unset;
+            }
+        }
+    }
+ 
+
+}
+
+
+
 @media screen and (max-width: $small) {
     .articleFeature, .articlePictorial{
         flex-direction: row;
@@ -310,3 +369,18 @@ ul, .swiper-slide-active, .swiper-slide{
 
 
 
+@media screen and (min-width: $xlarge){
+    h1{
+    font-size: 1vw;
+    line-height: 1.2vw !important;
+    }
+    h4{
+      font-size: 0.8vw;
+      line-height: 1vw;
+    }
+    p{
+      font-size: 0.8vw;
+      line-height: 1.2vw !important;
+    }
+    
+    }
