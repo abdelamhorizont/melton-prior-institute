@@ -33,59 +33,59 @@ import {
 
 
 const Layout = ({ children, path }) => {
-  // const query = useStaticQuery(graphql`
-  //   query {
-  //     allWpPost {
-  //       edges {
-  //         node {
-  //           featuredImage {
-  //             node {
-  //               localFile {
-  //                 childImageSharp {
-  //                   gatsbyImageData
-  //                 }
-  //               }
-  //               title
-  //               image {
-  //                 url
-  //               }
-  //             }
-  //           }
-  //           id
-  //           categories {
-  //             nodes {
-  //               name 
-  //             }
-  //           }
-  //           tags {
-  //             nodes {
-  //               name
-  //             }
-  //           }
-  //           title
-  //           date(formatString: "MMMM D, YYYY")
-  //           author {
-  //             node {
-  //               name
-  //             }
-  //           }
-  //           excerpt
-  //           content
-  //           uri
-  //           language {
-  //             code
-  //           }
-  //           translations {
-  //             uri
-  //             language {
-  //               code
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  //   `)
+  const query = useStaticQuery(graphql`
+    query {
+      allWpPost {
+        edges {
+          node {
+            featuredImage {
+              node {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                title
+                image {
+                  url
+                }
+              }
+            }
+            id
+            categories {
+              nodes {
+                name 
+              }
+            }
+            tags {
+              nodes {
+                name
+              }
+            }
+            title
+            date(formatString: "MMMM D, YYYY")
+            author {
+              node {
+                name
+              }
+            }
+            excerpt
+            content
+            uri
+            language {
+              code
+            }
+            translations {
+              uri
+              language {
+                code
+              }
+            }
+          }
+        }
+      }
+    }
+    `)
 
   const [searchData, setSearchData] = useState('');
 
@@ -93,13 +93,21 @@ const Layout = ({ children, path }) => {
     setSearchData(searchData);
   }
 
-  const articles = path.filter(edge =>
+  const articles = path ? path.filter(edge =>
     edge.node.title.toLowerCase().includes(searchData.toLowerCase()) ||
     edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) ||
     edge.node.tags.nodes.some(node => node.name.includes(searchData.toLowerCase())) ||
     // __html: edge.node.content.toLowerCase().includes(searchData.toLowerCase()) || 
     edge.node.author.node.name.toLowerCase().includes(searchData.toLowerCase())
   ).filter(edge => edge.node.language.code == "EN")
+  :
+  query.allWpPost.edges.filter(edge =>
+      edge.node.title.toLowerCase().includes(searchData.toLowerCase()) ||
+      edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) ||
+      edge.node.tags.nodes.some(node => node.name.includes(searchData.toLowerCase())) ||
+      // __html: edge.node.content.toLowerCase().includes(searchData.toLowerCase()) || 
+      edge.node.author.node.name.toLowerCase().includes(searchData.toLowerCase())
+    ).filter(edge => edge.node.language.code == "EN")
  
   // const articles = query.allWpPost.edges.filter(edge =>
   //   edge.node.title.toLowerCase().includes(searchData.toLowerCase()) ||
