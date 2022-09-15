@@ -144,7 +144,7 @@ const Homepage = () => {
   })
 
   return (
-    <Layout>
+    <Layout path={articles}>
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
         <div className={recommendedSectionHeader}> 
