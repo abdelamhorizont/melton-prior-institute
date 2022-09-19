@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import SimpleReactLightbox from 'simple-react-lightbox'
-import { SRLWrapper } from "simple-react-lightbox";
+// import SimpleReactLightbox from 'simple-react-lightbox'
+// import { SRLWrapper } from "simple-react-lightbox";
 
 import { useReactToPrint } from 'react-to-print';
 
@@ -81,12 +81,12 @@ export default function Post({ data }) {
                   let reg = /(\[\d+\])/g
                   if (domNode.name && domNode.name.includes("picture")) {
                     const props = attributesToProps(domNode.attribs);
-                    // console.log(domNode.children[2])
+                    console.log(domNode.children[1])
                     return (
                       <Item
                         content={
                           <div className={lightboxImageWrapper}>
-                            <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
+                            <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
                           </div>
                         }>
 
@@ -99,7 +99,7 @@ export default function Post({ data }) {
                             }}
                             ref={ref}
                           >
-                            <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />                          </a>
+                            <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />                          </a>
                         )}
                       </Item>
                     )
@@ -140,9 +140,7 @@ export default function Post({ data }) {
             }
           </Gallery>
 
-          <div>
-            {/* data.wpMediaItem */}
-          </div>
+          {/* <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} /> */}
 
         </div>
       </div>
