@@ -69,10 +69,11 @@ const Homepage = () => {
           }
         }
       }
-      allWpPost{        
+      allWpPost(filter: {featuredImage: {node: {localFile: {size: {gt: 0}}}}}) {
         edges {
           node {
             featuredImage {
+              size
               node {
                 localFile {
                   childImageSharp {
