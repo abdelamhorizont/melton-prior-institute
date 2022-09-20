@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState, useEffect, useRef } from 'react';
 import { Link, graphql } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 // import SimpleReactLightbox from 'simple-react-lightbox'
 // import { SRLWrapper } from "simple-react-lightbox";
