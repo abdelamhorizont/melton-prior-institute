@@ -50,7 +50,8 @@ module.exports = {
       options: {
         // Defaults used for gatsbyImageData and StaticImage
         // Set to false to allow builds to continue on image errors
-        failOnError: false,
+        failOnError: none,
+        failOnWarning: none,
         defaults: {
           placeholder: `dominantColor`,
         },
