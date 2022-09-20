@@ -73,9 +73,9 @@ const Homepage = () => {
         edges {
           node {
             featuredImage {
-              size
               node {
                 localFile {
+                  size
                   childImageSharp {
                     gatsbyImageData
                   }

@@ -81,7 +81,7 @@ export default function Post({ data }) {
                   let reg = /(\[\d+\])/g
                   if (domNode.name && domNode.name.includes("picture")) {
                     const props = attributesToProps(domNode.attribs);
-                    console.log(domNode.children[1])
+                    // console.log(domNode.children[1])
                     return (
                       <Item
                         content={
@@ -210,9 +210,9 @@ query ($id: String) {
     edges {
       node {
         featuredImage {
-          size
           node {
             localFile {
+              size
               childImageSharp {
                 gatsbyImageData
               }

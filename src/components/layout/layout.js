@@ -39,9 +39,9 @@ const Layout = ({ children, path }) => {
         edges {
           node {
             featuredImage {
-              size
               node {
                 localFile {
+                  size
                   childImageSharp {
                     gatsbyImageData
                   }

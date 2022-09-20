@@ -33,9 +33,9 @@ export default function SearchResults() {
         edges {
           node {
             featuredImage {
-              size
               node {
                 localFile {
+                  size
                   childImageSharp {
                     gatsbyImageData
                   }
