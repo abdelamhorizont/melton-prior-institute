@@ -206,11 +206,6 @@ query ($id: String) {
       }
     }
   }
-  allImageSharp(limit: 10) {
-    nodes {
-      gatsbyImageData(layout: FIXED)
-    }
-  }
   allWpPost{        
     edges {
       node {
