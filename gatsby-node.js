@@ -1,21 +1,21 @@
-exports.createSchemaCustomization = async ({ actions }) => {
-  actions.createFieldExtension({
-    name: "wpImagePassthroughResolver",
-    extend(options) {
-      return {
-        async resolve(source, args, context, info) {
-          const imageType = info.schema.getType("ImageSharp")
-          const file = context.nodeModel.getNodeById(source.localFile)
-          const image = context.nodeModel.getNodeById({
-            id: file.children[0],
-          })
-          const resolver = imageType.getFields().gatsbyImageData.resolve
-          if (!resolver) return null
-          return await resolver(image, args, context, info)
-        },
-      }
-    },
-  })
+// exports.createSchemaCustomization = async ({ actions }) => {
+//   actions.createFieldExtension({
+//     name: "wpImagePassthroughResolver",
+//     extend(options) {
+//       return {
+//         async resolve(source, args, context, info) {
+//           const imageType = info.schema.getType("ImageSharp")
+//           const file = context.nodeModel.getNodeById(source.localFile)
+//           const image = context.nodeModel.getNodeById({
+//             id: file.children[0],
+//           })
+//           const resolver = imageType.getFields().gatsbyImageData.resolve
+//           if (!resolver) return null
+//           return await resolver(image, args, context, info)
+//         },
+//       }
+//     },
+//   })
 
   actions.createFieldExtension({
     name: "wpRecursiveImage",
