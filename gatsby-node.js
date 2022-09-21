@@ -218,33 +218,33 @@ exports.createSchemaCustomization = async ({ actions }) => {
   //   }
   // `)
 
-  // pages
-  actions.createTypes(/* GraphQL */ `
-    type Homepage implements Node {
-      id: ID!
-      title: String
-      description: String
-      image: HomepageImage @link
-      content: [HomepageBlock] @link
-    }
+  // // pages
+  // actions.createTypes(/* GraphQL */ `
+  //   type Homepage implements Node {
+  //     id: ID!
+  //     title: String
+  //     description: String
+  //     image: HomepageImage @link
+  //     content: [HomepageBlock] @link
+  //   }
 
-    type AboutPage implements Node {
-      id: ID!
-      title: String
-      description: String
-      image: HomepageImage @link
-      content: [HomepageBlock] @link
-    }
+  //   type AboutPage implements Node {
+  //     id: ID!
+  //     title: String
+  //     description: String
+  //     image: HomepageImage @link
+  //     content: [HomepageBlock] @link
+  //   }
 
-    type Page implements Node {
-      id: ID!
-      slug: String!
-      title: String
-      description: String
-      image: HomepageImage @link
-      html: String
-    }
-  `)
+  //   type Page implements Node {
+  //     id: ID!
+  //     slug: String!
+  //     title: String
+  //     description: String
+  //     image: HomepageImage @link
+  //     html: String
+  //   }
+  // `)
 
   // WordPress types
   actions.createTypes(/* GraphQL */ `
