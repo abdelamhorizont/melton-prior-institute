@@ -248,12 +248,11 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
   // WordPress types
   actions.createTypes(/* GraphQL */ `
-    type WpMediaItem implements Node & HomepageImage {
+    type WpMediaItem implements Node {
       id: ID!
       alt: String @proxy(from: "altText")
       altText: String
       gatsbyImageData: JSON @wpImagePassthroughResolver
-      image: HomepageImage @wpRecursiveImage
       localFile: File
       url: String @proxy(from: "mediaItemUrl")
       mediaItemUrl: String
