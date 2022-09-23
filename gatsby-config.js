@@ -16,7 +16,7 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         url: "http://wordpress.meltonpriorinstitut.org/graphql",
-        html: { useGatsbyImage: false },
+        html: { useGatsbyImage: true },
         type: {
           MediaItem: {
             // exclude: true,

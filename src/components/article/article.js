@@ -45,7 +45,7 @@ const Article = (props) => {
                //    <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"test"} />
                //    :
                   props.path.featuredImage && props.path.featuredImage.node.image &&
-                  <img src={props.path.featuredImage.node.image.url} alt="test" />
+                  <img src={props.path.featuredImage.node.image.url} alt={props.path.featuredImage.node.title} />
             }
          </div>
 
