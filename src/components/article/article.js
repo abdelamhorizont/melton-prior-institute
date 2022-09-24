@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
-// import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 
@@ -41,10 +41,10 @@ const Article = (props) => {
 
          <div className={thumbnail}>
             {
-               props.path.featuredImage && props.path.featuredImage.node.localFile && props.path.featuredImage.node.localFile.childImageSharp ?
+               props.path.featuredImage?.node.localFile?.childImageSharp ?
                   <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"test"} />
                   :
-                  props.path.featuredImage && props.path.featuredImage.node.image &&
+                  props.path.featuredImage?.node.image &&
                   <img src={props.path.featuredImage.node.image.url} alt={props.path.featuredImage.node.title} />
             }
          </div>
@@ -58,18 +58,18 @@ const Article = (props) => {
                      <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
                   </div>
                   {props.path.tags?.nodes.length > 0 &&
-                  <div className={articleTagWrapper}>
-                     {props.path.tags.nodes.length > 0 ?
-                        props.path.tags.nodes.map(node => (
-                           <h4>[{node.name}]</h4>
-                        ))
-                        :
-                        props.path.translations && props.path.translations[0] && props.path.translations[0].tags &&
-                        props.path.translations[0].tags.nodes.map(node => (
-                           <h4>[{node.name}]</h4>
-                        ))
-                     }
-                  </div>
+                     <div className={articleTagWrapper}>
+                        {props.path.tags.nodes.length > 0 ?
+                           props.path.tags.nodes.map(node => (
+                              <h4>[{node.name}]</h4>
+                           ))
+                           :
+                           props.path.translations && props.path.translations[0] && props.path.translations[0].tags &&
+                           props.path.translations[0].tags.nodes.map(node => (
+                              <h4>[{node.name}]</h4>
+                           ))
+                        }
+                     </div>
                   }
                </>
             }
