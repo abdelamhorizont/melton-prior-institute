@@ -48,7 +48,6 @@ module.exports = {
         },
         production: {
           allow404Images: true,
-          allow401Images: true,
         },
         develop: {
           nodeUpdateInterval: 300,
