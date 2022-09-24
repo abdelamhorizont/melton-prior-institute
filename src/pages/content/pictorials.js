@@ -21,7 +21,7 @@ import {
 export default function Pictorials() {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "pictorials"}}}}}) {
+      allWpPost {
         edges {
           node {
             id
