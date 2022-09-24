@@ -16,7 +16,12 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         url: "http://wordpress.meltonpriorinstitut.org/graphql",
-        html: { useGatsbyImage: true },
+        html: { 
+          useGatsbyImage: true,
+          imageMaxWidth: 1024,
+          fallbackImageMaxWidth: 800,
+ 
+        },
         type: {
           MediaItem: {
             // exclude: true,
@@ -36,13 +41,22 @@ module.exports = {
           // }
         },
         schema: {
-          perPage: 20, // currently set to 100
+          perPage: 80, // currently set to 100
           requestConcurrency: 15, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
           timeout: 50000
         },
         production: {
-          allow404Images: true
+          allow404Images: true,
+          allow401Images: true,
+        },
+        develop: {
+          nodeUpdateInterval: 300,
+        },
+        debug: {
+          graphql: {
+            showQueryOnError: true,
+          },
         }
       },
     },
