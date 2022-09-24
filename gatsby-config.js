@@ -70,7 +70,8 @@ module.exports = {
           placeholder: `dominantColor`,
         },
         // deprecated options and their defaults:
-        base64Width: 42,
+        // base64Width: 42,
+        base64: false,
         stripMetadata: true,
         defaultQuality: 100,
       },
