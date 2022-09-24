@@ -211,6 +211,14 @@ query ($id: String) {
       src
       width
     }
+    resize(base64: false, width: 600) {
+      src
+      tracedSVG
+      width
+      height
+      aspectRatio
+      originalName
+    }
   }
   allWpPost {
     edges {

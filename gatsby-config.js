@@ -18,9 +18,7 @@ module.exports = {
         url: "http://wordpress.meltonpriorinstitut.org/graphql",
         html: { 
           useGatsbyImage: true,
-          imageMaxWidth: 1024,
-          fallbackImageMaxWidth: 800,
- 
+          imageMinWidth: 10,
         },
         type: {
           MediaItem: {
