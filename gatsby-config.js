@@ -17,7 +17,7 @@ module.exports = {
       options: {
         url: "http://wordpress.meltonpriorinstitut.org/graphql",
         html: { 
-          useGatsbyImage: false,
+          useGatsbyImage: true,
         },
         type: {
           MediaItem: {
