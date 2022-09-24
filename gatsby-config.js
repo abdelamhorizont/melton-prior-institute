@@ -61,14 +61,14 @@ module.exports = {
       options: {
         // Defaults used for gatsbyImageData and StaticImage
         // Set to false to allow builds to continue on image errors
-        // failOnError: false,
-        failOn: `none`,
+        failOnError: false,
+        // failOn: `none`,
         defaults: {
           placeholder: `dominantColor`,
         },
         // deprecated options and their defaults:
-        // base64Width: 42,
-        base64: false,
+        base64Width: 42,
+        // base64: false,
         stripMetadata: true,
         defaultQuality: 100,
       },
