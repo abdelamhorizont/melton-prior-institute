@@ -206,6 +206,12 @@ query ($id: String) {
       }
     }
   }
+  imageSharp(original: {height: {ne: 0}, width: {ne: 0}}) {
+    original {
+      src
+      width
+    }
+  }
   allWpPost {
     edges {
       node {
