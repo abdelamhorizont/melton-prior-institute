@@ -17,7 +17,7 @@ module.exports = {
       options: {
         url: "http://wordpress.meltonpriorinstitut.org/graphql",
         html: { 
-          useGatsbyImage: true,
+          useGatsbyImage: false,
         },
         type: {
           MediaItem: {
@@ -70,7 +70,7 @@ module.exports = {
         base64Width: 42,
         // base64: false,
         stripMetadata: true,
-        defaultQuality: 100,
+        // defaultQuality: 100,
       },
     },
     "gatsby-plugin-image",

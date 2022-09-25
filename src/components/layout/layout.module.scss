@@ -53,7 +53,7 @@ header {
         background-color: #fff;
         grid-column: 1 / 13;
         grid-row: 1 / 4;
-        margin-bottom: 1 / 3 * $lineHeight;
+        margin-bottom: calc(1 / 3) * $lineHeight;
         display: none;
     }
 

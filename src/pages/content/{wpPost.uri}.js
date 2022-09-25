@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState, useEffect, useRef } from 'react';
 import { Link, graphql } from 'gatsby'
-// import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 // import SimpleReactLightbox from 'simple-react-lightbox'
 // import { SRLWrapper } from "simple-react-lightbox";
@@ -38,6 +38,7 @@ import {
   articleFeature,
   articlePictorial
 } from '../../components/article/article.module.scss'
+import { width } from "dom7";
 
 
 
@@ -75,18 +76,19 @@ export default function Post({ data }) {
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
           <Gallery>
-            {data.wpPost && data.wpPost.content &&
+            {data.wpPost?.content &&
               parse(data.wpPost.content, {
                 replace: domNode => {
                   let reg = /(\[\d+\])/g
                   if (domNode.name && domNode.name.includes("picture")) {
                     const props = attributesToProps(domNode.attribs);
-                    // console.log(domNode.children[1])
+                    // console.log(domNode)
                     return (
                       <Item
                         content={
                           <div className={lightboxImageWrapper}>
-                            <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
+                            <img srcset={domNode.children[1]?.attribs["srcset"]} />
+                            {/* <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} /> */}
                           </div>
                         }>
 
@@ -99,42 +101,76 @@ export default function Post({ data }) {
                             }}
                             ref={ref}
                           >
-                            <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />                          </a>
+                            {/* <div className={lightboxImage}> */}
+                            {/* <GatsbyImage image={data.imageSharp.gatsbyImageData} /> */}
+                            <img srcset={domNode.children[1]?.attribs["srcset"]} />
+                            {/* <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} /> */}
+                            {/* </div> */}
+
+                          </a>
                         )}
                       </Item>
                     )
-                  } else if (domNode.data && domNode.data.match(reg)) {
-                    const text = domNode.data.split(reg)
-                    const footNote = text.filter(text => text.match(reg))
-                    if (!counter.includes(footNote[0])) {
-                      counter.push(footNote[0])
+                  } else
+                    if (domNode.name && domNode.name.includes("img")) {
+                      console.log(domNode)
                       return (
-                        <>
-                          {
-                            text.map(text => text.match(reg) ?
-                              <a href={"#" + text}>
-                                <span id={"ref" + text} className="MsoFootnoteReference">{text}</span> 
-                              </a>
-                              :
-                              text
-                            )
-                          }
-                        </>
+                        <Item
+                          content={
+                            <div className={lightboxImageWrapper}>
+                              <img src={domNode.attribs["src"]} />
+                            </div>
+                          }>
+
+                          {({ ref, open }) => (
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                open(e)
+                              }}
+                              ref={ref}
+                            >
+                              <div className={lightboxImage}>
+                                <img src={domNode.attribs["src"]} />
+                              </div>
+                            </a>
+                          )}
+                        </Item>
                       )
-                    } else {
-                      return (
-                        <>
-                          {
-                            text.map(text => text.match(reg) ?
-                              <a href={"#ref" + text}> <span id={text} className="MsoFootnoteReference">{text}</span> </a>
-                              :
-                              text
-                            )
-                          }
-                        </>
-                      )
-                    }
-                  }
+                    } else
+                      if (domNode.data && domNode.data.match(reg)) {
+                        const text = domNode.data.split(reg)
+                        const footNote = text.filter(text => text.match(reg))
+                        if (!counter.includes(footNote[0])) {
+                          counter.push(footNote[0])
+                          return (
+                            <>
+                              {
+                                text.map(text => text.match(reg) ?
+                                  <a href={"#" + text}>
+                                    <span id={"ref" + text} className="MsoFootnoteReference">{text}</span>
+                                  </a>
+                                  :
+                                  text
+                                )
+                              }
+                            </>
+                          )
+                        } else {
+                          return (
+                            <>
+                              {
+                                text.map(text => text.match(reg) ?
+                                  <a href={"#ref" + text}> <span id={text} className="MsoFootnoteReference">{text}</span> </a>
+                                  :
+                                  text
+                                )
+                              }
+                            </>
+                          )
+                        }
+                      }
                 }
               })
             }
@@ -148,10 +184,10 @@ export default function Post({ data }) {
       {relatedPosts.length > 0 &&
         <div>
           <Section title="related Posts" className={relatedPostsWrapper}>
-              <div className={categoriesSectionHeader}>
+            <div className={categoriesSectionHeader}>
               <h2>related Posts</h2>
-               <span>]</span>
-               </div>
+              <span>]</span>
+            </div>
             <ul>
               {
                 relatedPosts.slice(0, 3).map(edge => (
@@ -204,20 +240,6 @@ query ($id: String) {
           name
         }
       }
-    }
-  }
-  imageSharp(original: {height: {ne: 0}, width: {ne: 0}}) {
-    original {
-      src
-      width
-    }
-    resize(base64: false, width: 600) {
-      src
-      tracedSVG
-      width
-      height
-      aspectRatio
-      originalName
     }
   }
   allWpPost {
