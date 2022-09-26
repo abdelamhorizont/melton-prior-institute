@@ -27,9 +27,9 @@ module.exports = {
               // maxFileSizeBytes: 1
             }
           },
-          Post: {
-            limit: 200
-          }
+          // Post: {
+          //   limit: 200
+          // }
           //     process.env.NODE_ENV === `development`
           //       ? // Lets just pull fewer posts in development to make it easy on ourselves.
           //         24
