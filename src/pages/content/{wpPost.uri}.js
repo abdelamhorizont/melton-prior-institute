@@ -52,7 +52,7 @@ export default function Post({ data }) {
   const tags = data.wpPost.tags.nodes.map(node => node && node.name)
   const translatedTags = data.wpPost.translations && data.wpPost.translations[0] && data.wpPost.translations[0].tags.nodes.map(node => node && node.name)
 
-  // const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
+  const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
   let counter = []
 
@@ -139,34 +139,7 @@ export default function Post({ data }) {
                         </Item>
                       )
                     } 
-                    else
-                    if (domNode.name && domNode.name.includes("img")) {
-                      // console.log(domNode)
-                      return (
-                        <Item
-                          content={
-                            <div className={lightboxImageWrapper}>
-                              <img src={domNode.attribs["src"]} />
-                            </div>
-                          }>
-
-                          {({ ref, open }) => (
-                            <a
-                              href="#"
-                              onClick={(e) => {
-                                e.preventDefault()
-                                open(e)
-                              }}
-                              ref={ref}
-                            >
-                              <div className={lightboxImage}>
-                                <img src={domNode.attribs["src"]} />
-                              </div>
-                            </a>
-                          )}
-                        </Item>
-                      )
-                    } else
+                   else
                       if (domNode.data && domNode.data.match(reg)) {
                         const text = domNode.data.split(reg)
                         const footNote = text.filter(text => text.match(reg))
@@ -209,7 +182,7 @@ export default function Post({ data }) {
         </div>
       </div>
 
-      {/* {relatedPosts.length > 0 &&
+      {relatedPosts.length > 0 &&
         <div>
           <Section title="related Posts" className={relatedPostsWrapper}>
             <div className={categoriesSectionHeader}>
@@ -232,7 +205,7 @@ export default function Post({ data }) {
             <span>[</span>
           </Section>
         </div>
-      } */}
+      }
 
     </Layout>
   )
@@ -266,6 +239,35 @@ query ($id: String) {
       tags {
         nodes {
           name
+        }
+      }
+    }
+  }
+  allWpPost {
+    edges {
+      node {
+        id
+        categories {
+          nodes {
+            name 
+          }
+        }
+        tags {
+          nodes {
+            name
+          }
+        }
+        title
+        date(formatString: "MMMM D, YYYY")
+        author {
+          node {
+            name
+          }
+        }
+        excerpt
+        uri
+        translations {
+          uri
         }
       }
     }
