@@ -138,8 +138,8 @@ export default function Post({ data }) {
                           )}
                         </Item>
                       )
-                    } 
-                   else
+                    }
+                    else
                       if (domNode.data && domNode.data.match(reg)) {
                         const text = domNode.data.split(reg)
                         const footNote = text.filter(text => text.match(reg))
@@ -246,6 +246,14 @@ query ($id: String) {
   allWpPost {
     edges {
       node {
+        featuredImage {
+          node {
+            title
+            image {
+              url
+            }
+          }
+        }
         id
         categories {
           nodes {
