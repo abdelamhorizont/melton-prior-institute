@@ -113,7 +113,7 @@ export default function Post({ data }) {
                     )
                   } else
                     if (domNode.name && domNode.name.includes("img")) {
-                      console.log(domNode)
+                      // console.log(domNode)
                       return (
                         <Item
                           content={
