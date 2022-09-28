@@ -113,7 +113,7 @@ export default function Post({ data }) {
                     )
                   } else
                     if (domNode.name && domNode.name.includes("img")) {
-                      // console.log(domNode)
+                      console.log(domNode)
                       return (
                         <Item
                           content={
@@ -246,14 +246,6 @@ query ($id: String) {
   allWpPost {
     edges {
       node {
-        featuredImage {
-          node {
-            title
-            image {
-              url
-            }
-          }
-        }
         id
         categories {
           nodes {
