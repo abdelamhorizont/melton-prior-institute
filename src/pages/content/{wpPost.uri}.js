@@ -75,42 +75,108 @@ export default function Post({ data }) {
 
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
-          <Gallery>
+          <Gallery id="my-gallery" withCaption>
             {data.wpPost?.content &&
               parse(data.wpPost.content, {
                 replace: domNode => {
+                  // footnotes
                   let reg = /(\[\d+\])/g
-                  if (domNode.name && domNode.name.includes("picture")) {
+                  if (domNode.data && domNode.data.match(reg)) {
+                    const text = domNode.data.split(reg)
+                    const footNote = text.filter(text => text.match(reg))
+                    if (!counter.includes(footNote[0])) {
+                      counter.push(footNote[0])
+                      return (
+                        <>
+                          {
+                            text.map(text => text.match(reg) ?
+                              <a href={"#" + text}>
+                                <span id={"ref" + text} className="MsoFootnoteReference">{text}</span>
+                              </a>
+                              :
+                              text
+                            )
+                          }
+                        </>
+                      )
+                    } else {
+                      return (
+                        <>
+                          {
+                            text.map(text => text.match(reg) ?
+                              <a href={"#ref" + text}> <span id={text} className="MsoFootnoteReference">{text}</span> </a>
+                              :
+                              text
+                            )
+                          }
+                        </>
+                      )
+                    }
+                  }
+                  // images lightbox
+                  else if (domNode.name && domNode.name.includes("picture")) {
                     const props = attributesToProps(domNode.attribs);
                     // console.log(domNode)
                     return (
-                      <Item
-                        content={
-                          <div className={lightboxImageWrapper}>
-                            <img srcset={domNode.children[1]?.attribs["srcset"]} />
-                            {/* <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} /> */}
-                          </div>
-                        }>
+                        <Item
+                          caption="Foo"
+                          content={
+                            <div className={lightboxImageWrapper}>
+                              {/* <img srcset={domNode.children[1]?.attribs["srcset"]} /> */}
+                              <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
+                            </div>
+                          }>
 
-                        {({ ref, open }) => (
-                          <a
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              open(e)
-                            }}
-                            ref={ref}
-                          >
-                            {/* <div className={lightboxImage}> */}
-                            {/* <GatsbyImage image={data.imageSharp.gatsbyImageData} /> */}
-                            <img srcset={domNode.children[1]?.attribs["srcset"]} />
-                            {/* <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} /> */}
-                            {/* </div> */}
-
-                          </a>
-                        )}
-                      </Item>
+                          {({ ref, open }) => (
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                open(e)
+                              }}
+                              ref={ref}
+                            >
+                              <div className={lightboxImage}>
+                              {/* <GatsbyImage image={data.imageSharp.gatsbyImageData} /> */}
+                              <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
+                              </div>
+                            </a>
+                          )}
+                        </Item>
                     )
+                  }
+                  else if (domNode.name && domNode.name.includes("figure")) {
+                      const props = attributesToProps(domNode.attribs)
+                      const src = domNode.children[1]?.children[1]?.children[0].attribs.src
+                      const caption = domNode.children[3]?.children[0].data
+                      console.log(domNode)
+                      return (
+                        <figure class="gallery-item">
+                          <Item
+                            caption={caption}
+                            content={
+                              <div className={lightboxImageWrapper}>
+                                <img srcset={src} />
+                              </div>
+                            }>
+                            {({ ref, open }) => (
+                              <a
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  open(e)
+                                }}
+                                ref={ref}
+                              >
+                                <img srcset={src} />
+                              </a>
+                            )}
+                          </Item>
+                          <figcaption id={domNode.children[3].attribs.id} class="wp-caption-text gallery-caption">
+                            {caption}
+                          </figcaption>
+                        </figure>
+                      )
                   } else
                     if (domNode.name && domNode.name.includes("img")) {
                       // console.log(domNode)
@@ -121,7 +187,6 @@ export default function Post({ data }) {
                               <img src={domNode.attribs["src"]} />
                             </div>
                           }>
-
                           {({ ref, open }) => (
                             <a
                               href="#"
@@ -138,40 +203,7 @@ export default function Post({ data }) {
                           )}
                         </Item>
                       )
-                    }
-                    else
-                      if (domNode.data && domNode.data.match(reg)) {
-                        const text = domNode.data.split(reg)
-                        const footNote = text.filter(text => text.match(reg))
-                        if (!counter.includes(footNote[0])) {
-                          counter.push(footNote[0])
-                          return (
-                            <>
-                              {
-                                text.map(text => text.match(reg) ?
-                                  <a href={"#" + text}>
-                                    <span id={"ref" + text} className="MsoFootnoteReference">{text}</span>
-                                  </a>
-                                  :
-                                  text
-                                )
-                              }
-                            </>
-                          )
-                        } else {
-                          return (
-                            <>
-                              {
-                                text.map(text => text.match(reg) ?
-                                  <a href={"#ref" + text}> <span id={text} className="MsoFootnoteReference">{text}</span> </a>
-                                  :
-                                  text
-                                )
-                              }
-                            </>
-                          )
-                        }
-                      }
+                   }          
                 }
               })
             }
