@@ -172,7 +172,7 @@ export default function Post({ data }) {
                               </a>
                             )}
                           </Item>
-                          <figcaption id={domNode.children[3].attribs.id} class="wp-caption-text gallery-caption">
+                          <figcaption id={domNode.children[3].attribs?.id} class="wp-caption-text gallery-caption">
                             {caption}
                           </figcaption>
                         </figure>
