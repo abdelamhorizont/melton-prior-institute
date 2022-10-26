@@ -147,9 +147,9 @@ export default function Post({ data }) {
                   }
                   else if (domNode.name && domNode.name.includes("figure")) {
                     // const props = attributesToProps(domNode.attribs)
-                    const src = domNode.children[1]?.children[1]?.children[0]?.attribs?.src
+                    const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"].replace('http', 'https')
                     const caption = domNode.children[3]?.children[0]?.data
-                    // console.log(domNode)
+                    console.log(src)
                     return (
                       <figure class="gallery-item">
                         <Item
