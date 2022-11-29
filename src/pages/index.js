@@ -127,7 +127,7 @@ const Homepage = () => {
 
   React.useEffect(() => {
     const isBrowser = () => typeof window !== `undefined`
-    setMobile(isBrowser() && window.screen.width < 620 ? true : false)
+    setMobile(isBrowser() && window.screen.width < 960 ? true : false)
   }, []);
 
 
@@ -148,7 +148,7 @@ const Homepage = () => {
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
         <div className={recommendedSectionHeader}> 
-                          <h2>Recommended</h2>
+                          <h4>Recommended</h4>
                <span>]</span>
                 <span>[</span>
         </div>
@@ -208,14 +208,14 @@ const Homepage = () => {
             <div className={categoriesSectionHeader}> 
 
           <Link to={!mobile ? `/content/features` : `#categories`}>
-            <h2 onClick={() => {
+            <h4 onClick={() => {
               mobile &&
                 setCategory({
                   features: true,
                   pictorials: false,
                   collections: false
                 })
-            }}>Features</h2>
+            }}>Features</h4>
           </Link>
           <span>]</span>
             </div>
@@ -244,14 +244,14 @@ const Homepage = () => {
             <div className={categoriesSectionHeader}> 
 
           <Link to={!mobile ? `/content/pictorials` : `#categories`}>
-            <h2 onClick={() => {
+            <h4 onClick={() => {
               mobile &&
                 setCategory({
                   features: false,
                   pictorials: true,
                   collections: false
                 })
-            }}>Pictorials</h2>
+            }}>Pictorials</h4>
           </Link>
           <span>]</span>
             </div>
@@ -279,14 +279,14 @@ const Homepage = () => {
           <Section className={categoriesSection} id={collectionsCategory}>
             <div className={categoriesSectionHeader}> 
             <Link to={!mobile ? `/content/collections` : `#categories`}>
-              <h2 onClick={() => {
+              <h4 onClick={() => {
                 mobile &&
                   setCategory({
                     features: false,
                     pictorials: false,
                     collections: true
                   })
-              }}>Collections</h2>
+              }}>Collections</h4>
             </Link>
             <span>]</span>
             </div>

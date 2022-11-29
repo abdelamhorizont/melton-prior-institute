@@ -1,122 +1,93 @@
 @import "../styles/typo.module.scss";
 
+/*************************************/
+/* overview */
+/*
+
+1. Font-Faces
+2. General
+
+*/
+/*************************************/
+
+
+/*************************************/
+/* 1. Font-Faces */
+/*************************************/
+
+
 @font-face {
-  font-family: "Kleukens Egyptienne Light";
+  font-family: "Kleukens Egyptienne";
   src:  url('../fonts/Kleukens-EgyptienneFSLWeb-Light.woff'),
         url("../fonts/Kleukens-EgyptienneFSLWeb-Light.woff2"),
-        // url("../fonts/Kleukens-EgyptienneFSLWeb-Light.eot");
-  // font-weight: 400;
-  // font-style: normal;
+        url("../fonts/Kleukens-EgyptienneFSLWeb-Light.eot");
+  font-weight: 100;
+  font-style: normal;
 }
 @font-face {
-  font-family: "Kleukens Egyptienne Medium";
+  font-family: "Kleukens Egyptienne";
   src:  url('../fonts/Kleukens-EgyptienneFSLWeb-Medium.woff'),
         url("../fonts/Kleukens-EgyptienneFSLWeb-Medium.woff2"),
-        // url("../fonts/Kleukens-EgyptienneFSLWeb-Medium.eot");
-  // font-weight: 400;
-  // font-style: normal;
+        url("../fonts/Kleukens-EgyptienneFSLWeb-Medium.eot");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Kleukens Egyptienne Book Italic";
+  font-family: "Kleukens Egyptienne";
   src:  url('../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.woff'),
         url("../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.woff2"),
-        // url("../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.eot");
-  // font-weight: 400;
-  // font-style: normal;
+        url("../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.eot");
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Kleukens Egyptienne Bold";
+  font-family: "Kleukens Egyptienne";
   src:  url('../fonts/Kleukens-EgyptienneFSLWeb-Bold.woff'),
         url("../fonts/Kleukens-EgyptienneFSLWeb-Bold.woff2"),
-        // url("../fonts/Kleukens-EgyptienneFSLWeb-Bold.eot");
-  // font-weight: 400;
-  // font-style: normal;
+        url("../fonts/Kleukens-EgyptienneFSLWeb-Bold.eot");
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Neue Montreal Book";
+  font-family: "Neue Montreal";
   src:  url('../fonts/PPNeueMontreal-Book.woff'),
         url("../fonts/PPNeueMontreal-Book.woff2"),
         url("../fonts/PPNeueMontreal-Book.eot");
-  // font-weight: 400;
-  // font-style: normal;
+  font-weight: 500;
+  font-style: normal;
 }
+
+@font-face {
+  font-family: "Neue Montreal";
+  src:  url('../fonts/PPNeueMontreal-Italic.woff'),
+        url("../fonts/PPNeueMontreal-Italic.woff2"),
+        url("../fonts/PPNeueMontreal-Italic.eot");
+  font-weight: 500;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: "Neue Montreal";
+  src:  url('../fonts/PPNeueMontreal-Bold.woff'),
+        url("../fonts/PPNeueMontreal-Bold.woff2"),
+        url("../fonts/PPNeueMontreal-Bold.eot");
+  font-weight: 600;
+  font-style: bold;
+}
+
+
+/*************************************/
+/* 2. General */
+/*************************************/
+
+
 
 img{
   max-width: 100%;
-}
-
-h1{
-  text-transform: uppercase;
-  word-break: break-word;
-}
-
-
-
-h1,h2, h3, h4, a, button, label p, b{
-  @include ke-light;
-  font-feature-settings: "ss04";
-
-}
-
-p{
-  @include nm-book;
-  word-break: break-word;
-  white-space: pre-line;
-  hyphens: auto;
-}
-
-i, em{
-  @include ke-book-italic;
-  font-feature-settings: "ss04";
-  font-size: 0.95*$fontSizeM;
-  letter-spacing: -0.05rem;
-}
-
-a[href^="#[" ]{
-    position: relative;
-    &::after{
-      content:' ';
-      position: absolute;
-      left: 0;
-      top: 100%;
-      width: 100%;
-      height: 60%;
-      background-image: url("data:image/svg+xml,%3Csvg id='Ebene_1' data-name='Ebene 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12.87 17.58'%3E%3Ctitle%3Ekleukens_egyptienne_arrow_down%3C/title%3E%3Cpath d='M6.765,18.79h1.47a24.22,24.22,0,0,1,5.7-8.46l-.12-1.92a16.1123,16.1123,0,0,0-5.49,6.66c.12-1.47.15-3.3.15-5.76V1.21H6.525V9.311c0,2.52.03,4.38.15,5.85a15.7387,15.7387,0,0,0-5.52-6.75l-.09,1.92a24.62,24.62,0,0,1,5.7,8.459' transform='translate(-1.065 -1.21)'/%3E%3C/svg%3E");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: auto;
-      z-index: 5000;
-      opacity: 0;
-  }
-}
-hr{
-  border-bottom: 1px solid black;
-}
-.MsoFootnoteReference{
-  font-size: $fontSize;
-  vertical-align: top;
-  line-height: normal;
-  color: rgba(0,0,0,.4);
-  transition: $transitionFade;
-
-  &:hover{
-    color: rgba(0,0,0,1);
-    *:after{
-      opacity: 1;
-    }
-  }
-
-}
-
-.MsoFootnoteText{
-  @include ke-light;
-  font-size: $fontSize !important;
-  .MsoFootnoteReference{
-    vertical-align: unset;
-  }
 }
 
 .inline-gatsby-image-wrapper{
@@ -140,17 +111,6 @@ hr{
 .inline-gatsby-image-wrapper{
   // display:flex !important;
   justify-content: center;
-  a{
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-  }
-}
-
-
-.wp-caption{
-  // width: 100% !important;
 }
 
 
@@ -158,16 +118,6 @@ body{
   overflow-y: scroll;
 }
 
-
-button{
-  a{
-    color: rgba(0,0,0,.4);
-    
-    &:hover{
-        color: rgba(0,0,0,1);
-    }
-}
-}
 
 .gallery{
   margin: $lineHeight 0;
@@ -247,6 +197,8 @@ img{
 figcaption{
   padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
   text-align: center;
+  @include ke-book-italic;
+  letter-spacing: -0.005rem;
   
 }
 }
@@ -281,54 +233,244 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   }
 
 
-@media screen and (max-width: $small){
-  li[value="Linton Archive"], li[value="Linton Archiv"]{
 
-    a{
-    margin-left:0.25*$lineHeight;
-    width: $lineHeight;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+
+/*************************************/
+/* mobile queries */
+/*************************************/
+
+
+@media screen and (max-width: $medium){
+
+    i{
+      font-feature-settings: "ss04";
+      font-size: 0.99*$sDfontSize;
+      letter-spacing: -0.05rem;
     }
-     }
-  figure{
-    width: unset !important;
-  }
-
-  .MsoFootnoteReference{
-    font-size: 0.6*$fontSize;
-    vertical-align:top;
-  }
-  .MsoFootnoteText, .MsoFootnoteText .MsoFootnoteReference{
-    font-size: 1*$sDfontSize !important;
-  }
-
-  .inline-gatsby-image-wrapper{
-    margin-top: 0.5*$lineHeight;
-    margin-bottom: 0;
-    // width: 100%;
-    display: flex; 
-    justify-content: center;
+    a{
+      font-size: inherit;
+    }
+    video{
+      width: 100%;
+      height: auto;
+    }
+    h1 {
+      font-size: $sDfontSizeM;
+      line-height: $sDlineHeightM;
+      margin: 1*$lineHeight 0;
   
   }
-  figcaption{
-    margin-top: 0.25*$fontSize;
-    font-size: 0.8*$sDfontSize;
-    line-height: $sDfontSize;
+    h4{
+      font-size: $sDfontSizeM;
+    }
+  
+  p {
+      font-size: $sDfontSize;
+      line-height: $sDlineHeight;
+      margin-top: 0.5*$lineHeight;
+  
+      &:first-of-type {
+          margin-top: 0;
+      }
+  
   }
-  p{
-    letter-spacing: 0.02rem;
+  .MsoFootnoteReference, a[href*="#["]{
+    font-size: 1.2*$sDfontSize;
+    vertical-align: unset;
   }
+  i, em{
+      font-size: calc($sDfontSize - 0.01rem);
+  }
+
+
   .gallery{
-    width: 100%;
+    margin: $lineHeight 0;
+    position: relative;
     left: unset;
     right: unset;
+    width: 100%;
+    grid-column-gap: $lineHeight;
+    display: grid;
+    grid-template-rows: masonry;
+    .gallery-item{
+      transition: $transitionFade;
+      &:hover{
+        background-color: $hoverbg-color1;
+        border-radius: 12px;
+      }
+      a{
+        display:block;
+        width: auto !important;
+        height: 100%;
+      }
+    }
+    figcaption{
+      padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
+      text-align: center;
+      
+    }
+    .gatsby-image-wrapper{
+      display: flex !important;
+      margin: $lineHeight;
+      [role="presentation"]{
+        display: none !important;
+      }
+    }
+    .portrait .gatsby-image-wrapper img{
+      max-width: 100%;
+      max-height: 50vh;
+      height: auto;
+      width: 100%;
+      position: relative;
+    }
   }
-  .gallery-columns-3, .gallery-columns-4, .gallery-columns-5{
-    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  
+  @media screen and (max-width: $small){
+
+    i{
+      font-feature-settings: "ss04";
+      font-size: 0.99*$sDfontSize;
+      letter-spacing: -0.05rem;
+    }
+    a{
+      font-size: inherit;
+    }
+    video{
+      width: 100%;
+      height: auto;
+    }
+    h1 {
+      font-size: $sDfontSizeM;
+      line-height: $sDlineHeightM;
+      margin: 1*$lineHeight 0;
+  
+  }
+    h4{
+      font-size: $sDfontSizeM;
+    }
+  
+  p {
+      font-size: $sDfontSize;
+      line-height: $sDlineHeight;
+      margin-top: 0.5*$lineHeight;
+  
+      &:first-of-type {
+          margin-top: 0;
+      }
+  
+  }
+  .MsoFootnoteReference, a[href*="#["]{
+    font-size: $sDfontSizeXL;
+    &:hover{
+      all: unset;
+      *:after{
+      }
+    }
+    &:hover:after{
+      all:unset;
+    }
+  
+  }
+  
+  
+  .MsoFootnoteText{
+    @include ke-light;
+    font-size: $sDfontSizeXXL !important;
+    .MsoFootnoteReference{
+      vertical-align: unset;
+    }
+  }
+  i, em{
+      // font-size: calc($sDfontSize - 0.01rem);
+  }
+
+
+  .gallery{
+    margin: $lineHeight 0;
+    position: relative;
+    left: unset;
+    right: unset;
+    width: 100%;
+    grid-column-gap: $lineHeight;
+    display: grid;
+    grid-template-rows: masonry;
+    .gallery-item{
+      transition: $transitionFade;
+      &:hover{
+        background-color: $hoverbg-color1;
+        border-radius: 12px;
+      }
+      a{
+        display:block;
+        width: auto !important;
+        height: 100%;
+      }
+    }
+    figcaption{
+      padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
+      text-align: center;
+      
+    }
+    .gatsby-image-wrapper{
+      display: flex !important;
+      margin: $lineHeight;
+      [role="presentation"]{
+        display: none !important;
+      }
+    }
+    .portrait .gatsby-image-wrapper img{
+      max-width: 100%;
+      max-height: 50vh;
+      height: auto;
+      width: 100%;
+      position: relative;
+    }
+  }
+  li[value="Linton Archive"], li[value="Linton Archiv"]{
+    a{
+      transition: $transitionFade;
+      border: solid 1px;
+      border-radius: 100%;
+      width: $sDlineHeight;
+      height:$sDlineHeight;
+      text-align: center;
+      margin-left:1*$lineHeight;
+      border-color: rgb(175, 0, 0);
+      } 
   }
 }
+  
+
+// @media screen and (min-width: $xlarge) {
+//   h1, h2, h3, h4, p, a, button, label p{
+//       font-size: 4  vmin !important;
+//   }
+// }
+
+// @media screen and (min-width: $xlarge){
+// h1{
+// font-size: 3vmin !important;
+// line-height: 1.2vw;
+// }
+// h4{
+//   font-size: 0.8vw;
+//   line-height: 1vw;
+// }
+// p{
+//   font-size: 0.8vw;
+//   line-height: 1.2vw;
+// }
+
+// }
+
+
+
+
+
+
 @media print {
 
   h1, h4, a, button, label p{
@@ -360,33 +502,108 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     line-height: $lineHeight !important;
   }
 }
-
-
+// @media screen and (max-width: $large){
+//   h1{
+//   font-size: 5vw;
+//   line-height: 5vw;
+//   }
+//   h4{
+//     // font-size: 2.85vw;
+//     line-height: 3.5vw;
+//   }
+//   p span, p:not(label>p){
+//     font-size: 3vw ;
+//     line-height: 4vw;
+//   }
+//   .MsoFootnoteReference, a[href*="#["]{
+//     font-size: $fontSize;
+//     vertical-align: top;
+//   }
+//   i{
+//     font-size: 2.85vw;
+//     line-height: 4vw;
+//   }
+  
+//   }
+// 
 @media screen and (max-width: $small){
-  i{
-    font-feature-settings: "ss04";
-    font-size: 0.99*$sDfontSize;
-    letter-spacing: -0.05rem;
+  .inline-gatsby-image-wrapper{
+    margin: 1*$sDlineHeight auto 0 auto;
+    // width: 100%;
+    display: flex; 
+    justify-content: center;
+  
   }
-  a{
-    font-size: inherit;
-  }
+//   li[value="Linton Archive"], li[value="Linton Archiv"]{
+
+//     a{
+//     margin-left:0.25*$lineHeight;
+//     width: $lineHeight;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     }
+//       }
+//   figure{
+//     width: unset !important;
+//   }
+
+//   .MsoFootnoteReference{
+//     font-size: 0.6*$fontSize;
+//     vertical-align:top;
+//   }
+//   .MsoFootnoteText, .MsoFootnoteText .MsoFootnoteReference{
+//     font-size: 1*$sDfontSize !important;
+//   }
+
+//   .inline-gatsby-image-wrapper{
+//     margin-top: 0.5*$lineHeight;
+//     margin-bottom: 0;
+//     // width: 100%;
+//     display: flex; 
+//     justify-content: center;
+  
+//   }
+//   figcaption{
+//     margin-top: 0.25*$fontSize;
+//     font-size: 0.8*$sDfontSize;
+//     line-height: $sDfontSize;
+//   }
+//   p{
+//     letter-spacing: 0.02rem;
+//   }
+//   .gallery{
+//     width: 100%;
+//     left: unset;
+//     right: unset;
+//   }
+//   .gallery-columns-3, .gallery-columns-4, .gallery-columns-5{
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+//   h1{
+//     font-size: $sDfontSizeM;
+//     line-height: $sDlineHeightM;
+//     }
+//     h4{
+//       font-size: $fontSize;
+//       line-height: $lineHeight;
+//     }
+//     p span, p:not(label>p){
+//       font-size: $sDfontSize;
+//       line-height: $sDlineHeight;
+//     }
+//     .MsoFootnoteReference, a[href*="#["]{
+//       font-size: $sDfontSize;
+//       vertical-align: unset;
+//     }
+//     i,em {
+//       font-size: calc($sDfontSize - 0.01rem);
+//       line-height: inherit;
+//       letter-spacing: 0.001rem;
+//     }
 }
 
 
 
-@media screen and (min-width: $xlarge){
-h1{
-font-size: 1vw;
-line-height: 1.2vw !important;
-}
-h4{
-  font-size: 0.8vw;
-  line-height: 1vw;
-}
-p{
-  font-size: 0.8vw;
-  line-height: 1.2vw !important;
-}
 
-}
+

@@ -1,5 +1,27 @@
 @import "../../styles/typo.module.scss";
 
+/*************************************/
+/* overview */
+/*
+1. Recommended Section
+2. Categories Section
+3. 
+4.  
+5.  
+6. 
+7.
+8.
+9.
+10.
+
+
+*/
+/*************************************/
+
+
+/*************************************/
+/* 1. Recommended Section */
+/*************************************/
 
 .recommendedSection {
     display              : grid;
@@ -31,6 +53,7 @@
 
     span {
         grid-row-start:  2;
+        font-size: $fontSize;
     }
 
     span:first-of-type {
@@ -42,6 +65,13 @@
         text-align       : right;
     }
 }
+
+/*************************************/
+/* 2. Categories Section */
+/*************************************/
+
+
+
 .categoriesSection {
     position: relative;
     display              : grid;
@@ -94,6 +124,7 @@
 
     span {
         grid-row-start: 2;
+        font-size: $fontSize;
     }
 
     span:first-of-type {
@@ -133,10 +164,23 @@
     }
 }
 
-@media screen and (max-width: $small) {
+
+
+
+
+
+/*************************************/
+/* mobile queries */
+/*************************************/
+
+
+
+
+@media screen and (max-width: $medium) {
     .recommendedSection {
     grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
     column-gap: .5*$lineHeight;
+    grid-template-rows: [row] 1*$sDlineHeight [row] 1*$sDlineHeight [row] auto;
 
 
     .recommendedSectionHeader{
@@ -144,6 +188,8 @@
         grid-template-columns: inherit;
         column-gap: inherit;
         top: calc(3*$lineHeight - 1px);
+        grid-template-rows: [row] 1*$sDlineHeight [row] 1*$sDlineHeight;
+
     
 
     h2{
@@ -171,12 +217,16 @@
     }
 }
     }
+    .categoriesSection#collectionsCategory{
+        grid-template-rows   : [row] 1*$sDlineHeight [row] 1*$sDlineHeight [row] auto [row] 1*$sDlineHeight [row] 1.5*$sDlineHeight;
+
+    }
 
     .categoriesSection {
         display              : grid;
         grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
-        // grid-template-rows   : [row] $lineHeight [row] $lineHeight [row] auto [row] $lineHeight [row] $lineHeight;
-        grid-template-rows: minmax(0, $lineHeight) minmax(0, $lineHeight) minmax(0, auto) minmax(0, $lineHeight) minmax(0, $lineHeight);
+        grid-template-rows   : [row] 1*$sDlineHeight [row] 1*$sDlineHeight [row] auto [row] 1*$sDlineHeight [row] 1*$sDlineHeight;
+        // grid-template-rows: minmax(0, $lineHeight) minmax(0, $lineHeight) minmax(0, auto) minmax(0, $lineHeight) minmax(0, $lineHeight);
 
         column-gap           : 0.5*$lineHeight;
         grid-column: 1/4;
@@ -193,6 +243,8 @@
             top: 3*$lineHeight;
             z-index: 2500;
             height: fit-content;
+            grid-template-rows: [row] 1*$sDlineHeight [row] 1*$sDlineHeight;
+
         > a{
             // grid-column: 1/5;
             // text-align: right;
@@ -276,7 +328,7 @@
         .categoriesSectionHeader{
             background-color: #fff;
             z-index: 2500 ;
-            grid-template-rows   : repeat(2, $lineHeight);
+            grid-template-rows   : repeat(2, 1*$sDlineHeight);
             span{
                 grid-column: 1;
                 width: 50%;
@@ -340,6 +392,229 @@
 
 }
 
+
+@media screen and (max-width: $small) {
+    .recommendedSection {
+    grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+    grid-template-rows: [row] 1.5*$sDlineHeight [row] 1.5*$sDlineHeight [row] auto;
+    column-gap: .5*$sDlineHeight;
+
+
+    .recommendedSectionHeader{
+        grid-column: 1/4;
+        grid-template-columns: inherit;
+        grid-template-rows: [row] 1.5*$sDlineHeight [row] 1.5*$sDlineHeight;
+        padding: 0 0.5*$sDlineHeight;
+        column-gap: inherit;
+        top: calc(3.25*$sDlineHeight - 1px);
+        *{
+            font-size: $sDfontSizeL;
+        }
+    
+
+    h2{
+        grid-column-start: 0;
+        grid-column-end: 4;
+        text-align: center;
+        padding-left: 0.5*$sDlineHeight;
+    }
+    span {
+        grid-row-start: 2;
+        width: 50%;
+    }
+
+    span:first-of-type {
+        grid-column-start: 1;
+        text-align: right;
+    }
+
+    span:last-of-type {
+        grid-column-start: 3;
+        text-align       : left;
+        justify-self: end;
+
+
+    }
+}
+    }
+    .categoriesSection#collectionsCategory{
+        grid-template-rows   : [row] 1.5*$sDlineHeight [row] 1.5*$sDlineHeight [row] auto [row] 1.5*$sDlineHeight [row] 1.5*$sDlineHeight;
+
+    }
+
+    .categoriesSection {
+        display              : grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+        grid-template-rows   : [row] 1.5*$sDlineHeight [row] 1.5*$sDlineHeight [row] auto [row] 1.5*$sDlineHeight [row] 1.5*$sDlineHeight;
+        // grid-template-rows: minmax(0, 1.5$sDlineHeight) minmax(0, 1.5*$sDlineHeight) minmax(0, auto) minmax(0, 1.5*$sDlineHeight) minmax(0, $sDlineHeight);
+
+        column-gap           : 0.5*$sDlineHeight;
+        grid-column: 1/4;
+        grid-row: 1;
+        // margin-right         : $lineHeight;
+        width: 100%;
+        
+    
+        .categoriesSectionHeader{
+            padding: 0 0.5*$sDlineHeight;
+            grid-column: 1/4;
+            display              : inherit;
+            // grid-template-columns: inherit;
+            column-gap           : inherit;
+            position: sticky;
+            top: 3.25*$sDlineHeight;
+            z-index: 2500;
+            height: fit-content;
+            grid-template-rows: [row] 1.5*$sDlineHeight [row] 1.5*$sDlineHeight;
+            h2, h4, span{
+                font-size: $sDfontSizeL;
+            }
+        > a{
+            // grid-column: 1/5;
+            // text-align: right;
+            display:inherit;
+           column-gap: inherit;
+            position: sticky;
+            top: 3*$sDlineHeight;
+            z-index: 500;
+            h2{
+            &:before{
+                content: '[';
+                opacity: 0;
+            }
+            &:after{
+                content: ']';
+                opacity: 0;
+            }
+            &:hover{
+                &::after, &::before{
+                    opacity: 1;
+                }
+            }
+        }
+        }
+        h2 {
+            grid-column-start: 1;
+            grid-column-end  : 2;
+            grid-row-start   : row 1;
+    
+        }
+    
+        span {
+            grid-row-start: 2;
+        }
+    
+        span:first-of-type {
+            grid-column-start: 2;
+           
+            background-color: #fff;
+        }
+    }
+        > span:last-of-type {
+            grid-column-start: 3;
+            width: 50%;
+            text-align: left;
+            justify-self: end;
+            grid-row-start   : 4;
+        }
+    
+    
+        ul, ul.categoryActive {
+            grid-column-start: 1;
+            grid-column-end  : 4;
+            grid-row-start   : 3;
+    
+            li {
+                padding   : 0.5*$sDlineHeight;
+                box-sizing: border-box;
+                &:last-of-type{
+                    margin-bottom: 0.2*$sDlineHeight;
+                }
+            }
+        }
+    }
+
+    #featuresCategory,
+    #pictorialsCategory,
+    #collectionsCategory{
+        .categoriesSectionHeader{
+            position: sticky;
+        h2{
+            
+        }
+        }
+        .categoriesSection{
+            opacity: 0;
+        }
+    }
+
+    #featuresCategory{
+        .categoriesSectionHeader{
+            background-color: #fff;
+            z-index: 2500 ;
+            grid-template-rows   : repeat(2, 1.5*$sDlineHeight);
+            span{
+                grid-column: 1;
+                width: 50%;
+                text-align: right;
+            }
+            h2{
+                margin-left: 0.5*$sDlineHeight;
+            }
+        }
+        }
+
+    
+    #pictorialsCategory{
+        .categoriesSectionHeader{
+            grid-template-columns: unset;
+            text-align: center;
+            grid-column: 2;
+            grid-template-rows: $sDlineHeight;
+            h2{
+                z-index: 10000;
+            }
+            span{
+                display: none;
+            }
+    }
+    }
+    #collectionsCategory{
+        .categoriesSectionHeader{
+            grid-template-columns: unset;
+            text-align: right;
+            grid-column: 3;
+            h2{
+                z-index: 10000;
+                margin-right: 0.5*$sDlineHeight;
+            }
+            span{
+                display: none;
+            }
+    }
+         ul li{
+            margin:0.5*$sDlineHeight !important;
+            width: unset;
+        }
+    }
+    .categoriesSection > ul{
+        min-height: calc(100vh - 12*$sDlineHeight);
+    }
+    .categoriesSection > ul, .categoriesSection > ul.collectionsColumn, .categoriesSection ul ~ span, .categoriesSection ul ~ p , .categoriesSection ul.collectionsColumn ~ span, .categoriesSection ul.collectionsColumn ~ p {
+        display: none;
+        opacity: 0;
+        transition-delay: 50ms;
+        z-index: 10;
+    }
+    .categoriesSection > ul.categoryActive, ul.categoryActive ~ span, ul.categoryActive ~ p{
+    display: unset;
+    opacity: 1;
+    transition: $transitionFade;
+    transition-delay: 500ms;
+    z-index: 20;
+    }
+
+}
 
 
 

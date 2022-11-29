@@ -17,11 +17,6 @@ main{
     padding-top: 3*$lineHeight;
     min-height: calc(100% - 5*$lineHeight);
 
-    @media screen and (max-width: 620px){
-        padding: 0;
-        margin-top: 3*$lineHeight;
-        min-height: calc(100% - 7*$lineHeight);
-    }
 
 }
 
@@ -92,7 +87,8 @@ main{
         h1{
             position: absolute;
             opacity: 1;
-            line-height: $lineHeight;
+            font-size: $fontSizeM;
+            line-height: $lineHeightM;
         }
 }
 
@@ -132,6 +128,7 @@ width: 50%;
     grid-column-start: 4;
     grid-row-start: 5;
     @include ke-light;
+    font-size: $fontSize;
     opacity: 0.4;
     text-align: right;
     transition: $transitionFade;
@@ -143,8 +140,76 @@ width: 50%;
 
 
 
+
+
+/*************************************/
+/* mobile queries */
+/*************************************/
+
+
+@media screen and (max-width: $medium){
+        main{
+          padding: 0.5*$lineHeight;
+          margin-top: 3*$lineHeight;
+          min-height: calc(100% - 7*$lineHeight);
+        }
+        .categoriesLists{
+            position: relative;
+            display: grid;
+            column-gap: .5*$lineHeight;
+            // grid-template-rows: minmax(0, $lineHeight) minmax(0, $lineHeight) minmax(0, auto) minmax(0, $lineHeight) minmax(0, $lineHeight);
+            > a{
+                position: absolute;
+                top: 0;
+                > div{
+                    grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+                    > span:last-of-type, >.moreButton{
+                        grid-column-start: 3;
+                        grid-column-end: 4;
+                    }
+    
+                    > ul{
+                        grid-column-end: 4;
+                    }
+                }
+            }
+            > a:not(:first-of-type):not(:last-of-type){
+                h2{
+                    grid-column-start: 2;
+                    grid-column-end: 3;
+                    text-align: center;
+                }
+            }
+            > a:last-of-type{
+                h2{
+                    grid-column-start: 3;
+                    grid-column-end: 4;
+                    text-align: center;
+                }
+            }
+            .moreButton{
+                grid-column-start: 3;
+                margin-right: 0.5*$lineHeight;
+            }
+        }
+    }
+
+
+
+
+
 @media screen and (max-width: $small) {
-    .categoriesLists{
+        main{
+            padding: 0;
+            margin-top: calc(3.25*$sDlineHeight - 1px);;
+            min-height: calc(100% - 7*$sDlineHeight);
+        }
+        .collectionsArticle{
+            h1{
+                font-size: $sDfontSizeXXL;
+            }
+        }
+        .categoriesLists{
         position: relative;
         display: grid;
         column-gap: .5*$lineHeight;
@@ -179,8 +244,12 @@ width: 50%;
             }
         }
         .moreButton{
+            font-size: $sDfontSizeL;
             grid-column-start: 3;
             margin-right: 0.5*$lineHeight;
         }
     }
 }
+
+
+

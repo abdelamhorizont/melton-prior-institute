@@ -30,7 +30,7 @@ div .article-title{
             padding: 0 1*$lineHeight;
             text-transform: uppercase;
             line-height: 1.5*$lineHeight;
-            font-size: $fontSize;
+            font-size: $fontSizeM;
         }
     }
 
@@ -63,10 +63,22 @@ div .article-title{
     }
 }
 
-@media screen and (max-width: $small) {
+@media screen and (max-width: $medium) {
     .articleMeta{
         h4{
             font-size: $sDfontSize;
+        }
+    }
+}
+
+@media screen and (max-width: $small) {
+    .articleMeta{
+        h1{
+            font-size: $sDfontSizeXL;
+        }
+        h4{
+            font-size: $sDfontSizeL;
+            line-height: $sDlineHeightM;
         }
     }
 }

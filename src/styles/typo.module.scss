@@ -1,7 +1,41 @@
+/*************************************/
+/* overview */
+/*
+1. Variables
+  1.1 Media Queries
+  1.2 Color/Animations
+  1.3 Font-Sizes
+2. Mixins
+3. Components
+/*************************************/
+
+
+/*************************************/
+/* Variables */
+/*************************************/
+
+
+/*************************************/
+/* 1.1 Media Queries */
+/*************************************/
+
+$xs: 320px;
+$s: 480px;
+$sm: 768px;
+$m: 992px;
+$l: 1200px;
+
+
+
 $small: 620px;
 $medium: 960px;
 $large: 1280px;
 $xlarge: 2000px;
+
+
+/*************************************/
+/* 1.2 Color/Animations */
+/*************************************/
 
 $hoverbg-color1: #ededea;
 $hoverfont-color1: #000;
@@ -12,28 +46,32 @@ $transitionFade: all 0.5s;
 $transitionMenuBar: all 0.5s ease-in-out;
 $transitionMenuBarDelay: 50ms;
 
+/*************************************/
+/* 1.3 Font-Sizes */
+/*************************************/
 
+$fontSize: 1.75vmin; /*18px*/
+// $fontSizeM: 1.75rem; /*28px*/
+$fontSizeM: 2.5vmin; /*28px*/
+$fontSizeL: 3.5vmin; /*34px*/
+$fontSizeXL: 4vmin; /*42px*/
 
-$fontSize: 1.125rem; /*18px*/
-$fontSizeM: 1.75rem; /*28px*/
-$fontSizeL: 2.125rem; /*34px*/
-$fontSizeXL: 2.625rem; /*42px*/
-
-$lineHeight: 1.4*$fontSize;
-$lineHeightM: 1.21*$fontSizeM;
+$lineHeight: 1.25*$fontSize;
+$lineHeightM: 1.25*$fontSizeM;
 $lineHeightL: 1.05*$fontSizeL;
 $lineHeightXL: 1.05*$fontSizeXL;
 
 // sD = smallDevice variables = 
 
-$sDfontSize: 12pt; /*14px*/
-$sDfontSizeM: 1.375rem; /*22px*/
-$sDfontSizeL: 1.75rem; /*28px*/
-$sDfontSizeXL: 2.125rem; /*34px*/
+$sDfontSize: 2vmin; /*14px*/
+$sDfontSizeM: 2.5vmin; /*22px*/
+$sDfontSizeL: 4vmin; /*28px*/
+$sDfontSizeXL: 5vmin; /*34px*/
+$sDfontSizeXXL: 6vmin;
 
-$sDlineHeight: 1.3*$fontSize;
-$sDlineHeightM: 1.05*$fontSizeM;
-$sDlineHeightL: 1*$fontSizeL;
+$sDlineHeight: 2*$sDfontSize;
+$sDlineHeightM: 2.5*$sDfontSizeM;
+$sDlineHeightL: 3*$sDfontSizeL;
 $sDlineHeightXL: 1.05*$fontSizeXL;
 
 // $fontFamily: "K-E-FSL-Light";
@@ -49,37 +87,71 @@ $sDlineHeightXL: 1.05*$fontSizeXL;
 // }
 
 
+
+/*************************************/
+/* 2. Mixins */
+/*************************************/
+
+
 @mixin ke-light {
-    font-family: 'Kleukens Egyptienne Light', 'Times New Roman', Times, serif;
-    font-size: $fontSize;
-    font-weight: 100 !important;
+    font-family: 'Kleukens Egyptienne', 'Times New Roman', Times, serif;
+    // font-size: inherit;
+    font-weight: 100;
+    // font-size: $fontSize;
     // padding: 0.5*$fontSize 0.7*$fontSize;
     // background-color: $myColor1;
 }
 
 @mixin ke-medium {
-  font-family: 'Kleukens Egyptienne Medium', 'Times New Roman', Times, serif;
-  font-size: $fontSize;
+  font-family: 'Kleukens Egyptienne', 'Times New Roman', Times, serif;
+  // font-size: inherit;
+  font-weight: 400;
+  // font-size: $fontSize;
   // padding: 0.5*$fontSize 0.7*$fontSize;
   // background-color: $myColor1;
 }
 
 @mixin ke-book-italic {
-    font-family: 'Kleukens Egyptienne Book Italic', 'Times New Roman', Times, serif;
+    font-family: 'Kleukens Egyptienne', 'Times New Roman', Times, serif;
     font-size: inherit;
+    font-weight: 500;
+    font-style: italic;
     // padding: 0.5*$fontSize 0.7*$fontSize;
     // background-color: $myColor1;
 }
 
 @mixin ke-bold {
-  font-family: 'Kleukens Egyptienne Bold', 'Times New Roman', Times, serif;
-  font-size: $fontSize;
+  font-family: 'Kleukens Egyptienne', 'Times New Roman', Times, serif;
+  // font-size: inherit;
+  font-weight: 600;
+  // font-size: $fontSize;
   // padding: 0.5*$fontSize 0.7*$fontSize;
   // background-color: $myColor1;
 }
 
 @mixin nm-book {
-  font-family: 'Neue Montreal Book', 'Times New Roman', Times, serif;
+  font-family: 'Neue Montreal', 'Times New Roman', Times, serif;
+  // font-size: inherit;
+  font-weight: 500;
+  // font-size: $fontSize;
+  // padding: 0.5*$fontSize 0.7*$fontSize;
+  // background-color: $myColor1;
+}
+
+@mixin nm-book-italic {
+  font-family: 'Neue Montreal', 'Times New Roman', Times, serif;
+  font-size: inherit;
+  font-weight: 500;
+  font-style: italic;
+  // font-size: $fontSize;
+  // padding: 0.5*$fontSize 0.7*$fontSize;
+  // background-color: $myColor1;
+}
+
+@mixin nm-bold {
+  font-family: 'Neue Montreal', 'Times New Roman', Times, serif;
+  // font-size: inherit;
+  font-weight: 600;
   // font-size: $fontSize;
   // padding: 0.5*$fontSize 0.7*$fontSize;
   // background-color: $myColor1;
@@ -87,23 +159,174 @@ $sDlineHeightXL: 1.05*$fontSizeXL;
 
 
 
+/*************************************/
+/* Components */
+/*************************************/
 
 
-@media screen and (max-width: $small) {
-  :root, *
-  {
+h1{
+  text-transform: uppercase;
+  word-break: break-word;
+  font-size: $fontSizeL;
+}
 
+h3{
+  font-size: $fontSizeM;
+}
+
+h4{
+  font-size: $fontSize;
+}
+
+
+
+h1, h2, h3, h4, a, button, label p, b{
+  @include ke-light;
+  font-feature-settings: "ss04";
+
+}
+
+p{
+  @include nm-book;
+  word-break: break-word;
+  // white-space: pre-line;
+  hyphens: auto;
+}
+
+i, em{
+  @include nm-book-italic;
+  font-feature-settings: "ss04";
+  // font-size: 0.95*$fontSizeM;
+  // letter-spacing: -0.05rem;
+}
+
+ol{
+  list-style: decimal inside;
+  line-height: inherit;
+}
+
+a{
+  letter-spacing: -0.01rem;
+}
+
+a[href*="#["]{
+    position: relative;
+    &::after{
+      content:' ';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      height: 60%;
+      background-image: url("data:image/svg+xml,%3Csvg id='Ebene_1' data-name='Ebene 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12.87 17.58'%3E%3Ctitle%3Ekleukens_egyptienne_arrow_down%3C/title%3E%3Cpath d='M6.765,18.79h1.47a24.22,24.22,0,0,1,5.7-8.46l-.12-1.92a16.1123,16.1123,0,0,0-5.49,6.66c.12-1.47.15-3.3.15-5.76V1.21H6.525V9.311c0,2.52.03,4.38.15,5.85a15.7387,15.7387,0,0,0-5.52-6.75l-.09,1.92a24.62,24.62,0,0,1,5.7,8.459' transform='translate(-1.065 -1.21)'/%3E%3C/svg%3E");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
+      z-index: 5000;
+      opacity: 0;
   }
 }
 
-@media screen and (min-width: $small) {
+button{
+  a{
+    color: rgba(0,0,0,.4);
+    
+    &:hover{
+        color: rgba(0,0,0,1);
+    }
+}
+}
+
+
+.inline-gatsby-image-wrapper{
+  a{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+hr{
+  border-bottom: 1px solid black;
+}
+.MsoFootnoteReference, a[href*="#["]{
+  font-size: $fontSize;
+  vertical-align: top;
+  line-height: normal;
+  color: rgba(0,0,0,.4);
+  transition: $transitionFade;
+
+  &:hover{
+    color: rgba(0,0,0,1);
+    *:after{
+      opacity: 1;
+    }
+  }
+  &:hover:after{
+    opacity:1;
+  }
 
 }
 
-@media screen and (min-width: $medium) {
+.MsoFootnoteText{
+  @include ke-light;
+  font-size: $fontSize !important;
+  .MsoFootnoteReference{
+    vertical-align: unset;
+  }
+}
+
+
+
+
+.wp-caption{
+  // width: 100% !important;
+  @include ke-book-italic();
+}
+
+
+
+
+/*************************************/
+/* mobile queries */
+/*************************************/
+
+@media screen and (max-width: $medium) {
+  h4{
+    // font-size: $fontSizeM;
+  }
+}
+
+
+@media screen and (max-width: $small) {
+  h4{
+    font-size: $sDfontSizeL;
+  }
+
+
 
 }
 
-@media screen and (min-width: $large) {
-}
+
+
+
+
+// @media screen and (max-width: $small) {
+//   :root, *
+//   {
+
+//   }
+// }
+
+// @media screen and (min-width: $small) {
+
+// }
+
+// @media screen and (min-width: $medium) {
+
+// }
+
+// @media screen and (min-width: $large) {
+// }
 
