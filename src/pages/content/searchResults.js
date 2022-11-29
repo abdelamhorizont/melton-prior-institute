@@ -2,7 +2,7 @@ import * as React from "react"
 import { useState } from 'react';
 
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from '../../components/layout/layout'
 import Section from '../../components/section/section'

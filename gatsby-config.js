@@ -16,6 +16,9 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         url: "http://wordpress.meltonpriorinstitut.org/graphql",
+        html: { 
+          useGatsbyImage: false,
+        },
         type: {
           MediaItem: {
             // exclude: true,
@@ -24,9 +27,9 @@ module.exports = {
               // maxFileSizeBytes: 1
             }
           },
-          Post: {
-            limit: 300
-          }
+          // Post: {
+          //   limit: 200
+          // }
           //     process.env.NODE_ENV === `development`
           //       ? // Lets just pull fewer posts in development to make it easy on ourselves.
           //         24
@@ -35,13 +38,21 @@ module.exports = {
           // }
         },
         schema: {
-          perPage: 20, // currently set to 100
+          perPage: 80, // currently set to 100
           requestConcurrency: 15, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
           timeout: 50000
         },
         production: {
-          allow404Images: true
+          allow404Images: true,
+        },
+        develop: {
+          nodeUpdateInterval: 300,
+        },
+        debug: {
+          graphql: {
+            showQueryOnError: true,
+          },
         }
       },
     },
@@ -51,13 +62,15 @@ module.exports = {
         // Defaults used for gatsbyImageData and StaticImage
         // Set to false to allow builds to continue on image errors
         failOnError: false,
+        // failOn: `none`,
         defaults: {
           placeholder: `dominantColor`,
         },
         // deprecated options and their defaults:
         base64Width: 42,
+        // base64: false,
         stripMetadata: true,
-        defaultQuality: 100,
+        // defaultQuality: 100,
       },
     },
     "gatsby-plugin-image",
@@ -71,6 +84,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-vanilla-extract",
     `gatsby-plugin-sass`,
+    `gatsby-plugin-netlify`,
     // {
     //   resolve: "gatsby-plugin-manifest",
     //   options: {
@@ -84,4 +98,7 @@ module.exports = {
     //   },
     // },
   ],
+  flags: {
+    PARALLEL_QUERY_RUNNING: true
+  }
 }

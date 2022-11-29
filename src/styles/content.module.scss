@@ -396,6 +396,12 @@ html {
     justify-content: center;
     align-self: center;
     // left: 200px;
+
+    img{
+        max-height: 50vh !important;
+        justify-self: center !important;
+        align-self: center !important;
+    }
 }
 
 

@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import SimpleReactLightbox from 'simple-react-lightbox'
-import { SRLWrapper } from "simple-react-lightbox";
+// import SimpleReactLightbox from 'simple-react-lightbox'
+// import { SRLWrapper } from "simple-react-lightbox";
 
 import { useReactToPrint } from 'react-to-print';
 
@@ -38,6 +38,7 @@ import {
   articleFeature,
   articlePictorial
 } from '../../components/article/article.module.scss'
+import { width } from "dom7";
 
 
 
@@ -74,36 +75,13 @@ export default function Post({ data }) {
 
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
-          <Gallery>
-            {data.wpPost && data.wpPost.content &&
+          <Gallery id="my-gallery" withCaption>
+            {data.wpPost?.content &&
               parse(data.wpPost.content, {
                 replace: domNode => {
+                  // footnotes
                   let reg = /(\[\d+\])/g
-                  if (domNode.name && domNode.name.includes("picture")) {
-                    const props = attributesToProps(domNode.attribs);
-                    // console.log(domNode.children[2])
-                    return (
-                      <Item
-                        content={
-                          <div className={lightboxImageWrapper}>
-                            <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />
-                          </div>
-                        }>
-
-                        {({ ref, open }) => (
-                          <a
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              open(e)
-                            }}
-                            ref={ref}
-                          >
-                            <img src={domNode.children[2].attribs["data-src"]} srcset={domNode.children[2].attribs["data-srcset"]} />                          </a>
-                        )}
-                      </Item>
-                    )
-                  } else if (domNode.data && domNode.data.match(reg)) {
+                  if (domNode.data && domNode.data.match(reg)) {
                     const text = domNode.data.split(reg)
                     const footNote = text.filter(text => text.match(reg))
                     if (!counter.includes(footNote[0])) {
@@ -113,7 +91,7 @@ export default function Post({ data }) {
                           {
                             text.map(text => text.match(reg) ?
                               <a href={"#" + text}>
-                                <span id={"ref" + text} className="MsoFootnoteReference">{text}</span> 
+                                <span id={"ref" + text} className="MsoFootnoteReference">{text}</span>
                               </a>
                               :
                               text
@@ -135,14 +113,105 @@ export default function Post({ data }) {
                       )
                     }
                   }
+                  // images lightbox
+                  else if (domNode.name && domNode.name.includes("picture")) {
+                    // const props = attributesToProps(domNode.attribs);
+                    // console.log(domNode)
+                    return (
+                      <Item
+                        caption="Foo"
+                        content={
+                          <div className={lightboxImageWrapper}>
+                            {/* <img srcset={domNode.children[1]?.attribs["srcset"]} /> */}
+                            <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
+                          </div>
+                        }>
+
+                        {({ ref, open }) => (
+                          <a
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              open(e)
+                            }}
+                            ref={ref}
+                          >
+                            <div className={lightboxImage}>
+                              {/* <GatsbyImage image={data.imageSharp.gatsbyImageData} /> */}
+                              <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
+                            </div>
+                          </a>
+                        )}
+                      </Item>
+                    )
+                  }
+                  else if (domNode.name && domNode.name.includes("figure")) {
+                    // const props = attributesToProps(domNode.attribs)
+                    const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"].replace('http', 'https')
+                    const caption = domNode.children[3]?.children[0]?.data
+                    console.log(src)
+                    return (
+                      <figure class="gallery-item">
+                        <Item
+                          caption={caption}
+                          content={
+                            <div className={lightboxImageWrapper}>
+                              <img srcset={src} />
+                            </div>
+                          }>
+                          {({ ref, open }) => (
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                open(e)
+                              }}
+                              ref={ref}
+                            >
+                              <img srcset={src} />
+                            </a>
+                          )}
+                        </Item>
+                        {domNode.children[3] &&
+                          <figcaption id={domNode.children[3].attribs?.id} class="wp-caption-text gallery-caption">
+                            {caption}
+                          </figcaption>
+                        }
+                      </figure>
+                    )
+                  } else
+                    if (domNode.name && domNode.name.includes("img")) {
+                      // console.log(domNode)
+                      return (
+                        <Item
+                          content={
+                            <div className={lightboxImageWrapper}>
+                              <img src={domNode.attribs["src"]} />
+                            </div>
+                          }>
+                          {({ ref, open }) => (
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                open(e)
+                              }}
+                              ref={ref}
+                            >
+                              <div className={lightboxImage}>
+                                <img src={domNode.attribs["src"]} />
+                              </div>
+                            </a>
+                          )}
+                        </Item>
+                      )
+                    }
                 }
               })
             }
           </Gallery>
 
-          <div>
-            {/* data.wpMediaItem */}
-          </div>
+          {/* <div dangerouslySetInnerHTML={{ __html: data.wpPost.content }} /> */}
 
         </div>
       </div>
@@ -150,10 +219,10 @@ export default function Post({ data }) {
       {relatedPosts.length > 0 &&
         <div>
           <Section title="related Posts" className={relatedPostsWrapper}>
-              <div className={categoriesSectionHeader}>
+            <div className={categoriesSectionHeader}>
               <h2>related Posts</h2>
-               <span>]</span>
-               </div>
+              <span>]</span>
+            </div>
             <ul>
               {
                 relatedPosts.slice(0, 3).map(edge => (
@@ -208,27 +277,9 @@ query ($id: String) {
       }
     }
   }
-  allImageSharp(limit: 10) {
-    nodes {
-      gatsbyImageData(layout: FIXED)
-    }
-  }
-  allWpPost{        
+  allWpPost {
     edges {
       node {
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-            title
-            image {
-              url
-            }
-          }
-        }
         id
         categories {
           nodes {
@@ -257,3 +308,79 @@ query ($id: String) {
   }
 }
 `
+// export const query = graphql`
+// query ($id: String) {
+//   wpPost(id: {eq: $id}) {
+//     id
+//     categories {
+//       nodes {
+//         name 
+//       }
+//     }
+//     title
+//     content
+//     date(formatString: "MMMM D, YYYY")
+//     author {
+//       node {
+//         name
+//       }
+//     }
+//     tags {
+//       nodes {
+//         name
+//       }
+//     }
+//     excerpt
+//     slug
+//     translations {
+//       tags {
+//         nodes {
+//           name
+//         }
+//       }
+//     }
+//   }
+//   allWpPost {
+//     edges {
+//       node {
+//         featuredImage {
+//           node {
+//             localFile {
+//               childImageSharp {
+//                 gatsbyImageData
+//               }
+//             }
+//             title
+//             image {
+//               url
+//             }
+//           }
+//         }
+//         id
+//         categories {
+//           nodes {
+//             name 
+//           }
+//         }
+//         tags {
+//           nodes {
+//             name
+//           }
+//         }
+//         title
+//         date(formatString: "MMMM D, YYYY")
+//         author {
+//           node {
+//             name
+//           }
+//         }
+//         excerpt
+//         uri
+//         translations {
+//           uri
+//         }
+//       }
+//     }
+//   }
+// }
+// `

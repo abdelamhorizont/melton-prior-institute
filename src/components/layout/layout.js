@@ -32,7 +32,7 @@ import {
 
 
 
-const Layout = ({ children }) => {
+const Layout = ({ children, path }) => {
   const query = useStaticQuery(graphql`
     query {
       allWpPost {
@@ -41,6 +41,7 @@ const Layout = ({ children }) => {
             featuredImage {
               node {
                 localFile {
+                  
                   childImageSharp {
                     gatsbyImageData
                   }
@@ -93,13 +94,29 @@ const Layout = ({ children }) => {
     setSearchData(searchData);
   }
 
-  const articles = query.allWpPost.edges.filter(edge =>
+  const articles = path ? path.filter(edge =>
     edge.node.title.toLowerCase().includes(searchData.toLowerCase()) ||
     edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) ||
     edge.node.tags.nodes.some(node => node.name.includes(searchData.toLowerCase())) ||
     // __html: edge.node.content.toLowerCase().includes(searchData.toLowerCase()) || 
     edge.node.author.node.name.toLowerCase().includes(searchData.toLowerCase())
   ).filter(edge => edge.node.language.code == "EN")
+  :
+  query.allWpPost.edges.filter(edge =>
+      edge.node.title.toLowerCase().includes(searchData.toLowerCase()) ||
+      edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) ||
+      edge.node.tags.nodes.some(node => node.name.includes(searchData.toLowerCase())) ||
+      // __html: edge.node.content.toLowerCase().includes(searchData.toLowerCase()) || 
+      edge.node.author.node.name.toLowerCase().includes(searchData.toLowerCase())
+    ).filter(edge => edge.node.language.code == "EN")
+ 
+  // const articles = query.allWpPost.edges.filter(edge =>
+  //   edge.node.title.toLowerCase().includes(searchData.toLowerCase()) ||
+  //   edge.node.excerpt.toLowerCase().includes(searchData.toLowerCase()) ||
+  //   edge.node.tags.nodes.some(node => node.name.includes(searchData.toLowerCase())) ||
+  //   // __html: edge.node.content.toLowerCase().includes(searchData.toLowerCase()) || 
+  //   edge.node.author.node.name.toLowerCase().includes(searchData.toLowerCase())
+  // ).filter(edge => edge.node.language.code == "EN")
 
   const [scrollPos, setScrollPos] = useState(0)
   const [showNav, setShowNav] = useState(true)
