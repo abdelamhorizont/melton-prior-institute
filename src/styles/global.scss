@@ -88,6 +88,7 @@
 
 img{
   max-width: 100%;
+  max-height: 100%;
 }
 
 .inline-gatsby-image-wrapper{
@@ -135,9 +136,13 @@ body{
       border-radius: 12px;
     }
     a{
-      display:block;
+      display:flex;
       width: auto !important;
       height: 100%;
+      &::after{
+        content: '';
+        display:none;
+      }
     }
   }
   figcaption{
@@ -300,7 +305,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
         border-radius: 12px;
       }
       a{
-        display:block;
+        display:flex;
         width: auto !important;
         height: 100%;
       }
@@ -378,7 +383,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   
   .MsoFootnoteText{
     @include ke-light;
-    font-size: $sDfontSizeXXL !important;
+    font-size: $sDfontSizeXL !important;
     .MsoFootnoteReference{
       vertical-align: unset;
     }
@@ -404,7 +409,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
         border-radius: 12px;
       }
       a{
-        display:block;
+        display:flex;
         width: auto !important;
         height: 100%;
       }

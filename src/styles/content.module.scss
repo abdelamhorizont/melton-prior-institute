@@ -267,7 +267,7 @@ html {
             margin-top: $lineHeight;
         }
 
-        picture {
+        picture, figure {
             width: 100%;
             height: fit-content;
 
@@ -392,13 +392,14 @@ html {
 
 .lightbox-image {
     // max-width:50vw !important;
-    max-height: 50vw !important;
+    // max-height: 50vw !important;
     justify-content: center;
     align-self: center;
+    display: flex;
     // left: 200px;
 
     img{
-        max-height: 50vh !important;
+        // max-height: 50vh !important;
         justify-self: center !important;
         align-self: center !important;
     }

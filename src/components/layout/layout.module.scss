@@ -791,6 +791,7 @@ footer {
 
                     p {
                         grid-column: 1;
+                        line-height: unset;
                     }
 
                     div {
@@ -877,7 +878,7 @@ footer {
     }
 
     header.active {
-        height: 8*$lineHeight;
+        height: 7*$lineHeight;
         transition: $transitionFade;
         transition-delay: 300ms;
     }
