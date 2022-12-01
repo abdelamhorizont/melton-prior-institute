@@ -119,6 +119,26 @@ body{
   overflow-y: scroll;
 }
 
+.gallery-item{
+  transition: $transitionFade;
+  &:hover{
+    // border-radius: 12px;
+  }
+  a{
+    display:flex;
+    width: auto !important;
+    height: 100%;
+    &::after{
+      content: '';
+      display:none;
+    }
+  }
+}
+figcaption{
+  padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
+  text-align: center;
+  
+}
 
 .gallery{
   margin: $lineHeight 0;
@@ -288,7 +308,25 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
       font-size: calc($sDfontSize - 0.01rem);
   }
 
-
+  .gallery-item{
+    transition: $transitionFade;
+    &:hover{
+      // border-radius: 12px;
+    }
+    a{
+      display:flex;
+      width: auto !important;
+      height: 100%;
+      &::after{
+        content: '';
+        display:none;
+      }
+    }
+  }
+  figcaption{
+    padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
+    text-align: center;
+  }
   .gallery{
     margin: $lineHeight 0;
     position: relative;
@@ -391,7 +429,25 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   i, em{
       // font-size: calc($sDfontSize - 0.01rem);
   }
-
+  .gallery-item{
+    transition: $transitionFade;
+    &:hover{
+      // border-radius: 12px;
+    }
+    a{
+      display:flex;
+      width: auto !important;
+      height: 100%;
+      &::after{
+        content: '';
+        display:none;
+      }
+    }
+  }
+  figcaption{
+    padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
+    text-align: center;
+  }
 
   .gallery{
     margin: $lineHeight 0;
@@ -409,7 +465,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
         border-radius: 12px;
       }
       a{
-        display:flex;
+      display:flex;
         width: auto !important;
         height: 100%;
       }
