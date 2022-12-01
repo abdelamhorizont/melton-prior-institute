@@ -148,7 +148,7 @@ export default function Post({ data }) {
                   else if (domNode.name && domNode.name.includes("figure")) {
                     // const props = attributesToProps(domNode.attribs)
                     const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"].replace('http', 'https') || domNode.children[0]?.attribs["src"]
-                    const srcset = domNode.children[1]?.children[1]?.children[0]?.attribs["srcset"].replace('http', 'https') || domNode.children[0]?.attribs["srcset"]
+                    // const srcset = domNode.children[1]?.children[1]?.children[0]?.attribs["srcset"].replace('http', 'https') || domNode.children[0]?.attribs["srcset"]
                     const caption = domNode.children[3]?.children[0]?.data
                     // console.log(domNode)
                     return (
@@ -157,7 +157,7 @@ export default function Post({ data }) {
                           caption={caption}
                           content={
                             <div className={lightboxImageWrapper}>
-                              <img src={src} srcset={srcset} />
+                              <img src={src} />
                             </div>
                           }>
                           {({ ref, open }) => (
@@ -169,7 +169,7 @@ export default function Post({ data }) {
                               }}
                               ref={ref}
                             >
-                              <img src={src} srcset={srcset} />
+                              <img src={src} />
                             </a>
                           )}
                         </Item>
