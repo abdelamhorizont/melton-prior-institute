@@ -147,16 +147,17 @@ export default function Post({ data }) {
                   }
                   else if (domNode.name && domNode.name.includes("figure")) {
                     // const props = attributesToProps(domNode.attribs)
-                    const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"].replace('http', 'https')
+                    const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"].replace('http', 'https') || domNode.children[0]?.attribs["src"]
+                    const srcset = domNode.children[1]?.children[1]?.children[0]?.attribs["srcset"].replace('http', 'https') || domNode.children[0]?.attribs["srcset"]
                     const caption = domNode.children[3]?.children[0]?.data
-                    console.log(src)
+                    // console.log(domNode)
                     return (
                       <figure class="gallery-item">
                         <Item
                           caption={caption}
                           content={
                             <div className={lightboxImageWrapper}>
-                              <img srcset={src} />
+                              <img src={src} srcset={srcset} />
                             </div>
                           }>
                           {({ ref, open }) => (
@@ -168,7 +169,7 @@ export default function Post({ data }) {
                               }}
                               ref={ref}
                             >
-                              <img srcset={src} />
+                              <img src={src} srcset={srcset} />
                             </a>
                           )}
                         </Item>
