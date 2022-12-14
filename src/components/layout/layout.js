@@ -35,7 +35,7 @@ import {
 const Layout = ({ children, path }) => {
   const query = useStaticQuery(graphql`
     query {
-      allWpPost {
+      allWpPost(sort: {order: DESC, fields: date}) {
         edges {
           node {
             featuredImage {

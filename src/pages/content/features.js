@@ -23,7 +23,7 @@ import {
 export default function Features() {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "features"}}}}}) {
+      allWpPost(sort: {order: DESC, fields: date},filter: {categories: {nodes: {elemMatch: {name: {eq: "features"}}}}}) {
         edges {
           node {
             featuredImage {
