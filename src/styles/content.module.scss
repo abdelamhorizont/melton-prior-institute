@@ -269,7 +269,8 @@ html {
 
         picture, figure {
             width: 100%;
-            height: fit-content;
+            // height: fit-content;
+            height: auto;
 
             img {
                 // width: 100%;
@@ -374,10 +375,16 @@ html {
 /* 5. LightBox Stuff */
 /*************************************/
 
+.pswp__default-caption{
+    max-width: 50% !important; 
+    max-height: 7% !important; 
+    margin: 0 auto !important; 
+    overflow-y: scroll !important; 
+}
 
 .lightboxImageWrapper {
     width: 100vw;
-    height: 100vh;
+    height: 92vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -439,6 +446,9 @@ html {
     grid-column-end: 11;
     grid-row-start: 3;
 
+    ul li{
+        @include nm-book;
+      }
     p {
         font-size: $fontSizeM;
         line-height: $lineHeightM;
@@ -455,18 +465,24 @@ html {
 
     a:not([href*="#[" ]):not(a[href*="#ref["]):not(a[href*="#_ftn"]){
         color: rgba(0, 0, 0, .4);
+       
         &:after{
             content:'↗';
             position: relative;
             z-index: 5000;
             opacity: 0;
             font-size: inherit;
+            margin-left: -1rem;
         }
         &:hover {
             color: rgba(0, 0, 0, 1);
+
         }
         &:hover:after{
+            transition-delay:50ms;
                 opacity: 1;
+                margin-left: 0rem;
+            
         }
     }
     
