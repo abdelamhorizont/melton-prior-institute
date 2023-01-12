@@ -311,7 +311,7 @@ ul, .swiper-slide-active, .swiper-slide{
             }
         }
         .articleTagWrapper, .languagesWrapper{
-            flex-direction: column;
+            flex-direction: column !important; 
             flex-grow: unset;
             h4{
                 font-size: $sDfontSize;

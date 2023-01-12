@@ -208,7 +208,7 @@ const Homepage = () => {
             <div className={categoriesSectionHeader}> 
 
           <Link to={!mobile ? `/content/features` : `#categories`}>
-            <h4 onClick={() => {
+            <h4 className={mobile && category.features && categoryActive} onClick={() => {
               mobile &&
                 setCategory({
                   features: true,
@@ -244,7 +244,7 @@ const Homepage = () => {
             <div className={categoriesSectionHeader}> 
 
           <Link to={!mobile ? `/content/pictorials` : `#categories`}>
-            <h4 onClick={() => {
+            <h4 className={mobile && category.pictorials && categoryActive} onClick={() => {
               mobile &&
                 setCategory({
                   features: false,
@@ -279,7 +279,7 @@ const Homepage = () => {
           <Section className={categoriesSection} id={collectionsCategory}>
             <div className={categoriesSectionHeader}> 
             <Link to={!mobile ? `/content/collections` : `#categories`}>
-              <h4 onClick={() => {
+              <h4 className={mobile && category.collections && categoryActive} onClick={() => {
                 mobile &&
                   setCategory({
                     features: false,

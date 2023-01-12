@@ -350,7 +350,8 @@ ul.categories {
         grid-row: 1/3;
         grid-template-columns: inherit;
         column-gap: inherit;
-  
+
+                
 
         >span:last-of-type {
             grid-row: 2;
@@ -368,6 +369,9 @@ ul.categories {
         grid-column-start: 1;
         grid-column-end: 2;
         grid-row-start: 1;
+        margin-left: 0.5*$lineHeight;
+        white-space: nowrap;
+        font-size: $fontSize;
     }
 
     span {
