@@ -69,7 +69,7 @@ const Homepage = () => {
           }
         }
       }
-      allWpPost {
+      allWpPost(sort: {order: DESC, fields: date}) {
         edges {
           node {
             featuredImage {
@@ -147,11 +147,11 @@ const Homepage = () => {
     <Layout path={articles}>
       <div className={recommended}>
         <Section title="Recommended" className={recommendedSection}>
-        <div className={recommendedSectionHeader}> 
-                          <h4>Recommended</h4>
-               <span>]</span>
-                <span>[</span>
-        </div>
+          <div className={recommendedSectionHeader}>
+            <h4>Recommended</h4>
+            <span>]</span>
+            <span>[</span>
+          </div>
 
           <div className="swiper-button-prev">&lt;</div>
           <div className="swiper-button-next">&gt;</div>
@@ -205,7 +205,7 @@ const Homepage = () => {
 
       <div className={categoriesLists} id="categories">
         <Section className={categoriesSection} id={featuresCategory}>
-            <div className={categoriesSectionHeader}> 
+          <div className={categoriesSectionHeader}>
 
           <Link to={!mobile ? `/content/features` : `#categories`}>
             <h4 className={mobile && category.features && categoryActive} onClick={() => {
@@ -241,7 +241,7 @@ const Homepage = () => {
         </Section>
 
         <Section className={categoriesSection} id={pictorialsCategory}>
-            <div className={categoriesSectionHeader}> 
+          <div className={categoriesSectionHeader}>
 
           <Link to={!mobile ? `/content/pictorials` : `#categories`}>
             <h4 className={mobile && category.pictorials && categoryActive} onClick={() => {
@@ -276,8 +276,8 @@ const Homepage = () => {
           <p className={moreButton}>...more</p>
         </Section>
 
-          <Section className={categoriesSection} id={collectionsCategory}>
-            <div className={categoriesSectionHeader}> 
+        <Section className={categoriesSection} id={collectionsCategory}>
+          <div className={categoriesSectionHeader}>
             <Link to={!mobile ? `/content/collections` : `#categories`}>
               <h4 className={mobile && category.collections && categoryActive} onClick={() => {
                 mobile &&
@@ -289,23 +289,23 @@ const Homepage = () => {
               }}>Collections</h4>
             </Link>
             <span>]</span>
-            </div>
-            <ul className={mobile && category.collections ? `${collectionsColumn} ${categoryActive}` : collectionsColumn }>
-              {
-                collectionTitles.map(node =>
-                  <Link to={`/content${node.uri}`}>
-                    <li key={node.name} className={collectionsArticle} >
-                      <div style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
-                      </div>
-                      <h1>{node.name}</h1>
-                    </li>
-                  </Link>
-                )
-              }
-            </ul>
-            <span>[</span>
-            <p className={moreButton}>...more</p>
-          </Section>
+          </div>
+          <ul className={mobile && category.collections ? `${collectionsColumn} ${categoryActive}` : collectionsColumn}>
+            {
+              collectionTitles.map(node =>
+                <Link to={`/content${node.uri}`}>
+                  <li key={node.name} className={collectionsArticle} >
+                    <div style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
+                    </div>
+                    <h1>{node.name}</h1>
+                  </li>
+                </Link>
+              )
+            }
+          </ul>
+          <span>[</span>
+          <p className={moreButton}>...more</p>
+        </Section>
       </div>
 
     </Layout >

@@ -148,16 +148,16 @@ export default function Post({ data }) {
                   else if (domNode.name && domNode.name.includes("figure")) {
                     // const props = attributesToProps(domNode.attribs)
                     const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"].replace('http', 'https') || domNode.children[0]?.attribs["src"]
-                    const srcset = domNode.children[1]?.children[1]?.children[0]?.attribs["srcset"].replace('http', 'https') || domNode.children[0]?.attribs["srcset"]
-                    const caption = domNode.children[3]?.children[0]?.data
+                    // const srcset = domNode.children[1]?.children[1]?.children[0]?.attribs["srcset"].replace('http', 'https') || domNode.children[0]?.attribs["srcset"]
+                    const caption = domNode.children[1]?.children[0]?.data || domNode.children[3]?.children[0]?.data
                     // console.log(domNode)
                     return (
-                      <figure class="gallery-item">
+                      <figure className="gallery-item">
                         <Item
                           caption={caption}
                           content={
                             <div className={lightboxImageWrapper}>
-                              <img src={src} srcset={srcset} />
+                              <img src={src} />
                             </div>
                           }>
                           {({ ref, open }) => (
@@ -169,12 +169,12 @@ export default function Post({ data }) {
                               }}
                               ref={ref}
                             >
-                              <img src={src} srcset={srcset} />
+                              <img src={src} />
                             </a>
                           )}
                         </Item>
-                        {domNode.children[3] &&
-                          <figcaption id={domNode.children[3].attribs?.id} class="wp-caption-text gallery-caption">
+                        {
+                          <figcaption id={domNode.attribs?.id} className="wp-caption-text gallery-caption">
                             {caption}
                           </figcaption>
                         }
