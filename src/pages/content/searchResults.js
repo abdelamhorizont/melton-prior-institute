@@ -83,7 +83,7 @@ export default function SearchResults() {
 
               <Link to={`/content${edge.node.uri}`}>
                 <li key={edge.node.id}>
-                  <Article path={edge.node} className={articleFeature} />
+                  <Article tags={true} path={edge.node} className={articleFeature} />
                 </li>
               </Link>
 

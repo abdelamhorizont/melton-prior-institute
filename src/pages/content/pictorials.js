@@ -106,7 +106,7 @@ export default function Pictorials() {
               selectedPictorials.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} className={articleFeature}/>
+                    <Article tags={true} path={edge.node} excerpt={true} className={articleFeature}/>
                   </li>
                 </Link>
               ))
@@ -118,7 +118,7 @@ export default function Pictorials() {
               pictorials.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} excerpt={true} className={articleFeature}/>
+                    <Article tags={true} path={edge.node} excerpt={true} excerpt={true} className={articleFeature}/>
                   </li>
                 </Link>
               ))

@@ -112,7 +112,7 @@ export default function Features() {
                 selectedFeatures.map(edge => (
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} className={articleFeature} />
+                    <Article tags={true} path={edge.node} excerpt={true} className={articleFeature} />
                     </li>
                   </Link>
                 ))
@@ -124,7 +124,7 @@ export default function Features() {
                 features.map(edge => (
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} className={articleFeature} />
+                    <Article tags={true} path={edge.node} excerpt={true} className={articleFeature} />
                     </li>
                   </Link>
                 ))

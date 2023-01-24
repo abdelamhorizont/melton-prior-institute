@@ -117,7 +117,7 @@ export default function Collections() {
                       node.posts.nodes.map(node => (
                         <Link to={`/content${node.uri}`}>
                           <li key={node.id}>
-                            <Article path={node} excerpt={true} className={articleCollection} />
+                            <Article tags={true} path={node} excerpt={true} className={articleCollection} />
                           </li>
                         </Link>
                       ))

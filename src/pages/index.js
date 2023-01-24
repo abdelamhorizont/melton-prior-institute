@@ -189,7 +189,7 @@ const Homepage = () => {
                       {({ isActive }) => (
                         <div style={isActive ? { opacity: '1' } : { opacity: '0' }}>
                           <Link to={`/content${edge.node.uri}`}>
-                            <Article path={edge.node} excerpt={true} className={recommendedArticle} />
+                            <Article tags={true} path={edge.node} excerpt={true} className={recommendedArticle} />
                           </Link>
                         </div>
                       )}
@@ -229,7 +229,7 @@ const Homepage = () => {
 
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article excerpt={true} path={edge.node} className={categoriesArticle} />
+                    <Article tags={false} excerpt={true} path={edge.node} className={categoriesArticle} />
                   </li>
                 </Link>
 
@@ -265,7 +265,7 @@ const Homepage = () => {
 
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article excerpt={true} path={edge.node} className={categoriesArticle} />
+                    <Article tags={false} excerpt={true} path={edge.node} className={categoriesArticle} />
                   </li>
                 </Link>
 

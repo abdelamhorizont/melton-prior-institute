@@ -57,22 +57,24 @@ const Article = (props) => {
                   <div className={articleExcerpt}>
                      <p dangerouslySetInnerHTML={{ __html: props.path.excerpt }} />
                   </div>
-                  {props.path.tags?.nodes.length > 0 &&
-                     <div className={articleTagWrapper}>
-                        {props.path.tags.nodes.length > 0 ?
-                           props.path.tags.nodes.map(node => (
-                              <h4>[{node.name}]</h4>
-                           ))
-                           :
-                           props.path.translations && props.path.translations[0] && props.path.translations[0].tags &&
-                           props.path.translations[0].tags.nodes.map(node => (
-                              <h4>[{node.name}]</h4>
-                           ))
-                        }
-                     </div>
-                  }
                </>
             }
+
+            {props.tags && props.path.tags?.nodes.length > 0 &&
+               <div className={articleTagWrapper}>
+                  {props.path.tags.nodes.length > 0 ?
+                     props.path.tags.nodes.map(node => (
+                        <h4>[{node.name}]</h4>
+                     ))
+                     :
+                     props.path.translations && props.path.translations[0] && props.path.translations[0].tags &&
+                     props.path.translations[0].tags.nodes.map(node => (
+                        <h4>[{node.name}]</h4>
+                     ))
+                  }
+               </div>
+            }
+
             <div className={languagesWrapper}>
                {props.path.language &&
                   <Link to={`/content${props.path.uri}`}>

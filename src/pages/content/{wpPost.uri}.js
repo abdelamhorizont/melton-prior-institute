@@ -230,7 +230,7 @@ export default function Post({ data }) {
 
                   <Link to={`/content${edge.node.uri}`}>
                     <li key={edge.node.id}>
-                      <Article path={edge.node} excerpt={true} className={articleFeature} />
+                      <Article tags={true} path={edge.node} excerpt={true} className={articleFeature} />
                     </li>
                   </Link>
 
