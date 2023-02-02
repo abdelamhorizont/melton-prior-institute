@@ -62,22 +62,22 @@
 
 @font-face {
   font-family: "Neue Montreal";
-  src:  url('../fonts/PPNeueMontreal-Italic.woff'),
-        url("../fonts/PPNeueMontreal-Italic.woff2"),
-        url("../fonts/PPNeueMontreal-Italic.eot");
+  src:  url('../fonts/PPNeueMontreal-BookItalic.woff'),
+        url("../fonts/PPNeueMontreal-BookItalic.woff2");
+        // url("../fonts/PPNeueMontreal-BookItalic.eot");
   font-weight: 500;
   font-style: italic;
 }
 
 
-@font-face {
-  font-family: "Neue Montreal";
-  src:  url('../fonts/PPNeueMontreal-Bold.woff'),
-        url("../fonts/PPNeueMontreal-Bold.woff2"),
-        url("../fonts/PPNeueMontreal-Bold.eot");
-  font-weight: 600;
-  font-style: bold;
-}
+// @font-face {
+//   font-family: "Neue Montreal";
+//   src:  url('../fonts/PPNeueMontreal-Bold.woff'),
+//         url("../fonts/PPNeueMontreal-Bold.woff2"),
+//         url("../fonts/PPNeueMontreal-Bold.eot");
+//   font-weight: 600;
+//   font-style: bold;
+// }
 
 
 /*************************************/
