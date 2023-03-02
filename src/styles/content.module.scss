@@ -431,7 +431,7 @@ html {
     .sectionTitle {
         h4 {
             text-align: right;
-            white-space: nowrap;
+            // white-space: nowrap;
         }
     }
 
@@ -451,7 +451,8 @@ html {
       }
     p {
         font-size: $fontSizeM;
-        line-height: $lineHeightM;
+        line-height: $lineHeightL;
+        white-space: pre-wrap;
     }
 }
 
