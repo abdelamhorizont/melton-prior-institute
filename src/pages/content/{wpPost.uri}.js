@@ -80,7 +80,7 @@ export default function Post({ data }) {
               parse(data.wpPost.content, {
                 replace: domNode => {
                   // footnotes
-                  console.log(domNode)
+                  // console.log(domNode)
                   let reg = /(\[\d+\])/g
                   if (domNode.data && domNode.data.match(reg)) {
                     const text = domNode.data.split(reg)
@@ -149,7 +149,7 @@ export default function Post({ data }) {
                   else if (domNode.name && domNode.name.includes("figure")) {
                     // const props = attributesToProps(domNode.attribs)
                     const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"].replace('http', 'https') || domNode.children[0]?.attribs["src"] || domNode.children[0]?.attribs["href"] || ''
-                    // const srcset = domNode.children[1]?.children[1]?.children[0]?.attribs["srcset"].replace('http', 'https') || domNode.children[0]?.attribs["srcset"]
+                    // const srcset = domNode?.children[1]?.children[1]?.children[0]?.attribs["srcset"].replace('http', 'https') || domNode.children[0]?.attribs["srcset"]  || domNode.children[0]?.attribs["href"] || ''
                     const caption = domNode.children[3]?.children[0]?.data || domNode.children[1]?.children[0]?.data 
                     // console.log(domNode)
                     return (
