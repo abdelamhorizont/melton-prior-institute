@@ -116,14 +116,11 @@ export default function Post({ data }) {
                   }
                   // images lightbox
                   else if (domNode.name && domNode.name.includes("picture")) {
-                    // const props = attributesToProps(domNode.attribs);
-                    // console.log(domNode)
                     return (
                       <Item
-                        caption="Foo"
+                        caption={domNode.children[1]?.attribs["src"]}
                         content={
                           <div className={lightboxImageWrapper}>
-                            {/* <img srcset={domNode.children[1]?.attribs["srcset"]} /> */}
                             <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
                           </div>
                         }>
@@ -147,8 +144,6 @@ export default function Post({ data }) {
                     )
                   }
                   else if (domNode.name && domNode.name.includes("figure")) {
-                    // const props = attributesToProps(domNode.attribs)
-                    // const src = domNode.children[1]?.children[1]?.children[0]?.attribs["src"]?.replace('http', 'https') || domNode.children[0]?.attribs["src"] || domNode.children[0]?.attribs["href"] || ''
                     const src =  domNode?.children[1]?.children[1]?.children[0]?.attribs && domNode?.children[1]?.children[1]?.children[0]?.attribs["src"]?.replace('http', 'https') || domNode.children[0].attribs['src']?.replace('http', 'https') || ''
                     const srcset =  domNode.children[0]?.attribs && domNode.children[0]?.attribs["srcset"]?.replace('http', 'https') || ''
                     const caption = domNode.children[3]?.children[0]?.data || domNode.children[1]?.children[0]?.data 
