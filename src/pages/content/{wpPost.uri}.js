@@ -154,7 +154,9 @@ export default function Post({ data }) {
                           caption={caption}
                           content={
                             <div className={lightboxImageWrapper}>
-                              <img src={src} srcset={srcset} />
+                              <a href={src} target="_blank">
+                              <img src={src} srcset={srcset} border="0" align="center" />
+                              </a>
                             </div>
                           }>
                           {({ ref, open }) => (

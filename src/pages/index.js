@@ -295,7 +295,7 @@ const Homepage = () => {
               collectionTitles.map(node =>
                 <Link to={`/content${node.uri}`}>
                   <li key={node.name} className={collectionsArticle} >
-                    <div style={{ backgroundImage: 'url(' + node.posts.nodes[0].featuredImage.node.url + ')' }}>
+                    <div style={{ backgroundImage: 'url(' + node?.posts?.nodes[0]?.featuredImage.node.url + ')' }}>
                     </div>
                     <h1>{node.name}</h1>
                   </li>
