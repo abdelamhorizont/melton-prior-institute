@@ -190,7 +190,7 @@ export default function Post({ data }) {
                             <div className={lightboxImageWrapper}>
                               <a href={domNode.attribs["src"]} target="_blank">
                                 <img src={domNode.attribs["src"]} />
-                                <a />
+                              </a>
                             </div>
                           }>
                           {({ ref, open }) => (
