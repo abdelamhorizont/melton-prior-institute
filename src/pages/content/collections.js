@@ -109,7 +109,7 @@ export default function Collections() {
           ).map(node =>
             <>
             <div className={collectionWrapper}>
-              <h1 className={collectionTitle}>{node.name}</h1>
+              <h1 className={collectionTitle}>{node?.name}</h1>
 
                 <div>
                   <ul>
