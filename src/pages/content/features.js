@@ -96,7 +96,7 @@ export default function Features() {
   }
 
   const selectedFeatures = features.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
-    edge.node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase())))
+    edge.node.tags.nodes.some(node => selectedTags.includes(node?.name.toLowerCase())))
 
   return (
     <Layout >

@@ -30,8 +30,8 @@ const Article = (props) => {
 
    React.useEffect(() => {
       setCategory(
-         props.path.categories.nodes.some(node => node.name.includes("features")) && articleFeature ||
-         props.path.categories.nodes.some(node => node.name.includes("pictorial")) && articlePictorial
+         props.path.categories.nodes.some(node => node?.name.includes("features")) && articleFeature ||
+         props.path.categories.nodes.some(node => node?.name.includes("pictorial")) && articlePictorial
       )
    }, [])
 
@@ -42,10 +42,10 @@ const Article = (props) => {
          <div className={thumbnail}>
             {
                props.path.featuredImage?.node.localFile?.childImageSharp ?
-                  <GatsbyImage image={props.path.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={""} />
+                  <GatsbyImage image={props.path.featuredImage?.node?.localFile.childImageSharp.gatsbyImageData} alt={""} />
                   :
                   props.path.featuredImage?.node.image &&
-                  <img src={props.path.featuredImage.node.image.url} alt={props.path.featuredImage.node.title} />
+                  <img src={props.path.featuredImage?.node?.image?.url} alt={props.path.featuredImage?.node?.title} />
             }
          </div>
 
@@ -64,12 +64,12 @@ const Article = (props) => {
                <div className={articleTagWrapper}>
                   {props.path.tags.nodes.length > 0 ?
                      props.path.tags.nodes.map(node => (
-                        <h4>[{node.name}]</h4>
+                        <h4>[{node?.name}]</h4>
                      ))
                      :
                      props.path.translations && props.path.translations[0] && props.path.translations[0].tags &&
                      props.path.translations[0].tags.nodes.map(node => (
-                        <h4>[{node.name}]</h4>
+                        <h4>[{node?.name}]</h4>
                      ))
                   }
                </div>

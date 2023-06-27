@@ -89,7 +89,7 @@ export default function Pictorials() {
   }
 
   const selectedPictorials = pictorials.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
-    edge.node.tags.nodes.some(node => selectedTags.includes(node.name))
+    edge.node.tags.nodes.some(node => selectedTags.includes(node?.name))
   )
 
   return (

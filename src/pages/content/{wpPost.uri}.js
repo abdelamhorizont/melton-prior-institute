@@ -49,10 +49,10 @@ export default function Post({ data }) {
     content: () => componentRef.current,
   });
 
-  const tags = data.wpPost.tags.nodes.map(node => node && node.name)
-  const translatedTags = data.wpPost.translations && data.wpPost.translations[0] && data.wpPost.translations[0].tags.nodes.map(node => node && node.name)
+  const tags = data.wpPost.tags.nodes.map(node => node && node?.name)
+  const translatedTags = data.wpPost.translations && data.wpPost.translations[0] && data.wpPost.translations[0].tags.nodes.map(node => node && node?.name)
 
-  const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node.name))).filter(edge => edge.node.id !== data.wpPost.id)
+  const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node?.name))).filter(edge => edge.node.id !== data.wpPost.id)
 
   let counter = []
 
@@ -121,7 +121,9 @@ export default function Post({ data }) {
                         caption={domNode.children[1]?.attribs["src"]}
                         content={
                           <div className={lightboxImageWrapper}>
-                            <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
+                            <a href={domNode.children[1]?.attribs["src"]} target="_blank">
+                              <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
+                            </a>
                           </div>
                         }>
 
@@ -144,9 +146,9 @@ export default function Post({ data }) {
                     )
                   }
                   else if (domNode.name && domNode.name.includes("figure")) {
-                    const src =  domNode?.children[1]?.children[1]?.children[0]?.attribs && domNode?.children[1]?.children[1]?.children[0]?.attribs["src"]?.replace('http', 'https') || domNode.children[0].attribs['src']?.replace('http', 'https') || ''
-                    const srcset =  domNode.children[0]?.attribs && domNode.children[0]?.attribs["srcset"]?.replace('http', 'https') || ''
-                    const caption = domNode.children[3]?.children[0]?.data || domNode.children[1]?.children[0]?.data 
+                    const src = domNode?.children[1]?.children[1]?.children[0]?.attribs && domNode?.children[1]?.children[1]?.children[0]?.attribs["src"]?.replace('http', 'https') || domNode.children[0].attribs['src']?.replace('http', 'https') || ''
+                    const srcset = domNode.children[0]?.attribs && domNode.children[0]?.attribs["srcset"]?.replace('http', 'https') || ''
+                    const caption = domNode.children[3]?.children[0]?.data || domNode.children[1]?.children[0]?.data
                     // console.log(srcset)
                     return (
                       <figure className="gallery-item">
@@ -155,7 +157,7 @@ export default function Post({ data }) {
                           content={
                             <div className={lightboxImageWrapper}>
                               <a href={src} target="_blank">
-                              <img src={src} srcset={srcset} border="0" align="center" />
+                                <img src={src} srcset={srcset} border="0" align="center" />
                               </a>
                             </div>
                           }>
@@ -186,7 +188,9 @@ export default function Post({ data }) {
                         <Item
                           content={
                             <div className={lightboxImageWrapper}>
-                              <img src={domNode.attribs["src"]} />
+                              <a href={domNode.attribs["src"]} target="_blank">
+                                <img src={domNode.attribs["src"]} />
+                              </a>
                             </div>
                           }>
                           {({ ref, open }) => (

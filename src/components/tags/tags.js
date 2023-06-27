@@ -32,9 +32,9 @@ export default function Tags(props) {
       node.language.code == "EN"
    )
 
-   let linton = tags.filter(node => node.name == "Linton Archive")[0]
+   let linton = tags.filter(node => node?.name == "Linton Archive")[0]
    
-   tags = tags.filter(node => node.name !== "Linton Archive")
+   tags = tags.filter(node => node?.name !== "Linton Archive")
    tags.unshift(linton)
 
    const [selectedTags, setSelectedTags] = useState([])
@@ -56,14 +56,14 @@ export default function Tags(props) {
             <ul>
                {
                   tags.map(node => (
-                     <li key={node.id} value={node.name}>
-                        <button className={selectedTags.includes(node.name) ? activeTag : inactiveTag} value={node.name} onClick={e => handleTag(e)}>
-                           {node.name}
+                     <li key={node.id} value={node?.name}>
+                        <button className={selectedTags.includes(node?.name) ? activeTag : inactiveTag} value={node?.name} onClick={e => handleTag(e)}>
+                           {node?.name}
                         </button>
-                        {selectedTags.includes(node.name) &&
-                           <button className={deleteButton} value={node.name} onClick={deleteTag}>x</button>
+                        {selectedTags.includes(node?.name) &&
+                           <button className={deleteButton} value={node?.name} onClick={deleteTag}>x</button>
                         }
-                        {node.name.includes('Linton') &&
+                        {node?.name.includes('Linton') &&
                            <Link to="../../meta/about#linton">
                               <button className={lintonInfo} value="">i</button>
                            </Link>
