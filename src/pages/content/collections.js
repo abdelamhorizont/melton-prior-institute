@@ -112,7 +112,7 @@ export default function Collections() {
               <h1 className={collectionTitle}>{node?.name}</h1>
 
                 <div>
-                  <ul>
+                  <ul className="collectionArticleWrapper">
                     {
                       node.posts.nodes.map(node => (
                         <Link to={`/content${node.uri}`}>
