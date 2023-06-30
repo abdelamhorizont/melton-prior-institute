@@ -1,5 +1,3 @@
-
-
 import * as React from "react"
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -16,63 +14,57 @@ import {
 export default function About() {
   const data = useStaticQuery(graphql`
     query {
-        wpPage(title: {eq: "About"}) {
-            id
-            content
-          }
-          allWpPage(filter: {title: {eq: "Linton Archive"}}) {
-            nodes {
-              title
-              content
-            }
+      wpPage(title: {eq: "About"}) {
+        id
+        content
+      }
+      allWpPage(filter: {parent: {id: {eq: "cG9zdDo5NjE0"}}}) {
+        nodes {
+          title
+          content
+        }
+      }
+    }
+  `)
 
-            
-          }
-        }   
-    `)
+  const aboutPage = data.wpPage
+  const childrenPages = data.allWpPage.nodes
 
+  console.log('aboutPage:', aboutPage, 'childrenPages:', childrenPages )
 
-              // allWpPage(filter: {parent: {id: {eq: "cG9zdDo5NjE0"}}}) {
-          //   nodes {
-          //     title
-          //     content
-
-const aboutPage = data.wpPage
-// const childrenPages = data.allWpPage.nodes
-
-// console.log('aboutPage:', aboutPage, 'childrenPages:', childrenPages)
   return (
     <Layout>
       <div className={contentPage}>
-        <div class={articleWrapper}>
-          <div class={sectionTitle}><h4>About</h4></div>
+        <div className={articleWrapper}>
+          <div className={sectionTitle}><h4>About</h4></div>
           <div className={topBrackets}>
             <span>]</span>
             <span>[</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: data.wpPage.content }} className={pageContent} />
+          <div dangerouslySetInnerHTML={{ __html: aboutPage.content }} className={pageContent} />
         </div>
 
-        <div class={articleWrapper} id="linton">
-          <div class={sectionTitle}><h4>Linton Archive</h4></div>
+        <div className={articleWrapper} id="linton">
+          <div className={sectionTitle}><h4>Linton Archive</h4></div>
           <div className={topBrackets}>
             <span>]</span>
             <span>[</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: data.allWpPage.nodes[0].content }} className={pageContent} />
+          {childrenPages.length > 0 && (
+            <div dangerouslySetInnerHTML={{ __html: childrenPages[0].content }} className={pageContent} />
+          )}
         </div>
-        {/* {childrenPages.map(page => (
-          <div key={page.title} class={articleWrapper}>
-            <div class={sectionTitle}><h4>{childrenPages.title} asdasd</h4></div>
+
+        {childrenPages.map(page => (
+          <div key={page.title} className={articleWrapper}>
+            <div className={sectionTitle}><h4>{page.title}</h4></div>
             <div className={topBrackets}>
               <span>]</span>
               <span>[</span>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: childrenPages.content }} className={pageContent} />
+            <div dangerouslySetInnerHTML={{ __html: page.content }} className={pageContent} />
           </div>
-        ))} */}
-
-
+        ))}
       </div>
     </Layout>
   )
