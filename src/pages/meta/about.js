@@ -18,10 +18,11 @@ export default function About() {
         id
         content
       }
-      allWpPage(filter: {parent: {id: {eq: "cG9zdDo5NjE0"}}}) {
+      allWpPage(filter: {parentId: {eq: "cG9zdDo5NjE0"}}) {
         nodes {
-          title
-          content
+          id
+         title
+         content
         }
       }
     }
