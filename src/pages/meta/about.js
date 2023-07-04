@@ -18,11 +18,15 @@ export default function About() {
         id
         content
       }
-      allWpPage(filter: {parentId: {eq: "cG9zdDo5NjE0"}}) {
+      allWpPage(
+        filter: {parentId: {eq: "cG9zdDo5NjE0"}}
+        sort: { order: DESC, fields: menuOrder }
+      ) {
         nodes {
+          menuOrder
           id
-         title
-         content
+          title
+          content
         }
       }
     }
