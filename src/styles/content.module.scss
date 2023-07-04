@@ -427,6 +427,9 @@ html {
 
     .articleWrapper {
         grid-template-rows: [row] $lineHeight [row] $lineHeight [row] auto;
+        &:not(:first-of-type){
+            margin-top: 2*$lineHeight;
+        }
     }
 
     .sectionTitle {
@@ -449,12 +452,25 @@ html {
 
     ul li{
         @include nm-book;
+        &:not(:first-of-type){
+        margin-top: $lineHeight;
+        }
       }
     p {
         font-size: $fontSizeM;
         line-height: $lineHeightL;
         white-space: pre-wrap;
     }
+
+    table{
+    tr{
+      display: flex;
+      flex-direction: row;
+      td{
+        width: 50%;
+      }
+    }
+  }
 }
 
 .pageContent,
@@ -683,6 +699,10 @@ html {
 
             }
 
+            h3 {
+                font-size: $sDfontSizeM;
+            }
+
             p {
                 font-size: $sDfontSizeM;
                 line-height: $sDlineHeight;
@@ -724,6 +744,27 @@ html {
         .pageContent {
             margin-top: unset;
             margin-bottom: 2*$lineHeight;
+            ul{
+                li{
+                    margin-bottom: $lineHeight;
+                }
+            }
+            table{
+                tr{
+                  display: flex;
+                  flex-direction: column;
+                  td{
+                    width: 50%;
+                    &:first-of-type{
+                        margin-top: $lineHeight;
+                    }
+                    &:not(:first-of-type){
+                        margin: 4*$lineHeight 0 0 0;
+                        padding: 0;
+                        }
+                  }
+                }
+              }
         }
 
 
@@ -982,12 +1023,37 @@ html {
                     }
                 }
                 
+            table{
+                tr{
+                    display: flex;
+                    flex-direction: column;
+                    td{
+                        width: 50%;
+                    &:first-of-type{
+                        margin-top: $lineHeight;
+                    }
+                    &:not(:first-of-type){
+                        margin: 6*$lineHeight 0 0 0;
+                        padding: 0;
+                        }
+                    }
+                }
+                }
             
+            ul{
+                li{
+                    font-size: $sDfontSizeXL;
+                    margin-bottom: $sDlineHeight;
+                }
+            }
             h1 {
                 font-size: $sDfontSizeXXL;
                 line-height: $sDlineHeightM;
                 margin: 1*$lineHeight 0;
 
+            }
+            h3 {
+                font-size: $sDfontSizeXL;
             }
 
             p {
