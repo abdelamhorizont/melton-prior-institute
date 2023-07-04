@@ -45,16 +45,6 @@ export default function About() {
           <div dangerouslySetInnerHTML={{ __html: aboutPage.content }} className={pageContent} />
         </div>
 
-        <div className={articleWrapper} id="linton">
-          <div className={sectionTitle}><h4>Linton Archive</h4></div>
-          <div className={topBrackets}>
-            <span>]</span>
-            <span>[</span>
-          </div>
-          {childrenPages.length > 0 && (
-            <div dangerouslySetInnerHTML={{ __html: childrenPages[0].content }} className={pageContent} />
-          )}
-        </div>
 
         {childrenPages.map(page => (
           <div key={page.title} className={articleWrapper}>
