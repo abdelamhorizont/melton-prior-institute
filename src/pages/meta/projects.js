@@ -21,8 +21,10 @@ export default function Projects() {
           }
           allWpPage(
             filter: {parentId: {eq: "cG9zdDoxMzY4NA=="}}
+            sort: { order: DESC, fields: menuOrder }
           ) {
             nodes {
+              menuOrder
               id
               title
               content
