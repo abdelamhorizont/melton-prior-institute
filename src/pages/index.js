@@ -237,7 +237,9 @@ const Homepage = () => {
             }
           </ul>
           <span>[</span>
-          <p className={moreButton}>...more</p>
+          {/* <p className={moreButton}>...more</p> */}
+          <Link to={`/content/features`} className={moreButton}>...more</Link>
+
         </Section>
 
         <Section className={categoriesSection} id={pictorialsCategory}>
@@ -273,7 +275,9 @@ const Homepage = () => {
             }
           </ul>
           <span>[</span>
-          <p className={moreButton}>...more</p>
+          {/* <p className={moreButton}>...more</p> */}
+          <Link to={`/content/pictorials`} className={moreButton}>...more</Link>
+
         </Section>
 
         <Section className={categoriesSection} id={collectionsCategory}>
@@ -304,7 +308,8 @@ const Homepage = () => {
             }
           </ul>
           <span>[</span>
-          <p className={moreButton}>...more</p>
+          {/* <p className={moreButton}>...more</p> */}
+          <Link to={`/content/collections`} className={moreButton}>...more</Link>
         </Section>
       </div>
 
