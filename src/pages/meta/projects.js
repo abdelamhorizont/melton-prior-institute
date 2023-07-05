@@ -21,7 +21,7 @@ export default function Projects() {
           }
           allWpPage(
             filter: {parentId: {eq: "cG9zdDoxMzY4NA=="}}
-            sort: { order: DESC, fields: menuOrder }
+            sort: { order: ASC, fields: menuOrder }
           ) {
             nodes {
               menuOrder
@@ -36,7 +36,7 @@ export default function Projects() {
   const parentPage = data.wpPage
   const childrenPages = data.allWpPage.nodes
 
-  console.log('wpPag', parentPage, 'childpag', childrenPages)
+  // console.log('wpPag', parentPage, 'childpag', childrenPages)
 
   return (
     <Layout>

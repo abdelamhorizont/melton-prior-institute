@@ -275,13 +275,17 @@ exports.onCreateNode = ({
     (parent) =>
     ({ url, title, ...rest }, i) => {
       const id = createNodeId(`${parent.id} >>> HomepageLink ${url} ${i}`)
+      const linkUrl = url.replace(
+        "https://wordpress.meltonpriorinstitut.org/",
+        "https://www.meltonpriorinstitut.org/content/"
+      )
       actions.createNode({
         id,
         internal: {
           type: "HomepageLink",
-          contentDigest: createContentDigest({ url, title }),
+          contentDigest: createContentDigest({ linkUrl, title }),
         },
-        href: url,
+        href: linkUrl,
         text: title,
       })
       return id

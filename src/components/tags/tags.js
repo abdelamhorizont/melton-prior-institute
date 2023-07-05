@@ -64,9 +64,10 @@ export default function Tags(props) {
                            <button className={deleteButton} value={node?.name} onClick={deleteTag}>x</button>
                         }
                         {node?.name.includes('Linton') &&
-                           <Link to="../../meta/about#linton">
-                              <button className={lintonInfo} value="">i</button>
-                           </Link>
+                           <a href="https://linton.meltonpriorinstitut.org/pages/linton.php5" target="_blank" rel="noopener noreferrer"><button className={lintonInfo} value="">i</button></a>
+                           // <Link to="https://linton.meltonpriorinstitut.org/pages/linton.php5">
+                           //    <button className={lintonInfo} value="">i</button>
+                           // </Link>
                         }
                      </li>
                   ))
