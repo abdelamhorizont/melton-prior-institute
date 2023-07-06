@@ -754,7 +754,7 @@ html {
                   display: flex;
                   flex-direction: column;
                   td{
-                    width: 50%;
+                    width: 100%;
                     &:first-of-type{
                         margin-top: $lineHeight;
                     }
@@ -1028,7 +1028,7 @@ html {
                     display: flex;
                     flex-direction: column;
                     td{
-                        width: 50%;
+                        width: 100%;
                     &:first-of-type{
                         margin-top: $lineHeight;
                     }

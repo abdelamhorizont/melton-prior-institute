@@ -271,9 +271,8 @@ exports.onCreateNode = ({
 }) => {
   if (!node.internal.type.includes("Wp")) return
 
-  const createLinkNode =
-    (parent) =>
-    ({ url, title, ...rest }, i) => {
+  
+  const createLinkNode = (parent) => ({ url, title, ...rest }, i) => {
       const id = createNodeId(`${parent.id} >>> HomepageLink ${url} ${i}`)
       const linkUrl = url.replace(
         "https://wordpress.meltonpriorinstitut.org/",
@@ -283,7 +282,7 @@ exports.onCreateNode = ({
         id,
         internal: {
           type: "HomepageLink",
-          contentDigest: createContentDigest({ linkUrl, title }),
+          contentDigest: createContentDigest({ url: linkUrl, title }),
         },
         href: linkUrl,
         text: title,
