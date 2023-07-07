@@ -34,8 +34,6 @@ export default function Links() {
   const parentPage = data.wpPage
   const childrenPages = data.allWpPage.nodes
 
-  console.log('parnpag:', parentPage, 'childrenPages:', childrenPages )
-
 
   return (
     <Layout>

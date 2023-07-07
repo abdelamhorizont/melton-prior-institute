@@ -1,3 +1,6 @@
+const { createFilePath } = require("gatsby-source-filesystem")
+
+
 exports.createSchemaCustomization = async ({ actions }) => {
   actions.createFieldExtension({
     name: "wpImagePassthroughResolver",
@@ -271,20 +274,29 @@ exports.onCreateNode = ({
 }) => {
   if (!node.internal.type.includes("Wp")) return
 
-  
-  const createLinkNode = (parent) => ({ url, title, ...rest }, i) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === "wordpress__POST") {
+    const slug = createFilePath({ node, getNode, basePath: "pages" })
+    createNodeField({
+      node,
+      name: "slug",
+      value: `/content${slug}`,
+    })
+  }
+
+
+  const createLinkNode =
+    (parent) =>
+    ({ url, title, ...rest }, i) => {
       const id = createNodeId(`${parent.id} >>> HomepageLink ${url} ${i}`)
-      const linkUrl = url.replace(
-        "https://wordpress.meltonpriorinstitut.org/",
-        "https://www.meltonpriorinstitut.org/content/"
-      )
       actions.createNode({
         id,
         internal: {
           type: "HomepageLink",
-          contentDigest: createContentDigest({ url: linkUrl, title }),
+          contentDigest: createContentDigest({ url, title }),
         },
-        href: linkUrl,
+        href: url,
         text: title,
       })
       return id

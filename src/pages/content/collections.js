@@ -11,7 +11,8 @@ import {
   collections,
   collectionWrapper,
   // collectionArticleWrapper
-  collectionTitle
+  collectionTitle,
+  scrollbar
 } from '../../styles/content.module.scss'
 
 import {
@@ -120,6 +121,7 @@ export default function Collections() {
               <h1 className={collectionTitle}>{node?.name}</h1>
 
                 <div className="collectionArticleWrapper">
+
                   <ul>
                     {
                       node.posts.nodes.map(node => (
