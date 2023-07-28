@@ -8,7 +8,8 @@ import {
   topBrackets,
   articleWrapper,
   pageContent,
-  sectionTitle
+  sectionTitle,
+  metaNav
 } from '../../styles/content.module.scss'
 
 
@@ -21,7 +22,10 @@ export default function Links() {
             content
             id
           }
-          allWpPage(filter: {parentId: {eq: ""}}) {
+          allWpPage(
+            filter: {parentId: {eq: "cG9zdDoxMTk="}}
+            sort: { order: ASC, fields: menuOrder }
+          ) {
             nodes {
               id
               title
@@ -30,6 +34,10 @@ export default function Links() {
           }
         }   
     `)
+
+
+  // console.log('wpPag', data.wpPage, 'childpag', data.allWpPage.nodes)
+
 
   const parentPage = data.wpPage
   const childrenPages = data.allWpPage.nodes
@@ -44,13 +52,24 @@ export default function Links() {
             <span>]</span>
             <span>[</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: parentPage.content }} className={pageContent} />
-        </div>
 
 
-        {childrenPages.map(page => (
-          <div key={page.title} className={articleWrapper}>
-            <div className={sectionTitle}><h4>{page.title}</h4></div>
+        <div 
+          className={pageContent}/>
+          <div className={pageContent}>
+          <div dangerouslySetInnerHTML={{ __html: parentPage.content }} />
+            <ul className={metaNav}>
+            {childrenPages.map((page, index) => (
+              <li><a key={index} href={`#[${index + 1}]`}>{page.title}</a></li>
+            ))}
+            </ul>
+          </div>
+
+          </div>
+
+        {childrenPages.map((page, index) => (
+          <div key={page.title} id={`[${index + 1}]`} className={articleWrapper}>
+          <div className={sectionTitle}><h4>{page.title}</h4></div>
             <div className={topBrackets}>
               <span>]</span>
               <span>[</span>

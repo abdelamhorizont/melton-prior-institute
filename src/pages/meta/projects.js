@@ -8,7 +8,8 @@ import {
   topBrackets,
   articleWrapper,
   pageContent,
-  sectionTitle
+  sectionTitle,
+  metaNav
 } from '../../styles/content.module.scss'
 
 
@@ -47,12 +48,26 @@ export default function Projects() {
             <span>]</span>
             <span>[</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: parentPage.content }} className={pageContent} />
+
+
+
+          <div 
+          className={pageContent}/>
+          <div className={pageContent}>
+          <div dangerouslySetInnerHTML={{ __html: parentPage.content }} />
+            <ul className={metaNav}>
+            {childrenPages.map((page, index) => (
+              <li><a key={index} href={`#[${index + 1}]`}>{page.title}</a></li>
+            ))}
+            </ul>
+          </div>
+
+
         </div>
 
 
-        {childrenPages.map(page => (
-          <div key={page.title} className={articleWrapper}>
+        {childrenPages.map((page, index) => (
+          <div key={page.title} id={`[${index + 1}]`} className={articleWrapper}>
             <div className={sectionTitle}><h4>{page.title}</h4></div>
             <div className={topBrackets}>
               <span>]</span>

@@ -482,6 +482,39 @@ html {
         white-space: pre-wrap;
     }
 
+    ul.metaNav{
+        font-size: $fontSizeM;
+        list-style-type: disclosure-closed;
+        li, a {
+            margin-top: unset;
+            @include ke-light;
+            font-size: inherit;
+            vertical-align: middle;
+            &::marker{
+                content: "> ";
+            }
+
+        }
+        li>a[href*="#["]::after {
+            content: "↓";
+            position: absolute;
+            left: 100%;
+            top: -20px;
+            width: auto;
+            height: 100%;
+            text-align: center;
+            
+            z-index: 5000;
+            opacity: 0;
+        }
+
+        li>a[href*="#["]:hover:after{
+            top: 0;
+            opacity: 1;
+        }
+
+    }
+
     table{
     tr{
       display: flex;
