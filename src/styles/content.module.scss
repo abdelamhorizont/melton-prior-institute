@@ -98,7 +98,7 @@ html {
             overflow-y: auto;
 
             ul {
-
+                list-style: none;
                 display: block;
                 // flex-direction: column;
                 // max-height: 80vh;
@@ -181,7 +181,7 @@ html {
 
     ul {
         padding-top: $lineHeight;
-
+        list-style-type: none;
         a {}
     }
 }
@@ -266,6 +266,11 @@ html {
             line-height: $lineHeightL;
             white-space: pre-wrap;
             margin-top: $lineHeight;
+        }
+        li{
+            font-size: $fontSizeM;
+            line-height: $lineHeightL;
+            white-space: pre-wrap;
         }
 
         picture, figure {
@@ -354,7 +359,7 @@ html {
             flex-direction: row;
             width: fit-content;
             padding-bottom: 1*$lineHeight;
-
+            list-style: none;
 
             a {
                 width: 25vw;
@@ -766,6 +771,12 @@ html {
                 }
 
             }
+            li{
+                font-size: $sDfontSizeM;
+                line-height: $sDlineHeight;
+            }
+
+
             i, em{
                 // font-size: calc($sDfontSize - 0.01rem);
             }
