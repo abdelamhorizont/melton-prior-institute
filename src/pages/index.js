@@ -21,7 +21,8 @@ import {
   collectionsColumn,
   section,
   // featureSection,
-  moreButton
+  moreButton,
+  sisterActive
 } from './index.module.scss'
 
 import {
@@ -204,7 +205,8 @@ const Homepage = () => {
       </div >
 
       <div className={categoriesLists} id="categories">
-        <Section className={categoriesSection} id={featuresCategory}>
+
+        <Section className={categoriesSection} id={ `${categoriesSection} ${category.features && categoryActive}`}>
           <div className={categoriesSectionHeader}>
 
           <Link to={!mobile ? `/content/features` : `#categories`}>
@@ -219,7 +221,7 @@ const Homepage = () => {
           </Link>
           <span>]</span>
             </div>
-
+ 
           <ul className={mobile && category.features && categoryActive}>
             {
               articles.filter(edge => (
@@ -238,7 +240,8 @@ const Homepage = () => {
           </ul>
           <span>[</span>
           {/* <p className={moreButton}>...more</p> */}
-          <Link to={`/content/features`} className={moreButton}>...more</Link>
+
+          <Link to={`/content/features`} className={moreButton} id={mobile && category.features && categoryActive}>...more</Link>
 
         </Section>
 
@@ -276,7 +279,7 @@ const Homepage = () => {
           </ul>
           <span>[</span>
           {/* <p className={moreButton}>...more</p> */}
-          <Link to={`/content/pictorials`} className={moreButton}>...more</Link>
+          <Link to={`/content/pictorials`} className={moreButton} id={mobile && category.pictorials && categoryActive}>...more</Link>
 
         </Section>
 
@@ -309,7 +312,7 @@ const Homepage = () => {
           </ul>
           <span>[</span>
           {/* <p className={moreButton}>...more</p> */}
-          <Link to={`/content/collections`} className={moreButton}>...more</Link>
+          <Link to={`/content/collections`} className={moreButton} id={mobile && category.collections && categoryActive}>...more</Link>
         </Section>
       </div>
 

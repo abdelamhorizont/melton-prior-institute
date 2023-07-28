@@ -70,6 +70,14 @@
 /* 2. Categories Section */
 /*************************************/
 
+a#categoryActive{
+    &:hover{
+        cursor: pointer;
+        color: rgba(0,0,0,1)
+    }
+    display:block;
+    z-index: 5000;
+}
 
 
 .categoriesSection {
@@ -99,6 +107,7 @@
         position: sticky;
         top: 3*$lineHeight;
         z-index: 500;
+        
         h2{
         &:before{
             content: '[';
@@ -113,6 +122,7 @@
                 opacity: 1;
             }
         }
+
     }
     }
     h2 {
