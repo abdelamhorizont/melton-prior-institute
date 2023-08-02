@@ -37,7 +37,7 @@ export default function Projects() {
   const parentPage = data.wpPage
   const childrenPages = data.allWpPage.nodes
 
-  // console.log('wpPag', parentPage, 'childpag', childrenPages)
+  console.log('wpPag', parentPage, 'childpag', childrenPages)
 
   return (
     <Layout>

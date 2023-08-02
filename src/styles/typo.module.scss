@@ -189,6 +189,7 @@ b{
 h1, h2, h3, h4, button, label p{
   @include ke-light;
   font-feature-settings: "ss04";
+  letter-spacing: -0.02em;
 
 }
 

@@ -484,7 +484,7 @@ html {
     p {
         font-size: $fontSizeM;
         line-height: $lineHeightL;
-        white-space: pre-wrap;
+        // white-space: pre-wrap;
     }
 
     ul.metaNav{
@@ -508,9 +508,9 @@ html {
             width: auto;
             height: 100%;
             text-align: center;
-            
             z-index: 5000;
             opacity: 0;
+            font-size: $fontSizeM;
         }
 
         li>a[href*="#["]:hover:after{
