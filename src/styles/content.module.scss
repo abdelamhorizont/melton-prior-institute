@@ -480,11 +480,18 @@ html {
         &:not(:first-of-type){
         margin-top: $lineHeight;
         }
+        h3{
+            line-height: 1.75*$lineHeight;
+        }
+        h3 ~ p {
+            display: block;
+        }
       }
     p {
         font-size: $fontSizeM;
         line-height: $lineHeightL;
         // white-space: pre-wrap;
+        display: inline;
     }
 
     ul.metaNav{
