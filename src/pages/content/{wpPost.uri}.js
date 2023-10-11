@@ -149,7 +149,7 @@ export default function Post({ data }) {
                     const src = domNode?.children[1]?.children[1]?.children[0]?.attribs && domNode?.children[1]?.children[1]?.children[0]?.attribs["src"]?.replace('http:', 'https:') || domNode.children[0].attribs['src']?.replace('http:', 'https:') || ''
                     const srcset = domNode.children[0]?.attribs && domNode.children[0]?.attribs["srcset"]?.replace('http:', 'https:') || ''
                     const caption = domNode.children[3]?.children[0]?.data || domNode.children[1]?.children[0]?.data
-                    // console.log(srcset + 'hiiii')
+                    // console.log(srcset)
                     return (
                       <figure className="gallery-item">
                         <Item
@@ -176,7 +176,7 @@ export default function Post({ data }) {
                         </Item>
                         {
                           <figcaption id={domNode.attribs?.id} className="wp-caption-text gallery-caption">
-                            {caption}
+                            {caption} <p>hallo</p>
                           </figcaption>
                         }
                       </figure>
