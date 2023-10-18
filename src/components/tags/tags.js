@@ -56,7 +56,7 @@ export default function Tags(props) {
             <ul>
                {
                   tags.map(node => (
-                     <li key={node.id} value={node?.name}>
+                     <li key={node?.id} value={node?.name}>
                         <button className={selectedTags.includes(node?.name) ? activeTag : inactiveTag} value={node?.name} onClick={e => handleTag(e)}>
                            {node?.name}
                         </button>
