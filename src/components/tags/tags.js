@@ -6,15 +6,20 @@ import {
    activeTag,
    inactiveTag,
    deleteButton,
-   lintonInfo,
+   // lintonInfo,
    tagListWrapper
 } from './tags.module.scss'
+
+import{
+   lintonInfo
+} from '../../styles/content.module.scss'
 
 export default function Tags(props) {
    const data = useStaticQuery(graphql`
    query {
      allWpTag {
        nodes {
+         id
          name
          language {
             code
@@ -32,10 +37,10 @@ export default function Tags(props) {
       node.language.code == "EN"
    )
 
-   let linton = tags.filter(node => node?.name == "Linton Archive")[0]
+   // let linton = tags.filter(node => node?.name == "Linton Archive")[0]
    
-   tags = tags.filter(node => node?.name !== "Linton Archive")
-   tags.unshift(linton)
+   // tags = tags.filter(node => node?.name !== "Linton Archive")
+   // tags.unshift(linton)
 
    const [selectedTags, setSelectedTags] = useState([])
 
@@ -54,6 +59,10 @@ export default function Tags(props) {
          <h2>Tags</h2>
          <div className={tagListWrapper}>
             <ul>
+            <li value="Linton Archive">
+               <button className={inactiveTag}>
+                  <a href="https://linton.meltonpriorinstitut.org/pages/linton.php5" target="_blank" rel="noopener noreferrer">Linton Archive<button className={lintonInfo} value=""></button></a>
+               </button></li>
                {
                   tags.map(node => (
                      <li key={node?.id} value={node?.name}>
@@ -63,11 +72,7 @@ export default function Tags(props) {
                         {selectedTags.includes(node?.name) &&
                            <button className={deleteButton} value={node?.name} onClick={deleteTag}>x</button>
                         }
-                        {node?.name.includes('Linton') &&
-                           <Link to="../../meta/about#linton">
-                              <button className={lintonInfo} value="">i</button>
-                           </Link>
-                        }
+
                      </li>
                   ))
                }

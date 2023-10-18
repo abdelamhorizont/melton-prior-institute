@@ -1,3 +1,6 @@
+const { createFilePath } = require("gatsby-source-filesystem")
+
+
 exports.createSchemaCustomization = async ({ actions }) => {
   actions.createFieldExtension({
     name: "wpImagePassthroughResolver",
@@ -270,6 +273,18 @@ exports.onCreateNode = ({
   reporter,
 }) => {
   if (!node.internal.type.includes("Wp")) return
+
+  const { createNodeField } = actions
+
+  if (node.internal.type === "wordpress__POST") {
+    const slug = createFilePath({ node, getNode, basePath: "pages" })
+    createNodeField({
+      node,
+      name: "slug",
+      value: `/content${slug}`,
+    })
+  }
+
 
   const createLinkNode =
     (parent) =>

@@ -150,7 +150,7 @@ $sDlineHeightXL: 1.05*$fontSizeXL;
 
 @mixin nm-bold {
   font-family: 'Neue Montreal', 'Times New Roman', Times, serif;
-  // font-size: inherit;
+  font-size: inherit;
   font-weight: 600;
   // font-size: $fontSize;
   // padding: 0.5*$fontSize 0.7*$fontSize;
@@ -179,10 +179,17 @@ h4{
 }
 
 
+b{
+  @include ke-bold;
+  font-feature-settings: "ss04";
+  
+}
 
-h1, h2, h3, h4, button, label p, b{
+
+h1, h2, h3, h4, button, label p{
   @include ke-light;
   font-feature-settings: "ss04";
+  letter-spacing: -0.02em;
 
 }
 
@@ -201,10 +208,58 @@ i, em{
   // letter-spacing: -0.05rem;
 }
 
+del{
+  font-family: inherit;
+  text-decoration: line-through;
+}
+
+u{
+  font-family: inherit;
+  text-decoration: underline;
+}
+
+blockquote{
+  p{
+  @include ke-book-italic();
+  &::before{
+    content: "“";
+  }
+  &::after{
+    content: "”";
+    @include ke-book-italic();
+  }
+}
+}
+hr{
+  border: 1px solid black;
+  width:100%;
+}
+
+strong{
+  @include nm-bold;
+}
+
+ul{
+  list-style: disc inside;
+  line-height: inherit;
+  li{
+    font-size: inherit;
+    h1, h2, h3, h4, h5, h6{
+      display: inline;
+    }
+  }
+}
 ol{
   list-style: decimal inside;
   line-height: inherit;
+  li{
+    font-size: inherit;
+    h1, h2, h3, h4, h5, h6{
+      display: inline;
+    }
+  }
 }
+
 
 a{
   // letter-spacing: -0.01rem;
@@ -218,7 +273,7 @@ a[href*="#["] {
       left: 0;
       top: 60%;
       width: 100%;
-      height: 100%;
+      font-size: 1*$fontSize;
       // transform: ;
       text-align: center;
       vertical-align:bottom;
@@ -230,6 +285,7 @@ a[href*="#["] {
       opacity: 0;
   }
 }
+
 
 button{
   a{
@@ -249,6 +305,13 @@ button{
     display: flex;
     justify-content: center;
   }
+}
+
+th:first-of-type, td:first-of-type{
+  padding-right: .5*$lineHeight;
+}
+th:last-of-type, td:last-of-type{
+  padding-left: .5*$lineHeight;
 }
 
 hr{

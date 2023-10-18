@@ -190,6 +190,7 @@ width: 50%;
             .moreButton{
                 grid-column-start: 3;
                 margin-right: 0.5*$lineHeight;
+                display: none;
             }
         }
     }
@@ -247,7 +248,9 @@ width: 50%;
             font-size: $sDfontSizeL;
             grid-column-start: 3;
             margin-right: 0.5*$lineHeight;
+            display: none;
         }
+
     }
 }
 

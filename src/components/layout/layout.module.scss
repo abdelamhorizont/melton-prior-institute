@@ -123,6 +123,7 @@ ul.secondaryNav {
     grid-column-end: 13;
     grid-row-start: 2;
     z-index: 5000;
+    list-style: none;
 
 
 
@@ -161,7 +162,7 @@ ul.categories {
     grid-column-start: 5;
     grid-column-end: 9;
     grid-row-start: 4;
-
+    list-style: none;
     li {
         text-align: center;
 
@@ -249,6 +250,7 @@ ul.categories {
         display: grid;
         grid-template-columns: repeat(12, 1fr [col]);
         column-gap: 1*$lineHeight;
+        list-style: none;
 
         a {
             grid-column-start: 3;
@@ -468,6 +470,7 @@ label {
 footer ul,
 ul.secondaryNav,
 .searchBox {
+    list-style: none;
     li {
 
         a[aria-current]:before,

@@ -84,9 +84,11 @@
     justify-content: center;
     align-self: flex-end;
     // margin-bottom: 2*$lineHeight;
+    flex-wrap: wrap;
     h4{
         margin: 0 0.1*$lineHeight;
         opacity: 1;
+        white-space: nowrap;
         &:first-of-type{
             margin: 0 0.1*$lineHeight 0 0;
         }
@@ -158,7 +160,7 @@
 
     p, h1, div{
         margin: 0.5*$lineHeight 0;
-        line-height: $lineHeight;
+        // line-height: $lineHeight;
 
         &:first-child{
             margin-top: unset !important;
@@ -343,6 +345,7 @@ ul, .swiper-slide-active, .swiper-slide{
 
 
 @media screen and (max-width: $small) {
+
     .articleFeature, .articlePictorial{
         .articleBody{
             h1{
@@ -350,7 +353,7 @@ ul, .swiper-slide-active, .swiper-slide{
                 line-height: $sDlineHeightM;
             }
         }
-        // flex-direction: row;
+        flex-direction: column;
     }
     .recommendedArticle{
         .articleBody{
@@ -410,7 +413,7 @@ ul, .swiper-slide-active, .swiper-slide{
             // flex-grow: unset;
             h4, a{
                 font-size: $sDfontSizeL;
-                line-height: $sDlineHeightM;
+                // line-height: $sDlineHeightM;
             }
             h4:first-of-type{
                 // margin: 0 0.1*$lineHeight;

@@ -149,7 +149,7 @@ export default function Post({ data }) {
                     const src = domNode?.children[1]?.children[1]?.children[0]?.attribs && domNode?.children[1]?.children[1]?.children[0]?.attribs["src"]?.replace('http', 'https') || domNode.children[0].attribs['src']?.replace('http', 'https') || ''
                     const srcset = domNode.children[0]?.attribs && domNode.children[0]?.attribs["srcset"]?.replace('http', 'https') || ''
                     const caption =  (domNode.children[2]?.children && domNode.children[2]?.children[0].data) || domNode.children[1]?.children[0]?.data || domNode.children[3]?.children[0]?.data
-                    console.log(domNode.children[2]?.children && domNode.children[2]?.children[0].data)
+                    // console.log(domNode.children[2]?.children && domNode.children[2]?.children[0].data)
                     // console.log(domNode)
                     return (
                       <figure className="gallery-item">

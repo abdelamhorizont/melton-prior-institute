@@ -1,16 +1,18 @@
-import * as React from "react"
-
+import React, { useEffect } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
+import { initializeCollectionSlider } from '../../static/collectionSlider';
 
 import {
   collections,
   collectionWrapper,
-  collectionTitle
+  // collectionArticleWrapper
+  collectionTitle,
+  scrollbar
 } from '../../styles/content.module.scss'
 
 import {
@@ -25,6 +27,7 @@ import {
 // } from '../../components/article/article.module.scss'
 
 export default function Collections() {
+
   const data = useStaticQuery(graphql`
     query {
       allWpCategory(filter: {name: {eq: "collections"}}) {
@@ -96,6 +99,12 @@ export default function Collections() {
         }
       }
     `)
+    useEffect(() => {
+      initializeCollectionSlider();
+    }, []);
+  
+
+    
 
   const collectionTitles = data.allWpCategory.nodes
 
@@ -111,7 +120,8 @@ export default function Collections() {
             <div className={collectionWrapper}>
               <h1 className={collectionTitle}>{node?.name}</h1>
 
-                <div>
+                <div className="collectionArticleWrapper">
+
                   <ul>
                     {
                       node.posts.nodes.map(node => (

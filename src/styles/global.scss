@@ -39,7 +39,7 @@
         url("../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.woff2"),
         url("../fonts/Kleukens-EgyptienneFSLWeb-BookItalic.eot");
   font-weight: 500;
-  font-style: normal;
+  font-style: italic;
 }
 
 @font-face {
@@ -235,32 +235,50 @@ figcaption{
 
 li[value="Linton Archive"], li[value="Linton Archiv"]{
   order: -1;
-  color: rgb(175, 0, 0);
+  color: rgba(175, 0, 0, 0.6);
   justify-content: unset !important;
-  a{
-    transition: $transitionFade;
-    border: solid 1px;
-    border-radius: 100%;
-    width: .75*$lineHeight;
-    text-align: center;
-    margin-left:1*$lineHeight;
-    border-color: rgb(175, 0, 0);
-    } 
-  a:hover{
-    background-color: rgb(175, 0, 0);
-    border-color: rgb(175, 0, 0);
-    cursor: pointer;
-    button{color: #fff;}
+  button, button>a{
+    color: rgba(175, 0, 0 , 0.6);
+       
   }
-  
-  button{
-    justify-self: flex-start;
-    // @include ke-bold;
-    color: rgb(175, 0, 0);
-    // opacity: 0.6 !important;
-  }
+  button:hover{
+    color: rgba(175, 0, 0 , 0.6);
+    a>button{
+      
+      background-color: rgb(175, 0, 0) !important;
+      border-color: rgb(175, 0, 0);
+      cursor: pointer;
+      color: #fff;
+      &::before{
+        content: "↗";
+      }
+    }
   }
 
+
+  button>a>button{
+      transition: $transitionFade;
+      margin-left:0.33*$lineHeight;
+      border: solid 1px;
+      border-radius: 100%;
+      width: .75*$lineHeight;
+      height: .75*$lineHeight;
+      vertical-align: top;
+      text-align: center;
+      border-color: rgb(175, 0, 0) !important;
+      opacity: 1 !important;
+      &::before{
+        content: "i"
+      }
+    }
+
+  // button{
+  //   justify-self: flex-start;
+  //   // @include ke-bold;
+  //   color: rgb(175, 0, 0);
+  //   // opacity: 0.6 !important;
+  // }
+  }
 
 
 
