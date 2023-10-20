@@ -80,7 +80,7 @@ export default function Post({ data }) {
               parse(data.wpPost.content, {
                 replace: domNode => {
                   // footnotes
-                  console.log(data.wpPost.content)
+                  // console.log(data.wpPost.content)
                   let reg = /(\[\d+\])/g
                   if (domNode.data && domNode.data.match(reg)) {
                     const text = domNode.data.split(reg)
