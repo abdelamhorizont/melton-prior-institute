@@ -80,7 +80,7 @@ export default function Post({ data }) {
               parse(data.wpPost.content, {
                 replace: domNode => {
                   // footnotes
-                  // console.log(domNode)
+                  console.log(data.wpPost.content)
                   let reg = /(\[\d+\])/g
                   if (domNode.data && domNode.data.match(reg)) {
                     const text = domNode.data.split(reg)
@@ -112,6 +112,16 @@ export default function Post({ data }) {
                           }
                         </>
                       )
+                    }
+                  }
+
+                  // links to other posts
+                  if (domNode.name && domNode.name === "a" && new RegExp("^/en/|^/de/").test(domNode.attribs["href"])) {
+                    const href = domNode.attribs["href"];
+                    if (href.includes("/en/")) {
+                      domNode.attribs["href"] = href.replace("/en/", "/content/en/");
+                    } else if (href.includes("/de/")) {
+                      domNode.attribs["href"] = href.replace("/de/", "/content/de/");
                     }
                   }
                   // images lightbox

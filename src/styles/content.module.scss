@@ -276,11 +276,11 @@ html {
         picture, figure {
             width: 100%;
             // height: fit-content;
-            height: auto;
+            // height: auto;
 
             img {
                 // width: 100%;
-                height: fit-content;
+                // height: fit-content;
 
             }
         }
@@ -800,6 +800,9 @@ html {
                 }
             }
 
+            figure img{
+                height: unset;
+            }
 
 
 
@@ -1142,7 +1145,9 @@ html {
                 letter-spacing: -0.01rem;
             }
             
-        
+            figure img{
+                height: unset !important;
+            }
 
 
             .relatedPostsWrapper {

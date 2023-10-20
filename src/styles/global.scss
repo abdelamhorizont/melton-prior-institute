@@ -221,7 +221,7 @@ div, .gatbsy-image-wrapper, .gatsby-image-wrapper img, img{
 img{
   margin-top: $lineHeight;
   max-height: calc(65vh - 1*$lineHeight);
-  height:calc(65vh - 2*$lineHeight);
+  // height:calc(65vh - 2*$lineHeight);
 }
 figcaption{
   padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
@@ -523,7 +523,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   li[value="Linton Archive"], li[value="Linton Archiv"]{
     a{
       transition: $transitionFade;
-      border: solid 1px;
+      // border: solid 1px;
       border-radius: 100%;
       width: $sDlineHeight;
       height:$sDlineHeight;
@@ -531,6 +531,21 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
       margin-left:1*$lineHeight;
       border-color: rgb(175, 0, 0);
       } 
+      button>a>button{
+        transition: $transitionFade;
+        margin-left:0.33*$lineHeight;
+        border: solid 1px;
+        border-radius: 100%;
+        width: 1.75*$lineHeight;
+        height: 1.75*$lineHeight;
+        vertical-align: top;
+        text-align: center;
+        border-color: rgb(175, 0, 0) !important;
+        opacity: 1 !important;
+        &::before{
+          content: "i"
+        }
+      }
   }
 }
   
