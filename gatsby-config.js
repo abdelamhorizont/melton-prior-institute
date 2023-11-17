@@ -17,10 +17,12 @@ module.exports = {
       options: {
         url: "https://wordpress.meltonpriorinstitut.org/graphql",
         html: { 
+          createStaticFiles: false,
           useGatsbyImage: false,
-        },
+          },
         type: {
           MediaItem: {
+            createFileNodes: false,
             // exclude: true,
             localFile: {
               requestConcurrency: 5
