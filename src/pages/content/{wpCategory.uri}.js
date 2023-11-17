@@ -55,11 +55,6 @@ query ($id: String) {
              nodes {
                featuredImage {
                  node {
-                   localFile {
-                     childImageSharp {
-                       gatsbyImageData
-                     }
-                   }
                    title
                    image {
                      url

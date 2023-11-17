@@ -40,12 +40,6 @@ const Layout = ({ children, path }) => {
           node {
             featuredImage {
               node {
-                localFile {
-                  
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
                 title
                 image {
                   url

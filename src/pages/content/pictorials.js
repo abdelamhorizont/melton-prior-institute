@@ -37,11 +37,6 @@ export default function Pictorials() {
             }
             featuredImage {
               node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
                 title
                 image {
                   url

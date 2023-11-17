@@ -28,11 +28,6 @@ export default function Features() {
           node {
             featuredImage {
               node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
                 title
                 image {
                   url

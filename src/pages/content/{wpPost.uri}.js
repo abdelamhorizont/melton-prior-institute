@@ -1,7 +1,6 @@
 import * as React from "react"
 import { useState, useEffect, useRef } from 'react';
 import { Link, graphql } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 // import SimpleReactLightbox from 'simple-react-lightbox'
 // import { SRLWrapper } from "simple-react-lightbox";
@@ -52,7 +51,23 @@ export default function Post({ data }) {
   const tags = data.wpPost.tags.nodes.map(node => node && node?.name)
   const translatedTags = data.wpPost.translations && data.wpPost.translations[0] && data.wpPost.translations[0].tags.nodes.map(node => node && node?.name)
 
-  const relatedPosts = data.allWpPost.edges.filter(edge => edge.node.tags.nodes[0]).filter(edge => edge.node.tags.nodes.some(node => tags.includes(node?.name))).filter(edge => edge.node.id !== data.wpPost.id)
+  const relatedPosts = data.allWpPost.edges.filter(edge => {
+    if (!edge.node.tags.nodes[0]) {
+      return false;
+    }
+    const hasMatchingTag = edge.node.tags.nodes.some(node => tags.includes(node?.name));
+    const isSamePost = edge.node.id === data.wpPost.id;
+    const isSameLanguage = edge.node.language.code === data.wpPost.language.code;
+
+    return !isSamePost && hasMatchingTag && isSameLanguage;
+    // randomize related posts
+    
+
+  });
+  
+  
+
+
 
   let counter = []
 
@@ -147,7 +162,6 @@ export default function Post({ data }) {
                             ref={ref}
                           >
                             <div className={lightboxImage}>
-                              {/* <GatsbyImage image={data.imageSharp.gatsbyImageData} /> */}
                               <img src={domNode.children[1]?.attribs["src"]} srcset={domNode.children[1]?.attribs["srcset"]} />
                             </div>
                           </a>
@@ -294,10 +308,21 @@ query ($id: String) {
         }
       }
     }
+    language {
+      code
+    }
   }
   allWpPost {
     edges {
       node {
+        featuredImage {
+          node {
+            title
+            image {
+              url
+            }
+          }
+        }
         id
         categories {
           nodes {
@@ -321,6 +346,9 @@ query ($id: String) {
         translations {
           uri
         }
+        language {
+          code
+        }
       }
     }
   }
@@ -329,6 +357,7 @@ query ($id: String) {
 // export const query = graphql`
 // query ($id: String) {
 //   wpPost(id: {eq: $id}) {
+  
 //     id
 //     categories {
 //       nodes {
@@ -363,11 +392,6 @@ query ($id: String) {
 //       node {
 //         featuredImage {
 //           node {
-//             localFile {
-//               childImageSharp {
-//                 gatsbyImageData
-//               }
-//             }
 //             title
 //             image {
 //               url

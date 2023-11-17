@@ -43,11 +43,6 @@ export default function Collections() {
                 nodes {
                   featuredImage {
                     node {
-                      localFile {
-                        childImageSharp {
-                          gatsbyImageData
-                        }
-                      }
                       title
                       image {
                         url

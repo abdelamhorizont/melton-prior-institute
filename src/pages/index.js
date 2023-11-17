@@ -75,11 +75,6 @@ const Homepage = () => {
           node {
             featuredImage {
               node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
                 title
                 image {
                   url

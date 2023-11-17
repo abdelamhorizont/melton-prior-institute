@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 
@@ -35,17 +34,16 @@ const Article = (props) => {
       )
    }, [])
 
+
    return (
       // <div className={props.className ? props.className : article }> 
       <div className={props.className ? `${props.className} ${category}` : article}>
 
          <div className={thumbnail}>
-            {
-               props.path.featuredImage?.node.localFile?.childImageSharp ?
-                  <GatsbyImage image={props.path.featuredImage?.node?.localFile.childImageSharp.gatsbyImageData} alt={""} />
-                  :
-                  props.path.featuredImage?.node.image &&
+            { 
+               props.path.featuredImage?.node.image && (
                   <img src={props.path.featuredImage?.node?.image?.url} alt={props.path.featuredImage?.node?.title} />
+               )
             }
          </div>
 

@@ -34,10 +34,9 @@ export default function SearchResults() {
           node {
             featuredImage {
               node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
+                title
+                image {
+                  url
                 }
               }
             }
