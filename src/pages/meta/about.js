@@ -1,10 +1,10 @@
 import * as React from "react"
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Layout from '../../components/layout/layout'
 
 export default function About() {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
         wpPage(title: {eq: "About"}) {
             content
@@ -12,10 +12,9 @@ export default function About() {
         }   
     `)
 
-    return (
-        <Layout>
+  return (
+    <Layout>
       <div dangerouslySetInnerHTML={{ __html: data.wpPage.content }} />
-
-        </Layout>
-    )
+    </Layout>
+  )
 }

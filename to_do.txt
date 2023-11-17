@@ -1,0 +1,9 @@
+- Zweisprachigkeit
+- Recommended Swiper einbauen 
+- Posts Lightbox
+- features etc link and more button
+
+- Search auch für Inhalte
+- backend Collections Lösung
+
+- tag Set

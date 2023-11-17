@@ -12,12 +12,12 @@ const ArticleTitle = (props) => {
             <div className={articleTitle}>
                 <div></div>
                 <div>
-                    {
+                    {/* {
                         props.path.categories.nodes[0] &&
                         <p>{props.path.categories.nodes[0].name}</p>
-                    }
-                    <p>{props.path.author.node.name}</p>
-                    <p>{props.path.date}</p>
+                    } */}
+                    <p>{props.path.author.node.name}]</p>
+                    <p>[{props.path.date}</p>
                     <h1>{props.path.title}</h1>
                 </div>
             </div>

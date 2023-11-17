@@ -1,0 +1,16 @@
+@import "./typo.module.scss";
+
+:root {
+    --swiper-theme-color: rgb(0, 0, 0);
+}
+
+.my-swiper {    
+    .swiper-slide {
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      margin: 1rem;
+    }
+
+}
