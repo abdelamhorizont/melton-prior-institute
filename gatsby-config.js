@@ -48,6 +48,7 @@ module.exports = {
         },
         develop: {
           nodeUpdateInterval: 300,
+          hardCacheMediaFiles: true,
         },
         debug: {
           graphql: {
