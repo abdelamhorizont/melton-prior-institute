@@ -42,7 +42,7 @@
   "scripts": {
     "start": "GATSBY_CONCURRENT_DOWNLOAD=5 gatsby develop",
     "develop": "GATSBY_CONCURRENT_DOWNLOAD=5 gatsby develop",
-    "build": "gatsby build",
+    "build": "GATSBY_CONCURRENT_DOWNLOAD=5 gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
