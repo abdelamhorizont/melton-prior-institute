@@ -277,6 +277,9 @@ query ($id: String) {
         name
       }
     }
+    autor {
+      autor
+    }
     tags {
       nodes {
         name
