@@ -60,7 +60,6 @@ export default function Post({ data }) {
     const isSameLanguage = edge.node.language.code === data.wpPost.language.code;
 
     return !isSamePost && hasMatchingTag && isSameLanguage;
-    // randomize related posts
     
 
   });
