@@ -1,9 +1,12 @@
-- Zweisprachigkeit
-- Recommended Swiper einbauen 
-- Posts Lightbox
-- features etc link and more button
+- build
+- gatsby img
+- Lightbox bildgröße
+- Search auch für Inhalte, bisher nur excerpt
 
-- Search auch für Inhalte
-- backend Collections Lösung
+x Linton Tag query, an den anfang des arrays setzen, i-button in die list-item, verlinkung zu about mit # id Linton
+x im backend linton archive seite erstellen, query in about danach setzen und einfügen
+x tagWrapper div nur bei tags?
+-onscroll mobile ausstellen
 
-- tag Set
+Extras:
+- Fußnoten als Tooltips 

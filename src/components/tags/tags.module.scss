@@ -1,0 +1,122 @@
+@import "../../styles/typo.module.scss";
+
+
+
+
+.inactiveTag, .activeTag{
+   position: relative;
+   left: 0.75*$lineHeight;
+   cursor: pointer;
+
+      // margin-top: -4px;
+      // grid-column: 1/2;
+      // text-align: right;
+      &:before{
+          content:'[';
+          opacity: 0;
+      }
+      &:after{
+          content:']';
+          opacity: 0;
+      }
+}
+button.activeTag{
+   // margin-left: $lineHeight;
+}
+button.inactiveTag{
+   // animation: 0.5s appearOsmall;
+   transition: $transitionFade;
+  opacity: 0.4; 
+//   margin-left: $lineHeight;
+  &:hover{
+   cursor: pointer;
+      // opacity: 1;
+      &:first-child{
+           &:after, &:before{
+           opacity: 1;
+           }
+       }
+  }
+}
+
+button.activeTag{
+   &:first-child{
+       &:before, &:after{
+       opacity: 1 !important;
+        }
+       }
+   &:hover{
+       opacity: 0.4;
+   }
+}
+
+.deleteButton{
+   order: -1;
+   width: $lineHeight;
+   position: absolute;
+
+   // display:none;
+}
+
+.deleteButton[value="Linton Archive"], .deleteButton[value="Linton Archiv"]{
+   margin-left: auto;
+   @include ke-light;
+   color: black;   
+}
+
+.lintonInfo{
+   // background-color: red;
+}
+
+.tagListWrapper{
+
+}
+
+
+
+
+
+/*************************************/
+/* mobile queries */
+/*************************************/
+
+
+
+@media screen and (max-width: $medium) {
+
+   .activeTag{
+      opacity: 1 !important;
+   }
+   // .deleteButton{
+   //    height: 100%;
+   //    padding-left: 0.33*$lineHeight;
+   // }
+}
+
+
+
+@media screen and (max-width: $small) {
+   .inactiveTag, .activeTag{
+      height: $sDlineHeight;
+      left: unset;
+      padding-left: .75*$sDlineHeight;
+      margin-left: 0.25*$sDlineHeight;
+   }
+   .deleteButton{
+      height: 100%;
+      padding-left: 0.33*$sDlineHeight;
+   }
+}
+
+// @media screen and (max-width: $large) {
+//    .inactiveTag, .activeTag{
+//       height: $lineHeight;
+//       left: unset;
+//       padding-left: .75*$lineHeight;
+//       margin-left: 0.25*$lineHeight;
+//    }
+//    .deleteButton{
+//       height: 100%;
+//       padding-left: 0.33*$lineHeight;
+//    }
+// }

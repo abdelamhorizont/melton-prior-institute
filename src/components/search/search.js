@@ -1,15 +1,18 @@
 import * as React from 'react'
 
+import {
+   searchBox
+ } from '../layout/layout.module.scss'
+
 export default function Search(props) {
 
    const handleChange = e => { props.handleSearchData(e.target.value) };
 
    return (
-      <div>
-         <label>
-            search [<input type="text" onChange={handleChange} />]
+         <label className={searchBox}>
+            <p>Search</p> <div>[<input type="text" onChange={handleChange} />]</div>
          </label>
-         {/* <input type="submit" value="Submit" /> */}
-      </div>
+         // {/* <input type="submit" value="Submit" /> */}
+
    )
 }

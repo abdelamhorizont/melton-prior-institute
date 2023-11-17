@@ -7,10 +7,21 @@ import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import Tags from '../../components/tags/tags'
 
+import {
+  articleFeature
+} from '../../components/article/article.module.scss'
+
+import {
+  categoryOverview,
+  tagsSidebar,
+  results,
+  bracket
+} from '../../styles/content.module.scss'
+
 export default function Pictorials() {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "pictorials"}}}}}) {
+      allWpPost(sort: {order: DESC, fields: date}, filter: {categories: {nodes: {elemMatch: {name: {eq: "pictorials"}}}}}) {
         edges {
           node {
             id
@@ -20,6 +31,9 @@ export default function Pictorials() {
               node {
                 name
               }
+            }
+            autor {
+              autor
             }
             featuredImage {
               node {
@@ -44,6 +58,15 @@ export default function Pictorials() {
                 name
               }
             }
+            language {
+              code
+            }
+            translations {
+              uri
+              language {
+                code
+              }
+            }
             excerpt
             uri
           }
@@ -52,7 +75,9 @@ export default function Pictorials() {
     }
     `)
 
-  const pictorials = data.allWpPost.edges
+  const pictorials = data.allWpPost.edges.filter( edge =>
+    edge.node.language.code == "EN"
+  )
   const [selectedTags, setSelectedTags] = useState([])
 
   const handleTags = (selectedTag) => {
@@ -64,21 +89,24 @@ export default function Pictorials() {
   }
 
   const selectedPictorials = pictorials.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
-    edge.node.tags.nodes.some(node => selectedTags.includes(node.name))
+    edge.node.tags.nodes.some(node => selectedTags.includes(node?.name))
   )
 
   return (
     <Layout>
-      <Tags handleTags={handleTags} deleteTags={deleteTags} />
+       <div className={categoryOverview}>
+        <div className={tagsSidebar}>
+          <Tags handleTags={handleTags} deleteTags={deleteTags} />
+        </div>
 
-      <div>
-        {selectedTags.length !== 0 ?
+      <div className={results}>
+        {selectedTags.length > 0 ?
           <ul>
             {
               selectedPictorials.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} />
+                    <Article tags={true} path={edge.node} excerpt={true} className={articleFeature}/>
                   </li>
                 </Link>
               ))
@@ -90,7 +118,7 @@ export default function Pictorials() {
               pictorials.map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
+                    <Article tags={true} path={edge.node} excerpt={true} excerpt={true} className={articleFeature}/>
                   </li>
                 </Link>
               ))
@@ -98,7 +126,7 @@ export default function Pictorials() {
           </ul>
         }
       </div>
-
+    </div>
     </Layout>
   )
 }

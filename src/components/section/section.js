@@ -2,11 +2,16 @@ import * as React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import {
-    section
+    section,
+    sectionTitle,
+    recommendedSection,
+    categoriesSection
 } from './section.module.scss'
 
 
-const Section = ({ children, title }) => {
+import '../../styles/swiper.scss';
+
+const Section = ({ children, title, className, onClick, id }) => {
     // const data = useStaticQuery(graphql`
     // query {
     //     site {
@@ -18,12 +23,13 @@ const Section = ({ children, title }) => {
     // `)
 
     return (
-        <div className={section}>
-            <div>
-                <h1>{title}</h1><span>]</span>
-            </div>
+        <div className={className} onClick={onClick} id={id}>
+                {/* <h2>{title}</h2>
+               <span>]</span>
+                <span>[</span> */}
             {children}
         </div>
+        
     )
 }
 

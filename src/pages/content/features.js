@@ -7,10 +7,23 @@ import Layout from '../../components/layout/layout'
 import Article from '../../components/article/article'
 import Tags from '../../components/tags/tags'
 
+import {
+  articleFeature,
+  articlePictorial
+} from '../../components/article/article.module.scss'
+
+import {
+  categoryOverview,
+  tagsSidebar,
+  results,
+  bracket
+} from '../../styles/content.module.scss'
+
+
 export default function Features() {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "features"}}}}}) {
+      allWpPost(sort: {order: DESC, fields: date},filter: {categories: {nodes: {elemMatch: {name: {eq: "features"}}}}}) {
         edges {
           node {
             featuredImage {
@@ -44,6 +57,23 @@ export default function Features() {
                 name
               }
             }
+            autor {
+              autor
+            }
+            language {
+              code
+            }
+            translations {
+              uri
+              language {
+                code
+              }
+              tags {
+                nodes {
+                  name
+                }
+              }
+            }
             excerpt
             uri
           }
@@ -52,7 +82,9 @@ export default function Features() {
     }
     `)
 
-  const features = data.allWpPost.edges
+  const features = data.allWpPost.edges.filter( edge =>
+    edge.node.language.code == "EN"
+  )
   const [selectedTags, setSelectedTags] = useState([])
 
   const handleTags = (selectedTag) => {
@@ -64,60 +96,43 @@ export default function Features() {
   }
 
   const selectedFeatures = features.filter(edge => edge.node.tags.nodes[0]).filter(edge =>
-    edge.node.tags.nodes.some(node => selectedTags.includes(node.name.toLowerCase())))
+    edge.node.tags.nodes.some(node => selectedTags.includes(node?.name.toLowerCase())))
 
   return (
     <Layout >
-      <Tags handleTags={handleTags} deleteTags={deleteTags} />
+      <div className={categoryOverview}>
+        <div className={tagsSidebar}>
+        <Tags handleTags={handleTags} deleteTags={deleteTags} />
+        </div>
 
-      <div>
-        {selectedTags.length !== 0 ?
-          <ul>
-            {
-              selectedFeatures.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
-          :
-          <ul>
-            {
-              features.map(edge => (
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article path={edge.node} excerpt={true} />
-                  </li>
-                </Link>
-              ))
-            }
-          </ul>
-        }
+        <div className={results}>
+          {selectedTags.length > 0 ?
+            <ul>
+              {
+                selectedFeatures.map(edge => (
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                    <Article tags={true} path={edge.node} excerpt={true} className={articleFeature} />
+                    </li>
+                  </Link>
+                ))
+              }
+            </ul>
+            :
+            <ul>
+              {
+                features.map(edge => (
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                    <Article tags={true} path={edge.node} excerpt={true} className={articleFeature} />
+                    </li>
+                  </Link>
+                ))
+              }
+            </ul>
+          }
+        </div>
       </div>
-
     </Layout>
   )
 }
-
-
-
-//eleganter wäre wenn nur aus eine, State der Features gefiltert würde
-
-  // const [selectedFeatures, setSelectedFeatures] = useState(features)
-
-  // useEffect(()=>{
-    // setSelectedFeatures(
-    //   features.filter(edge => edge.node.tags.nodes[0]).filter((edge, index) =>
-    //     edge.node.tags.nodes.map(node => selectedTags.includes(node.name))[index]
-    //   )
-    // )
-  // })
-
-  // welche tag Überschneidungen es gibt
-
-  // let intersection = tags.filter(tag =>
-  //   selectedTags.includes(tag)
-  //   )

@@ -2,13 +2,29 @@ import * as React from "react"
 import { useState } from 'react';
 
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from '../../components/layout/layout'
 import Section from '../../components/section/section'
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 import ArticleBody from '../../components/articleBody/articleBody'
 import Article from '../../components/article/article'
+
+import {
+  articleFeature,
+  articlePictorial
+} from '../../components/article/article.module.scss'
+
+import {
+  category_overview,
+  tags_sidebar,
+  results,
+  bracket,
+} from '../../styles/content.module.scss'
+
+import {
+  categoriesArticle
+} from '../../components/section/section.module.scss'
 
 export default function SearchResults() {
   const data = useStaticQuery(graphql`
@@ -49,31 +65,33 @@ export default function SearchResults() {
   const [searchData, setSearchData] = useState('');
 
   const childToParent = (childdata) => {
-   setSearchData(childdata);
+    setSearchData(childdata);
   }
-  
+
   const articles = data.allWpPost.edges.filter(edge =>
     edge.node.title.toLowerCase().includes(searchData)
   )
 
   return (
-    <Layout childToParent={childToParent} >
-    {searchData}
+    <Layout childToParent={childToParent}>
+      <div>
+        <div> Search results for {searchData}
+        </div>
+        <ul>
+          {
+            articles.map(edge => (
 
-      <ul>
-        {
-          articles.map(edge => (
+              <Link to={`/content${edge.node.uri}`}>
+                <li key={edge.node.id}>
+                  <Article tags={true} path={edge.node} className={articleFeature} />
+                </li>
+              </Link>
 
-            <Link to={`/content${edge.node.uri}`}>
-              <li key={edge.node.id}>
-                <Article path={edge.node} />
-              </li>
-            </Link>
-
-          ))
-        }
-      </ul>
-
+            ))
+          }
+        </ul>
+      </div>
     </Layout>
   )
 }
+

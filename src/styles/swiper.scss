@@ -1,16 +1,234 @@
 @import "./typo.module.scss";
 
-:root {
-    --swiper-theme-color: rgb(0, 0, 0);
+.my-swiper {
+  --swiper-theme-color: rgb(0, 0, 0);
+  grid-row-start: 3;
+  grid-column-start:2 ;
+  grid-column-end: 12;
+  display: grid;
+  width: 100%;
+  height: fit-content;
+  padding: $lineHeight;
+  box-sizing: border-box;
+
+
+  .swiper-slide {
+    background-color: white;
+
+    div{
+      opacity: 1;
+      // transition: opacity 2s ease;
+      display: flex;
+      justify-content: center;
+      // max-height: 50vh;
+
+    a{
+      width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: $transitionFade;
+    .gatsby-image-wrapper div, {
+      max-height: 100%;
+    }
+    }
+    }
+  } 
 }
 
-.my-swiper {    
+
+.swiper-pagination{
+  bottom: unset !important;
+  left: unset !important;
+  width: unset !important;
+  // position: unset !important;
+  text-align: left !important;
+  box-sizing: border-box;
+  grid-column-start: 12;
+  grid-row-start: 3;
+  height: fit-content;
+    align-self: end;
+    font-size: $fontSizeM;
+
+
+
+  .swiper-pagination-current, .swiper-pagination-total{
+    width: auto;
+    padding: 0;
+  }
+}
+
+
+.swiper-button-next, .swiper-button-prev, .swiper-button-next:after, .swiper-button-prev:after{
+  // all: unset !important;
+  --swiper-navigation-size: unset !important;
+}
+
+
+
+.swiper-button-prev {
+  grid-column-start: 1 !important;
+  grid-row-start: row 2 !important;
+  grid-row-end: row 4 !important;
+  text-align: right !important;
+  justify-content: end;
+}
+.swiper-button-next {
+  grid-column-start: 12 !important;
+  grid-row-start: row 2 !important;
+  grid-row-end: row 4 !important;
+  text-align: left;
+  
+}
+.swiper-button-next, .swiper-button-prev {
+  display: flex;
+  align-items: center;
+  opacity: 0.6 !important;
+  &:hover{
+  cursor: pointer !important;
+  opacity: 1 !important;
+  }
+  h1{
+    font-size: $fontSizeL;
+  }
+}
+
+
+.carousel-cell {
+  // padding: 3vw;
+  width: 100%;
+  display: flex;
+    justify-content: center;
+  a{
+    width: calc(10 / 12 * 100%);
+  }
+
+}
+
+li, li a, .articleBody, .swiper-slide{
+  // *{  transition: all 0.5s;}
+}
+.swiper-slide-active, .swiper-slide{
+      a{
+        &:hover {
+          background-color: $hoverbg-color1;
+          border-radius: 20px;
+            *{
+                h1, h4, span, p{
+                    color: $hoverfont-color1;
+                    font-weight: 100;
+                }
+            }
+        
+      }
+  }
+}
+
+
+
+
+
+/*************************************/
+/* mobile queries */
+/*************************************/
+
+
+
+
+
+
+@media screen and (max-width: $medium) {
+
+  .my-swiper {
+    grid-column-start: 1;
+    grid-column-end: 4;
     .swiper-slide {
+  
+      div{
+        justify-content: unset;
+      }
+    }
+  }
+  .swiper-button-next, .swiper-button-prev{
+          align-items: unset;
+          z-index: 5000;
+          h1{
+            font-size: $fontSize;
+          }
+        }
+      .swiper-button-prev{
+        justify-content: flex-start;
+        grid-row-end: 2 !important;
+        text-align: left !important;
+        padding-left: 1*$lineHeight !important;
+      }
+      .swiper-button-next{
+        justify-content: flex-end;
+        grid-row-end: 2 !important;
+        text-align: right !important;
+        padding-right: 1*$lineHeight !important;
+        grid-column-start: 3 !important;
+      }
+
+    .swiper-pagination{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    text-align: center !important;
+    align-self: unset;
+    font-size: $fontSize;
+    z-index: 5000;
+  }
+.gatsby-image-wrapper-constrained, .gatsby-image-wrapper, .gatsby-image-wrapper div{
+// height: 100%;
+}
+}
+
+
+@media screen and (max-width: $small) {
+  .my-swiper{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    }
+    .swiper-slide{
+
+      div{
+        max-width: unset;
+      }
     }
 
-    .swiper-button-next,
-    .swiper-button-prev {
-      margin: 1rem;
+    .swiper-button-next, .swiper-button-prev{
+      align-items: unset;
+      z-index: 5000;
+      h1{
+        font-size: $sDfontSizeL;
+      }
     }
+  .swiper-button-prev{
+    justify-content: flex-start;
+    grid-row-end: 2 !important;
+    text-align: left !important;
+    padding-left: 1*$sDlineHeight !important;
+  }
+  .swiper-button-next{
+    justify-content: flex-end;
+    grid-row-end: 2 !important;
+    text-align: right !important;
+    padding-right: 1*$sDlineHeight !important;
+    grid-column-start: 3 !important;
+  }
+  .swiper-pagination{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    text-align: center !important;
+    align-self: unset;
+    font-size: $sDfontSizeL;
+    z-index: 5000;
+  }
+
+  .swiper-button-next, .swiper-button-prev, .swiper-pagination{
+    position: sticky;
+    top: 4.5*$sDlineHeight;
+  }
 
 }
+
+

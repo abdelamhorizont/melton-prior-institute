@@ -1,8 +1,9 @@
 @import "../styles/typo.module.scss";
+@import "../components/section/section.module.scss";
 
 
 body{
-    @include absatzformat;
+    @include ke-light;
  
 }
 
@@ -13,11 +14,245 @@ main{
     flex-direction: column;
     padding: 0 1*$lineHeight;
     box-sizing:border-box;
-}
-
-.categories_lists{
-    display:flex;
-    flex-direction: row;
+    padding-top: 3*$lineHeight;
+    min-height: calc(100% - 5*$lineHeight);
 
 
 }
+
+.recommended, .categoriesLists{ 
+    // animation: 2s appearO;
+}
+
+.categoriesLists{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr [col]);
+    column-gap: $lineHeight;
+    grid-auto-flow: column;
+    ul{
+        a{
+            transition: $transitionFade;
+        }
+    }
+    a{
+        
+
+        
+    }
+}
+
+.collectionsColumn{
+    display: flex;
+    flex-direction: column;
+    a{
+        width: 100%;
+        // margin-top: 2*$lineHeight;
+        // margin-bottom: $lineHeight;
+    }
+
+}
+.collectionsArticle{
+        padding: unset !important;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-size: cover;
+        background-position-y: center;
+        background-color: $hoverbg-color1;
+        height: 200px;
+        overflow: hidden;
+        &:hover{
+            border-radius: 12px;
+        }
+        div{
+            opacity: 0.7;
+            width: 100%;
+            height: 100%;
+            transition: $transitionFade;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-clip: border-box;
+            filter: blur(8px);
+        }
+        &:hover{
+            div{
+            opacity: 0.9;
+            filter: blur(2px);
+            }
+
+        }
+        h1{
+            position: absolute;
+            opacity: 1;
+            font-size: $fontSizeM;
+            line-height: $lineHeightM;
+        }
+}
+
+.recommended{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2*$lineHeight;
+    *{
+            p{
+                font-size: $fontSizeM;
+                line-height: $lineHeightM;
+            }
+            h2{
+                width: 8.33%
+            }
+            span{
+            }
+    }
+}
+
+.features{
+    width: 100%;
+}
+
+.carousel-cell{
+
+    a{
+        width: calc(10/12*100%);
+    }
+}
+
+.testDiv{
+width: 50%;
+}
+
+.moreButton{
+    grid-column-start: 4;
+    grid-row-start: 5;
+    @include ke-light;
+    font-size: $fontSize;
+    opacity: 0.4;
+    text-align: right;
+    transition: $transitionFade;
+    &:hover{
+        opacity: 1;
+        cursor:pointer;
+    }
+}
+
+
+
+
+
+/*************************************/
+/* mobile queries */
+/*************************************/
+
+
+@media screen and (max-width: $medium){
+        main{
+          padding: 0.5*$lineHeight;
+          margin-top: 3*$lineHeight;
+          min-height: calc(100% - 7*$lineHeight);
+        }
+        .categoriesLists{
+            position: relative;
+            display: grid;
+            column-gap: .5*$lineHeight;
+            // grid-template-rows: minmax(0, $lineHeight) minmax(0, $lineHeight) minmax(0, auto) minmax(0, $lineHeight) minmax(0, $lineHeight);
+            > a{
+                position: absolute;
+                top: 0;
+                > div{
+                    grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+                    > span:last-of-type, >.moreButton{
+                        grid-column-start: 3;
+                        grid-column-end: 4;
+                    }
+    
+                    > ul{
+                        grid-column-end: 4;
+                    }
+                }
+            }
+            > a:not(:first-of-type):not(:last-of-type){
+                h2{
+                    grid-column-start: 2;
+                    grid-column-end: 3;
+                    text-align: center;
+                }
+            }
+            > a:last-of-type{
+                h2{
+                    grid-column-start: 3;
+                    grid-column-end: 4;
+                    text-align: center;
+                }
+            }
+            .moreButton{
+                grid-column-start: 3;
+                margin-right: 0.5*$lineHeight;
+                display: none;
+            }
+        }
+    }
+
+
+
+
+
+@media screen and (max-width: $small) {
+        main{
+            padding: 0;
+            margin-top: calc(3.25*$sDlineHeight - 1px);;
+            min-height: calc(100% - 7*$sDlineHeight);
+        }
+        .collectionsArticle{
+            h1{
+                font-size: $sDfontSizeXXL;
+            }
+        }
+        .categoriesLists{
+        position: relative;
+        display: grid;
+        column-gap: .5*$lineHeight;
+        // grid-template-rows: minmax(0, $lineHeight) minmax(0, $lineHeight) minmax(0, auto) minmax(0, $lineHeight) minmax(0, $lineHeight);
+        > a{
+            position: absolute;
+            top: 0;
+            > div{
+                grid-template-columns: repeat(3, minmax(0, 1fr) [col]);
+                > span:last-of-type, >.moreButton{
+                    grid-column-start: 3;
+                    grid-column-end: 4;
+                }
+
+                > ul{
+                    grid-column-end: 4;
+                }
+            }
+        }
+        > a:not(:first-of-type):not(:last-of-type){
+            h2{
+                grid-column-start: 2;
+                grid-column-end: 3;
+                text-align: center;
+            }
+        }
+        > a:last-of-type{
+            h2{
+                grid-column-start: 3;
+                grid-column-end: 4;
+                text-align: center;
+            }
+        }
+        .moreButton{
+            font-size: $sDfontSizeL;
+            grid-column-start: 3;
+            margin-right: 0.5*$lineHeight;
+            display: none;
+        }
+
+    }
+}
+
+
+
