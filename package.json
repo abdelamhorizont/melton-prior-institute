@@ -40,7 +40,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "gatsby develop",
+    "start": "GATSBY_CONCURRENT_DOWNLOAD=5 gatsby develop",
     "develop": "GATSBY_CONCURRENT_DOWNLOAD=5 gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
