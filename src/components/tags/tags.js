@@ -7,12 +7,12 @@ import {
    inactiveTag,
    deleteButton,
    // lintonInfo,
-   tagListWrapper
+   // tagListWrapper
 } from './tags.module.scss'
 
-import{
-   lintonInfo
-} from '../../styles/content.module.scss'
+// import{
+//    lintonInfo
+// } from '../../styles/content.module.scss'
 
 export default function Tags(props) {
    const data = useStaticQuery(graphql`
