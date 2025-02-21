@@ -41,7 +41,7 @@ module.exports = {
           // }
         },
         schema: {
-          perPage: 50, // currently set to 100
+          perPage: 20, // currently set to 100
           requestConcurrency: 5, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
           timeout: 50000
@@ -68,6 +68,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
+    "gatsby-plugin-image", 
     // {
     //   resolve: "gatsby-plugin-manifest",
     //   options: {
