@@ -15,23 +15,10 @@ const POSTS_PER_PAGE = 10;
 export default function SearchResults() {
   const data = useStaticQuery(graphql`
     query {
-      allWpPost {
+      allWpPost(limit: 100) {
         edges {
           node {
-            featuredImage {
-              node {
-                title
-                image {
-                  url
-                }
-              }
-            }
             id
-            categories {
-              nodes {
-                name 
-              }
-            }
             title
             date(formatString: "MMMM D, YYYY")
             author {
@@ -41,6 +28,19 @@ export default function SearchResults() {
             }
             excerpt
             uri
+            featuredImage {
+              node {
+                title
+                image {
+                  url
+                }
+              }
+            }
+            categories {
+              nodes {
+                name 
+              }
+            }
           }
         }
       }

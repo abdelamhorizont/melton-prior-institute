@@ -311,7 +311,7 @@ query ($id: String) {
       code
     }
   }
-  allWpPost {
+  allWpPost (limit: 100) {
     edges {
       node {
         featuredImage {
