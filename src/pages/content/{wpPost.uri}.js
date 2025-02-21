@@ -96,13 +96,6 @@ export default function Post({ data }) {
                   // footnotes
                   // console.log(data.wpPost.content)
 
-                  
-                  // Remove <p> tags but keep their inner content
-                  if (domNode.name === 'p') {
-                    return <>{domNode.children}</>;
-                  }
-                  
-
                   let reg = /(\[\d+\])/g
                   if (domNode.data && domNode.data.match(reg)) {
                     const text = domNode.data.split(reg)
