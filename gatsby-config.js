@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: [
     {
+      
       resolve: "gatsby-source-wordpress",
       options: {
         url: "https://wordpress.meltonpriorinstitut.org/graphql",
@@ -40,8 +41,8 @@ module.exports = {
           // }
         },
         schema: {
-          perPage: 80, // currently set to 100
-          requestConcurrency: 15, // currently set to 15
+          perPage: 50, // currently set to 100
+          requestConcurrency: 5, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
           timeout: 50000
         },
@@ -64,6 +65,9 @@ module.exports = {
     "gatsby-plugin-vanilla-extract",
     `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-offline`,
     // {
     //   resolve: "gatsby-plugin-manifest",
     //   options: {
