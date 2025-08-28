@@ -219,16 +219,18 @@ const Homepage = () => {
  
           <ul className={mobile && category.features && categoryActive}>
             {
-              articles.filter(edge => (
-                edge.node.categories.nodes[0] &&
-                edge.node.categories.nodes[0].name === "features"
-              )).slice(0, 3).map(edge => (
-
-                <Link to={`/content${edge.node.uri}`}>
-                  <li key={edge.node.id}>
-                    <Article tags={false} excerpt={true} path={edge.node} className={categoriesArticle} />
-                  </li>
-                </Link>
+              articles
+                .filter(edge => {
+                  const categoryNames = edge.node.categories.nodes.map(cat => cat.name.toLowerCase())
+                  return categoryNames.includes("features") && categoryNames.includes("startseite")
+                })
+                .slice(0, 3)
+                .map(edge => (
+                  <Link to={`/content${edge.node.uri}`}>
+                    <li key={edge.node.id}>
+                      <Article tags={false} excerpt={true} path={edge.node} className={categoriesArticle} />
+                    </li>
+                  </Link>
 
               ))
             }
@@ -258,11 +260,12 @@ const Homepage = () => {
 
           <ul className={mobile && category.pictorials && categoryActive}>
             {
-              articles.filter(edge => (
-                edge.node.categories.nodes[0] &&
-                edge.node.categories.nodes[0].name === "pictorials"
-              )).slice(0, 3).map(edge => (
-
+             articles
+              .filter(edge => {
+                const categoryNames = edge.node.categories.nodes.map(cat => cat.name.toLowerCase())
+                return categoryNames.includes("pictorials") && categoryNames.includes("startseite")
+              })
+              .slice(0, 3).map(edge => (
                 <Link to={`/content${edge.node.uri}`}>
                   <li key={edge.node.id}>
                     <Article tags={false} excerpt={true} path={edge.node} className={categoriesArticle} />
