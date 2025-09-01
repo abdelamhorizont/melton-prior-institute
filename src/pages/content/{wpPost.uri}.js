@@ -14,7 +14,7 @@ import Article from '../../components/article/article'
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
 
-import "../../styles/simpleReactLightbox.scss";
+// import "../../styles/simpleReactLightbox.scss";
 import "photoswipe/dist/photoswipe.css";
 // import "photoswipe/dist/default-skin/default-skin.css";
 import { Gallery, Item } from 'react-photoswipe-gallery'
