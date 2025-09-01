@@ -400,6 +400,16 @@ html {
     display: flex;
     justify-content: center;
 }
+  .pswp__bg{
+    opacity: 1;
+    background-color: #dcdcdc;
+  }
+
+  .pswp__button, .pswp__icn{
+    color: black;
+    fill: black;
+  }
+
 
 /*************************************/
 /* 5. LightBox Stuff */
