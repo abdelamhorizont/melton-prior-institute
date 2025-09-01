@@ -279,10 +279,22 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   //   // opacity: 0.6 !important;
   // }
 
+  
+
+
+.pswp__content {
+    display: flex;
+    justify-content: center;
+}
+.pswp__bg{
+    background-color: #dcdcdc !important;
   }
 
-
-
+  .pswp__button, .pswp__icn{
+    color: black !important;
+    fill: black !important;
+  }
+  }
 
 /*************************************/
 /* mobile queries */
