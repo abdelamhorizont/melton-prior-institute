@@ -34,10 +34,6 @@ import {
 } from '../../components/layout/layout.module.scss'
 
 import {
-  my-gallery
-} from '../../styles/content.module.scss'
-
-import {
   articleFeature,
   articlePictorial
 } from '../../components/article/article.module.scss'
