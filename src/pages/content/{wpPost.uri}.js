@@ -39,6 +39,10 @@ import {
 } from '../../components/article/article.module.scss'
 import { width } from "dom7";
 
+import {
+  my-gallery
+} from '../../styles/content.module.scss'
+
 
 
 export default function Post({ data }) {
