@@ -89,7 +89,12 @@ export default function Post({ data }) {
 
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
-          <Gallery id="my-gallery" withCaption>
+          <Gallery id="my-gallery" withCaption
+          options={{
+          bgOpacity: 1,
+          showHideOpacity: true
+          }}>
+            
             {data.wpPost?.content &&
               parse(data.wpPost.content, {
                 replace: domNode => {
