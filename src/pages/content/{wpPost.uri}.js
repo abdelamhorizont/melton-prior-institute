@@ -36,7 +36,7 @@ import {
 import {
   articleFeature,
   articlePictorial,
-  my-gallery
+  myGallery
 } from '../../components/article/article.module.scss'
 import { width } from "dom7";
 
@@ -92,7 +92,7 @@ export default function Post({ data }) {
 
         <div className={articleContent}>
           <ArticleTitle path={data.wpPost} />
-          <Gallery id="my-gallery" withCaption
+          <Gallery id="myGallery" withCaption
           options={{
           bgOpacity: 1,
           showHideOpacity: true
