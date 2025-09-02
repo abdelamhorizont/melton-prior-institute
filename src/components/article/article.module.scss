@@ -260,20 +260,8 @@ ul, .swiper-slide-active, .swiper-slide{
 
 
 
-#my-gallery{
-    background-color: #dcdcdc !important;
-    background: #dcdcdc !important;
-}
 
-#my-gallery > .pswp__content {
-    display: flex;
-    justify-content: center;
-}
-#my-gallery > .pswp__bg{
-    background-color: #dcdcdc !important;
-  }
-
-#my-gallery > .pswp__button, #my-gallery > .pswp__icn{
+#myGallery > .pswp__button, #my-gallery > .pswp__icn{
     color: black !important;
     fill: black !important;
   }
