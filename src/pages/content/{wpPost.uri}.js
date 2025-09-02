@@ -36,8 +36,7 @@ import {
 import {
   articleFeature,
   articlePictorial,
-  myGallery
-} from '../../components/article/article.module.scss'
+  } from '../../components/article/article.module.scss'
 import { width } from "dom7";
 
 
