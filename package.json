@@ -42,7 +42,7 @@
   "scripts": {
     "start": "cross-env NODE_OPTIONS=--max_old_space_size=16384 GATSBY_CONCURRENT_DOWNLOAD=5 gatsby develop",
     "develop": "cross-env NODE_OPTIONS=--max_old_space_size=16384 GATSBY_CONCURRENT_DOWNLOAD=5 gatsby develop",
-    "build": "cross-env NODE_OPTIONS=--max_old_space_size=16384 GATSBY_CONCURRENT_DOWNLOAD=5 gatsby build",
+    "build": "gatsby clean && cross-env NODE_OPTIONS=--max_old_space_size=16384 GATSBY_CONCURRENT_DOWNLOAD=5 gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
