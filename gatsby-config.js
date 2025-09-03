@@ -61,9 +61,7 @@ module.exports = {
       },
     },
   
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-vanilla-extract",
-    `gatsby-plugin-sass`,
+  `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
