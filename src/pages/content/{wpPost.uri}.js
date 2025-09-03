@@ -14,7 +14,7 @@ import Article from '../../components/article/article'
 import ArticleTitle from '../../components/articleTitle/articleTitle'
 import Section from '../../components/section/section'
 
-// import "../../styles/simpleReactLightbox.scss";
+import "../../styles/simpleReactLightbox.scss";
 import "photoswipe/dist/photoswipe.css";
 // import "photoswipe/dist/default-skin/default-skin.css";
 import { Gallery, Item } from 'react-photoswipe-gallery'
@@ -35,7 +35,7 @@ import {
 
 import {
   articleFeature,
-  articlePictorial,
+  articlePictorial
   } from '../../components/article/article.module.scss'
 import { width } from "dom7";
 
@@ -263,7 +263,7 @@ export default function Post({ data }) {
               {
                 relatedPosts.slice(0, 3).map(edge => (
 
-                  <Link to={`/content${edge.node.uri}`}>
+                  <Link to={`/content/${edge.node.fields?.normalizedUri || String(edge.node.uri).replace(/^\/+/, '')}`}>
                     <li key={edge.node.id}>
                       <Article tags={true} path={edge.node} excerpt={true} className={articleFeature} />
                     </li>

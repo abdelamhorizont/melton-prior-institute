@@ -33,7 +33,7 @@ export default function Collection({ data }) {
             <ul>
                 {
               collectionTitle.posts.nodes.map(node => (
-                <Link to={`/content${node.uri}`}>
+                <Link to={`/content/${node.fields?.normalizedUri || String(node.uri).replace(/^\/+/, '')}`}>
                   <li key={node.id}>
                     <Article tags={true} path={node} excerpt={true} className={articleCollection} />
                   </li>
