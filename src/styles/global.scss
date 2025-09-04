@@ -443,10 +443,17 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
       position: relative;
     }
   }
+    .gallery-columns-3,
+  .gallery-columns-4,
+  .gallery-columns-5 {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
   
   
   @media screen and (max-width: $small){
+  
 
     i{
       font-feature-settings: "ss04";
@@ -596,6 +603,11 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
         }
       }
   }
+    .gallery-columns-3,
+  .gallery-columns-4,
+  .gallery-columns-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
   
 
@@ -689,6 +701,8 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     justify-content: center;
   
   }
+
+  
 //   li[value="Linton Archive"], li[value="Linton Archiv"]{
 
 //     a{

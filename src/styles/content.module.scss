@@ -928,8 +928,8 @@ html {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 60px;
+    align-items: flex-start;
+    padding: 60px 30px 90px 30px;
     box-sizing: border-box;
     }
 
@@ -938,7 +938,7 @@ html {
     display: block;
     width: auto;
     height: auto;
-    max-width: calc(100vw - 120px);   /* fit horizontally inside wrapper */
+    max-width: calc(100vw - 60px);   /* fit horizontally inside wrapper */
     max-height: calc(100vh - 150px);  /* fit vertically inside wrapper */
     object-fit: contain;
     }
