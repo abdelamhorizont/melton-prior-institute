@@ -322,6 +322,15 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   bottom: 25px !important;
 }
 
+/*************************************/
+/* firefox-specific */
+/*************************************/
+
+@supports (-moz-appearance: none) {
+  body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+    letter-spacing: 0.5em !important; /* adjust to taste */
+  }
+}
 
 /*************************************/
 /* mobile queries */
