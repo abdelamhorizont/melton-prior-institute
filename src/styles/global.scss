@@ -249,7 +249,7 @@ figcaption{
   padding: 0.5*$lineHeight $lineHeight $lineHeight $lineHeight;
   text-align: center;
   @include ke-book-italic;
-  letter-spacing: -0.005rem;
+  letter-spacing: -0.005em;
   
 }
 }
@@ -318,7 +318,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
   text-shadow: none !important;
   font-weight: 500;
   font-style: italic;
-  letter-spacing: -0.005rem;
+  letter-spacing: -0.005em;
   bottom: 25px !important;
 }
 
@@ -326,11 +326,11 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
 /* firefox-specific */
 /*************************************/
 
-@supports (-moz-appearance: none) {
-  body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
-    letter-spacing: 0.5em !important; /* adjust to taste */
-  }
-}
+// @supports (-moz-appearance: none) {
+//   body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+//     letter-spacing: 0.07em !important; /* adjust to taste */
+//   }
+// }
 
 /*************************************/
 /* mobile queries */
@@ -342,7 +342,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     i{
       font-feature-settings: "ss04";
       font-size: 0.99*$sDfontSize;
-      letter-spacing: -0.05rem;
+      letter-spacing: -0.05em;
     }
     a{
       font-size: inherit;
@@ -376,7 +376,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     vertical-align: unset;
   }
   i, em{
-      font-size: calc($sDfontSize - 0.01rem);
+      font-size: calc($sDfontSize - 0.01em);
   }
 
   .gallery-item{
@@ -451,7 +451,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     i{
       font-feature-settings: "ss04";
       font-size: 0.99*$sDfontSize;
-      letter-spacing: -0.05rem;
+      letter-spacing: -0.05em;
     }
     a{
       font-size: inherit;
@@ -502,7 +502,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
     }
   }
   i, em{
-      // font-size: calc($sDfontSize - 0.01rem);
+      // font-size: calc($sDfontSize - 0.01em);
   }
   .gallery-item{
     transition: $transitionFade;
@@ -725,7 +725,7 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
 //     line-height: $sDfontSize;
 //   }
 //   p{
-//     letter-spacing: 0.02rem;
+//     letter-spacing: 0.02em;
 //   }
 //   .gallery{
 //     width: 100%;
@@ -752,9 +752,9 @@ li[value="Linton Archive"], li[value="Linton Archiv"]{
 //       vertical-align: unset;
 //     }
 //     i,em {
-//       font-size: calc($sDfontSize - 0.01rem);
+//       font-size: calc($sDfontSize - 0.01em);
 //       line-height: inherit;
-//       letter-spacing: 0.001rem;
+//       letter-spacing: 0.001em;
 //     }
 }
 
